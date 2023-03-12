@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="22.294" height="22.294" viewBox="0 0 22.294 22.294">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #000551;
+      }
+    </style>
+  </defs>
+  <path id="Icon_map-search" data-name="Icon map-search" class="cls-1" d="M17.753,14.787a8.817,8.817,0,1,0-2.968,2.966l5.982,5.982,2.967-2.968Zm-7.517.892a5.439,5.439,0,1,1,5.442-5.436,5.448,5.448,0,0,1-5.442,5.436Z" transform="translate(-1.44 -1.44)"/>
+</svg>

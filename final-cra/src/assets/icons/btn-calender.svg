@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="calendar" transform="translate(0 -1)">
+    <path id="패스_19460" data-name="패스 19460" class="cls-1" d="M23.75,2.5H22.5V1.25a1.25,1.25,0,1,0-2.5,0V2.5H10V1.25a1.25,1.25,0,1,0-2.5,0V2.5H6.25A6.258,6.258,0,0,0,0,8.75v15A6.258,6.258,0,0,0,6.25,30h17.5A6.257,6.257,0,0,0,30,23.75v-15A6.257,6.257,0,0,0,23.75,2.5ZM2.5,8.75A3.75,3.75,0,0,1,6.25,5h17.5A3.75,3.75,0,0,1,27.5,8.75V10H2.5ZM23.75,27.5H6.25A3.75,3.75,0,0,1,2.5,23.75V12.5h25V23.75A3.75,3.75,0,0,1,23.75,27.5Z" transform="translate(0 1)"/>
+    <circle id="타원_75" data-name="타원 75" class="cls-1" cx="1.916" cy="1.916" r="1.916" transform="translate(13.084 16.773)"/>
+    <circle id="타원_76" data-name="타원 76" class="cls-1" cx="1.916" cy="1.916" r="1.916" transform="translate(6.854 16.773)"/>
+    <circle id="타원_77" data-name="타원 77" class="cls-1" cx="1.916" cy="1.916" r="1.916" transform="translate(19.315 16.773)"/>
+  </g>
+</svg>

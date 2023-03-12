@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="그룹_38626" data-name="그룹 38626" transform="translate(-55.072 -37)">
+    <path id="Icon_ionic-md-close" data-name="Icon ionic-md-close" class="cls-1" d="M28.523,9.623l-2.1-2.1-8.4,8.4-8.4-8.4-2.1,2.1,8.4,8.4-8.4,8.4,2.1,2.1,8.4-8.4,8.4,8.4,2.1-2.1-8.4-8.4Z" transform="translate(47.549 29.477)"/>
+  </g>
+</svg>
