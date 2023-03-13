@@ -1,0 +1,22 @@
+:root {
+  --pink: #ff0099;
+  --orange: #ec9d4e;
+  --blue: #212c92;
+  --indigo: #000551;
+  --gray: #666666;
+  --skyblue: #01aaff;
+  --redOrange: #fc1e27;
+  --black: #222222;
+  --white: #ffffff;
+
+  --spacing-xs: 0.5rem; /* 8px */
+  --spacing-base: 1rem; /* 16px */
+  --spacing-md: 1.25rem; /* 20px */
+  
+  --text-sm: 0.75rem; /* 12px */
+  --text-base: 1rem; /* 16px */
+  --text-md: 1.375rem; /* 22px */
+  --text-lg: 2.375rem;  /* 38px */
+  --container-width: 65.625rem; /* 1050px */
+  --spacing-sm: 0.75rem; /* 12px */
+}
