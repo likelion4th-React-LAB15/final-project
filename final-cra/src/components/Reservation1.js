@@ -12,7 +12,7 @@ const Guest = styled.h2`
   font-size: 40px;
   line-height: 48px;
   text-align: center;
-  color: #212C92;
+  color: ${(props) => props.theme.blue};
 `
 const GuestNumber = styled.h3`
   font-family: 'Inter';
@@ -21,20 +21,20 @@ const GuestNumber = styled.h3`
   font-size: 32px;
   line-height: 39px;
   text-align: center;
-  color: #212C92;
+  color: ${(props) => props.theme.blue};
   margin-top: 91px;
 `
 
 const ContinueButton = styled.button`
   width: 340px;
   height: 56px;
-  background-color: #212C92;
+  background-color: ${(props) => props.theme.blue};
   border-radius: 30px;
   border:none;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
-  font-size: 16px;
+  font-size: ${(props) => props.theme.textBase};
   line-height: 19px;
   color: #FFFFFF;
   margin: auto;

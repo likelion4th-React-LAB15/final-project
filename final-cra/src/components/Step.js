@@ -4,10 +4,10 @@ const StepBlock = styled.div`
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
-  font-size: 16px;
+  font-size: ${props=> props.theme.textBase};
   line-height: 19px;
   text-align: center;
-  color: #212C92;
+  color: ${props=> props.theme.blue};
   position: relative;
 `
 
