@@ -5,6 +5,7 @@ import Siheky from "components/Siheky/Siheky";
 
 function App() {
   return <>
+    <FilmList />
     <Footer />
   </>
 }
