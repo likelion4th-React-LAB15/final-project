@@ -1,4 +1,4 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp } from 'firebase/app';
 
 const cra = process.env;
 
@@ -11,4 +11,6 @@ const firebaseConfig = {
   appId: cra.REACT_APP_APP_ID,
 };
 
-export default initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig)
+
+export default app;
