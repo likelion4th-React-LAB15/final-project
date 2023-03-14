@@ -2,7 +2,6 @@
   "name": "final-cra",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "dependencies": {
     "@testing-library/dom": "^9.0.1",
     "@testing-library/jest-dom": "^5.16.5",
