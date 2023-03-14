@@ -3,10 +3,10 @@ import theme from 'style/theme'
 
 const StyledTitle = styled.h2`
     width: inherit;
-    font-size: 34px;
+    font-size: 2.125rem;
     color: ${theme.blue};
     font-weight: bold;
-    margin-bottom: 40px;
+    margin-bottom: 2.5rem;
     text-align: center;
 `
 
