@@ -104,5 +104,6 @@ const StyledFooterGnb = styled.ul`
   }
 `
 
+StyledFooterGnb.displayName = 'StyledFooterGnb';
 
 export default FooterGnb

@@ -33,6 +33,7 @@ const FooterInner = styled.div`
   margin:0 auto;
 `
 
-
+FooterContainer.displayName = 'FooterContainer';
+FooterInner.displayName = 'FooterInner';
 
 export default Footer

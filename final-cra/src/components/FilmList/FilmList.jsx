@@ -63,7 +63,7 @@ const FilmListContainer = styled.section`
   padding:15.625rem 0 12.5rem 0; 
   overflow: hidden;
 `
-FilmListContainer.displayName = 'FilmListContainer';
+
 const FilmListInner = styled.div`
   width: 100%;
   height: 26.25rem; 
@@ -148,5 +148,12 @@ const BorderFilmText = styled.span`
   -webkit-text-stroke-width: 0.125rem;
   -webkit-text-stroke-color: ${props => (props.primaryColor ? theme.blue : theme.pink)};
 `
+
+FilmListContainer.displayName = 'FilmListContainer';
+FilmListInner.displayName = 'FilmListInner';
+VideoList.displayName = 'VideoList';
+VideoItem.displayName = 'VideoItem';
+FullFilmText.displayName = 'FullFilmText';
+BorderFilmText.displayName = 'BorderFilmText';
 
 export default FilmList

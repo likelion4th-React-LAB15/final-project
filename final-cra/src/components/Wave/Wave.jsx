@@ -72,6 +72,6 @@ const StyledWave = styled.div`
   }
 `
 
-
+StyledWave.displayName = 'StyledWave';
 
 export default Wave
