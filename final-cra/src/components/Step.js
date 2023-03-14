@@ -5,52 +5,52 @@ const StepBlock = styled.div`
   font-style: normal;
   font-weight: 600;
   font-size: ${props=> props.theme.textBase};
-  line-height: 19px;
+  line-height: 1.188rem;
   text-align: center;
   color: ${props=> props.theme.blue};
   position: relative;
 `
 
 const CircleWrapper = styled.div`
-  padding: 0px 155.17px;
-  margin-bottom:25.72px;
+  padding: 0rem 9.698rem;
+  margin-bottom: 1.608rem;
  
 
   &::after{
     content:'';
     width: 100%;
-    height:5px;
+    height:0.313rem;
     position:absolute;
-    top:41.33px;
-    left:0px;
+    top: 2.583rem;
+    left: 0rem;
     background-color: #E5ECFF;
     z-index: -1;
   }
 `
 
 const Circle = styled.div`
-  width: 82.66px;
-  height: 82.66px;
+  width: 5.166rem;
+  height: 5.166rem;
   background-color: #8E96DE;
   color: white;
   border-radius: 50%;
-  line-height: 82.66px;
+  line-height: 5.166rem;
   text-align:center;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
-  font-size: 36px;
+  font-size: 2.25rem;
   position:relative;
 `
 
 const Circle1 = styled.div`
-  width: 102.11px;
-  height: 102.11px;
+  width: 6.382rem;
+  height: 6.382rem;
   background-color: #E5ECFF;
   position:absolute;
   border-radius: 50%;
-  top:-9.72px;
-  left:146px;
+  top:-0.608rem;
+  left:9.125rem;
   z-index:-1;
 `
 

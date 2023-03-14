@@ -4,7 +4,7 @@ import styled from "styled-components";
 const StepWrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 52px;
+  margin-top: 3.25rem;
 `
 
 function StepNavigation(props){

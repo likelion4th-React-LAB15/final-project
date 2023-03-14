@@ -16,15 +16,15 @@ const Label = styled.span`
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
   color: #000000;
 `;
 
 const Select = styled.select`
-  width: 72px;
-  height: 32px;
-  font-size: 18px;
+  width: 4.5rem;
+  height: 2rem;
+  font-size: 1.125rem;
   color: #000000;
   border: none;
 `;

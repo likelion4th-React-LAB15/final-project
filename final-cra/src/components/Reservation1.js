@@ -1,16 +1,17 @@
 import styled from "styled-components";
 import StepNavigation from "components/StepNavigation.js"
 import GuestSelect from "components/GuestSelect.js"
+import ContinueButton from "components/ContinueButton.js"
 
 const Reservation1Wrapper = styled.div`
-  margin-top: 223px;
+  margin-top: 13.938rem;
 `
 const Guest = styled.h2`
   font-family: 'Inter';
   font-style: normal;
   font-weight: 900;
-  font-size: 40px;
-  line-height: 48px;
+  font-size: 2.5rem;
+  line-height: 3rem;
   text-align: center;
   color: ${(props) => props.theme.blue};
 `
@@ -18,28 +19,11 @@ const GuestNumber = styled.h3`
   font-family: 'Inter';
   font-style: normal;
   font-weight: 900;
-  font-size: 32px;
-  line-height: 39px;
+  font-size: 2rem;
+  line-height: 2.375rem;
   text-align: center;
   color: ${(props) => props.theme.blue};
-  margin-top: 91px;
-`
-
-const ContinueButton = styled.button`
-  width: 340px;
-  height: 56px;
-  background-color: ${(props) => props.theme.blue};
-  border-radius: 30px;
-  border:none;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  font-size: ${(props) => props.theme.textBase};
-  line-height: 19px;
-  color: #FFFFFF;
-  margin: auto;
-  display: block;
-  margin-top: 90px;
+  margin-top: 5.688rem;
 `
 
 function Reservation1(){
@@ -52,7 +36,7 @@ function Reservation1(){
     <StepNavigation labelArray={labelArray}></StepNavigation>
     <GuestNumber>투숙객 및 객실</GuestNumber>
     <GuestSelect></GuestSelect>
-    <ContinueButton>확인 및 계속</ContinueButton>
+    <ContinueButton value={'확인 및 계속'}></ContinueButton>
   </Reservation1Wrapper>
   )
 

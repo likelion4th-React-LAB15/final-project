@@ -4,8 +4,8 @@ import OptionSelect from 'components/OptionSelect.js'
 const Container = styled.div`
   display: flex;
   justify-content: center;
-  gap: 34px;
-  margin-top: 41px;
+  gap: 2.125rem;
+  margin-top: 2.563rem;
 `;
 
 const GuestSelect = () => {
