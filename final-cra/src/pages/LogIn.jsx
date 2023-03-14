@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { UserInput, UserForm, UserButton } from 'components/user';
 import styled from 'styled-components/macro'
 import Title from 'components/Title';
@@ -11,7 +12,7 @@ const initialFormState = {
   password: '',
 };
 
-const LogIn = () => {
+export const LogIn = () => {
   const formStateRef = useRef(initialFormState);
 
   const { isLoading: isLoadingSignIn, signIn } = useSignIn();
@@ -35,7 +36,6 @@ const LogIn = () => {
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
     formStateRef.current[name] = value;
-    console.log(value);
   };
 
 
@@ -59,7 +59,7 @@ const LogIn = () => {
             </StyledUl>
              <UserButton type="submit" disabled={isLoadingSignIn}>로그인</UserButton>
           </UserForm>
-        <StyledSpan>아직 가입하지 않으셨나요?<StyledLink href="#">회원가입</StyledLink></StyledSpan>
+        <StyledSpan>아직 가입하지 않으셨나요?<StyledLink to="/signup">회원가입</StyledLink></StyledSpan>
       </StyledSection>
   )
 }
@@ -92,12 +92,10 @@ const StyledSpan = styled.span`
   color: #898989;
 `
 
-const StyledLink = styled.a`
+const StyledLink = styled(Link)`
   display: inline-block;
   border-bottom: 0.0625rem solid ${theme.blue};
   font-weight: bold;
   color: ${theme.blue};
   margin: ${theme.spacingMd} 0 0 0.625rem;
 `
-
-export default LogIn;

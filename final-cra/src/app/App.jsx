@@ -1,11 +1,16 @@
-import LogIn from 'pages/LogIn';
+import { Routes, Route } from 'react-router-dom';
+import { Home, LogIn, SignUp } from 'pages';
 import GlobalStyle from 'components/GlobalStyle';
 
 const App = () => {
   return (
     <>
-    <GlobalStyle /> 
-      <LogIn />
+    <GlobalStyle />
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<LogIn />} />
+      <Route path="/signup" element={<SignUp />} />
+    </Routes> 
     </>
   )
 }
