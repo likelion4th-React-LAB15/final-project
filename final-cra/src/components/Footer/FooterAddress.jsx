@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import theme from "style/theme";
 
 function FooterAddress() {
 
@@ -7,11 +7,11 @@ function FooterAddress() {
     <>
       <StyledFooterAddress>
         <div className="addressInner addressTop">
-          <h2 className="footerLogo"><img src="" alt="DIF 로고" /></h2>
+          <h2 className="footerLogo"><img src={require('assets/icons/logo-off.png')} alt="Dobby Islands Free" /></h2>
           <div>
-            <a href="#">개인정보 처리방침</a>
+            <a href="{()=>false}">개인정보 처리방침</a>
             <span className="line" aria-hidden="true"></span>
-            <a href="#">이메일무단수집거부</a>
+            <a href="{()=>false}">이메일무단수집거부</a>
           </div>
         </div>
         <div className="addressInner addressMiddle">
@@ -39,8 +39,8 @@ function FooterAddress() {
 
 
 const StyledFooterAddress = styled.div`
-  padding-top: 50px;
-  color:#fff;
+  padding-top: 3.125rem;
+  color: ${theme.white};
   .addressInner{
     display: flex;
     flex-flow: row nowrap;
@@ -51,16 +51,16 @@ const StyledFooterAddress = styled.div`
     align-items: center;
   }
   .addressTop a{
-    font-size:18px;
-    line-height: 30px;
+    font-size: 1.125rem;
+    line-height: 1.875rem;
     color: inherit;
     text-decoration: none;
   }
   .addressTop .line{
     display: inline-block;
-    width:1px;
-    height:14px;
-    margin:0 10px;
+    width: 0.0625rem;
+    height: 0.875rem;
+    margin:0 0.625rem;
     background-color: #fff;
   }
   .footerLogo{
@@ -68,21 +68,21 @@ const StyledFooterAddress = styled.div`
   }
 
   .addressMiddle{
-    margin:20px 0 30px 0;
+    margin: 1.25rem 0 1.875rem 0;
   }
   .addressMiddle address{
-    font-size: 16px;
+    font-size: ${theme.textBase};
   }
   .addressMiddle strong{
     font-weight:700;
   }
   .addressMiddle .footerEmail{
-    font-size: 14px;
+    font-size: 0.875rem;
     color: rgba(255,255,255,0.5);
   }
 
   .addressBottom address{
-    font-size: 14px;
+    font-size: 0.875rem;
     color: rgba(255,255,255,0.5);
   }
 `

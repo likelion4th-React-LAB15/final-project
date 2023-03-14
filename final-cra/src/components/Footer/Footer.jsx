@@ -1,14 +1,15 @@
 import styled from "styled-components";
+import theme from "style/theme";
 import FooterAddress from "components/Footer/FooterAddress";
 import FooterGnb from 'components/Footer/FooterGnb';
-import FooterWave from "./FooterWave";
+import Wave from "components/Wave/Wave";
 
 
 function Footer() {
 
   return (
     <>
-      <FooterWave />
+      <Wave />
       <FooterContainer>
         <FooterInner>
           <FooterGnb />
@@ -21,14 +22,14 @@ function Footer() {
 
 const FooterContainer = styled.footer`
   width: 100%;
-  background-color: #212C93;
+  background-color: ${theme.blue};
   position: relative;
-  padding:100px 0 50px 0;
+  padding:6.25rem 0 3.125rem 0;
   overflow: hidden;
 `
 
 const FooterInner = styled.div`
-  max-width: 1300px;
+  max-width: 81.25rem;
   margin:0 auto;
 `
 
