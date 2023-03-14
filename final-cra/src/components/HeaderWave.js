@@ -39,9 +39,9 @@ const HeaderWapper = styled.div`
     bottom: -22%;
     width: 100%;
     height: 15vh;
-    margin-bottom: -7px; /*Fix for safari gap*/
-    min-height: 100px;
-    max-height: 150px;
+    margin-bottom: -0.4375rem; /*Fix for safari gap*/
+    min-height: 6.25rem;
+    max-height: 9.375rem;
     transform: rotate(180deg);
   }
 
@@ -77,7 +77,7 @@ const HeaderWapper = styled.div`
 `;
 
 const MenuWrap = styled.ul`
-  width: 1180px;
+  width: 67.5rem;
   display: flex;
   justify-content: space-between;
 
@@ -86,11 +86,11 @@ const MenuWrap = styled.ul`
     cursor: pointer;
 
     ul {
-      margin: 10px 0 0 0;
+      margin: 0.625rem 0 0 0;
 
       > li {
         font: 400 1rem/1 'airal';
-        padding: 6px 0;
+        padding: 0.375rem 0;
         cursor: pointer;
       }
     }

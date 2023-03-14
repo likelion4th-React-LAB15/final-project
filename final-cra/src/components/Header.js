@@ -112,8 +112,8 @@ const SubHeader = styled.div`
   width: 100%;
   height: 3.875rem;
   background: transparent;
-  border-top: 1px solid rgba(255, 255, 255, 0.5);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  border-top: 0.0625rem solid rgba(255, 255, 255, 0.5);
+  border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.5);
   transition: all 1s;
   z-index: 2;
   display: flex;
@@ -124,7 +124,7 @@ const SubHeader = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 1108px;
+    width: 69.25rem;
 
     li {
       font: 600 1rem/1 'arial';
@@ -137,9 +137,9 @@ const SubHeader = styled.div`
         display: block;
         position: absolute;
         top: 50%;
-        left: -70px;
-        width: 8px;
-        height: 8px;
+        left: -4.375rem;
+        width: 0.5rem;
+        height: 0.5rem;
         border-radius: 50%;
         background-color: rgba(255, 255, 255, 0.45);
         transform: translateY(-50%);
@@ -185,6 +185,7 @@ const Header = () => {
       </HeaderWapper>
 
       <SubHeader>
+        {/* route 적용 */}
         <ul>
           <li>RESERVATION</li>
           <li>PIC</li>
