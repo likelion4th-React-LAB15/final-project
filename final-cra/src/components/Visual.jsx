@@ -1,6 +1,10 @@
 import styled, { keyframes } from 'styled-components';
 import gsap from 'gsap';
-import React, { useState, useEffect, useRef } from 'react';
+import theme from 'style/theme';
+import { CustomInput } from './CustomInput';
+import { ReactComponent as Up } from './../assets/icons/picker_arrow_next.svg';
+import { ReactComponent as Down } from './../assets/icons/picker_arrow_prev.svg';
+import React, { useState, useEffect, useRef, useId, Children } from 'react';
 
 const Titles = styled.ul`
   width: 100%;
@@ -22,12 +26,12 @@ const Titles = styled.ul`
     > span {
       display: inline-block;
       font: 600 8.75rem/1 'arial';
-      color: #fff;
+      color: ${theme.white};
 
       &:nth-last-of-type(1),
       &:nth-last-of-type(2),
       &:nth-last-of-type(3) {
-        -webkit-text-stroke: 0.125rem #fff;
+        -webkit-text-stroke: 0.125rem ${theme.white};
         color: transparent;
         text-transform: uppercase;
       }
@@ -38,10 +42,10 @@ const Titles = styled.ul`
   }
 
   .subTitleWrap {
-    color: #fff;
+    color: ${theme.white};
     position: absolute;
     left: 50%;
-    bottom: -20%;
+    bottom: -38%;
     transform: translateX(-50%);
 
     > li {
@@ -54,7 +58,7 @@ const VisualWapper = styled.figure`
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background-color: #222;
+  background-color: ${theme.black};
 
   video {
     width: 100%;
@@ -68,18 +72,57 @@ const ReservationWrapper = styled.div`
   width: 67.5rem;
   height: 6.25rem;
   background-color: transparent;
-  border: 0.0625rem solid #fff;
+  border: 0.125rem solid rgba(255, 255, 255, 0.3);
   position: absolute;
   left: 50%;
-  top: 60%;
+  top: 62%;
   transform: translate(-50%, -50%);
   border-radius: 3.125rem;
+  color: ${theme.white};
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 3.25rem;
 
-  input[type='date'] {
-    border: 0;
-    background-color: transparent;
-    color: #fff;
-    font: 200 1rem/1 'arial';
+  .countBtnWrap {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
+  .reservationMenu1 {
+    height: 100%;
+
+    padding-right: 1.875rem;
+    .oneWrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  .reservationMenu2 {
+    height: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    padding-right: 1.875rem;
+  }
+
+  .reservationMenu3 {
+    height: 100%;
+    padding-right: 1.875rem;
+  }
+
+  .reservationMenu4 {
+    height: 100%;
+    padding-right: 1.875rem;
+  }
+
+  .reservationMenu5 {
+    height: 100%;
+    padding-right: 1.875rem;
+  }
+
+  .reservationMenu6 {
   }
 `;
 
@@ -112,7 +155,7 @@ const Line = styled.div`
     content: '';
     width: 2px;
     height: 35px;
-    background: #fff;
+    background: ${theme.white};
     position: absolute;
     animation: ${slideInBottom} 2s cubic-bezier(0.46, 0.03, 0.52, 0.96) infinite;
   }
@@ -135,7 +178,7 @@ const MenuBottom = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #fff;
+    color: ${theme.white};
     font: 800 1.125rem/1 'arial';
 
     li {
@@ -156,7 +199,7 @@ const MenuBottom = styled.div`
         width: 0%;
         height: 4px;
         display: inline-block;
-        background-color: #ff0099;
+        background-color: ${theme.pink};
         opacity: 1;
         margin-top: auto;
         transition: all 0.5s;
@@ -164,24 +207,6 @@ const MenuBottom = styled.div`
     }
   }
 `;
-
-const titles = [
-  { title: 'Exciting PIC', subTitle: '상상, 그 이상의 즐거움이 펼쳐지는 곳' },
-  {
-    title: 'KidFriendly PIC',
-    subTitle: '아이와 가족 모두에게 충만한 행복을 선사합니다',
-  },
-  {
-    title: 'Romantic PIC',
-    subTitle:
-      '로맨틱하고 아름다운 휴가로 사랑하는 연인과 특별한 추억을 남기세요',
-  },
-  {
-    title: 'Relaxing PIC',
-    subTitle:
-      '몸도 마음도 풍요로워지는 진정한 휴식과 충만한 재충전의 시간을 경험하세요',
-  },
-];
 
 const splitTextAni = () => {
   gsap
@@ -243,16 +268,77 @@ const progressAni = () => {
     .to('.progress4', { width: '0%', duration: 0.8, delay: 4 });
 };
 
+const titles = [
+  { title: 'Exciting PIC', subTitle: '상상, 그 이상의 즐거움이 펼쳐지는 곳' },
+  {
+    title: 'KidFriendly PIC',
+    subTitle: '아이와 가족 모두에게 충만한 행복을 선사합니다',
+  },
+  {
+    title: 'Romantic PIC',
+    subTitle:
+      '로맨틱하고 아름다운 휴가로 사랑하는 연인과 특별한 추억을 남기세요',
+  },
+  {
+    title: 'Relaxing PIC',
+    subTitle:
+      '몸도 마음도 풍요로워지는 진정한 휴식과 충만한 재충전의 시간을 경험하세요',
+  },
+];
+
+const reservationList = [
+  'RESERVATION',
+  'CHECK IN / OUT',
+  'ADULT',
+  'CHILDREN',
+  'PROMOTION',
+  'SEARCH',
+];
+
+const list = ['GUAM', 'SAIPAN'];
+
 const Visual = () => {
+  const [value, setValue] = useState([list[0], [2, 0]]);
+
   useEffect(() => {
     splitTextAni();
     progressAni();
   }, []);
 
-  const [count, setCount] = useState([2, 0]);
-  const [reserVation, setReserVation] = useState('GUAM');
+  // coutnbtn Function
+  const reservationChange = (num) => (_) => {
+    let copy = [...value];
+    copy[0] = list[num];
+    console.log(num, copy);
+    setValue(copy);
+  };
 
-  const rsvChange = (txt) => (_) => setReserVation(txt);
+  // btnComponent
+  const CountBtn = ({
+    className,
+    type = 'button',
+    icon = 'up',
+    ...resetProp
+  }) => {
+    const CustomBtn = styled.button`
+      transform: ${(props) =>
+        props.icon === 'up' ? 'rotate(180deg)' : 'rotate(-90deg)'};
+      background-color: transparent;
+      border: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      padding: 10px 10px;
+      width: 26px;
+      height: 11px;
+    `;
+    return (
+      <CustomBtn className={className} type={type} {...resetProp}>
+        {icon === 'up' ? <Up /> : <Down />}
+      </CustomBtn>
+    );
+  };
 
   return (
     <VisualWapper>
@@ -262,15 +348,16 @@ const Visual = () => {
             {[...title.split(' ')[0]].map((el) => (
               <span key={el}>{el}</span>
             ))}
-            <span>P</span>
+            <span>D</span>
             <span>I</span>
-            <span>C</span>
+            <span>F</span>
             <ul className="subTitleWrap">
               <li className={`subTitle${idx + 1}`}>{subTitle}</li>
             </ul>
           </li>
         ))}
       </Titles>
+
       <video
         autoPlay
         loop
@@ -279,18 +366,52 @@ const Visual = () => {
       ></video>
 
       <ReservationWrapper>
-        <ul>
-          <li>{reserVation}</li>
-          <button onClick={rsvChange('GUAM')}>업</button>
-          <button onClick={rsvChange('SAPIAN')}>다운</button>
-        </ul>
+        {reservationList.map((el, idx) => {
+          return (
+            <ul className={`reservationMenu${idx + 1}`}>
+              {idx !== reservationList.length - 1 && <li>{el}</li>}
 
-        <ul>
-          <li>CHECK IN / OUT</li>
+              {el === 'RESERVATION' && (
+                <ul className="oneWrap">
+                  <p>{value[0]}</p>
+                  <li className="countBtnWrap">
+                    <CountBtn icon="up" onClick={reservationChange(0)} />
+                    <CountBtn icon="down" onClick={reservationChange(1)} />
+                  </li>
+                </ul>
+              )}
 
-          <input type="date" name="" id="" />
-          <input type="date" name="" id="" />
-        </ul>
+              {el === 'CHECK IN / OUT' && (
+                <div className="dateBtnWrap">
+                  <CustomInput />
+                  <CustomInput />
+                </div>
+              )}
+
+              {el === 'ADULT' && (
+                <ul className="oneWrap">
+                  <p>{value[1][0]}</p>
+                  <li className="countBtnWrap">
+                    <CountBtn icon="up" onClick={reservationChange(0)} />
+                    <CountBtn icon="down" onClick={reservationChange(1)} />
+                  </li>
+                </ul>
+              )}
+
+              {el === 'CHILDREN' && (
+                <ul className="oneWrap">
+                  <p>{value[1][1]}</p>
+                  <li className="countBtnWrap">
+                    <CountBtn icon="up" onClick={reservationChange(0)} />
+                    <CountBtn icon="down" onClick={reservationChange(1)} />
+                  </li>
+                </ul>
+              )}
+              {el === 'PROMOTION' && <CustomInput type="text" />}
+              {el === 'SEARCH' && <button>SEARCH</button>}
+            </ul>
+          );
+        })}
         <Line />
       </ReservationWrapper>
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import theme from 'style/theme';
 import { keyframes } from 'styled-components';
 import styled from 'styled-components';
 
@@ -16,8 +17,8 @@ const HeaderWapper = styled.div`
   left: 0;
   top: -140%;
   width: 100%;
-  background-color: #212c92;
-  color: white;
+  background-color: ${theme.blue};
+  color: ${theme.white};
   transition: all 0.8s;
   z-index: 3;
 
@@ -49,7 +50,7 @@ const HeaderWapper = styled.div`
     position: relative;
     height: 20vh;
     text-align: center;
-    background-color: white;
+    background-color: ${theme.white};
   }
   .parallax > use {
     animation: ${moveForever} 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
@@ -169,6 +170,7 @@ const HeaderWave = ({ menu }) => {
           ))}
         </MenuWrap>
       </div>
+
       <svg
         className="waves"
         xmlns="http://www.w3.org/2000/svg"

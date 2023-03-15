@@ -1,6 +1,7 @@
 import styled, { keyframes } from 'styled-components';
-import HeaderWave from './HeaderWave.js';
-import { pink } from './../style/theme';
+import HeaderWave from './HeaderWave';
+import theme from 'style/theme';
+import { Link } from 'react-router-dom';
 import { ReactComponent as Cart } from './../assets/icons/btn-cart.svg';
 import { ReactComponent as User } from './../assets/icons/btn-user.svg';
 import { useState, useEffect, useRef } from 'react';
@@ -49,7 +50,7 @@ const HeaderWapper = styled.header`
       width: 100%;
       height: 100%;
       height: 0.125rem;
-      background-color: #fff;
+      background-color: ${theme.white};
       border-radius: 0.0625rem;
 
       &:nth-of-type(1) {
@@ -129,7 +130,6 @@ const SubHeader = styled.div`
     li {
       font: 600 1rem/1 'arial';
       cursor: pointer;
-      color: #fff;
       position: relative;
 
       &::after {
@@ -147,6 +147,10 @@ const SubHeader = styled.div`
 
       &:first-child::after {
         display: none;
+      }
+
+      a {
+        color: ${theme.white};
       }
     }
   }
@@ -167,7 +171,7 @@ const Header = () => {
           {Array(3)
             .fill()
             .map((el, idx) => (
-              <li key={idx}>{el}</li>
+              <li key={el}>{el}</li>
             ))}
         </ul>
 
@@ -179,20 +183,32 @@ const Header = () => {
         </h1>
 
         <div className="infoWrap">
-          <User style={{ width: 28, height: 30, fill: '#fff' }} />
-          <Cart style={{ width: 28, height: 30, fill: '#fff' }} />
+          <User style={{ width: 28, height: 30, fill: theme.white }} />
+          <Cart style={{ width: 28, height: 30, fill: theme.white }} />
         </div>
       </HeaderWapper>
 
       <SubHeader>
-        {/* route 적용 */}
+        {/* Link */}
         <ul>
-          <li>RESERVATION</li>
-          <li>PIC</li>
-          <li>GUAM</li>
-          <li>SAIPAN</li>
-          <li>NOTICE</li>
-          <li>COMMUNITY</li>
+          <li>
+            <Link to="">RESERVATION</Link>
+          </li>
+          <li>
+            <Link to="">DIF</Link>
+          </li>
+          <li>
+            <Link to="">GUAM</Link>
+          </li>
+          <li>
+            <Link to="">SAIPAN</Link>
+          </li>
+          <li>
+            <Link to="">NOTICE</Link>
+          </li>
+          <li>
+            <Link to="">COMMUNITY</Link>
+          </li>
         </ul>
       </SubHeader>
     </>
