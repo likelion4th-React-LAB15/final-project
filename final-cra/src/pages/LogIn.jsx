@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { UserInput, UserForm, UserButton } from 'components/user';
+import { UserLogInInput, UserForm, PrimaryButton } from 'components/user';
 import styled from 'styled-components/macro'
 import Title from 'components/Title';
 import theme from 'style/theme';
@@ -50,14 +50,14 @@ export const LogIn = () => {
           <UserForm onSubmit={handleSignIn}>
             <fieldset>
               <legend>로그인 폼</legend>
-              <UserInput labelClass={'a11y-hidden'} name='email' type={'email'} placeholder={'이메일을 입력해주세요'} onChange={handleChangeInput}>이메일</UserInput>
-              <UserInput labelClass={'a11y-hidden'} name='password' type={'password'} placeholder={'비밀번호를 입력해주세요'} onChange={handleChangeInput}>비밀번호</UserInput>
+              <UserLogInInput labelClass={'a11y-hidden'} name='email' type={'email'} placeholder={'이메일을 입력해주세요'} onChange={handleChangeInput}>이메일</UserLogInInput>
+              <UserLogInInput labelClass={'a11y-hidden'} name='password' type={'password'} placeholder={'비밀번호를 입력해주세요'} onChange={handleChangeInput}>비밀번호</UserLogInInput>
             </fieldset>
             <StyledUl>
               <li><a href="#">아이디 찾기</a></li>
               <StyledList><a href="#">비밀번호 찾기</a></StyledList>
             </StyledUl>
-             <UserButton type="submit" disabled={isLoadingSignIn}>로그인</UserButton>
+             <PrimaryButton  type="submit" disabled={isLoadingSignIn}>로그인</PrimaryButton>
           </UserForm>
         <StyledSpan>아직 가입하지 않으셨나요?<StyledLink to="/signup">회원가입</StyledLink></StyledSpan>
       </StyledSection>
