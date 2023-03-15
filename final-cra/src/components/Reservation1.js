@@ -15,6 +15,12 @@ const GuestNumber = styled.h3`
   margin-top: 5.688rem;
 `
 
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
 function Reservation1(){
 
   return (
@@ -22,7 +28,9 @@ function Reservation1(){
     <StepNavigation labelArray={['투숙객 선택', '날짜 선택', '객실 선택']}></StepNavigation>
     <GuestNumber>투숙객 및 객실</GuestNumber>
     <GuestSelect></GuestSelect>
-    <ContinueButton value={'확인 및 계속'}></ContinueButton>
+    <ButtonWrapper>
+      <ContinueButton value={'확인 및 계속'}></ContinueButton>
+    </ButtonWrapper>
     </ReservationTitle>
   )
 

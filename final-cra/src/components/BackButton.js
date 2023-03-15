@@ -1,25 +1,25 @@
 import styled from "styled-components";
 
-const Continue = styled.button`
+const Back = styled.button`
   width: 21.25rem;
   height: 3.5rem;
-  background-color: ${(props) => props.theme.blue};
   border-radius: 1.875rem;
-  border: none;
+  background-color: white;
+  border: solid 2px ${(props) => props.theme.blue};
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
   font-size: ${(props) => props.theme.textBase};
   line-height: 1.188rem;
-  color: #FFFFFF;
+  color: ${(props) => props.theme.blue};
   
   margin-top: 5.625rem;
 `;
 
-function ContinueButton(props){
+function BackButton(props){
   return (
-    <Continue>{props.value}</Continue>
+    <Back>{props.value}</Back>
   )
 }
 
-export default ContinueButton;
+export default BackButton;
