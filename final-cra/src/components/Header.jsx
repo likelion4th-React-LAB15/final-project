@@ -26,6 +26,16 @@ const activeDesign2 = keyframes`
 	50% {transform:translateY(-20px) rotate(0);}
 	100% {transform:translateY(-20px) rotate(-45deg);}
 `;
+
+const activeHeader = keyframes`
+  0%{
+    transform: translateY(-100%);
+  }
+  100%{
+    transform: translateY(0%);
+  }
+`;
+
 const HeaderWapper = styled.header`
   width: 100%;
   height: 6.25rem;
@@ -36,7 +46,24 @@ const HeaderWapper = styled.header`
   padding: 0 2.5rem;
   position: fixed;
   z-index: 3;
-  transform: all 0.6s;
+  transition: all 0.18s forwards;
+
+  &.on {
+    animation: ${activeHeader} 1s linear;
+    background-color: #fff;
+
+    .menuBtn {
+      li {
+        background-color: ${theme.blue};
+      }
+    }
+
+    .infoWrap {
+      svg {
+        fill: ${theme.blue} !important;
+      }
+    }
+  }
 
   ul.menuBtn {
     width: 2.1875rem;
@@ -116,9 +143,15 @@ const SubHeader = styled.div`
   border-top: 0.0625rem solid rgba(255, 255, 255, 0.5);
   border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.5);
   transition: all 1s;
+  transform: translateY(0);
   z-index: 2;
   display: flex;
   justify-content: center;
+  transition: transform 1.4s;
+
+  &.up {
+    transform: translateY(-200%);
+  }
 
   ul {
     height: 100%;
@@ -158,19 +191,37 @@ const SubHeader = styled.div`
 
 const Header = () => {
   const [menu, menuSetState] = useState(false);
+  // const [menu, menuSetState] = useState(false);
+  const headerRef = useRef(null);
+  const subHeaderRef = useRef(null);
+
+  useEffect(() => {
+    // window.addEventListener('wheel', (e) => {
+    //   console.log(e.deltaY);
+    // });
+    window.addEventListener('scroll', () => {
+      window.pageYOffset >= subHeaderRef.current.offsetHeight / 10
+        ? subHeaderRef.current.classList.add('up')
+        : subHeaderRef.current.classList.remove('up');
+    });
+
+    return () => {
+      window.removeEventListener('scroll', () => {});
+    };
+  }, []);
 
   return (
     <>
       <HeaderWave menu={menu} />
 
-      <HeaderWapper>
+      <HeaderWapper ref={headerRef}>
         <ul
           className={!menu ? 'menuBtn' : 'menuBtn active'}
           onClick={() => menuSetState(!menu)}
         >
           {Array(3)
             .fill()
-            .map((el, idx) => (
+            .map((el) => (
               <li key={el}>{el}</li>
             ))}
         </ul>
@@ -188,7 +239,7 @@ const Header = () => {
         </div>
       </HeaderWapper>
 
-      <SubHeader>
+      <SubHeader ref={subHeaderRef}>
         {/* Link */}
         <ul>
           <li>

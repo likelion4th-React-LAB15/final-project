@@ -2,9 +2,8 @@ import styled, { keyframes } from 'styled-components';
 import gsap from 'gsap';
 import theme from 'style/theme';
 import { CustomInput } from './CustomInput';
-import { ReactComponent as Up } from './../assets/icons/picker_arrow_next.svg';
-import { ReactComponent as Down } from './../assets/icons/picker_arrow_prev.svg';
-import React, { useState, useEffect, useRef, useId, Children } from 'react';
+import { CustomBtn } from './CustomBtn';
+import React, { useState, useEffect, useRef, forwardRef } from 'react';
 
 const Titles = styled.ul`
   width: 100%;
@@ -83,7 +82,7 @@ const ReservationWrapper = styled.div`
   align-items: center;
   padding: 1.5rem 3.25rem;
 
-  .countBtnWrap {
+  .customBtnWrap {
     display: flex;
     flex-flow: column nowrap;
   }
@@ -92,11 +91,12 @@ const ReservationWrapper = styled.div`
     height: 100%;
 
     padding-right: 1.875rem;
-    .oneWrap {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+  }
+
+  .countBtnWrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .reservationMenu2 {
@@ -123,6 +123,22 @@ const ReservationWrapper = styled.div`
   }
 
   .reservationMenu6 {
+  }
+
+  .searchBtn {
+    border: 0.125rem solid ${theme.white};
+    border-radius: 1.25rem;
+    padding: 10px 40px;
+    color: ${theme.white};
+    font: 500 1rem/1 'airial';
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  .promotionWrap {
+    input[type='text'] {
+      margin-top: 0.625rem;
+    }
   }
 `;
 
@@ -254,18 +270,18 @@ const splitTextAni = () => {
 };
 
 const progressAni = () => {
-  const base = 10;
+  const base = 9.3;
 
   gsap
     .timeline({ repeat: -1 })
     .to('.progress1', { width: '100%', duration: base })
-    .to('.progress1', { width: '0%', duration: 0.8, delay: 4 })
+    .to('.progress1', { width: '0%', duration: 0.4, delay: 0 })
     .to('.progress2', { width: '100%', duration: base })
-    .to('.progress2', { width: '0%', duration: 0.8, delay: 4 })
+    .to('.progress2', { width: '0%', duration: 0.4, delay: 0 })
     .to('.progress3', { width: '100%', duration: base })
-    .to('.progress3', { width: '0%', duration: 0.8, delay: 4 })
+    .to('.progress3', { width: '0%', duration: 0.4, delay: 0 })
     .to('.progress4', { width: '100%', duration: base })
-    .to('.progress4', { width: '0%', duration: 0.8, delay: 4 });
+    .to('.progress4', { width: '0%', duration: 0.4, delay: 0 });
 };
 
 const titles = [
@@ -301,43 +317,30 @@ const Visual = () => {
   const [value, setValue] = useState([list[0], [2, 0]]);
 
   useEffect(() => {
+    document.body.style.overflowX = 'hidden';
     splitTextAni();
     progressAni();
   }, []);
 
-  // coutnbtn Function
+  // change function
   const reservationChange = (num) => (_) => {
     let copy = [...value];
     copy[0] = list[num];
-    console.log(num, copy);
     setValue(copy);
   };
 
-  // btnComponent
-  const CountBtn = ({
-    className,
-    type = 'button',
-    icon = 'up',
-    ...resetProp
-  }) => {
-    const CustomBtn = styled.button`
-      transform: ${(props) =>
-        props.icon === 'up' ? 'rotate(180deg)' : 'rotate(-90deg)'};
-      background-color: transparent;
-      border: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-sizing: border-box;
-      padding: 10px 10px;
-      width: 26px;
-      height: 11px;
-    `;
-    return (
-      <CustomBtn className={className} type={type} {...resetProp}>
-        {icon === 'up' ? <Up /> : <Down />}
-      </CustomBtn>
-    );
+  // count function
+  const countChange = (target, type) => () => {
+    let copy = [...value];
+    if (target === 'adult') {
+      console.log(copy[1][0]);
+      type === 'up' ? copy[1][0]++ : copy[1][0]--;
+    }
+    if (target === 'children') {
+      console.log(copy[1][1]);
+      type === 'up' ? copy[1][1]++ : copy[1][1]--;
+    }
+    setValue(copy);
   };
 
   return (
@@ -372,11 +375,11 @@ const Visual = () => {
               {idx !== reservationList.length - 1 && <li>{el}</li>}
 
               {el === 'RESERVATION' && (
-                <ul className="oneWrap">
+                <ul className="countBtnWrap">
                   <p>{value[0]}</p>
-                  <li className="countBtnWrap">
-                    <CountBtn icon="up" onClick={reservationChange(0)} />
-                    <CountBtn icon="down" onClick={reservationChange(1)} />
+                  <li className="customBtnWrap">
+                    <CustomBtn icon="up" onClick={reservationChange(0)} />
+                    <CustomBtn icon="down" onClick={reservationChange(1)} />
                   </li>
                 </ul>
               )}
@@ -389,26 +392,40 @@ const Visual = () => {
               )}
 
               {el === 'ADULT' && (
-                <ul className="oneWrap">
+                <ul className="countBtnWrap">
                   <p>{value[1][0]}</p>
-                  <li className="countBtnWrap">
-                    <CountBtn icon="up" onClick={reservationChange(0)} />
-                    <CountBtn icon="down" onClick={reservationChange(1)} />
+                  <li className="customBtnWrap">
+                    <CustomBtn icon="up" onClick={countChange('adult', 'up')} />
+                    <CustomBtn
+                      icon="down"
+                      onClick={countChange('adult', 'down')}
+                    />
                   </li>
                 </ul>
               )}
 
               {el === 'CHILDREN' && (
-                <ul className="oneWrap">
+                <ul className="countBtnWrap">
                   <p>{value[1][1]}</p>
-                  <li className="countBtnWrap">
-                    <CountBtn icon="up" onClick={reservationChange(0)} />
-                    <CountBtn icon="down" onClick={reservationChange(1)} />
+                  <li className="customBtnWrap">
+                    <CustomBtn
+                      icon="up"
+                      onClick={countChange('children', 'up')}
+                    />
+                    <CustomBtn
+                      icon="down"
+                      onClick={countChange('children', 'down')}
+                    />
                   </li>
                 </ul>
               )}
-              {el === 'PROMOTION' && <CustomInput type="text" />}
-              {el === 'SEARCH' && <button>SEARCH</button>}
+              {el === 'PROMOTION' && (
+                <li className="promotionWrap">
+                  <CustomInput type="text" />
+                </li>
+              )}
+
+              {el === 'SEARCH' && <button className="searchBtn">SEARCH</button>}
             </ul>
           );
         })}
