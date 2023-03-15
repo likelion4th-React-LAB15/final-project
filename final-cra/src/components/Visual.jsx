@@ -54,6 +54,7 @@ const Titles = styled.ul`
 `;
 
 const VisualWapper = styled.figure`
+  position: relative;
   width: 100%;
   height: 100vh;
   overflow: hidden;
@@ -224,65 +225,9 @@ const MenuBottom = styled.div`
   }
 `;
 
-const splitTextAni = () => {
-  gsap
-    .timeline({ duration: 0.8, repeat: -1 })
-    .from('.title1 > span, .subTitle1', {
-      opacity: 0,
-      y: 50,
-      stagger: { each: 0.2 },
-    })
-    .to('.title1 > span, .subTitle1', {
-      delay: 4,
-      opacity: 0,
-      stagger: { each: 0.2 },
-    })
-    .from('.title2 > span, .subTitle2', {
-      opacity: 0,
-      y: 50,
-      stagger: { each: 0.2 },
-    })
-    .to('.title2 > span, .subTitle2', {
-      delay: 4,
-      opacity: 0,
-      stagger: { each: 0.2 },
-    })
-    .from('.title3 > span, .subTitle3', {
-      opacity: 0,
-      y: 50,
-      stagger: { each: 0.2 },
-    })
-    .to('.title3 > span, .subTitle3', {
-      delay: 4,
-      opacity: 0,
-      stagger: { each: 0.2 },
-    })
-    .from('.title4 > span, .subTitle4', {
-      opacity: 0,
-      y: 50,
-      stagger: { each: 0.2 },
-    })
-    .to('.title4 > span, .subTitle4', {
-      delay: 4,
-      opacity: 0,
-      stagger: { each: 0.2 },
-    });
-};
+const splitTextAni = () => {};
 
-const progressAni = () => {
-  const base = 9.3;
-
-  gsap
-    .timeline({ repeat: -1 })
-    .to('.progress1', { width: '100%', duration: base })
-    .to('.progress1', { width: '0%', duration: 0.4, delay: 0 })
-    .to('.progress2', { width: '100%', duration: base })
-    .to('.progress2', { width: '0%', duration: 0.4, delay: 0 })
-    .to('.progress3', { width: '100%', duration: base })
-    .to('.progress3', { width: '0%', duration: 0.4, delay: 0 })
-    .to('.progress4', { width: '100%', duration: base })
-    .to('.progress4', { width: '0%', duration: 0.4, delay: 0 });
-};
+const progressAni = () => {};
 
 const titles = [
   { title: 'Exciting PIC', subTitle: '상상, 그 이상의 즐거움이 펼쳐지는 곳' },
@@ -318,8 +263,62 @@ const Visual = () => {
 
   useEffect(() => {
     document.body.style.overflowX = 'hidden';
-    splitTextAni();
-    progressAni();
+    const base = 9.3;
+    setTimeout(() => {
+      gsap
+        .timeline({ repeat: -1 })
+        .to('.progress1', { width: '100%', duration: base })
+        .to('.progress1', { width: '0%', duration: 0.4, delay: 0 })
+        .to('.progress2', { width: '100%', duration: base })
+        .to('.progress2', { width: '0%', duration: 0.4, delay: 0 })
+        .to('.progress3', { width: '100%', duration: base })
+        .to('.progress3', { width: '0%', duration: 0.4, delay: 0 })
+        .to('.progress4', { width: '100%', duration: base })
+        .to('.progress4', { width: '0%', duration: 0.4, delay: 0 });
+
+      gsap
+        .timeline({ duration: 0.8, repeat: -1 })
+        .from('.title1 > span, .subTitle1', {
+          opacity: 0,
+          y: 50,
+          stagger: { each: 0.2 },
+        })
+        .to('.title1 > span, .subTitle1', {
+          delay: 4,
+          opacity: 0,
+          stagger: { each: 0.2 },
+        })
+        .from('.title2 > span, .subTitle2', {
+          opacity: 0,
+          y: 50,
+          stagger: { each: 0.2 },
+        })
+        .to('.title2 > span, .subTitle2', {
+          delay: 4,
+          opacity: 0,
+          stagger: { each: 0.2 },
+        })
+        .from('.title3 > span, .subTitle3', {
+          opacity: 0,
+          y: 50,
+          stagger: { each: 0.2 },
+        })
+        .to('.title3 > span, .subTitle3', {
+          delay: 4,
+          opacity: 0,
+          stagger: { each: 0.2 },
+        })
+        .from('.title4 > span, .subTitle4', {
+          opacity: 0,
+          y: 50,
+          stagger: { each: 0.2 },
+        })
+        .to('.title4 > span, .subTitle4', {
+          delay: 4,
+          opacity: 0,
+          stagger: { each: 0.2 },
+        });
+    }, 100);
   }, []);
 
   // change function

@@ -191,14 +191,10 @@ const SubHeader = styled.div`
 
 const Header = () => {
   const [menu, menuSetState] = useState(false);
-  // const [menu, menuSetState] = useState(false);
   const headerRef = useRef(null);
   const subHeaderRef = useRef(null);
 
   useEffect(() => {
-    // window.addEventListener('wheel', (e) => {
-    //   console.log(e.deltaY);
-    // });
     window.addEventListener('scroll', () => {
       window.pageYOffset >= subHeaderRef.current.offsetHeight / 10
         ? subHeaderRef.current.classList.add('up')

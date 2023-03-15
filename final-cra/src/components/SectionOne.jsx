@@ -6,7 +6,7 @@ import React, { useState, useEffect, useRef, forwardRef } from 'react';
 
 const SectionOneStyled = styled.section`
   width: 100%;
-  height: 5000px;
+  height: 2000px;
 
   section {
     position: relative;
@@ -15,7 +15,7 @@ const SectionOneStyled = styled.section`
 
     &:nth-of-type(1) {
       padding-top: 20rem;
-      margin-bottom: 18.75rem;
+      margin-bottom: 34.75rem;
     }
     &:nth-of-type(2) {
       margin: 100px 0 200px;
@@ -24,20 +24,10 @@ const SectionOneStyled = styled.section`
     }
 
     .textWrap {
-      &:nth-of-type(1) {
+      &:nth-child(1) {
         position: absolute;
         right: 370px;
         top: 420px;
-      }
-      &:nth-of-type(2) {
-        position: absolute;
-        right: 340px;
-        top: 200px;
-      }
-      &:nth-of-type(3) {
-        position: absolute;
-        right: 340px;
-        top: 200px;
       }
 
       h3 {
@@ -106,14 +96,12 @@ const SectionOneStyled = styled.section`
 
     .pic0 {
       margin-right: 6.25rem;
-      transition: all 0.62s;
     }
 
     .bigTitle1 {
       position: absolute;
       bottom: -52%;
       left: 80vw;
-      transition: all 0.5s;
       font-size: 300px;
       line-height: 1;
       font-weight: 700;
@@ -121,6 +109,19 @@ const SectionOneStyled = styled.section`
       font-family: 'Poppins', Sans-serif;
       -webkit-text-stroke-width: 2px;
       -webkit-text-stroke-color: #ff0099;
+    }
+
+    .bigTitle2 {
+      position: absolute;
+      bottom: -80%;
+      right: 80vw;
+      font-size: 300px;
+      line-height: 1;
+      font-weight: 700;
+      color: transparent;
+      font-family: 'Poppins', Sans-serif;
+      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-color: #ff6b24;
     }
   }
 `;
@@ -143,34 +144,36 @@ const data = [
   },
 ];
 
+const bigTitles = ['DOBBYISFREE', 'DOBBYISFREE', 'DOBBYISFREE'];
+
 const SectionOne = () => {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    gsap.to('.pic0', {
-      y: -50,
-      scrollTrigger: {
-        trigger: '.trigger0',
-        start: '400 center',
-        end: 'bottom center',
-        ease: 'Power3.easeOut',
-        opacity: 1,
-        // markers: true,
-        scrub: true,
-      },
-    });
+    setTimeout(() => {
+      gsap.to('.pic0', {
+        y: -50,
+        scrollTrigger: {
+          trigger: '.trigger0',
+          start: '400 center',
+          end: 'bottom center',
+          ease: 'Power3.easeOut',
+          opacity: 1,
+          scrub: true,
+        },
+      });
 
-    gsap.to('.bigTitle1', {
-      x: -800,
-      scrollTrigger: {
-        trigger: '.trigger0',
-        start: '400 center',
-        end: '200% center',
-        ease: 'Power3.easeOut',
-        markers: true,
-        scrub: true,
-      },
-    });
+      gsap.to('.bigTitle1', {
+        x: -800,
+        scrollTrigger: {
+          trigger: '.trigger0',
+          start: '400 center',
+          end: '200% center',
+          ease: 'Power3.easeOut',
+          scrub: true,
+        },
+      });
+    }, 100);
   }, []);
 
   return (
@@ -200,7 +203,7 @@ const SectionOne = () => {
                 alt={title}
               />
             </div>
-            <h2 className={`bigTitle${idx + 1}`}>DOBBYISFREE</h2>
+            <h2 className={`bigTitle${idx + 1}`}>{bigTitles[idx]}</h2>
           </section>
         );
       })}
