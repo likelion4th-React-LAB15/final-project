@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 import gsap from 'gsap';
 import smallFish from 'assets/images/itr-fish-03.svg';
 import middleFish from 'assets/images/itr-fish-01.svg';
@@ -7,15 +7,17 @@ import bigFish from 'assets/images/itr-fish-02.svg';
 
 
 function SihekyAniObj() {
-  useLayoutEffect(() => {
-    const tl = gsap.timeline({ defaults: { repeat: -1, yoyo: true, ease: 'power0.easeNone' } })
-    tl.to('.smallBubble01', { y: -20, duration: 2 })
-      .to('.smallBubble02', { y: 20, duration: 2 }, '<')
-      .to('.smallBubble03', { y: -20, duration: 2.3 }, '<')
-      .to('.middleBubble01', { y: -10, duration: 2 }, '<')
-      .to('.smallFish01', { y: -20, duration: 2.5 }, '<')
-      .to('.middleFish01', { y: 20, duration: 3 }, '<')
-      .to('.bigFish01', { y: 30, duration: 4 }, '<')
+  useEffect(() => {
+    setTimeout(() => {
+      const tl = gsap.timeline({ defaults: { repeat: -1, yoyo: true, ease: 'power0.easeNone' } })
+      tl.to('.smallBubble01', { y: -20, duration: 2 })
+        .to('.smallBubble02', { y: 20, duration: 2 }, '<')
+        .to('.smallBubble03', { y: -20, duration: 2.3 }, '<')
+        .to('.middleBubble01', { y: -10, duration: 2 }, '<')
+        .to('.smallFish01', { y: -20, duration: 2.5 }, '<')
+        .to('.middleFish01', { y: 20, duration: 3 }, '<')
+        .to('.bigFish01', { y: 30, duration: 4 }, '<');
+    }, 100);
   }, []);
 
   return (

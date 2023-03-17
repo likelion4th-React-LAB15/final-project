@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import SihekyContents from "./SihekyContents";
-import SihekyAniObj from "./SihrkyAnimationObject";
+import SihekyAniObj from "./SihekyAnimationObject";
 
 function SihekyInner() {
 

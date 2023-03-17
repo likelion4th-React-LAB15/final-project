@@ -1,48 +1,43 @@
 import styled from "styled-components";
 import theme from "style/theme";
 import SihkeyBird from 'assets/images/title-illustration.webp'
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 
 function SihekyContents() {
-  useLayoutEffect(() => {
+  useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    gsap.to('.textBox', {
-      y: -200,
-      scrollTrigger: {
-        trigger: ".textBox",
-        start: "-700 center",
-        end: "700 center",
-        scrub: true,
-      }
-    })
-  }, []);
+    setTimeout(() => {
+      gsap.to('.textBox', {
+        y: -200,
+        scrollTrigger: {
+          trigger: ".textBox",
+          start: "-700 center",
+          end: "700 center",
+          scrub: true,
+        }
+      });
+      gsap.to('.moveBird', {
+        y: -500,
+        scrollTrigger: {
+          trigger: ".moveBird",
+          start: "-800 center",
+          end: "700 center",
+          scrub: true,
+        }
+      });
+      gsap.to('.rightTextBox', {
+        y: -100,
+        scrollTrigger: {
+          trigger: ".rightTextBox",
+          start: "-700 center",
+          end: "700 center",
+          scrub: true,
+        }
+      });
 
-  useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.to('.moveBird', {
-      y: -500,
-      scrollTrigger: {
-        trigger: ".moveBird",
-        start: "-800 center",
-        end: "700 center",
-        scrub: true,
-      }
-    })
-  }, []);
-
-  useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.to('.rightTextBox', {
-      y: -100,
-      scrollTrigger: {
-        trigger: ".rightTextBox",
-        start: "-700 center",
-        end: "700 center",
-        scrub: true,
-      }
-    })
+    }, 100);
   }, []);
 
   return (
