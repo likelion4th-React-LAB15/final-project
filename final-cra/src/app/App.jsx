@@ -1,54 +1,17 @@
 import { Routes, Route } from 'react-router-dom';
 import { Home, LogIn, SignUp } from 'pages';
 import GlobalStyle from 'components/GlobalStyle';
-import gsap from 'gsap';
-import { useEffect, useState, useRef } from 'react';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import Scrollbar from 'smooth-scrollbar';
+import SmoothScroll from 'components/smoothscroll/SmoothScroll';
 
 const App = () => {
-  const [scrollBarCreated, setScrollBarCreated] = useState(false);
-  const scroller = useRef();
-  const bodyScrollBar = useRef();
-
-  useEffect(() => {
-    scroller.current = document.querySelector('.scroller');
-    bodyScrollBar.current = Scrollbar.init(scroller.current, {
-      damping: 0.1,
-      continuousScrolling: true,
-      alwaysShowTracks: false,
-      renderByPixels: !('ontouchstart' in document),
-      delegateTo: scroller.current,
-    });
-    setScrollBarCreated(true);
-  }, []);
-
-  useEffect(() => {
-    if (scrollBarCreated) {
-      gsap.registerPlugin(ScrollTrigger);
-      ScrollTrigger.scrollerProxy(scroller.current, {
-        scrollTop(value) {
-          if (arguments.length) {
-            bodyScrollBar.current.scrollTop = value;
-          }
-          return bodyScrollBar.current.scrollTop;
-        },
-      });
-      bodyScrollBar.current.addListener(ScrollTrigger.update);
-      ScrollTrigger.defaults({ scroller: scroller.current });
-    }
-  }, [scrollBarCreated]);
-
   return (
     <>
       <GlobalStyle />
-      <div className="scroller" style={{ height: '100vh' }}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<LogIn />} />
-          <Route path="/signup" element={<SignUp />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<LogIn />} />
+        <Route path="/signup" element={<SignUp />} />
+      </Routes>
     </>
   );
 };

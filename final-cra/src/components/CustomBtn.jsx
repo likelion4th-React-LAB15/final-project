@@ -17,7 +17,8 @@ export const CustomBtn = ({
     padding: 0.625rem 0.625rem;
     width: 1.625rem;
     height: 0.6875rem;
-    transform: ${(props) => props.icon === 'up' ? 'rotate(180deg)' : 'rotate(-90deg)'};
+    transform: ${(props) =>
+      props.icon === 'up' ? 'rotate(180deg)' : 'rotate(-90deg)'};
   `;
 
   return (

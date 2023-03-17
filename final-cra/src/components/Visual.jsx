@@ -1,9 +1,10 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components/macro';
 import gsap from 'gsap';
 import theme from 'style/theme';
 import { CustomInput } from './CustomInput';
 import { CustomBtn } from './CustomBtn';
-import React, { useState, useEffect, useRef, forwardRef } from 'react';
+import React, { useState, useEffect } from 'react';
+import SmoothScroll from 'components/smoothscroll/SmoothScroll';
 
 const Titles = styled.ul`
   width: 100%;
@@ -225,9 +226,64 @@ const MenuBottom = styled.div`
   }
 `;
 
-const splitTextAni = () => {};
+const splitTextAni = () => {
+  gsap
+    .timeline({ duration: 0.8, repeat: -1 })
+    .from('.title1 > span, .subTitle1', {
+      opacity: 0,
+      y: 50,
+      stagger: { each: 0.2 },
+    })
+    .to('.title1 > span, .subTitle1', {
+      delay: 4,
+      opacity: 0,
+      stagger: { each: 0.2 },
+    })
+    .from('.title2 > span, .subTitle2', {
+      opacity: 0,
+      y: 50,
+      stagger: { each: 0.2 },
+    })
+    .to('.title2 > span, .subTitle2', {
+      delay: 4,
+      opacity: 0,
+      stagger: { each: 0.2 },
+    })
+    .from('.title3 > span, .subTitle3', {
+      opacity: 0,
+      y: 50,
+      stagger: { each: 0.2 },
+    })
+    .to('.title3 > span, .subTitle3', {
+      delay: 4,
+      opacity: 0,
+      stagger: { each: 0.2 },
+    })
+    .from('.title4 > span, .subTitle4', {
+      opacity: 0,
+      y: 50,
+      stagger: { each: 0.2 },
+    })
+    .to('.title4 > span, .subTitle4', {
+      delay: 4,
+      opacity: 0,
+      stagger: { each: 0.2 },
+    });
+};
 
-const progressAni = () => {};
+const progressAni = () => {
+  const base = 9.3;
+  gsap
+    .timeline({ repeat: -1 })
+    .to('.progress1', { width: '100%', duration: base })
+    .to('.progress1', { width: '0%', duration: 0.4, delay: 0 })
+    .to('.progress2', { width: '100%', duration: base })
+    .to('.progress2', { width: '0%', duration: 0.4, delay: 0 })
+    .to('.progress3', { width: '100%', duration: base })
+    .to('.progress3', { width: '0%', duration: 0.4, delay: 0 })
+    .to('.progress4', { width: '100%', duration: base })
+    .to('.progress4', { width: '0%', duration: 0.4, delay: 0 });
+};
 
 const titles = [
   { title: 'Exciting PIC', subTitle: '상상, 그 이상의 즐거움이 펼쳐지는 곳' },
@@ -263,61 +319,10 @@ const Visual = () => {
 
   useEffect(() => {
     document.body.style.overflowX = 'hidden';
-    const base = 9.3;
-    setTimeout(() => {
-      gsap
-        .timeline({ repeat: -1 })
-        .to('.progress1', { width: '100%', duration: base })
-        .to('.progress1', { width: '0%', duration: 0.4, delay: 0 })
-        .to('.progress2', { width: '100%', duration: base })
-        .to('.progress2', { width: '0%', duration: 0.4, delay: 0 })
-        .to('.progress3', { width: '100%', duration: base })
-        .to('.progress3', { width: '0%', duration: 0.4, delay: 0 })
-        .to('.progress4', { width: '100%', duration: base })
-        .to('.progress4', { width: '0%', duration: 0.4, delay: 0 });
 
-      gsap
-        .timeline({ duration: 0.8, repeat: -1 })
-        .from('.title1 > span, .subTitle1', {
-          opacity: 0,
-          y: 50,
-          stagger: { each: 0.2 },
-        })
-        .to('.title1 > span, .subTitle1', {
-          delay: 4,
-          opacity: 0,
-          stagger: { each: 0.2 },
-        })
-        .from('.title2 > span, .subTitle2', {
-          opacity: 0,
-          y: 50,
-          stagger: { each: 0.2 },
-        })
-        .to('.title2 > span, .subTitle2', {
-          delay: 4,
-          opacity: 0,
-          stagger: { each: 0.2 },
-        })
-        .from('.title3 > span, .subTitle3', {
-          opacity: 0,
-          y: 50,
-          stagger: { each: 0.2 },
-        })
-        .to('.title3 > span, .subTitle3', {
-          delay: 4,
-          opacity: 0,
-          stagger: { each: 0.2 },
-        })
-        .from('.title4 > span, .subTitle4', {
-          opacity: 0,
-          y: 50,
-          stagger: { each: 0.2 },
-        })
-        .to('.title4 > span, .subTitle4', {
-          delay: 4,
-          opacity: 0,
-          stagger: { each: 0.2 },
-        });
+    setTimeout(() => {
+      splitTextAni();
+      progressAni();
     }, 100);
   }, []);
 
@@ -333,6 +338,7 @@ const Visual = () => {
     let copy = [...value];
     if (target === 'adult') {
       console.log(copy[1][0]);
+      if (copy[1][0] >= 3) copy[1][0] = 2;
       type === 'up' ? copy[1][0]++ : copy[1][0]--;
     }
     if (target === 'children') {
@@ -343,105 +349,128 @@ const Visual = () => {
   };
 
   return (
-    <VisualWapper>
-      <Titles>
-        {titles.map(({ title, subTitle }, idx) => (
-          <li className={`title${idx + 1}`} key={title}>
-            {[...title.split(' ')[0]].map((el) => (
-              <span key={el}>{el}</span>
-            ))}
-            <span>D</span>
-            <span>I</span>
-            <span>F</span>
-            <ul className="subTitleWrap">
-              <li className={`subTitle${idx + 1}`}>{subTitle}</li>
-            </ul>
-          </li>
-        ))}
-      </Titles>
-
-      <video
-        autoPlay
-        loop
-        muted
-        src={require('../../src/assets/images/visual-video.mp4')}
-      ></video>
-
-      <ReservationWrapper>
-        {reservationList.map((el, idx) => {
-          return (
-            <ul className={`reservationMenu${idx + 1}`}>
-              {idx !== reservationList.length - 1 && <li>{el}</li>}
-
-              {el === 'RESERVATION' && (
-                <ul className="countBtnWrap">
-                  <p>{value[0]}</p>
-                  <li className="customBtnWrap">
-                    <CustomBtn icon="up" onClick={reservationChange(0)} />
-                    <CustomBtn icon="down" onClick={reservationChange(1)} />
-                  </li>
-                </ul>
-              )}
-
-              {el === 'CHECK IN / OUT' && (
-                <div className="dateBtnWrap">
-                  <CustomInput />
-                  <CustomInput />
-                </div>
-              )}
-
-              {el === 'ADULT' && (
-                <ul className="countBtnWrap">
-                  <p>{value[1][0]}</p>
-                  <li className="customBtnWrap">
-                    <CustomBtn icon="up" onClick={countChange('adult', 'up')} />
-                    <CustomBtn
-                      icon="down"
-                      onClick={countChange('adult', 'down')}
-                    />
-                  </li>
-                </ul>
-              )}
-
-              {el === 'CHILDREN' && (
-                <ul className="countBtnWrap">
-                  <p>{value[1][1]}</p>
-                  <li className="customBtnWrap">
-                    <CustomBtn
-                      icon="up"
-                      onClick={countChange('children', 'up')}
-                    />
-                    <CustomBtn
-                      icon="down"
-                      onClick={countChange('children', 'down')}
-                    />
-                  </li>
-                </ul>
-              )}
-              {el === 'PROMOTION' && (
-                <li className="promotionWrap">
-                  <CustomInput type="text" />
-                </li>
-              )}
-
-              {el === 'SEARCH' && <button className="searchBtn">SEARCH</button>}
-            </ul>
-          );
-        })}
-        <Line />
-      </ReservationWrapper>
-
-      <MenuBottom>
-        <ul className="inner">
-          {titles.map(({ title }, idx) => (
-            <li key={title}>
-              <span>{title}</span>
-              <span className={`progress${idx + 1}`}></span>
+    <SmoothScroll>
+      <VisualWapper>
+        <Titles>
+          {titles.map(({ title, subTitle }, idx) => (
+            <li className={`title${idx + 1}`} key={subTitle.toString()}>
+              {[...title.split(' ')[0]].map((el, i) => (
+                <span key={i}>{el}</span>
+              ))}
+              <span>D</span>
+              <span>I</span>
+              <span>F</span>
+              <ul className="subTitleWrap">
+                <li className={`subTitle${idx + 1}`}>{subTitle}</li>
+              </ul>
             </li>
           ))}
-        </ul>
-      </MenuBottom>
-    </VisualWapper>
+        </Titles>
+
+        <video
+          autoPlay
+          loop
+          muted
+          src={require('../../src/assets/images/visual-video.mp4')}
+        ></video>
+
+        <ReservationWrapper>
+          {reservationList.map((el, idx) => {
+            return (
+              <ul key={idx} className={`reservationMenu${idx + 1}`}>
+                {idx !== reservationList.length - 1 && (
+                  <>
+                    <li>{el}</li>
+                  </>
+                )}
+
+                {el === 'RESERVATION' && (
+                  <>
+                    <ul className="countBtnWrap">
+                      <p>{value[0]}</p>
+                      <li className="customBtnWrap">
+                        <CustomBtn icon="up" onClick={reservationChange(0)} />
+                        <CustomBtn icon="down" onClick={reservationChange(1)} />
+                      </li>
+                    </ul>
+                  </>
+                )}
+
+                {el === 'CHECK IN / OUT' && (
+                  <>
+                    <div className="dateBtnWrap">
+                      <CustomInput />
+                      <CustomInput />
+                    </div>
+                  </>
+                )}
+
+                {el === 'ADULT' && (
+                  <>
+                    <ul className="countBtnWrap">
+                      <p>{value[1][0]}</p>
+                      <li className="customBtnWrap">
+                        <CustomBtn
+                          icon="up"
+                          onClick={countChange('adult', 'up')}
+                        />
+                        <CustomBtn
+                          icon="down"
+                          onClick={countChange('adult', 'down')}
+                        />
+                      </li>
+                    </ul>
+                  </>
+                )}
+
+                {el === 'CHILDREN' && (
+                  <>
+                    <ul className="countBtnWrap">
+                      <p>{value[1][1]}</p>
+                      <li className="customBtnWrap">
+                        <CustomBtn
+                          icon="up"
+                          onClick={countChange('children', 'up')}
+                        />
+                        <CustomBtn
+                          icon="down"
+                          onClick={countChange('children', 'down')}
+                        />
+                      </li>
+                    </ul>
+                  </>
+                )}
+                {el === 'PROMOTION' && (
+                  <>
+                    <li className="promotionWrap">
+                      <CustomInput type="text" />
+                    </li>
+                  </>
+                )}
+
+                {el === 'SEARCH' && (
+                  <>
+                    <button className="searchBtn">SEARCH</button>
+                  </>
+                )}
+              </ul>
+            );
+          })}
+          <Line />
+        </ReservationWrapper>
+
+        <MenuBottom>
+          <ul className="inner">
+            {titles.map(({ title }, idx) => (
+              <li key={title.toString()}>
+                <span>{title}</span>
+                <span className={`progress${idx + 1}`}></span>
+              </li>
+            ))}
+          </ul>
+        </MenuBottom>
+      </VisualWapper>
+    </SmoothScroll>
   );
 };
 

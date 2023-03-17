@@ -1,6 +1,6 @@
 import { useId } from 'react';
 import theme from 'style/theme';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 const InputStyled = styled.input`
   border: 0;
@@ -18,7 +18,7 @@ const InputStyled = styled.input`
 
 export const CustomInput = ({
   type = 'date',
-  placeholer = 'Inser Code',
+  placeholer = 'Insert Code',
   className,
   children,
   style,

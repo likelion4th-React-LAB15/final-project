@@ -1,11 +1,11 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components/macro';
 import HeaderWave from './HeaderWave';
 import theme from 'style/theme';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Cart } from './../assets/icons/btn-cart.svg';
 import { ReactComponent as User } from './../assets/icons/btn-user.svg';
-import { useState, useEffect, useRef } from 'react';
-
+import { useState, useRef } from 'react';
+import SmoothScroll from 'components/smoothscroll/SmoothScroll';
 const design = keyframes`
 	0% {transform:translateY(20px) rotate(45deg);}
 	50% {transform:translateY(20px) rotate(0);}
@@ -26,7 +26,6 @@ const activeDesign2 = keyframes`
 	50% {transform:translateY(-20px) rotate(0);}
 	100% {transform:translateY(-20px) rotate(-45deg);}
 `;
-
 const activeHeader = keyframes`
   0%{
     transform: translateY(-100%);
@@ -35,7 +34,6 @@ const activeHeader = keyframes`
     transform: translateY(0%);
   }
 `;
-
 const HeaderWapper = styled.header`
   width: 100%;
   height: 6.25rem;
@@ -194,70 +192,58 @@ const Header = () => {
   const headerRef = useRef(null);
   const subHeaderRef = useRef(null);
 
-  useEffect(() => {
-    window.addEventListener('scroll', () => {
-      window.pageYOffset >= subHeaderRef.current.offsetHeight / 10
-        ? subHeaderRef.current.classList.add('up')
-        : subHeaderRef.current.classList.remove('up');
-    });
-
-    return () => {
-      window.removeEventListener('scroll', () => {});
-    };
-  }, []);
-
   return (
     <>
-      <HeaderWave menu={menu} />
+      <SmoothScroll style={{ height: '0' }}>
+        <HeaderWave menu={menu} />
+        <HeaderWapper ref={headerRef}>
+          <ul
+            className={!menu ? 'menuBtn' : 'menuBtn active'}
+            onClick={() => menuSetState(!menu)}
+          >
+            {Array(3)
+              .fill()
+              .map((el, idx) => (
+                <li key={idx}>{el}</li>
+              ))}
+          </ul>
 
-      <HeaderWapper ref={headerRef}>
-        <ul
-          className={!menu ? 'menuBtn' : 'menuBtn active'}
-          onClick={() => menuSetState(!menu)}
-        >
-          {Array(3)
-            .fill()
-            .map((el) => (
-              <li key={el}>{el}</li>
-            ))}
-        </ul>
+          <h1 className="logo">
+            <img
+              src={require('../../src/assets/images/logo-on.png')}
+              alt="logoOn"
+            />
+          </h1>
 
-        <h1 className="logo">
-          <img
-            src={require('../../src/assets/images/logo-on.png')}
-            alt="logoOn"
-          />
-        </h1>
-
-        <div className="infoWrap">
-          <User style={{ width: 28, height: 30, fill: theme.white }} />
-          <Cart style={{ width: 28, height: 30, fill: theme.white }} />
-        </div>
-      </HeaderWapper>
-
-      <SubHeader ref={subHeaderRef}>
-        {/* Link */}
-        <ul>
-          <li>
-            <Link to="">RESERVATION</Link>
-          </li>
-          <li>
-            <Link to="">DIF</Link>
-          </li>
-          <li>
-            <Link to="">GUAM</Link>
-          </li>
-          <li>
-            <Link to="">SAIPAN</Link>
-          </li>
-          <li>
-            <Link to="">NOTICE</Link>
-          </li>
-          <li>
-            <Link to="">COMMUNITY</Link>
-          </li>
-        </ul>
-      </SubHeader>
+          <div className="infoWrap">
+            <User style={{ width: 28, height: 30, fill: theme.white }} />
+            <Cart style={{ width: 28, height: 30, fill: theme.white }} />
+          </div>
+        </HeaderWapper>
+        <SubHeader ref={subHeaderRef}>
+          {/* Link */}
+          <ul>
+            <li>
+              <Link to="/login">RESERVATION</Link>
+            </li>
+            <li>
+              <Link to="/signup">DIF</Link>
+            </li>
+            <li>
+              <Link to="">GUAM</Link>
+            </li>
+            <li>
+              <Link to="">SAIPAN</Link>
+            </li>
+            <li>
+              <Link to="">NOTICE</Link>
+            </li>
+            <li>
+              <Link to="">COMMUNITY</Link>
+            </li>
+          </ul>
+        </SubHeader>
+      </SmoothScroll>
     </>
   );
 };
