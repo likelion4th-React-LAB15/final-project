@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import theme from 'style/theme';
 
 const OptionContainer = styled.div`
   display: flex;
   align-items: center;
-  width: 276px;
-  height: 74px;
+  width: 17.25rem;
+  height: 4.625rem;
   border: 1px solid #A6A6A6;
-  border-radius: 50px;
+  border-radius: 3.125rem;
   justify-content: space-between;
-  padding:0px 20px;
+  padding:0px ${theme.spacingMd};
 `;
 
 const Label = styled.span`
@@ -17,7 +18,7 @@ const Label = styled.span`
   font-style: normal;
   font-weight: 400;
   font-size: 1.125rem;
-  line-height: 1.375rem;
+  line-height: ${theme.textMd};
   color: #000000;
 `;
 

@@ -1,13 +1,14 @@
 import styled from "styled-components";
+import theme from 'style/theme';
 
 const StepBlock = styled.div`
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
-  font-size: ${props=> props.theme.textBase};
+  font-size: ${theme.textBase};
   line-height: 1.188rem;
   text-align: center;
-  color: ${props=> props.theme.blue};
+  color: ${theme.blue};
   position: relative;
 `
 

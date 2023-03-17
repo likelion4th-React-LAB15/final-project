@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import styled from 'styled-components';
+import theme from 'style/theme';
+
 
 const Container = styled.div`
   display: flex;
@@ -11,55 +13,55 @@ const Container = styled.div`
 `;
 
 const SelectedDays = styled.p`
-  margin-top:91px;
+  margin-top: 5.688rem;
   font-weight: 700;
-  font-size: 38px;
-  line-height: 46px;
+  font-size: ${theme.textLg};
+  line-height: 2.875rem;
   letter-spacing: -0.02em;
-  color: #212C92;
+  color: ${theme.blue};
 `
 
 const StyledCalendar = styled(Calendar)`
-  font-size: 16px;
-  color: #212C92;
-  max-width: 1080px;
+  font-size: ${theme.spacingBase};
+  color: ${theme.blue};
+  max-width: 67.5rem;
   width:100%;
   border: none;
-  margin-top:74.31px;
+  margin-top: 4.644rem;
   position: relative;
 
   & .react-calendar__tile {
-    margin:2px;
-    max-width:72px;
-    height: 91px;
-    border: 1px solid #212C92;
-    border-radius: 10px;
+    margin: 0.125rem;
+    max-width: 4.5rem;
+    height: 5.688rem;
+    border: 0.063rem solid ${theme.blue};
+    border-radius: 0.625rem;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
-    font-size: 28px;
-    line-height: 34px;
-    color: #212C92;
+    font-size: 1.75rem;
+    line-height: 2.125rem;
+    color: ${theme.blue};
   }
 
   & .react-calendar__tile--now {
-    background-color: white;
+    background-color: ${theme.white};
   }
 
   & .react-calendar__tile:hover{
     background-color: #E5ECFF;
-    color: #212C92;
+    color: ${theme.blue};
   }
 
   & .react-calendar__tile:disabled {
     background-color: rgba(33, 44, 146, 0.7);
-    color: #fff;
+    color: ${theme.white};
     border:none;
   }
 
   & .react-calendar__tile--active {
-    color: #fff;
-    background: #212C92;
+    color: ${theme.white};;
+    background: ${theme.blue};
   }
 
   & .react-calendar__month-view__weekdays {
@@ -67,19 +69,19 @@ const StyledCalendar = styled(Calendar)`
       font-family: 'Inter';
       font-style: normal;
       font-weight: 500;
-      font-size: 16px;
-      line-height: 19px;
+      font-size: ${theme.spacingBase};
+      line-height: 1.188rem;
       font-family: 'Inter';
       font-style: normal;
-      color: #212C92;
+      color: ${theme.blue};
       text-decoration:none;
     }
   }
 
   & .react-calendar__navigation__prev-button,
   & .react-calendar__navigation__next-button {
-    color: #212C92;
-    font-size: 90px;
+    color: ${theme.blue};
+    font-size: 5.625rem;
     position: absolute;
   }
 
@@ -88,13 +90,13 @@ const StyledCalendar = styled(Calendar)`
   }
 
   & .react-calendar__navigation__prev-button{
-    left: -77.5px;
-    top: 270px;
+    left: -4.844rem;
+    top: 16.875rem;
   }
 
   & .react-calendar__navigation__next-button{
-    right: -77.5px;
-    top: 270px;
+    right: -4.844rem;
+    top: 16.875rem;
   }
 
   & .react-calendar__navigation__prev2-button,
@@ -103,18 +105,18 @@ const StyledCalendar = styled(Calendar)`
   }
 
   & .react-calendar__navigation {
-    margin-bottom: 21px;
-    color: #212C92;
+    margin-bottom: 1.313rem;
+    color: ${theme.blue};
   }
 
   & .react-calendar__navigation__label > span {
     font-weight: 600;
-    font-size: 26px;
-    line-height: 31px;
+    font-size: 1.625rem;
+    line-height: 1.938rem;
     font-family: 'Inter';
     font-style: normal;
-    color: #212C92;
-    margin: 0px 198px;
+    color: ${theme.blue};
+    margin: 0px 12.375rem;
   }
 
   & .react-calendar__navigation__label__divider {

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import theme from 'style/theme';
 
 const TitleWrapper = styled.div`
   margin-top: 13.938rem;
@@ -11,7 +12,7 @@ const Guest = styled.h2`
   font-size: 2.5rem;
   line-height: 3rem;
   text-align: center;
-  color: ${(props) => props.theme.blue};
+  color: ${theme.blue};
 `
 
 function ReservationTitle(props){
