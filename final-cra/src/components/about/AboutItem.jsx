@@ -1,8 +1,8 @@
 import styled from 'styled-components/macro';
 
-export const AboutItem = ({ children }) => {
+export const AboutItem = ({ children, count }) => {
   return (
-    <StyledAboutItem>
+    <StyledAboutItem className={`moveItem0${count}`}>
       {children}
     </StyledAboutItem>
   )

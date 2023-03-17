@@ -1,4 +1,8 @@
 import styled from 'styled-components/macro';
+import theme from "style/theme";
+import { useEffect } from "react";
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import Title from "components/Title"
 import { AboutList, AboutItem, AboutItemImage, AboutItemDesc, BigFont } from 'components/about';
 import Footer from 'components/Footer/Footer';
@@ -36,11 +40,160 @@ export const About = () => {
       bigFontContent: 'FREE'
     }
   ]
+  useEffect(() => {
+    setTimeout(() => {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.to('.moveItem01 .moveImage', {
+        y: -300,
+        scrollTrigger: {
+          trigger: ".moveItem01",
+          start: "center center",
+          end: "1200 center",
+          scrub: true,
+        }
+      });
+      gsap.from('.moveItem01 .moveImage img', {
+        scale: 1.5,
+        scrollTrigger: {
+          trigger: ".moveItem01",
+          start: "center center",
+          end: "1200 center",
+          scrub: true,
+        }
+      });
+      gsap.to('.moveItem01 .moveText', {
+        y: -100,
+        scrollTrigger: {
+          trigger: ".moveItem01",
+          start: "center center",
+          end: "1200 center",
+          scrub: true,
+        }
+      });
+      gsap.to('.moveItem02 .moveImage', {
+        y: -300,
+        scrollTrigger: {
+          trigger: ".moveItem02",
+          start: "-700 center",
+          end: "1200 center",
+          scrub: true,
+        }
+      });
+      gsap.from('.moveItem02 .moveImage img', {
+        scale: 1.5,
+        scrollTrigger: {
+          trigger: ".moveItem02",
+          start: "center center",
+          end: "1200 center",
+          scrub: true,
+        }
+      });
+      gsap.to('.moveItem02 .moveText', {
+        y: -100,
+        scrollTrigger: {
+          trigger: ".moveItem02",
+          start: "-700 center",
+          end: "1200 center",
+          scrub: true,
+        }
+      });
+      gsap.to('.moveItem03 .moveImage', {
+        y: -300,
+        scrollTrigger: {
+          trigger: ".moveItem03",
+          start: "-700 center",
+          end: "1200 center",
+          scrub: true,
+        }
+      });
+      gsap.from('.moveItem03 .moveImage img', {
+        scale: 1.5,
+        scrollTrigger: {
+          trigger: ".moveItem03",
+          start: "center center",
+          end: "1200 center",
+          scrub: true,
+        }
+      });
+      gsap.to('.moveItem03 .moveText', {
+        y: -100,
+        scrollTrigger: {
+          trigger: ".moveItem03",
+          start: "-700 center",
+          end: "1200 center",
+          scrub: true,
+        }
+      });
+      gsap.to('body', {
+        scrollTrigger: {
+          trigger: ".changeBg",
+          start: "1200 center",
+          end: "+=1300 center",
+          scrub: true,
+          onEnter: () => {
+            gsap.to("body", {
+              backgroundColor: `${theme.blue}`
+            })
+            gsap.to('.moveText .bold', {
+              color: `${theme.pink}`
+            })
+            gsap.to('.moveText .line', {
+              webkitTextStroke: `0.125rem ${theme.pink}`
+            })
+            gsap.to('.moveText p', {
+              color: `${theme.white}`
+            })
+          },
+          onLeaveBack: () => {
+            gsap.to("body", {
+              backgroundColor: `${theme.white}`,
+            })
+            gsap.to('.moveText .bold', {
+              color: `${theme.blue}`
+            })
+            gsap.to('.moveText .line', {
+              webkitTextStroke: `0.125rem ${theme.blue}`
+            })
+            gsap.to('.moveText p', {
+              color: `${theme.gray}`
+            })
+          },
+          onLeave: () => {
+            gsap.to("body", {
+              backgroundColor: `${theme.white}`
+            })
+            gsap.to('.moveText .bold', {
+              color: `${theme.blue}`
+            })
+            gsap.to('.moveText .line', {
+              webkitTextStroke: `0.125rem ${theme.blue}`
+            })
+            gsap.to('.moveText p', {
+              color: `${theme.gray}`
+            })
+          },
+          onEnterBack: () => {
+            gsap.to("body", {
+              backgroundColor: `${theme.blue}`
+            })
+            gsap.to('.moveText .bold', {
+              color: `${theme.pink}`
+            })
+            gsap.to('.moveText .line', {
+              webkitTextStroke: `0.125rem ${theme.pink}`
+            })
+            gsap.to('.moveText p', {
+              color: `${theme.white}`
+            })
+          },
+        }
+      });
+    }, 100);
+  }, []);
 
   return (
-    <StyledAbout>
+    <StyledAbout className='changeBg'>
       <StyledAboutInner>
-        <div style={{ width: '100px', height: '308px' }}></div>
         <Title>
           DIF의 모든 순간, <br />
           잊지 못할 특별한 행복의 순간이 됩니다
@@ -49,7 +202,7 @@ export const About = () => {
           {
             aboutData.map((item, idx) => {
               return (
-                <AboutItem key={item.id}>
+                <AboutItem key={item.id} count={item.id}>
                   <AboutItemImage>
                     <img src={require(`assets/images/aboutbg-0${idx + 1}.jpg`)} alt={item.alt} />
                   </AboutItemImage>

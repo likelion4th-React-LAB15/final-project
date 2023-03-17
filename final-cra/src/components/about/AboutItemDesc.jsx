@@ -2,7 +2,7 @@ import styled from 'styled-components/macro';
 import theme from 'style/theme';
 export const AboutItemDesc = ({ children }) => {
   return (
-    <StyledAboutItemDesc>
+    <StyledAboutItemDesc className='moveText'>
       {children}
     </StyledAboutItemDesc>
   )
@@ -26,7 +26,7 @@ const StyledAboutItemDesc = styled.div`
     color: ${theme.blue};
   }
   .line{
-    color: ${theme.white};
+    color: transparent;
     font-family: 'Poppins',Sans-serif;
     -webkit-text-stroke-width: 0.125rem;
     -webkit-text-stroke-color: ${theme.blue};

@@ -2,7 +2,7 @@ import styled from 'styled-components/macro';
 
 export const AboutItemImage = ({ children }) => {
   return (
-    <StyledAboutItemImage>
+    <StyledAboutItemImage className='moveImage'>
       {children}
     </StyledAboutItemImage>
   )
@@ -10,6 +10,7 @@ export const AboutItemImage = ({ children }) => {
 
 const StyledAboutItemImage = styled.div`
   position: relative;
+  top: 10rem;
   width: 25.625rem;
   height: 31.25rem;
   margin: 0 4.75rem 0 4.75rem;
