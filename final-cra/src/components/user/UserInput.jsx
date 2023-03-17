@@ -42,7 +42,7 @@ const StyledLabel = styled.label`
   white-space: nowrap;
   width: 8.75rem;
   &::after{
-    content: '*';
+    content: "${({required}) => (required ? '*' : '')}";
     color: ${theme.pink};
     position: relative;
     top: -0.25rem;

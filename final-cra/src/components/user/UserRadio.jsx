@@ -1,16 +1,17 @@
 
 import styled from 'styled-components'
-import { useId } from 'react';
+import { useId, useState } from 'react';
 import Radio from 'assets/icons/radio.svg'
 import theme from 'style/theme';
 
 
-export const UserRadio = ({checked, children}) => {
+export const UserRadio = ({children, labelClass, ...rest}) => {
   const UserInputId = useId();
+  const [isChecked, setIsChecked] = useState(false);
   return(
         <StyledWrapper>
-           <StyledRadio name='gender' type='radio' id={UserInputId}></StyledRadio>
-           <StyledCheckLabel htmlFor={UserInputId} checked={checked}></StyledCheckLabel>
+           <StyledRadio name='gender' type='radio' id={UserInputId} onClick={()=>setIsChecked(!isChecked)} value={children} {...rest} ></StyledRadio>
+           <StyledCheckLabel className ={isChecked ? 'checked' : ''} htmlFor={UserInputId} ></StyledCheckLabel>
            <StyledLabel htmlFor={UserInputId}>{children}</StyledLabel>
         </StyledWrapper>
         
@@ -37,7 +38,7 @@ const StyledCheckLabel = styled.label`
   display: flex;
   align-self: center;
   background-image: url(${Radio});
-  background-position: ${(props) => (props.checked ? '-0.45rem -2.5rem' : '-0.45rem -0.43rem')} ;
+  background-position: -0.45rem -0.43rem;
   background-color: ${theme.white};
   white-space: nowrap;
   border:none;
@@ -46,6 +47,9 @@ const StyledCheckLabel = styled.label`
   position: absolute;
   top: 0.125rem;
   left: 0.25rem;
+  &.checked {
+    background-position: -0.45rem -2.5rem;
+  }
 `
 
 const StyledLabel = styled.label`

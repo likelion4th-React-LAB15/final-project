@@ -4,47 +4,133 @@ import Border from 'components/Border';
 import styled from 'styled-components';
 import theme from 'style/theme';
 import Arrow from 'assets/icons/btn-arrow-next.svg'
+import { useRef, useState } from 'react';
+import { useSignUp, useAuthState } from '@service/auth';
+import { useCreateAuthUser } from '@service/firestore';
+
+const initialFormState = {
+  name: '',
+  email: '',
+  password: '',
+  passwordConfirm: '',
+  nickname: '',
+  phone: '',
+  gender: '',
+  birthYear: '',
+  birthMonth: '',
+  birthDay: '',
+  termsOfUse: false,
+  termsOfPersonalInfo: false,
+  termsOfAge: false,
+};
 
 export const SignUp = () => {
+
+  const { signUp } = useSignUp();
+  const { createAuthUser } = useCreateAuthUser();
+  const { isLoading, error, user } = useAuthState();
+  // const [ number, setNumber] = useState('');
+
+  // const handleChecked = (e) =>{
+  //   const isChecked = e.target.checked;
+  //   setChecked(isChecked);
+
+  //   console.log(e.target, isChecked)
+  // }
+
+  // console.log(user);
+
+  const formStateRef = useRef(initialFormState);
+
+  const handleReset = () => {
+    console.log('reset');
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const { name, email, password, passwordConfirm, nickname, phone, gender, birthYear, birthMonth, birthDay, termsOfUse, termsOfPersonalInfo, termsOfAge } = formStateRef.current;
+
+    //유효성 검사
+    if (!name || name.trim().length < 2) {
+      console.error('이름은 2글자 이상 입력해야 해요');
+      return;
+    }
+
+    if (!Object.is(password, passwordConfirm)) {
+      console.error('입력한 패스워드를 다시 확인하세요.');
+      return;
+    }
+
+    const user = await signUp(email, password, name );
+    await createAuthUser(user, {name, nickname, phone, gender, birthYear, birthMonth, birthDay, termsOfUse, termsOfPersonalInfo, termsOfAge});
+
+    console.log('회원가입 및 users 콜렉션에 user 데이터 생성');
+  };
+
+  const handleNumber = (e) =>{
+    const value = e.target.value.replace(/\D/g, '');
+    return value;
+  }
+
+  const handleChangeInput = (e) => {
+    const { name, value } = e.target;
+    formStateRef.current[name] = value;
+    
+    if(name === 'phone'){
+      // const result = value.replace(/\D/g, '');
+      // // setNumber(result);
+      handleNumber(e);
+    }
+  };
+
+  if (isLoading) {
+    return <div role="alert">페이지를 준비 중입니다.</div>;
+  }
+
+  if (error) {
+    return <div role="alert">오류! {error.message}</div>;
+  }
+
   return (
-    <StyledSection>
+    <StyledSection onSubmit={handleSubmit} onReset={handleReset}>
         <Title>회원가입</Title>
         <StyledRequire>필수입력사항</StyledRequire>
         <Border/>
-        <UserSignUpInput button={'중복확인'} placeholder={'dif@example.com'} visible required>이메일</UserSignUpInput>
-        <UserSignUpInput placeholder={'비밀번호를 입력해주세요'} required>비밀번호</UserSignUpInput>
-        <UserSignUpInput placeholder={'비밀번호를 한번 더 입력해주세요'} required>비밀번호 확인</UserSignUpInput>
-        <UserSignUpInput placeholder={'이름을 입력해주세요'} required>이름</UserSignUpInput>
-        <UserSignUpInput button={'중복확인'} placeholder={'닉네임을 입력해주세요'} visible required>닉네임</UserSignUpInput>
-        <UserSignUpInput button={'인증번호 받기'} placeholder={'숫자만 입력해주세요.'} visible required>휴대폰</UserSignUpInput>
+        <UserSignUpInput name={'email'} type={'email'} button={'중복확인'} placeholder={'dif@example.com'} onChange={handleChangeInput} visible required>이메일</UserSignUpInput>
+        <UserSignUpInput name={'password'} type={'password'} placeholder={'비밀번호를 입력해주세요'} onChange={handleChangeInput}required>비밀번호</UserSignUpInput>
+        <UserSignUpInput name={'passwordConfirm'} type={'password'} placeholder={'비밀번호를 한번 더 입력해주세요'} onChange={handleChangeInput} required>비밀번호 확인</UserSignUpInput>
+        <UserSignUpInput name={'name'} placeholder={'이름을 입력해주세요'} onChange={handleChangeInput} required>이름</UserSignUpInput>
+        <UserSignUpInput name={'nickname'} button={'중복확인'} placeholder={'닉네임을 입력해주세요'} onChange={handleChangeInput} visible required>닉네임</UserSignUpInput>
+        <UserSignUpInput name={'phone'} maxLength="11" button={'인증번호 받기'} placeholder={'숫자만 입력해주세요.'} onChange={handleChangeInput} visible required>휴대폰</UserSignUpInput>
         <UserLabel>성별</UserLabel>
         <StyledGender>
-          <UserRadio checked>남자</UserRadio>
-          <UserRadio>여자</UserRadio>
-          <UserRadio>선택안함</UserRadio>
+          <UserRadio onChange={handleChangeInput} >남자</UserRadio>
+          <UserRadio onChange={handleChangeInput} >여자</UserRadio>
+          <UserRadio onChange={handleChangeInput} >선택안함</UserRadio>
         </StyledGender>
-        <UserLabel>생년월일</UserLabel>
-        <UserBirth/>
+        <UserLabel required>생년월일</UserLabel>
+        <UserBirth onChange={handleChangeInput} />
         <Border slim/>
-        <UserLabel>이용약관동의</UserLabel>
+        <UserLabel required>이용약관동의</UserLabel>
         <StyledUl>
           <StyledList>
-            <UserCheckBox>전체 동의합니다.</UserCheckBox>
+            <UserCheckBox onChange={handleChangeInput}>전체 동의합니다.</UserCheckBox>
             <StyledText>선택 항목에 동의하지 않는 경우도 회원가입 및 일반적인 서비스를 이용할 수 있습니다.</StyledText>
           </StyledList>
           <StyledList>
-            <StyledButton>약관보기</StyledButton><UserCheckBox checked>이용약관 동의 여부 (필수)</UserCheckBox>
+            <StyledButton>약관보기</StyledButton><UserCheckBox onChange={handleChangeInput} name={'termsOfUse'} >이용약관 동의 여부 (필수)</UserCheckBox>
           </StyledList>
           <StyledList>
-            <StyledButton>약관보기</StyledButton><UserCheckBox>개인정보 수집 이용 여부 (필수)</UserCheckBox>
+            <StyledButton>약관보기</StyledButton><UserCheckBox onChange={handleChangeInput} name={'termsOfPersonalInfo'} >개인정보 수집 이용 여부 (필수)</UserCheckBox>
             </StyledList>
           <StyledList>
             <StyledButton>약관보기</StyledButton>
-            <UserCheckBox>19세 이상 확인 (필수)</UserCheckBox>
+            <UserCheckBox onChange={handleChangeInput} name={'termsOfAge'} >19세 이상 확인 (필수)</UserCheckBox>
           </StyledList>          
         </StyledUl>
         <Border slim gray/>
-        <StyledPrimaryButton>가입하기</StyledPrimaryButton>
+        <StyledPrimaryButton type="submit">가입하기</StyledPrimaryButton>
     </StyledSection>
   )
 }
@@ -55,11 +141,6 @@ const StyledSection = styled(UserForm)`
   margin: 6.25rem auto;
   display: flex;
   flex-flow: column nowrap;
-  &(UserLabel):first-child{
-    &::after{
-      content: ' ';
-    }
-  }
 `
 const StyledGender = styled.div`
   width: 20.8125rem;

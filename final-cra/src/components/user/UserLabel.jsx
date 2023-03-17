@@ -1,9 +1,9 @@
 import styled from "styled-components"
 import theme from "style/theme"
 
-export const UserLabel = ({children}) => {
+export const UserLabel = ({children, required}) => {
   return(
-    <StyledLabel>{children}</StyledLabel>
+    <StyledLabel required={required} >{children}</StyledLabel>
   )
 }
 
@@ -14,7 +14,7 @@ const StyledLabel = styled.p`
   top: -0.125rem;
   right: -0.125rem;
   &::after{
-    content: '*';
+    content: "${({required}) => (required ? '*' : '')}";
     color: ${theme.pink};
     position: relative;
     top: -0.25rem;
