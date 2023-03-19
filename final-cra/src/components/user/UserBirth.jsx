@@ -5,9 +5,9 @@ import theme from 'style/theme'
 export const UserBirth = ({...rest}) => {
   return(
     <StyledBirth>
-      <StyledBirthInput name={'birthYear'} labelClass={'a11y-hidden'} placeholder={'YYYY'} maxLength="4" {...rest}>연도 입력(4글자)</StyledBirthInput> 
-      <StyledBirthInput name={'birthMonth'} labelClass={'a11y-hidden'} placeholder={'MM'} maxLength="2" {...rest}>월 입력(2글자)</StyledBirthInput>
-      <StyledBirthInput name={'birthDay'} labelClass={'a11y-hidden'} placeholder={'DD'} maxLength="2" {...rest}>일 입력(2글자)</StyledBirthInput>
+      <StyledBirthInput name={'birthYear'} labelClass={'a11y-hidden'} placeholder={'YYYY'} maxLength="4" number {...rest}>연도 입력(4글자)</StyledBirthInput> 
+      <StyledBirthInput name={'birthMonth'} labelClass={'a11y-hidden'} placeholder={'MM'} maxLength="2" number {...rest}>월 입력(2글자)</StyledBirthInput>
+      <StyledBirthInput name={'birthDay'} labelClass={'a11y-hidden'} placeholder={'DD'} maxLength="2" number {...rest}>일 입력(2글자)</StyledBirthInput>
     </StyledBirth>
   )
 }

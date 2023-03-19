@@ -1,4 +1,4 @@
-import { useId } from "react";
+import { useId, useState } from "react";
 import styled from 'styled-components/macro'
 import theme from 'style/theme'
 import {SecondaryButton}from 'components/user'
@@ -13,13 +13,21 @@ export const UserLogInInput = ({type="text", children, labelClass, inputClass, p
   )
 }
 
-export const UserSignUpInput = ({type="text", children, labelClass, inputClass, placeholder, button, visible, required, ...rest}) => {
+export const UserSignUpInput = ({type="text", children, labelClass, inputClass, placeholder, button, visible, required, number,...rest}) => {
   const UserInputId = useId();
+  const [ isNumber, setIsNumber] = useState('')
+
+  const handleNumber = (e) =>{
+    if(number){
+      const result = e.target.value.replace(/\D/g, '');
+      setIsNumber(result);
+    }
+  }
   return (
     <>
     <StyledSection>
       <StyledLabel className={labelClass} htmlFor={UserInputId} required={required}>{children}</StyledLabel>
-      <StyledSignUpInput className={inputClass} type={type} id={UserInputId} placeholder={placeholder} {...rest}></StyledSignUpInput>
+      { number ? <StyledSignUpInput className={inputClass} type={type} id={UserInputId} placeholder={placeholder} value={isNumber} onInput={handleNumber} {...rest}></StyledSignUpInput> : <StyledSignUpInput className={inputClass} type={type} id={UserInputId} placeholder={placeholder}{...rest}></StyledSignUpInput>}
       <SecondaryButton visible={visible} secondary>{button}</SecondaryButton>
     </StyledSection>
     </>
