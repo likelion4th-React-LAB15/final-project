@@ -1,13 +1,14 @@
-import FilmList from "components/FilmList/FilmList";
-import Footer from 'components/Footer/Footer';
-import Siheky from "components/Siheky/Siheky";
+import FilmList from "components/filmList/FilmList";
+import Footer from 'components/footer/Footer';
+import Siheky from "components/siheky/Siheky";
+import SmoothScroll from "components/smoothScroll/SmoothScroll";
 
 export const Home = () => {
   return (
-    <>
+    <SmoothScroll>
       <Siheky />
       <FilmList />
       <Footer />
-    </>
+    </SmoothScroll>
   )
 }

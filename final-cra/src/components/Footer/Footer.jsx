@@ -1,8 +1,8 @@
-import styled from "styled-components";
 import theme from "style/theme";
-import FooterAddress from "components/Footer/FooterAddress";
-import FooterGnb from 'components/Footer/FooterGnb';
-import Wave from "components/Wave/Wave";
+import styled from 'styled-components/macro';
+import Wave from "components/wave/Wave";
+import FooterGnb from 'components/footer/FooterGnb';
+import FooterAddress from "components/footer/FooterAddress";
 
 
 function Footer() {
@@ -32,8 +32,5 @@ const FooterInner = styled.div`
   max-width: 81.25rem;
   margin:0 auto;
 `
-
-FooterContainer.displayName = 'FooterContainer';
-FooterInner.displayName = 'FooterInner';
 
 export default Footer

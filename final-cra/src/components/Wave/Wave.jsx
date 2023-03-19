@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components/macro';
 
 
 function Wave(props) {
@@ -71,7 +71,5 @@ const StyledWave = styled.div`
     }
   }
 `
-
-StyledWave.displayName = 'StyledWave';
 
 export default Wave

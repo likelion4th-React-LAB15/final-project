@@ -15,6 +15,7 @@ const StyledAboutItemDesc = styled.div`
   padding-left: 0.625rem;
   h3{
     width: 31.25rem;
+    font-family: 'Poppins', sans-serif;
     font-size: 4.125rem;
     font-weight: 700;
   }
@@ -34,6 +35,7 @@ const StyledAboutItemDesc = styled.div`
   p{
     max-width: 26.25rem;
     margin: 2.1875rem 0 0 2.5rem;
+    font-family: 'Poppins', sans-serif;
     font-size: 1.25rem;
     line-height: 1.875rem;
     color: ${theme.gray};

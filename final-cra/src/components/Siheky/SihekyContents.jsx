@@ -1,9 +1,9 @@
-import styled from "styled-components";
-import theme from "style/theme";
-import SihkeyBird from 'assets/images/title-illustration.webp'
-import { useEffect } from "react";
 import gsap from 'gsap';
+import theme from "style/theme";
+import { useEffect } from "react";
+import styled from 'styled-components/macro';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import SihkeyBird from 'assets/images/title-illustration.webp';
 
 function SihekyContents() {
   useEffect(() => {
@@ -53,7 +53,7 @@ function SihekyContents() {
         <div className="rightTextBox">
           <h3 className="line">SIHEKY</h3>
           <p>시해키는 멸종 위기에 처한 마이크로네시아의 '킹피셔' 라는 천연새 보호 운동에 동참하고자 지정한 마스코트입니다.</p>
-          <a className="btnLink" href="{()=>false}">VIEW MORE</a>
+          <a className="btnLink" href="/">VIEW MORE</a>
         </div>
       </StyledSihekyContents>
     </>
@@ -105,6 +105,7 @@ const StyledSihekyContents = styled.div`
     transform: translateY(9.375rem);
   }
   .rightTextBox p{
+    font-family: 'Poppins', sans-serif;
     font-size:${theme.textMd};
     font-weight: 700;
     line-height: 1.5;
@@ -118,14 +119,18 @@ const StyledSihekyContents = styled.div`
     border: 0.0625rem solid ${theme.white};
     border-radius: 1.875rem;
     text-align: center;
+    font-family: 'Poppins', sans-serif;
     font-size:${theme.textBase};
     font-weight: 700;
     line-height: 1.5;
     color:${theme.white};
     margin-top: 3.125rem;
+    transition: all 0.5s;
   } 
+  .rightTextBox .btnLink:hover{
+    background-color: ${theme.white};
+    color: ${theme.blue};
+  }
 `
-
-StyledSihekyContents.displayName = 'StyledSihekyContents';
 
 export default SihekyContents

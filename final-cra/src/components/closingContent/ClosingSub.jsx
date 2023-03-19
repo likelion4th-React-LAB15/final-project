@@ -11,6 +11,7 @@ export const ClosingSub = ({ children }) => {
 const StyledClosingSub = styled.span`
   display: block;
   margin-bottom: 1.25rem;
+  font-family: 'Poppins', sans-serif;
   font-size: 1.25rem;
   color: ${theme.pink};
 `

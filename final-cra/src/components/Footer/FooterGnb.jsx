@@ -1,72 +1,97 @@
-import styled from "styled-components";
 import theme from "style/theme";
+import styled from 'styled-components/macro';
+import { Link } from 'react-router-dom';
 
 function FooterGnb() {
+
+  const dataFooter = [
+    {
+      id: 1,
+      mainTitle: { title: 'RESERVATION', link: '/' },
+      subTitle: [
+        { title: '예약하기', link: '/' },
+        { title: '자주하는 질문', link: '/' },
+        { title: '일반문의', link: '/' },
+        { title: '확장예약문의', link: '/' },
+      ]
+    }, {
+      id: 2,
+      mainTitle: { title: 'DIF', link: '/about' },
+      subTitle: [
+        { title: 'DIF소개', link: '/' },
+        { title: 'DIF카드', link: '/' },
+        { title: '클럽메이트', link: '/' },
+        { title: 'Why choose DIF?', link: '/' },
+        { title: 'DIF Cares', link: '/' },
+      ]
+    }, {
+      id: 3,
+      mainTitle: { title: 'GUAM', link: '/' },
+      subTitle: [
+        { title: 'DIF괌', link: '/' },
+        { title: '객실', link: '/' },
+        { title: '레스토랑&바', link: '/' },
+        { title: '워터파크&액티비티', link: '/' },
+        { title: '슈퍼 아메리칸 서비스', link: '/' },
+        { title: '키즈프로그램', link: '/' },
+        { title: '부대시설', link: '/' },
+        { title: '제휴 골프장', link: '/' },
+        { title: '일반서비스', link: '/' },
+        { title: '공식 홈페이지 예약 특전', link: '/' },
+        { title: '예약하기', link: '/' },
+      ]
+    }, {
+      id: 4,
+      mainTitle: { title: 'SAIPAN', link: '/' },
+      subTitle: [
+        { title: 'DIF사이판', link: '/' },
+        { title: '객실', link: '/' },
+        { title: '레스토랑&바', link: '/' },
+        { title: '워터파크&액티비티', link: '/' },
+        { title: '키즈프로그램', link: '/' },
+        { title: '부대시설', link: '/' },
+        { title: '일반서비스', link: '/' },
+        { title: '예약하기', link: '/' },
+      ]
+    }, {
+      id: 5,
+      mainTitle: { title: 'NOTICE', link: '/' },
+      subTitle: [
+        { title: 'DIF 괌', link: '/' },
+        { title: 'DIF 사이판', link: '/' },
+      ]
+    }, {
+      id: 6,
+      mainTitle: { title: 'COMMUNITY', link: '/' },
+      subTitle: [
+        { title: 'DIF영상', link: '/' },
+      ]
+    }
+  ]
 
   return (
     <>
       <StyledFooterGnb>
-        <li>
-          <a href="{()=>false}" className="menuLink">RESERVATION</a>
-          <ul>
-            <li><a href="{()=>false}">예약하기</a></li>
-            <li><a href="{()=>false}">자주하는 질문</a></li>
-            <li><a href="{()=>false}">일반문의</a></li>
-            <li><a href="{()=>false}">확장예약문의</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="{()=>false}" className="menuLink">DIF</a>
-          <ul>
-            <li><a href="{()=>false}">DIF소개</a></li>
-            <li><a href="{()=>false}">DIF카드</a></li>
-            <li><a href="{()=>false}">클럽메이트</a></li>
-            <li><a href="{()=>false}">Why choose DIF?</a></li>
-            <li><a href="{()=>false}">DIF Cares</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="{()=>false}" className="menuLink">GUAM</a>
-          <ul>
-            <li><a href="{()=>false}">DIF괌</a></li>
-            <li><a href="{()=>false}">객실</a></li>
-            <li><a href="{()=>false}">레스토랑&바</a></li>
-            <li><a href="{()=>false}">워터파크&액티비티</a></li>
-            <li><a href="{()=>false}">슈퍼 아메리칸 서비스</a></li>
-            <li><a href="{()=>false}">키즈프로그램</a></li>
-            <li><a href="{()=>false}">부대시설</a></li>
-            <li><a href="{()=>false}">제휴골프장</a></li>
-            <li><a href="{()=>false}">일반서비스</a></li>
-            <li><a href="{()=>false}">공식 홈페이지 예약 특전</a></li>
-            <li><a href="{()=>false}">예약하기</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="{()=>false}" className="menuLink">SAIPAN</a>
-          <ul>
-            <li><a href="{()=>false}">DIF사이판</a></li>
-            <li><a href="{()=>false}">객실</a></li>
-            <li><a href="{()=>false}">레스토랑&바</a></li>
-            <li><a href="{()=>false}">워터파크&액티비티</a></li>
-            <li><a href="{()=>false}">키즈프로그램</a></li>
-            <li><a href="{()=>false}">부대시설</a></li>
-            <li><a href="{()=>false}">일반서비스</a></li>
-            <li><a href="{()=>false}">예약하기</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="{()=>false}" className="menuLink">NOTICE</a>
-          <ul>
-            <li><a href="{()=>false}">DIF 괌</a></li>
-            <li><a href="{()=>false}">DIF 사이판</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="{()=>false}" className="menuLink">COMMUNITY</a>
-          <ul>
-            <li><a href="{()=>false}">DIF영상</a></li>
-          </ul>
-        </li>
+        {
+          dataFooter.map((item) => {
+            return (
+              <li key={item.id}>
+                <Link to={item.mainTitle.link} className="menuLink">{item.mainTitle.title}</Link>
+                <ul>
+                  {
+                    item.subTitle.map((subItem, idx) => {
+                      return (
+                        <li key={idx}>
+                          <Link to={subItem.link}>{subItem.title}</Link>
+                        </li>
+                      )
+                    })
+                  }
+                </ul>
+              </li>
+            )
+          })
+        }
       </StyledFooterGnb>
     </>
   )
@@ -80,6 +105,7 @@ const StyledFooterGnb = styled.ul`
   padding-bottom:3.125rem;
   border-bottom: 0.0625rem solid #4f547d;
   a{
+    font-family: 'Poppins', sans-serif;
     text-decoration: none;
     color: ${theme.white};
   }
@@ -103,7 +129,5 @@ const StyledFooterGnb = styled.ul`
     color:rgba(255,255,255,1);
   }
 `
-
-StyledFooterGnb.displayName = 'StyledFooterGnb';
 
 export default FooterGnb

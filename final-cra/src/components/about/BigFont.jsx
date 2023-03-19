@@ -48,6 +48,7 @@ export const BigFont = ({ children, idx, color = 'pink', ...rest }) => {
 const StyledBigFont = styled.div`
   position: absolute;
   bottom:-15.625rem;
+  font-family: 'Poppins', sans-serif;
   font-size: 18.75rem;
   font-weight: 700;
   color: ${theme.blue};

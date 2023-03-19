@@ -1,7 +1,7 @@
-import styled from "styled-components";
 import theme from "style/theme";
-import Wave from "components/Wave/Wave";
+import styled from 'styled-components/macro';
 import SihkeyBgBottom from 'assets/images/fix-siheky-bottom.svg';
+import Wave from "components/wave/Wave";
 import SihekyInner from './SihekyInner';
 
 function Siheky() {
@@ -28,7 +28,5 @@ const SihekyContainer = styled.section`
   padding:6.25rem 0 3.125rem 0;
   overflow: hidden;
 `
-
-SihekyContainer.displayName = 'SihekyContainer';
 
 export default Siheky

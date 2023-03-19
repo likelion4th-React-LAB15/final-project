@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import theme from "style/theme";
+import styled from 'styled-components/macro';
 
 function FooterAddress() {
 
@@ -51,6 +51,7 @@ const StyledFooterAddress = styled.div`
     align-items: center;
   }
   .addressTop a{
+    font-family: 'Poppins', sans-serif;
     font-size: 1.125rem;
     line-height: 1.875rem;
     color: inherit;
@@ -71,21 +72,23 @@ const StyledFooterAddress = styled.div`
     margin: 1.25rem 0 1.875rem 0;
   }
   .addressMiddle address{
+    font-family: 'Poppins', sans-serif;
     font-size: ${theme.textBase};
   }
   .addressMiddle strong{
     font-weight:700;
   }
   .addressMiddle .footerEmail{
+    font-family: 'Poppins', sans-serif;
     font-size: 0.875rem;
     color: rgba(255,255,255,0.5);
   }
 
   .addressBottom address{
+    font-family: 'Poppins', sans-serif;
     font-size: 0.875rem;
     color: rgba(255,255,255,0.5);
   }
 `
-StyledFooterAddress.displayName = 'StyledFooterAddress';
 
 export default FooterAddress

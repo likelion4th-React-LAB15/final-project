@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components/macro';
 import SihekyContents from "./SihekyContents";
 import SihekyAniObj from "./SihekyAnimationObject";
 
@@ -20,7 +20,5 @@ const StyledSihekyInner = styled.div`
   margin:0 auto;
   position: relative;
 `
-
-StyledSihekyInner.displayName = 'StyledSihekyInner';
 
 export default SihekyInner

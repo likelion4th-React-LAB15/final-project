@@ -12,6 +12,7 @@ const StyledClosingSubDesc = styled.span`
   display: block;
   margin-top: 1.875rem;
   padding:0 3.5rem;
+  font-family: 'Poppins', sans-serif;
   font-size: 1.25rem;
   line-height: 1.875rem;
   color: ${theme.gray};

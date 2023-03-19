@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import theme from "style/theme";
+import styled from 'styled-components/macro';
 
 
 function FilmList() {
@@ -17,39 +17,39 @@ function FilmList() {
             <FullFilmText primaryColor>GUAM</FullFilmText>
           </h3>
           <VideoList marqueeLeft>
-            <VideoItem><a href="{()=>false}"><img src={require('../../assets/images/background-04.webp')} alt="" /></a></VideoItem>
-            <VideoItem><a href="{()=>false}"><img src={require('../../assets/images/background-05.webp')} alt="" /></a></VideoItem>
-            <VideoItem><a href="{()=>false}"><img src={require('../../assets/images/background-06.webp')} alt="" /></a></VideoItem>
-            <VideoItem><a href="{()=>false}"><img src={require('../../assets/images/background-07.webp')} alt="" /></a></VideoItem>
-            <VideoItem><a href="{()=>false}"><img src={require('../../assets/images/background-04.webp')} alt="" /></a></VideoItem>
-            <VideoItem><a href="{()=>false}"><img src={require('../../assets/images/background-05.webp')} alt="" /></a></VideoItem>
-            <VideoItem><a href="{()=>false}"><img src={require('../../assets/images/background-06.webp')} alt="" /></a></VideoItem>
-            <VideoItem><a href="{()=>false}"><img src={require('../../assets/images/background-07.webp')} alt="" /></a></VideoItem>
-            <VideoItem><a href="{()=>false}"><img src={require('../../assets/images/background-04.webp')} alt="" /></a></VideoItem>
-            <VideoItem><a href="{()=>false}"><img src={require('../../assets/images/background-05.webp')} alt="" /></a></VideoItem>
+            <VideoItem><a href="/"><img src={require('../../assets/images/background-04.webp')} alt="괌 영상4" /></a></VideoItem>
+            <VideoItem><a href="/"><img src={require('../../assets/images/background-05.webp')} alt="괌 영상5" /></a></VideoItem>
+            <VideoItem><a href="/"><img src={require('../../assets/images/background-06.webp')} alt="괌 영상6" /></a></VideoItem>
+            <VideoItem><a href="/"><img src={require('../../assets/images/background-07.webp')} alt="괌 영상7" /></a></VideoItem>
+            <VideoItem><a href="/"><img src={require('../../assets/images/background-04.webp')} alt="괌 영상4" /></a></VideoItem>
+            <VideoItem><a href="/"><img src={require('../../assets/images/background-05.webp')} alt="괌 영상5" /></a></VideoItem>
+            <VideoItem><a href="/"><img src={require('../../assets/images/background-06.webp')} alt="괌 영상6" /></a></VideoItem>
+            <VideoItem><a href="/"><img src={require('../../assets/images/background-07.webp')} alt="괌 영상7" /></a></VideoItem>
+            <VideoItem><a href="/"><img src={require('../../assets/images/background-04.webp')} alt="괌 영상4" /></a></VideoItem>
+            <VideoItem><a href="/"><img src={require('../../assets/images/background-05.webp')} alt="괌 영상5" /></a></VideoItem>
           </VideoList>
         </FilmListInner>
         <FilmListInner>
           <h3 className="posRight">
             <BorderFilmText>POPULAR CONTENTS</BorderFilmText>
-            <FullFilmText>GUAM</FullFilmText>
+            <FullFilmText>SAIPAN</FullFilmText>
             <BorderFilmText>POPULAR CONTENTS</BorderFilmText>
-            <FullFilmText>GUAM</FullFilmText>
+            <FullFilmText>SAIPAN</FullFilmText>
             <BorderFilmText>POPULAR CONTENTS</BorderFilmText>
-            <FullFilmText>GUAM</FullFilmText>
+            <FullFilmText>SAIPAN</FullFilmText>
           </h3>
           <VideoList>
-            <VideoItem><a href="{()=>false}"><img src={require('../../assets/images/background-08.webp')} alt="" /></a></VideoItem>
-            <VideoItem><a href="{()=>false}"><img src={require('../../assets/images/background-09.webp')} alt="" /></a></VideoItem>
-            <VideoItem><a href="{()=>false}"><img src={require('../../assets/images/background-10.webp')} alt="" /></a></VideoItem>
-            <VideoItem><a href="{()=>false}"><img src={require('../../assets/images/background-11.webp')} alt="" /></a></VideoItem>
-            <VideoItem><a href="{()=>false}"><img src={require('../../assets/images/background-12.webp')} alt="" /></a></VideoItem>
-            <VideoItem><a href="{()=>false}"><img src={require('../../assets/images/background-14.webp')} alt="" /></a></VideoItem>
-            <VideoItem><a href="{()=>false}"><img src={require('../../assets/images/background-15.webp')} alt="" /></a></VideoItem>
-            <VideoItem><a href="{()=>false}"><img src={require('../../assets/images/background-16.webp')} alt="" /></a></VideoItem>
-            <VideoItem><a href="{()=>false}"><img src={require('../../assets/images/background-08.webp')} alt="" /></a></VideoItem>
-            <VideoItem><a href="{()=>false}"><img src={require('../../assets/images/background-09.webp')} alt="" /></a></VideoItem>
-            <VideoItem><a href="{()=>false}"><img src={require('../../assets/images/background-10.webp')} alt="" /></a></VideoItem>
+            <VideoItem><a href="/"><img src={require('../../assets/images/background-08.webp')} alt="사이판 영상8" /></a></VideoItem>
+            <VideoItem><a href="/"><img src={require('../../assets/images/background-09.webp')} alt="사이판 영상9" /></a></VideoItem>
+            <VideoItem><a href="/"><img src={require('../../assets/images/background-10.webp')} alt="사이판 영상10" /></a></VideoItem>
+            <VideoItem><a href="/"><img src={require('../../assets/images/background-11.webp')} alt="사이판 영상11" /></a></VideoItem>
+            <VideoItem><a href="/"><img src={require('../../assets/images/background-12.webp')} alt="사이판 영상12" /></a></VideoItem>
+            <VideoItem><a href="/"><img src={require('../../assets/images/background-14.webp')} alt="사이판 영상14" /></a></VideoItem>
+            <VideoItem><a href="/"><img src={require('../../assets/images/background-15.webp')} alt="사이판 영상15" /></a></VideoItem>
+            <VideoItem><a href="/"><img src={require('../../assets/images/background-16.webp')} alt="사이판 영상16" /></a></VideoItem>
+            <VideoItem><a href="/"><img src={require('../../assets/images/background-08.webp')} alt="사이판 영상8" /></a></VideoItem>
+            <VideoItem><a href="/"><img src={require('../../assets/images/background-09.webp')} alt="사이판 영상9" /></a></VideoItem>
+            <VideoItem><a href="/"><img src={require('../../assets/images/background-10.webp')} alt="사이판 영상10" /></a></VideoItem>
           </VideoList>
         </FilmListInner>
       </FilmListContainer>
@@ -148,12 +148,5 @@ const BorderFilmText = styled.span`
   -webkit-text-stroke-width: 0.125rem;
   -webkit-text-stroke-color: ${props => (props.primaryColor ? theme.blue : theme.pink)};
 `
-
-FilmListContainer.displayName = 'FilmListContainer';
-FilmListInner.displayName = 'FilmListInner';
-VideoList.displayName = 'VideoList';
-VideoItem.displayName = 'VideoItem';
-FullFilmText.displayName = 'FullFilmText';
-BorderFilmText.displayName = 'BorderFilmText';
 
 export default FilmList

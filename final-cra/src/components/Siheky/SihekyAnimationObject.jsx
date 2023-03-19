@@ -1,9 +1,9 @@
-import styled from "styled-components";
-import { useEffect } from "react";
 import gsap from 'gsap';
+import { useEffect } from "react";
+import styled from 'styled-components/macro';
+import bigFish from 'assets/images/itr-fish-02.svg';
 import smallFish from 'assets/images/itr-fish-03.svg';
 import middleFish from 'assets/images/itr-fish-01.svg';
-import bigFish from 'assets/images/itr-fish-02.svg';
 
 
 function SihekyAniObj() {
@@ -76,7 +76,5 @@ const StyledSihekyAniObj = styled.div`
     left: 12.5rem;
   }
 `
-
-StyledSihekyAniObj.displayName = 'StyledSihekyAniObj';
 
 export default SihekyAniObj

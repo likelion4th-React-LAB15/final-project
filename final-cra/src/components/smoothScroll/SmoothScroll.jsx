@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
-import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import Scrollbar from 'smooth-scrollbar';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
+import { useEffect, useRef, useState } from 'react';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 
 
 const SmoothScroll = ({ children }) => {
