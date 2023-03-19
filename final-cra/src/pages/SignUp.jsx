@@ -29,16 +29,10 @@ export const SignUp = () => {
   const { signUp } = useSignUp();
   const { createAuthUser } = useCreateAuthUser();
   const { isLoading, error, user } = useAuthState();
-  // const [ number, setNumber] = useState('');
+  const [ emailInput, setEmailInput] = useState('');
+  
 
-  // const handleChecked = (e) =>{
-  //   const isChecked = e.target.checked;
-  //   setChecked(isChecked);
-
-  //   console.log(e.target, isChecked)
-  // }
-
-  // console.log(user);
+  console.log(user);
 
   const formStateRef = useRef(initialFormState);
 
@@ -68,20 +62,14 @@ export const SignUp = () => {
     console.log('회원가입 및 users 콜렉션에 user 데이터 생성');
   };
 
-  const handleNumber = (e) =>{
-    const value = e.target.value.replace(/\D/g, '');
-    return value;
-  }
-
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
     formStateRef.current[name] = value;
-    
-    if(name === 'phone'){
-      // const result = value.replace(/\D/g, '');
-      // // setNumber(result);
-      handleNumber(e);
+
+    if(name==='email'){
+      setEmailInput(value);
     }
+
   };
 
   if (isLoading) {
@@ -97,17 +85,17 @@ export const SignUp = () => {
         <Title>회원가입</Title>
         <StyledRequire>필수입력사항</StyledRequire>
         <Border/>
-        <UserSignUpInput name={'email'} type={'email'} button={'중복확인'} placeholder={'dif@example.com'} onChange={handleChangeInput} visible required>이메일</UserSignUpInput>
+        <UserSignUpInput name={'email'} type={'email'} button={'중복확인'} placeholder={'dif@example.com'} onChange={handleChangeInput} value={emailInput} visible required>이메일</UserSignUpInput>
         <UserSignUpInput name={'password'} type={'password'} placeholder={'비밀번호를 입력해주세요'} onChange={handleChangeInput}required>비밀번호</UserSignUpInput>
         <UserSignUpInput name={'passwordConfirm'} type={'password'} placeholder={'비밀번호를 한번 더 입력해주세요'} onChange={handleChangeInput} required>비밀번호 확인</UserSignUpInput>
         <UserSignUpInput name={'name'} placeholder={'이름을 입력해주세요'} onChange={handleChangeInput} required>이름</UserSignUpInput>
         <UserSignUpInput name={'nickname'} button={'중복확인'} placeholder={'닉네임을 입력해주세요'} onChange={handleChangeInput} visible required>닉네임</UserSignUpInput>
-        <UserSignUpInput name={'phone'} maxLength="11" button={'인증번호 받기'} placeholder={'숫자만 입력해주세요.'} onChange={handleChangeInput} visible required>휴대폰</UserSignUpInput>
+        <UserSignUpInput name={'phone'} maxLength="11" button={'인증번호 받기'} placeholder={'숫자만 입력해주세요.'} onChange={handleChangeInput} visible required number>휴대폰</UserSignUpInput>
         <UserLabel>성별</UserLabel>
         <StyledGender>
-          <UserRadio onChange={handleChangeInput} >남자</UserRadio>
-          <UserRadio onChange={handleChangeInput} >여자</UserRadio>
-          <UserRadio onChange={handleChangeInput} >선택안함</UserRadio>
+          <UserRadio name='gender' onChange={handleChangeInput} >남자</UserRadio>
+          <UserRadio name='gender' onChange={handleChangeInput} >여자</UserRadio>
+          <UserRadio name='gender' onChange={handleChangeInput} >선택안함</UserRadio>
         </StyledGender>
         <UserLabel required>생년월일</UserLabel>
         <UserBirth onChange={handleChangeInput} />
@@ -115,7 +103,7 @@ export const SignUp = () => {
         <UserLabel required>이용약관동의</UserLabel>
         <StyledUl>
           <StyledList>
-            <UserCheckBox onChange={handleChangeInput}>전체 동의합니다.</UserCheckBox>
+            <UserCheckBox name='allCheck' allcheck >전체 동의합니다.</UserCheckBox>
             <StyledText>선택 항목에 동의하지 않는 경우도 회원가입 및 일반적인 서비스를 이용할 수 있습니다.</StyledText>
           </StyledList>
           <StyledList>
