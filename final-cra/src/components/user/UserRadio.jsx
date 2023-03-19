@@ -1,17 +1,25 @@
 
 import styled from 'styled-components'
-import { useId, useState } from 'react';
+import { useId } from 'react';
 import Radio from 'assets/icons/radio.svg'
 import theme from 'style/theme';
 
 
-export const UserRadio = ({children, labelClass, ...rest}) => {
+export const UserRadio = ({name, children, ...rest}) => {
   const UserInputId = useId();
-  const [isChecked, setIsChecked] = useState(false);
+
+  const handleRadio = (e) =>{
+      const names = document.querySelectorAll(`label[name=${name}]`);
+      names.forEach((el) =>{
+        el.classList.remove('checked');
+      });
+      e.target.nextElementSibling.classList.add('checked');
+  }
+
   return(
         <StyledWrapper>
-           <StyledRadio name='gender' type='radio' id={UserInputId} onClick={()=>setIsChecked(!isChecked)} value={children} {...rest} ></StyledRadio>
-           <StyledCheckLabel className ={isChecked ? 'checked' : ''} htmlFor={UserInputId} ></StyledCheckLabel>
+           <StyledRadio name={name} type='radio' id={UserInputId} onClick={handleRadio} value={children} {...rest} ></StyledRadio>
+           <StyledCheckLabel name={name} htmlFor={UserInputId} ></StyledCheckLabel>
            <StyledLabel htmlFor={UserInputId}>{children}</StyledLabel>
         </StyledWrapper>
         
