@@ -125,7 +125,7 @@ const StyledCalendar = styled(Calendar)`
   
 `;
 
-function ReservationCalender() {
+function ReservationCalendar() {
   const [selectedDateRange, setSelectedDateRange] = useState([new Date(), new Date()]);
 
   const handleSelectDateRange = (value) => {
@@ -157,4 +157,4 @@ function ReservationCalender() {
   );
 }
 
-export default ReservationCalender;
+export default ReservationCalendar;
