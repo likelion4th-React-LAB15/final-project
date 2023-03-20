@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { ReactComponent as Cart } from './../assets/icons/btn-cart.svg';
 import { ReactComponent as User } from './../assets/icons/btn-user.svg';
 import { useState, useRef } from 'react';
-import SmoothScroll from 'components/smoothscroll/SmoothScroll';
 
 const design = keyframes`
 	0% {transform:translateY(20px) rotate(45deg);}
@@ -189,8 +188,8 @@ const SubHeader = styled.div`
 `;
 
 const subHeaderList = [
-  { title: 'RESERVATION', link: '/login', key: 0 },
-  { title: 'DIF', link: '/signup', key: 1 },
+  { title: 'RESERVATION', link: '/', key: 0 },
+  { title: 'DIF', link: '/about', key: 1 },
   { title: 'GUAM', link: '/', key: 2 },
   { title: 'SAIPAN', link: '/', key: 3 },
   { title: 'NOTICE', link: '/', key: 4 },
@@ -204,44 +203,42 @@ const Header = () => {
 
   return (
     <>
-      <SmoothScroll style={{ height: '0' }}>
-        <HeaderWave menu={menu} />
-        <HeaderWapper ref={headerRef}>
-          <ul
-            className={!menu ? 'menuBtn' : 'menuBtn active'}
-            onClick={() => menuSetState(!menu)}
-          >
-            {Array(3)
-              .fill()
-              .map((el, idx) => (
-                <li key={idx}>{el}</li>
-              ))}
-          </ul>
+      <HeaderWave menu={menu} />
+      <HeaderWapper ref={headerRef}>
+        <ul
+          className={!menu ? 'menuBtn' : 'menuBtn active'}
+          onClick={() => menuSetState(!menu)}
+        >
+          {Array(3)
+            .fill()
+            .map((el, idx) => (
+              <li key={idx}>{el}</li>
+            ))}
+        </ul>
 
-          <h1 className="logo">
-            <img
-              src={require('../../src/assets/images/logo-on.png')}
-              alt="logoOn"
-            />
-          </h1>
+        <h1 className="logo">
+          <img
+            src={require('../../src/assets/images/logo-on.png')}
+            alt="logoOn"
+          />
+        </h1>
 
-          <div className="infoWrap">
-            <User style={{ width: 28, height: 30, fill: theme.white }} />
-            <Cart style={{ width: 28, height: 30, fill: theme.white }} />
-          </div>
-        </HeaderWapper>
-        <SubHeader ref={subHeaderRef}>
-          <ul>
-            {subHeaderList.map(({ title, link, key }) => {
-              return (
-                <li key={key}>
-                  <Link to={link}>{title}</Link>
-                </li>
-              );
-            })}
-          </ul>
-        </SubHeader>
-      </SmoothScroll>
+        <div className="infoWrap">
+          <User style={{ width: 28, height: 30, fill: theme.white }} />
+          <Cart style={{ width: 28, height: 30, fill: theme.white }} />
+        </div>
+      </HeaderWapper>
+      <SubHeader ref={subHeaderRef}>
+        <ul>
+          {subHeaderList.map(({ title, link, key }) => {
+            return (
+              <li key={key}>
+                <Link to={link}>{title}</Link>
+              </li>
+            );
+          })}
+        </ul>
+      </SubHeader>
     </>
   );
 };

@@ -6,11 +6,13 @@ import React, { useEffect } from 'react';
 import { ReactComponent as Pattern1 } from './../assets/images/itr-pattern-01.svg';
 import { ReactComponent as Cloud } from './../assets/images/fix-cloud.svg';
 import { ReactComponent as Pattern2 } from './../assets/images/itr-pattern-02.svg';
-import SmoothScroll from 'components/smoothscroll/SmoothScroll';
 
 const SectionOneStyled = styled.section`
   width: 100%;
+  max-width: 1920px;
+  overflow: hidden;
   height: 200rem;
+  margin: 0 auto;
 
   section {
     position: relative;
@@ -437,61 +439,58 @@ const SectionOne = () => {
   }, []);
 
   return (
-    <SmoothScroll>
-      <SectionOneStyled>
-        {data.map(({ title, text, decoTitle, bigTitle }, idx) => {
-          return (
-            <section key={title} className={`trigger${idx}`}>
-              {idx === 0 && (
-                <>
-                  <Pattern1
-                    style={{ position: 'absolute', left: '14%', top: '134%' }}
-                  />
-                </>
-              )}
-
-              <div className={`textWrap${idx + 1}`}>
-                <h3>
-                  {idx === 0 ? (
-                    <>
-                      {title.split(' ')[0]}{' '}
-                      <div>
-                        <span>{title.split(' ')[1]}</span>
-                      </div>
-                    </>
-                  ) : (
-                    title
-                  )}
-                </h3>
-
-                <p>{text}</p>
-                <button type="button">VIEW MORE</button>
-                <h4>{decoTitle}</h4>
-              </div>
-
-              <div className={`pic pic${idx}`}>
-                <img
-                  src={require(`../../src/assets/images/background-0${
-                    idx === 2 ? 1 : idx + 2
-                  }.webp`)}
-                  alt={title}
+    <SectionOneStyled>
+      {data.map(({ title, text, decoTitle, bigTitle }, idx) => {
+        return (
+          <section key={title} className={`trigger${idx}`}>
+            {idx === 0 && (
+              <>
+                <Pattern1
+                  style={{ position: 'absolute', left: '14%', top: '134%' }}
                 />
-              </div>
-              <h2 className={`bigTitle${idx + 1}`}>{bigTitle}</h2>
-            </section>
-          );
-        })}
+              </>
+            )}
 
-        <Pattern2
-          style={{
-            position: 'absolute',
-            right: '10%',
-            bottom: '8%',
-          }}
-        />
-        <Cloud />
-      </SectionOneStyled>
-    </SmoothScroll>
+            <div className={`textWrap${idx + 1}`}>
+              <h3>
+                {idx === 0 ? (
+                  <>
+                    {title.split(' ')[0]}{' '}
+                    <div>
+                      <span>{title.split(' ')[1]}</span>
+                    </div>
+                  </>
+                ) : (
+                  title
+                )}
+              </h3>
+
+              <p>{text}</p>
+              <button type="button">VIEW MORE</button>
+              <h4>{decoTitle}</h4>
+            </div>
+
+            <div className={`pic pic${idx}`}>
+              <img
+                src={require(`../../src/assets/images/background-0${idx === 2 ? 1 : idx + 2
+                  }.webp`)}
+                alt={title}
+              />
+            </div>
+            <h2 className={`bigTitle${idx + 1}`}>{bigTitle}</h2>
+          </section>
+        );
+      })}
+
+      <Pattern2
+        style={{
+          position: 'absolute',
+          right: '10%',
+          bottom: '8%',
+        }}
+      />
+      <Cloud />
+    </SectionOneStyled>
   );
 };
 

@@ -29,12 +29,10 @@ a {
 
 /* 본문 스타일 */
 body {
-  width: 120rem;
   font-size: 1rem;
   color: var(--content);
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 400;
-  margin: 0 auto;
 }
 
 /* layout */
