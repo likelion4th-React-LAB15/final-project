@@ -1,12 +1,15 @@
-import { UserForm, PrimaryButton, UserSignUpInput, UserRadio, UserCheckBox, UserLabel, UserBirth} from 'components/user';
+import { UserForm, Button, UserSignUpInput, UserRadio, UserCheckBox, UserLabel, UserBirthInput} from 'components/user';
 import Title from 'components/Title';
 import Border from 'components/Border';
 import styled from 'styled-components';
 import theme from 'style/theme';
 import Arrow from 'assets/icons/btn-arrow-next.svg'
-import { useRef, useState } from 'react';
-import { useSignUp, useAuthState } from '@service/auth';
+import React, { useRef} from 'react';
+import { useSignUp, useAuthState} from '@service/auth';
 import { useCreateAuthUser } from '@service/firestore';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { db } from '@service/auth';
+
 
 const initialFormState = {
   name: '',
@@ -29,16 +32,61 @@ export const SignUp = () => {
   const { signUp } = useSignUp();
   const { createAuthUser } = useCreateAuthUser();
   const { isLoading, error, user } = useAuthState();
-  const [ emailInput, setEmailInput] = useState('');
   
 
-  console.log(user);
+  // console.log(user);
 
   const formStateRef = useRef(initialFormState);
+  const doubleCheckEmailRef = useRef();
+  const doubleCheckNicknameRef = useRef();
+
 
   const handleReset = () => {
     console.log('reset');
   };
+
+  const handleEmailDuplicate = async() =>{
+      const value =  doubleCheckEmailRef.current.value;
+      const docName =  doubleCheckEmailRef.current.name;
+      
+      const regExp = /[a-zA-Z0-9]+\@[a-zA-Z0-9]+\.[a-z]/;
+
+      if(value.trim() === ''){
+        alert('이메일을 입력해주세요.');
+      }else if(!regExp.test(value)){
+        alert('이메일 형식을 확인해주세요.');
+      }else{
+          const q = query(collection(db, 'users'), where(docName, "==", value));
+  
+          const querySnapshot = await getDocs(q);
+          if(querySnapshot.empty){
+              alert("사용 가능한 이메일입니다.");
+          }else{
+              alert("이미 사용 중인 이메일입니다.");
+            }
+          }
+      }
+    
+
+  const handleNicknameDuplicate = async() =>{
+      const value = doubleCheckNicknameRef.current.value;
+      const docName = doubleCheckNicknameRef.current.name;
+      
+      if(value.trim() === ''){
+          alert('닉네임을 입력해주세요.');
+      }else{
+          const q = query(collection(db, 'users'), where(docName, "==", value));
+  
+          const querySnapshot = await getDocs(q);
+          if(querySnapshot.empty){
+              alert("사용 가능한 닉네임입니다.");
+          }else{
+              alert("이미 사용 중인 닉네임입니다.");
+            }
+          }
+      }
+
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -61,16 +109,12 @@ export const SignUp = () => {
 
     console.log('회원가입 및 users 콜렉션에 user 데이터 생성');
   };
-
+  
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
     formStateRef.current[name] = value;
-
-    if(name==='email'){
-      setEmailInput(value);
-    }
-
   };
+
 
   if (isLoading) {
     return <div role="alert">페이지를 준비 중입니다.</div>;
@@ -85,11 +129,11 @@ export const SignUp = () => {
         <Title>회원가입</Title>
         <StyledRequire>필수입력사항</StyledRequire>
         <Border/>
-        <UserSignUpInput name={'email'} type={'email'} button={'중복확인'} placeholder={'dif@example.com'} onChange={handleChangeInput} value={emailInput} visible required>이메일</UserSignUpInput>
+        <UserSignUpInput name={'email'} type={'email'} button={'중복확인'} placeholder={'dif@example.com'} onChange={handleChangeInput} onClick={handleEmailDuplicate} ref={doubleCheckEmailRef} visible required>이메일</UserSignUpInput>
         <UserSignUpInput name={'password'} type={'password'} placeholder={'비밀번호를 입력해주세요'} onChange={handleChangeInput}required>비밀번호</UserSignUpInput>
         <UserSignUpInput name={'passwordConfirm'} type={'password'} placeholder={'비밀번호를 한번 더 입력해주세요'} onChange={handleChangeInput} required>비밀번호 확인</UserSignUpInput>
         <UserSignUpInput name={'name'} placeholder={'이름을 입력해주세요'} onChange={handleChangeInput} required>이름</UserSignUpInput>
-        <UserSignUpInput name={'nickname'} button={'중복확인'} placeholder={'닉네임을 입력해주세요'} onChange={handleChangeInput} visible required>닉네임</UserSignUpInput>
+        <UserSignUpInput name={'nickname'} button={'중복확인'} placeholder={'닉네임을 입력해주세요'} onChange={handleChangeInput} onClick={handleNicknameDuplicate} ref={doubleCheckNicknameRef} visible required>닉네임</UserSignUpInput>
         <UserSignUpInput name={'phone'} maxLength="11" button={'인증번호 받기'} placeholder={'숫자만 입력해주세요.'} onChange={handleChangeInput} visible required number>휴대폰</UserSignUpInput>
         <UserLabel>성별</UserLabel>
         <StyledGender>
@@ -98,7 +142,11 @@ export const SignUp = () => {
           <UserRadio name='gender' onChange={handleChangeInput} >선택안함</UserRadio>
         </StyledGender>
         <UserLabel required>생년월일</UserLabel>
-        <UserBirth onChange={handleChangeInput} />
+        <StyledBirth>
+          <UserBirthInput onChange={handleChangeInput} name={'birthYear'} placeholder={'YYYY'} maxLength={4} />
+          <UserBirthInput onChange={handleChangeInput} name={'birthMonth'} placeholder={'MM'} maxLength={2}/>
+          <UserBirthInput onChange={handleChangeInput} name={'birthDay'} placeholder={'YY'} maxLength={2}/>
+        </StyledBirth>
         <Border slim/>
         <UserLabel required>이용약관동의</UserLabel>
         <StyledUl>
@@ -118,10 +166,11 @@ export const SignUp = () => {
           </StyledList>          
         </StyledUl>
         <Border slim gray/>
-        <StyledPrimaryButton type="submit">가입하기</StyledPrimaryButton>
+        <StyledSubmitButton type="submit" visible>가입하기</StyledSubmitButton>
     </StyledSection>
   )
 }
+
 
 
 const StyledSection = styled(UserForm)`
@@ -139,6 +188,22 @@ const StyledGender = styled.div`
   top: -1.5rem;
   left: 8.75rem;
 `
+
+const StyledBirth = styled.div` 
+    width: 21.25rem;
+    height: 3.125rem;
+    margin: ${theme.spacingXs} 0;
+    border: 0.0625rem solid #A6A6A6;
+    border-radius: 3.125rem;
+    background-color: ${theme.white};
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 8.75rem;
+    top: -2.5rem;
+    `
 
 const StyledList = styled.li`
   position: relative;
@@ -176,7 +241,7 @@ const StyledUl = styled.ul`
   top: -1.25rem;
 `
 
-const StyledPrimaryButton = styled(PrimaryButton)`
+const StyledSubmitButton = styled(Button)`
   margin: 2.5rem auto 0 auto;
 `
 
