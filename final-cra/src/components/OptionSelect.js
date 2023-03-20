@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import theme from 'style/theme';
 
@@ -31,9 +31,15 @@ const Select = styled.select`
 `;
 
 const OptionSelect = () => {
-  const [adults, setAdults] = useState(0);
-  const [children, setChildren] = useState(0);
-  const [infants, setInfants] = useState(0);
+  const [adults, setAdults] = useState(parseInt(localStorage.getItem('adults')) || 0);
+  const [children, setChildren] = useState(parseInt(localStorage.getItem('children')) || 0);
+  const [infants, setInfants] = useState(parseInt(localStorage.getItem('infants')) || 0);
+
+  useEffect(() => {
+    localStorage.setItem('adults', adults);
+    localStorage.setItem('children', children);
+    localStorage.setItem('infants', infants);
+  }, [adults, children, infants]);
 
   const handleAdultsChange = (event) => {
     setAdults(parseInt(event.target.value));

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import theme from 'style/theme';
 
 const StepBlock = styled.div`
@@ -10,61 +10,91 @@ const StepBlock = styled.div`
   text-align: center;
   color: ${theme.blue};
   position: relative;
-`
+`;
 
 const CircleWrapper = styled.div`
   padding: 0rem 9.698rem;
   margin-bottom: 1.608rem;
- 
-
-  &::after{
-    content:'';
-    width: 100%;
-    height:0.313rem;
-    position:absolute;
-    top: 2.583rem;
-    left: 0rem;
-    background-color: #E5ECFF;
-    z-index: -1;
-  }
-`
+`;
 
 const Circle = styled.div`
   width: 5.166rem;
   height: 5.166rem;
-  background-color: #8E96DE;
-  color: white;
+  background-color: #8e96de;
+  color: ${theme.white};
   border-radius: 50%;
   line-height: 5.166rem;
-  text-align:center;
+  text-align: center;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
   font-size: 2.25rem;
-  position:relative;
-`
+`;
+const CircleActive = styled.div`
+  width: 5.166rem;
+  height: 5.166rem;
+  background: url(${require('./../assets/icons/checked.png')}) ${theme.blue}
+    no-repeat center center;
+  color: ${theme.white};
+  border-radius: 50%;
+  line-height: 5.166rem;
+  text-align: center;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 2.25rem;
+`;
 
-const Circle1 = styled.div`
+const CircleShadow = styled.div`
   width: 6.382rem;
   height: 6.382rem;
-  background-color: #E5ECFF;
-  position:absolute;
+  background-color: #e5ecff;
+  position: absolute;
   border-radius: 50%;
-  top:-0.608rem;
-  left:9.125rem;
-  z-index:-1;
-`
+  top: -0.608rem;
+  left: 9.125rem;
+  z-index: -1;
+`;
 
-function Step(props){
+const Bar = styled.div`
+  content: '';
+  width: 100%;
+  height: 0.313rem;
+  position: absolute;
+  top: 2.583rem;
+  left: 0rem;
+  background-color: #e5ecff;
+  z-index: -100;
+`;
+
+const ProgressBar = styled.div`
+  width: ${(props) => props.progress}%;
+  height: 0.313rem;
+  position: absolute;
+  top: 2.583rem;
+  left: 0;
+  background-color: ${theme.blue};
+  z-index: -10;
+  transition: width 0.3s ease-in-out;
+`;
+function Step({ index, label, isActive = false }) {
   return (
     <StepBlock>
       <CircleWrapper>
-        <Circle>{props.index+1}</Circle>
-        <Circle1></Circle1>
+        {isActive ? (
+          <CircleActive></CircleActive>
+        ) : (
+          <Circle>{index + 1}</Circle>
+        )}
+
+        <CircleShadow></CircleShadow>
+        <Bar></Bar>
+
+        {isActive ? <ProgressBar progress={100} /> : null}
       </CircleWrapper>
-      <span>{props.label}</span>
+      <span>{label}</span>
     </StepBlock>
-  )
+  );
 }
 
 export default Step;
