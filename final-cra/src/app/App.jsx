@@ -15,8 +15,7 @@ const App = () => {
         <Route path="/about" element={<About />} />
       </Routes>
     </>
-  )
-
-}
+  );
+};
 
 export default App;

@@ -10,5 +10,5 @@ export const SignUp = () => {
         <UserButton></UserButton>
       </UserForm>
     </>
-  )
-}
+  );
+};
