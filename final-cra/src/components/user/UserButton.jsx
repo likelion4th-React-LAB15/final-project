@@ -1,34 +1,17 @@
 import styled from 'styled-components/macro'
 import theme from 'style/theme'
 
-
-
-export const PrimaryButton = ({type="button", children, ...rest}) => {
-  return <StyledPrimaryButton type={type} {...rest}>{children}</StyledPrimaryButton>
+export const Button = ({type='button', visible, onClick, children, secondary,...rest}) => {
+  const invisible = visible ? 'inline-block' :'none';
+  return <StyledButton type={type} style = {{display:invisible}} onClick={onClick} secondary={secondary} {...rest}>{children}</StyledButton>
 }
 
-export const SecondaryButton = ({type="button", children, visible, ...rest}) => {
-  const invisible = visible ? 'inline-block' :'none' ;
-  return <StyledSecondaryButton type={type} style = {{display:invisible}} {...rest}>{children}</StyledSecondaryButton>
-}
-
-const StyledPrimaryButton = styled.button`
-  width: 21.25rem;
-  height: 3.125rem;
-  color: ${theme.white};
-  background-color: ${theme.blue};
-  margin: ${theme.spacingXs} 0;
-  border-radius: 3.125rem;
-  border: none;
-  cursor: pointer;
-`
-
-const StyledSecondaryButton = styled.button`
-  width: 9.0625rem;
-  height: 2.75rem;
-  color: ${theme.blue};
-  background-color: ${theme.white};
-  margin: ${theme.spacingMd} 0;
+const StyledButton = styled.button`
+  width: ${({secondary}) => secondary ? '9.0625rem' : '21.25rem'};
+  height: ${({secondary}) => secondary ? '2.75rem' : '3.125rem'};
+  color: ${({secondary}) => secondary ? theme.blue : theme.white};
+  background-color: ${({secondary}) => secondary ? theme.white : theme.blue};
+  margin: ${({secondary}) => secondary ? theme.spacingMd : theme.spacingXs} 0;
   border-radius: 3.125rem;
   border: .0625rem solid ${theme.blue};
   cursor: pointer;

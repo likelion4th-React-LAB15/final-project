@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { UserLogInInput, UserForm, PrimaryButton } from 'components/user';
+import { UserLogInInput, UserForm, Button } from 'components/user';
 import styled from 'styled-components/macro'
 import Title from 'components/Title';
 import theme from 'style/theme';
@@ -57,7 +57,7 @@ export const LogIn = () => {
               <li><a href="#">아이디 찾기</a></li>
               <StyledList><a href="#">비밀번호 찾기</a></StyledList>
             </StyledUl>
-             <PrimaryButton  type="submit" disabled={isLoadingSignIn}>로그인</PrimaryButton>
+             <Button  type="submit" disabled={isLoadingSignIn} visible>로그인</Button>
           </UserForm>
         <StyledSpan>아직 가입하지 않으셨나요?<StyledLink to="/signup">회원가입</StyledLink></StyledSpan>
       </StyledSection>
