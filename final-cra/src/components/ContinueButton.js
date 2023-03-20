@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import theme from 'style/theme';
+import { Link } from "react-router-dom";
 
 const Continue = styled.button`
   width: 21.25rem;
@@ -19,7 +20,10 @@ const Continue = styled.button`
 
 function ContinueButton(props){
   return (
-    <Continue>{props.value}</Continue>
+    <Link to={`/${props.id}`}>
+      <Continue>{props.value}</Continue>
+    </Link>
+    
   )
 }
 

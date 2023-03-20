@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import theme from 'style/theme';
+import { Link } from "react-router-dom";
 
 const Back = styled.button`
   width: 21.25rem;
@@ -19,7 +20,9 @@ const Back = styled.button`
 
 function BackButton(props){
   return (
-    <Back>{props.value}</Back>
+    <Link to={`/${props.id}`}>
+      <Back>{props.value}</Back>
+    </Link>
   )
 }
 
