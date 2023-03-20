@@ -1,7 +1,8 @@
-import { useId, useState } from "react";
+import React, { useId, useState, forwardRef } from "react";
 import styled from 'styled-components/macro'
 import theme from 'style/theme'
-import {SecondaryButton}from 'components/user'
+import { Button }from 'components/user'
+
 
 export const UserLogInInput = ({type="text", children, labelClass, inputClass, placeholder, ...rest}) => {
   const UserInputId = useId();
@@ -13,27 +14,27 @@ export const UserLogInInput = ({type="text", children, labelClass, inputClass, p
   )
 }
 
-export const UserSignUpInput = ({type="text", children, labelClass, inputClass, placeholder, button, visible, required, number,...rest}) => {
+export const UserSignUpInput = forwardRef((props, ref) => {
   const UserInputId = useId();
-  const [ isNumber, setIsNumber] = useState('')
+    const [ isNumber, setIsNumber] = useState('')
+  
+    const handleNumber = (e) =>{
+      if(props.number){
+        const result = e.target.value.replace(/\D/g, '');
 
-  const handleNumber = (e) =>{
-    if(number){
-      const result = e.target.value.replace(/\D/g, '');
-      setIsNumber(result);
-    }
-  }
+        setIsNumber(result);
+      }
+   }
+
   return (
-    <>
     <StyledSection>
-      <StyledLabel className={labelClass} htmlFor={UserInputId} required={required}>{children}</StyledLabel>
-      { number ? <StyledSignUpInput className={inputClass} type={type} id={UserInputId} placeholder={placeholder} value={isNumber} onInput={handleNumber} {...rest}></StyledSignUpInput> : <StyledSignUpInput className={inputClass} type={type} id={UserInputId} placeholder={placeholder}{...rest}></StyledSignUpInput>}
-      <SecondaryButton visible={visible} secondary>{button}</SecondaryButton>
+      <StyledLabel  className={props.labelClass} htmlFor={props.UserInputId} required={props.required}>{props.children}</StyledLabel>
+      { props.number ? <StyledSignUpInput ref={ref} name={props.name} className={props.inputClass} type={props.type} id={UserInputId} placeholder={props.placeholder} value={isNumber} onInput={handleNumber} maxLength={props.maxLength} onChange={props.onChange}></StyledSignUpInput> : <StyledSignUpInput ref={ref} name={props.name} className={props.inputClass} type={props.type} id={UserInputId} placeholder={props.placeholder} onChange={props.onChange}></StyledSignUpInput>}
+      <Button visible={props.visible} onClick={props.onClick} type={props.buttontype} secondary >{props.button}</Button>
     </StyledSection>
-    </>
-    
   )
-}
+});
+
 
 const StyledLogInInput = styled.input`
   width: 21.25rem;
