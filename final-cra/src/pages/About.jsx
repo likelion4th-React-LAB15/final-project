@@ -4,12 +4,38 @@ import { useEffect } from "react";
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import Title from "components/Title"
-import { AboutList, AboutItem, AboutItemImage, AboutItemDesc, BigFont } from 'components/about';
-import Footer from 'components/Footer/Footer';
+import { AboutList } from 'components/about';
+import Footer from 'components/footer/Footer';
 import { ClosingContents, ClosingDesc, ClosingSub, ClosingSubDesc, ClosingTitle, ClosingTitleBold, ClosingTitleLine } from 'components/closingContent';
+import SmoothScroll from 'components/smoothScroll/SmoothScroll';
+import { SubNav } from '../components/subNav/SubNav';
 
 export const About = () => {
-
+  const subNavData = [
+    {
+      id: 1,
+      title: 'DIF',
+      subListTitle: [
+        { name: 'RESERVATION', link: '/' },
+        { name: 'DIF', link: '/about' },
+        { name: 'GUAM', link: '/' },
+        { name: 'SAIPAN', link: '/' },
+        { name: 'NOTICE', link: '/' },
+        { name: 'COMMUNITY', link: '/' },
+      ]
+    }, {
+      id: 2,
+      title: 'DIF 소개',
+      subListTitle: [
+        { name: 'DIF소개', link: '/' },
+        { name: 'DIF카드', link: '/' },
+        { name: '클럽메이트', link: '/' },
+        { name: '마스코트 시헤키', link: '/' },
+        { name: 'Why Choose DIF?', link: '/' },
+        { name: 'DIF Cares', link: '/' },
+      ]
+    },
+  ]
   const aboutData = [
     {
       id: 1,
@@ -40,11 +66,12 @@ export const About = () => {
       bigFontContent: 'FREE'
     }
   ]
+  gsap.config({ nullTargetWarn: false });
   useEffect(() => {
     setTimeout(() => {
       gsap.registerPlugin(ScrollTrigger);
       gsap.to('.moveItem01 .moveImage', {
-        y: -300,
+        y: -400,
         scrollTrigger: {
           trigger: ".moveItem01",
           start: "center center",
@@ -71,7 +98,7 @@ export const About = () => {
         }
       });
       gsap.to('.moveItem02 .moveImage', {
-        y: -300,
+        y: -400,
         scrollTrigger: {
           trigger: ".moveItem02",
           start: "-700 center",
@@ -98,7 +125,7 @@ export const About = () => {
         }
       });
       gsap.to('.moveItem03 .moveImage', {
-        y: -300,
+        y: -400,
         scrollTrigger: {
           trigger: ".moveItem03",
           start: "-700 center",
@@ -124,14 +151,14 @@ export const About = () => {
           scrub: true,
         }
       });
-      gsap.to('body', {
+      gsap.to('.changeBg', {
         scrollTrigger: {
           trigger: ".changeBg",
           start: "1200 center",
           end: "+=1300 center",
           scrub: true,
           onEnter: () => {
-            gsap.to("body", {
+            gsap.to(".changeBg", {
               backgroundColor: `${theme.blue}`
             })
             gsap.to('.moveText .bold', {
@@ -145,7 +172,7 @@ export const About = () => {
             })
           },
           onLeaveBack: () => {
-            gsap.to("body", {
+            gsap.to(".changeBg", {
               backgroundColor: `${theme.white}`,
             })
             gsap.to('.moveText .bold', {
@@ -159,7 +186,7 @@ export const About = () => {
             })
           },
           onLeave: () => {
-            gsap.to("body", {
+            gsap.to(".changeBg", {
               backgroundColor: `${theme.white}`
             })
             gsap.to('.moveText .bold', {
@@ -173,7 +200,7 @@ export const About = () => {
             })
           },
           onEnterBack: () => {
-            gsap.to("body", {
+            gsap.to(".changeBg", {
               backgroundColor: `${theme.blue}`
             })
             gsap.to('.moveText .bold', {
@@ -192,60 +219,44 @@ export const About = () => {
   }, []);
 
   return (
-    <StyledAbout className='changeBg'>
-      <StyledAboutInner>
-        <Title>
-          DIF의 모든 순간, <br />
-          잊지 못할 특별한 행복의 순간이 됩니다
-        </Title>
-        <AboutList>
-          {
-            aboutData.map((item, idx) => {
-              return (
-                <AboutItem key={item.id} count={item.id}>
-                  <AboutItemImage>
-                    <img src={require(`assets/images/aboutbg-0${idx + 1}.jpg`)} alt={item.alt} />
-                  </AboutItemImage>
-                  <AboutItemDesc>
-                    <h3>
-                      <strong className="bold full">{item.headingBold}</strong>
-                      <strong className="line">{item.headingLine}</strong>
-                    </h3>
-                    <p>{item.description}</p>
-                  </AboutItemDesc>
-                  <BigFont idx={idx} color={item.bigFontColor}>
-                    {item.bigFontContent}
-                  </BigFont>
-                </AboutItem>
-              )
-            })
-          }
-        </AboutList>
-      </StyledAboutInner>
-      <StyledBottomPadding>
-        <ClosingContents>
-          <ClosingSub>깨끗하고 안전한 리조트</ClosingSub>
-          <ClosingTitle>
-            <ClosingTitleLine>DIF</ClosingTitleLine> <ClosingTitleBold>CARES Program</ClosingTitleBold>
-          </ClosingTitle>
-          <ClosingDesc>
-            도비 아일랜드 프리는 코로나바이러스감염증-19(COVID-19)로 인한 재난 상황에 대해 PIC케어(CARES) 프로그램을 통한 모든 시설에 대한 청결, 소독, 안전조치를 시행하고 있습니다.
-          </ClosingDesc>
-          <ClosingDesc>
-            DIF케어(CARES) 프로그램은 강화된 청결과 소독 조치를 통해 투숙객과 직원들의 안전을 목표로 합니다.
-          </ClosingDesc>
-          <ClosingSubDesc>
-            ◈ 저희 리조트는 의료용 소독 제품을 사용합니다. 모든 화학 물질, 세척 제품 및 각 절차는 미국환경보호청(EPA), 식품의약품안전청(FDA), ServeSafe® 및 질병관리본부(CDC)가 정한 지침을 준수합니다.
-          </ClosingSubDesc>
-        </ClosingContents>
-      </StyledBottomPadding>
-      <Footer />
-    </StyledAbout>
+    <>
+      <SubNav subNavData={subNavData} />
+      <SmoothScroll>
+        <StyledAbout className='changeBg'>
+          <StyledAboutInner>
+            <Title>
+              DIF의 모든 순간, <br />
+              잊지 못할 특별한 행복의 순간이 됩니다
+            </Title>
+            <AboutList aboutData={aboutData} />
+          </StyledAboutInner>
+          <StyledBottomPadding>
+            <ClosingContents>
+              <ClosingSub>깨끗하고 안전한 리조트</ClosingSub>
+              <ClosingTitle>
+                <ClosingTitleLine>DIF</ClosingTitleLine> <ClosingTitleBold>CARES Program</ClosingTitleBold>
+              </ClosingTitle>
+              <ClosingDesc>
+                도비 아일랜드 프리는 코로나바이러스감염증-19(COVID-19)로 인한 재난 상황에 대해 PIC케어(CARES) 프로그램을 통한 모든 시설에 대한 청결, 소독, 안전조치를 시행하고 있습니다.
+              </ClosingDesc>
+              <ClosingDesc>
+                DIF케어(CARES) 프로그램은 강화된 청결과 소독 조치를 통해 투숙객과 직원들의 안전을 목표로 합니다.
+              </ClosingDesc>
+              <ClosingSubDesc>
+                ◈ 저희 리조트는 의료용 소독 제품을 사용합니다. 모든 화학 물질, 세척 제품 및 각 절차는 미국환경보호청(EPA), 식품의약품안전청(FDA), ServeSafe® 및 질병관리본부(CDC)가 정한 지침을 준수합니다.
+              </ClosingSubDesc>
+            </ClosingContents>
+          </StyledBottomPadding>
+          <Footer />
+        </StyledAbout>
+      </SmoothScroll>
+    </>
   )
 }
 
 const StyledAbout = styled.section`
   overflow: hidden;
+  margin: 16.25rem auto 0 auto;
 `
 const StyledAboutInner = styled.section`
   max-width: 73.75rem;
