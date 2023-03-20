@@ -6,6 +6,7 @@ import { ReactComponent as Cart } from './../assets/icons/btn-cart.svg';
 import { ReactComponent as User } from './../assets/icons/btn-user.svg';
 import { useState, useRef } from 'react';
 import SmoothScroll from 'components/smoothscroll/SmoothScroll';
+
 const design = keyframes`
 	0% {transform:translateY(20px) rotate(45deg);}
 	50% {transform:translateY(20px) rotate(0);}
@@ -187,6 +188,15 @@ const SubHeader = styled.div`
   }
 `;
 
+const subHeaderList = [
+  { title: 'RESERVATION', link: '/login', key: 0 },
+  { title: 'DIF', link: '/signup', key: 1 },
+  { title: 'GUAM', link: '/', key: 2 },
+  { title: 'SAIPAN', link: '/', key: 3 },
+  { title: 'NOTICE', link: '/', key: 4 },
+  { title: 'COMMUNITY', link: '/', key: 5 },
+];
+
 const Header = () => {
   const [menu, menuSetState] = useState(false);
   const headerRef = useRef(null);
@@ -221,26 +231,14 @@ const Header = () => {
           </div>
         </HeaderWapper>
         <SubHeader ref={subHeaderRef}>
-          {/* Link */}
           <ul>
-            <li>
-              <Link to="/login">RESERVATION</Link>
-            </li>
-            <li>
-              <Link to="/signup">DIF</Link>
-            </li>
-            <li>
-              <Link to="">GUAM</Link>
-            </li>
-            <li>
-              <Link to="">SAIPAN</Link>
-            </li>
-            <li>
-              <Link to="">NOTICE</Link>
-            </li>
-            <li>
-              <Link to="">COMMUNITY</Link>
-            </li>
+            {subHeaderList.map(({ title, link, key }) => {
+              return (
+                <li key={key}>
+                  <Link to={link}>{title}</Link>
+                </li>
+              );
+            })}
           </ul>
         </SubHeader>
       </SmoothScroll>

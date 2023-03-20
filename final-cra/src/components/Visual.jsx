@@ -228,7 +228,12 @@ const MenuBottom = styled.div`
 
 const splitTextAni = () => {
   gsap
-    .timeline({ duration: 0.8, repeat: -1 })
+    .timeline({
+      repeat: -1,
+      default: {
+        duration: 0.8,
+      },
+    })
     .from('.title1 > span, .subTitle1', {
       opacity: 0,
       y: 50,
@@ -274,15 +279,20 @@ const splitTextAni = () => {
 const progressAni = () => {
   const base = 9.3;
   gsap
-    .timeline({ repeat: -1 })
-    .to('.progress1', { width: '100%', duration: base })
-    .to('.progress1', { width: '0%', duration: 0.4, delay: 0 })
-    .to('.progress2', { width: '100%', duration: base })
-    .to('.progress2', { width: '0%', duration: 0.4, delay: 0 })
-    .to('.progress3', { width: '100%', duration: base })
-    .to('.progress3', { width: '0%', duration: 0.4, delay: 0 })
-    .to('.progress4', { width: '100%', duration: base })
-    .to('.progress4', { width: '0%', duration: 0.4, delay: 0 });
+    .timeline({
+      repeat: -1,
+      defaults: {
+        duration: base,
+      },
+    })
+    .to('.progress1', { width: '100%' })
+    .to('.progress1', { width: '0%', duration: 0.4 })
+    .to('.progress2', { width: '100%' })
+    .to('.progress2', { width: '0%', duration: 0.4 })
+    .to('.progress3', { width: '100%' })
+    .to('.progress3', { width: '0%', duration: 0.4 })
+    .to('.progress4', { width: '100%' })
+    .to('.progress4', { width: '0%', duration: 0.4 });
 };
 
 const titles = [
