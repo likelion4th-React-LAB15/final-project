@@ -3,9 +3,9 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import theme from 'style/theme';
 import React, { useEffect } from 'react';
-import { ReactComponent as Pattern1 } from './../assets/images/itr-pattern-01.svg';
-import { ReactComponent as Cloud } from './../assets/images/fix-cloud.svg';
-import { ReactComponent as Pattern2 } from './../assets/images/itr-pattern-02.svg';
+import { ReactComponent as Pattern1 } from '../../assets/images/itr-pattern-01.svg';
+import { ReactComponent as Cloud } from '../../assets/images/fix-cloud.svg';
+import { ReactComponent as Pattern2 } from '../../assets/images/itr-pattern-02.svg';
 
 const SectionOneStyled = styled.section`
   width: 100%;
@@ -472,7 +472,7 @@ const SectionOne = () => {
 
             <div className={`pic pic${idx}`}>
               <img
-                src={require(`../../src/assets/images/background-0${idx === 2 ? 1 : idx + 2
+                src={require(`../../../src/assets/images/background-0${idx === 2 ? 1 : idx + 2
                   }.webp`)}
                 alt={title}
               />

@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
-import { ReactComponent as Up } from './../assets/icons/picker_arrow_next.svg';
-import { ReactComponent as Down } from './../assets/icons/picker_arrow_prev.svg';
+import { ReactComponent as Up } from './../../assets/icons/picker_arrow_next.svg';
+import { ReactComponent as Down } from './../../assets/icons/picker_arrow_prev.svg';
 
 export const CustomBtn = ({
   className,

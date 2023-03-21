@@ -2,9 +2,10 @@ import styled, { keyframes } from 'styled-components/macro';
 import HeaderWave from './HeaderWave';
 import theme from 'style/theme';
 import { Link } from 'react-router-dom';
-import { ReactComponent as Cart } from './../assets/icons/btn-cart.svg';
-import { ReactComponent as User } from './../assets/icons/btn-user.svg';
-import { useState, useRef } from 'react';
+import { ReactComponent as Cart } from './../../assets/icons/btn-cart.svg';
+import { ReactComponent as User } from './../../assets/icons/btn-user.svg';
+import { useState, useRef, useEffect } from 'react';
+import gsap from 'gsap';
 
 const design = keyframes`
 	0% {transform:translateY(20px) rotate(45deg);}
@@ -201,6 +202,12 @@ const Header = () => {
   const headerRef = useRef(null);
   const subHeaderRef = useRef(null);
 
+
+  useEffect(()=>{
+    
+  },[])
+
+
   return (
     <>
       <HeaderWave menu={menu} />
@@ -218,7 +225,7 @@ const Header = () => {
 
         <h1 className="logo">
           <img
-            src={require('../../src/assets/images/logo-on.png')}
+            src={require('./../../../src/assets/images/logo-on.png')}
             alt="logoOn"
           />
         </h1>

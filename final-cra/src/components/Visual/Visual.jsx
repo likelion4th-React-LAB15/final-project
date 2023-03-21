@@ -377,7 +377,7 @@ const Visual = () => {
         autoPlay
         loop
         muted
-        src={require('../../src/assets/images/visual-video.mp4')}
+        src={require('./../../../src/assets/images/visual-video.mp4')}
       ></video>
 
       <ReservationWrapper>
