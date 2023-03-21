@@ -39,7 +39,7 @@ export const About = () => {
   const aboutData = [
     {
       id: 1,
-      image: 'assets/images/aboutbg-01.jpg',
+      image: 'aboutbg-01',
       alt: '워터파크 레저 스포츠',
       headingBold: 'ALL INCLUSIVE',
       headingLine: 'RESORT',
@@ -48,7 +48,7 @@ export const About = () => {
       bigFontContent: 'DOBBY'
     }, {
       id: 2,
-      image: 'assets/images/aboutbg-02.jpg',
+      image: 'aboutbg-02',
       alt: '워터파크 뷰',
       headingBold: 'ACTIVITY',
       headingLine: 'DIF',
@@ -57,7 +57,7 @@ export const About = () => {
       bigFontContent: 'ISLANDS'
     }, {
       id: 3,
-      image: 'assets/images/aboutbg-03.jpg',
+      image: 'aboutbg-03',
       alt: '클럽 메이트',
       headingBold: 'CLUB',
       headingLine: 'MATES',

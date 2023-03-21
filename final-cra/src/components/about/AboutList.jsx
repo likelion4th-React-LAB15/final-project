@@ -8,7 +8,7 @@ export const AboutList = ({ aboutData }) => {
           return (
             <AboutItem key={item.id} count={item.id}>
               <AboutItemImage>
-                <img src={require(`assets/images/aboutbg-0${idx + 1}.jpg`)} alt={item.alt} />
+                <img src={require(`assets/images/${item.image}.jpg`)} alt={item.alt} />
               </AboutItemImage>
               <AboutItemDesc>
                 <h3>
