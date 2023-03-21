@@ -1,15 +1,14 @@
-import { useRef } from 'react';
-import { Link } from 'react-router-dom';
-import { UserLogInInput, UserForm, Button } from 'components/user';
-import styled from 'styled-components/macro'
-import Title from 'components/Title';
-import theme from 'style/theme';
-import { useSignIn, useAuthState, useSignOut } from '@service/auth';
-
+import { useRef } from "react";
+import { Link } from "react-router-dom";
+import { UserLogInInput, UserForm, Button } from "components/user";
+import styled from "styled-components/macro";
+import Title from "components/Title";
+import theme from "style/theme";
+import { useSignIn, useAuthState, useSignOut } from "@service/auth";
 
 const initialFormState = {
-  email: '',
-  password: '',
+  email: "",
+  password: "",
 };
 
 export const LogIn = () => {
@@ -29,7 +28,7 @@ export const LogIn = () => {
   };
 
   const handleSignOut = async () => {
-    console.log('로그아웃');
+    console.log("로그아웃");
     signOut();
   };
 
@@ -38,40 +37,50 @@ export const LogIn = () => {
     formStateRef.current[name] = value;
   };
 
-
   if (error) {
     return <div role="alert">오류! {error.message}</div>;
   }
 
-
   return (
-        <StyledSection>
-          <Title>로그인</Title>
-          <UserForm onSubmit={handleSignIn}>
-            <fieldset>
-              <legend>로그인 폼</legend>
-              <UserLogInInput labelClass={'a11y-hidden'} name='email' type={'email'} placeholder={'이메일을 입력해주세요'} onChange={handleChangeInput}>이메일</UserLogInInput>
-              <UserLogInInput labelClass={'a11y-hidden'} name='password' type={'password'} placeholder={'비밀번호를 입력해주세요'} onChange={handleChangeInput}>비밀번호</UserLogInInput>
-            </fieldset>
-            <StyledUl>
-              <li><a href="#">아이디 찾기</a></li>
-              <StyledList><a href="#">비밀번호 찾기</a></StyledList>
-            </StyledUl>
-             <Button  type="submit" disabled={isLoadingSignIn} visible>로그인</Button>
-          </UserForm>
-        <StyledSpan>아직 가입하지 않으셨나요?<StyledLink to="/signup">회원가입</StyledLink></StyledSpan>
-      </StyledSection>
-  )
-}
+    <StyledSection>
+      <Title>로그인</Title>
+      <UserForm onSubmit={handleSignIn}>
+        <fieldset>
+          <legend>로그인 폼</legend>
+          <UserLogInInput labelClass={"a11y-hidden"} name="email" type={"email"} placeholder={"이메일을 입력해주세요"} onChange={handleChangeInput}>
+            이메일
+          </UserLogInInput>
+          <UserLogInInput labelClass={"a11y-hidden"} name="password" type={"password"} placeholder={"비밀번호를 입력해주세요"} onChange={handleChangeInput}>
+            비밀번호
+          </UserLogInInput>
+        </fieldset>
+        <StyledUl>
+          <li>
+            <a href="#">아이디 찾기</a>
+          </li>
+          <StyledList>
+            <a href="#">비밀번호 찾기</a>
+          </StyledList>
+        </StyledUl>
+        <Button type="submit" disabled={isLoadingSignIn} visible>
+          로그인
+        </Button>
+      </UserForm>
+      <StyledSpan>
+        아직 가입하지 않으셨나요?<StyledLink to="/signup">회원가입</StyledLink>
+      </StyledSpan>
+    </StyledSection>
+  );
+};
 
 const StyledSection = styled.section`
-  width:  21.25rem;
+  width: 21.25rem;
   margin: 6.25rem auto;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-`
+`;
 
 const StyledUl = styled.ul`
   display: flex;
@@ -79,18 +88,18 @@ const StyledUl = styled.ul`
   justify-content: flex-end;
   font-size: ${theme.textSm};
   margin: 0.625rem 0 2.5rem 0;
-`
+`;
 
 const StyledList = styled.li`
-  &::before{
+  &::before {
     padding: 0 0.25rem;
-    content: '|'
+    content: "|";
   }
-`
+`;
 
 const StyledSpan = styled.span`
   color: #898989;
-`
+`;
 
 const StyledLink = styled(Link)`
   display: inline-block;
@@ -98,4 +107,4 @@ const StyledLink = styled(Link)`
   font-weight: bold;
   color: ${theme.blue};
   margin: ${theme.spacingMd} 0 0 0.625rem;
-`
+`;
