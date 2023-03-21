@@ -6,7 +6,6 @@ const StepWrapper = styled.div`
   justify-content: center;
   margin-top: 3.25rem;
   position: relative;
-  padding: 0rem 9.698rem;
 `;
 
 function StepNavigation(props) {
