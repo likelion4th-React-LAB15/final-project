@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import theme from 'style/theme';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const Continue = styled.button`
   width: 21.25rem;
@@ -13,18 +13,15 @@ const Continue = styled.button`
   font-weight: 600;
   font-size: ${theme.textBase};
   line-height: 1.188rem;
-  color: #FFFFFF;
-  
-  margin-top: 5.625rem;
+  color: #ffffff;
 `;
 
-function ContinueButton(props){
+function ContinueButton(props) {
   return (
     <Link to={`/${props.id}`}>
       <Continue>{props.value}</Continue>
     </Link>
-    
-  )
+  );
 }
 
 export default ContinueButton;
