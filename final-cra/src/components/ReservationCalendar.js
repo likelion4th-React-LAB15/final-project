@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import styled from 'styled-components';
 import theme from 'style/theme';
-
 
 const Container = styled.div`
   display: flex;
@@ -19,13 +18,13 @@ const SelectedDays = styled.p`
   line-height: 2.875rem;
   letter-spacing: -0.02em;
   color: ${theme.blue};
-`
+`;
 
 const StyledCalendar = styled(Calendar)`
   font-size: ${theme.spacingBase};
   color: ${theme.blue};
   max-width: 67.5rem;
-  width:100%;
+  width: 100%;
   border: none;
   margin-top: 4.644rem;
   position: relative;
@@ -48,19 +47,19 @@ const StyledCalendar = styled(Calendar)`
     background-color: ${theme.white};
   }
 
-  & .react-calendar__tile:hover{
-    background-color: #E5ECFF;
+  & .react-calendar__tile:hover {
+    background-color: #e5ecff;
     color: ${theme.blue};
   }
 
   & .react-calendar__tile:disabled {
     background-color: rgba(33, 44, 146, 0.7);
     color: ${theme.white};
-    border:none;
+    border: none;
   }
 
   & .react-calendar__tile--active {
-    color: ${theme.white};;
+    color: ${theme.white};
     background: ${theme.blue};
   }
 
@@ -74,7 +73,7 @@ const StyledCalendar = styled(Calendar)`
       font-family: 'Inter';
       font-style: normal;
       color: ${theme.blue};
-      text-decoration:none;
+      text-decoration: none;
     }
   }
 
@@ -89,12 +88,12 @@ const StyledCalendar = styled(Calendar)`
     background-color: transparent;
   }
 
-  & .react-calendar__navigation__prev-button{
+  & .react-calendar__navigation__prev-button {
     left: -4.844rem;
     top: 16.875rem;
   }
 
-  & .react-calendar__navigation__next-button{
+  & .react-calendar__navigation__next-button {
     right: -4.844rem;
     top: 16.875rem;
   }
@@ -116,30 +115,77 @@ const StyledCalendar = styled(Calendar)`
     font-family: 'Inter';
     font-style: normal;
     color: ${theme.blue};
-    margin: 0px 12.375rem;
+    margin: 0rem 12.375rem;
   }
 
   & .react-calendar__navigation__label__divider {
     display: none;
   }
-  
 `;
 
 function ReservationCalendar() {
-  const [selectedDateRange, setSelectedDateRange] = useState([new Date(), new Date()]);
+  const [selectedDateRange, setSelectedDateRange] = useState([
+    new Date(),
+    new Date(),
+  ]);
+
+  useEffect(() => {
+    const nowTiles = document.querySelectorAll('.react-calendar__tile--now');
+    if (nowTiles.length > 0) {
+      nowTiles[0].focus();
+    }
+  }, []);
 
   const handleSelectDateRange = (value) => {
     setSelectedDateRange(value);
   };
 
   const formatDate = (date) => {
-    return date.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: '2-digit' });
+    return date.toLocaleDateString('ko-KR', {
+      year: 'numeric',
+      month: 'long',
+      day: '2-digit',
+    });
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key.includes('Arrow')) {
+      const activeElement = document.activeElement;
+      const monthViewDays = activeElement.parentNode.parentNode.parentNode;
+      const tiles = monthViewDays.querySelectorAll('.react-calendar__tile');
+      const currentIndex = Array.prototype.indexOf.call(tiles, activeElement);
+
+      let direction = 0;
+      if (e.key === 'ArrowUp') {
+        direction = -7;
+      } else if (e.key === 'ArrowDown') {
+        direction = 7;
+      } else if (e.key === 'ArrowLeft') {
+        direction = -1;
+      } else if (e.key === 'ArrowRight') {
+        direction = 1;
+      }
+
+      const newIndex = currentIndex + direction;
+      if (tiles[newIndex]) {
+        console.log('tiles[index]', tiles[newIndex]);
+        tiles[newIndex].focus();
+      }
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
   return (
-    
     <Container>
-      <SelectedDays>{formatDate(selectedDateRange[0])} - {formatDate(selectedDateRange[1])}</SelectedDays>
+      <SelectedDays>
+        {formatDate(selectedDateRange[0])} - {formatDate(selectedDateRange[1])}
+      </SelectedDays>
       <StyledCalendar
         value={selectedDateRange}
         onChange={handleSelectDateRange}
@@ -148,9 +194,9 @@ function ReservationCalendar() {
         minDate={new Date()}
         calendarType="US"
         locale="ko-KR"
-        showDoubleView = {true}
-        showFixedNumberOfWeeks = {false}
-        showNeighboringMonth = {false}
+        showDoubleView={true}
+        showFixedNumberOfWeeks={false}
+        showNeighboringMonth={false}
         formatDay={(_, date) => date.toLocaleString('en', { day: '2-digit' })}
       />
     </Container>
