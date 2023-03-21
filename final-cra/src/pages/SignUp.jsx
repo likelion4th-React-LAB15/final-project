@@ -1,10 +1,9 @@
-import { UserForm, Button, UserSignUpInput, UserRadio, UserCheckBox, UserLabel, UserBirthInput} from 'components/user';
+import { UserForm, Button, UserSignUpInput, UserRadio, UserLabel, UserBirthInput, CheckBoxList} from 'components/user';
 import Title from 'components/Title';
 import Border from 'components/Border';
 import styled from 'styled-components';
 import theme from 'style/theme';
-import Arrow from 'assets/icons/btn-arrow-next.svg'
-import React, { useRef} from 'react';
+import React, {useRef} from 'react';
 import { useSignUp, useAuthState} from '@service/auth';
 import { useCreateAuthUser } from '@service/firestore';
 import { collection, getDocs, query, where } from 'firebase/firestore';
@@ -39,6 +38,15 @@ export const SignUp = () => {
   const formStateRef = useRef(initialFormState);
   const doubleCheckEmailRef = useRef();
   const doubleCheckNicknameRef = useRef();
+
+  const checkList = [
+    {name: 'termsOfUse',
+    children: '이용약관 동의 여부 (필수)'},
+    {name: 'termsOfPersonalInfo',
+    children: '개인정보 수집 이용 여부 (필수)'},
+    {name: 'termsOfAge',
+    children: '19세 이상 확인 (필수)'},
+  ];
 
 
   const handleReset = () => {
@@ -149,22 +157,7 @@ export const SignUp = () => {
         </StyledBirth>
         <Border slim/>
         <UserLabel required>이용약관동의</UserLabel>
-        <StyledUl>
-          <StyledList>
-            <UserCheckBox name='allCheck' allcheck >전체 동의합니다.</UserCheckBox>
-            <StyledText>선택 항목에 동의하지 않는 경우도 회원가입 및 일반적인 서비스를 이용할 수 있습니다.</StyledText>
-          </StyledList>
-          <StyledList>
-            <StyledButton>약관보기</StyledButton><UserCheckBox onChange={handleChangeInput} name={'termsOfUse'} >이용약관 동의 여부 (필수)</UserCheckBox>
-          </StyledList>
-          <StyledList>
-            <StyledButton>약관보기</StyledButton><UserCheckBox onChange={handleChangeInput} name={'termsOfPersonalInfo'} >개인정보 수집 이용 여부 (필수)</UserCheckBox>
-            </StyledList>
-          <StyledList>
-            <StyledButton>약관보기</StyledButton>
-            <UserCheckBox onChange={handleChangeInput} name={'termsOfAge'} >19세 이상 확인 (필수)</UserCheckBox>
-          </StyledList>          
-        </StyledUl>
+        <CheckBoxList checklist={checkList} onChange={handleChangeInput} />
         <Border slim gray/>
         <StyledSubmitButton type="submit" visible>가입하기</StyledSubmitButton>
     </StyledSection>
@@ -204,42 +197,6 @@ const StyledBirth = styled.div`
     left: 8.75rem;
     top: -2.5rem;
     `
-
-const StyledList = styled.li`
-  position: relative;
-  width: 28.125rem;
-`
-
-const StyledButton = styled.button`
-  width: 3.75rem;
-  position: absolute;
-  right: 2rem;
-  top: .5rem;
-  background-color: white;
-  border: none;
-  color: ${theme.blue};
-  font-size: ${theme.textSm};
-  background-image: url(${Arrow});
-  background-repeat: no-repeat;
-  background-size: 0.375rem;
-  background-position: right top 40%;
-
-`
-
-const StyledText = styled.p`
-  font-size: ${theme.textSm};
-  color: ${theme.gray};
-  position: relative;
-  top: -0.625rem;
-  left: 2.0625rem;
-
-`
-
-const StyledUl = styled.ul`
-  position: relative;
-  left: 8.75rem;
-  top: -1.25rem;
-`
 
 const StyledSubmitButton = styled(Button)`
   margin: 2.5rem auto 0 auto;
