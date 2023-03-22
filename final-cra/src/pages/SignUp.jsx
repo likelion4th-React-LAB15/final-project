@@ -8,6 +8,7 @@ import { useSignUp, useAuthState } from "@service/auth";
 import { useCreateAuthUser } from "@service/firestore";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "@service/auth";
+import { useNavigate } from "react-router-dom";
 
 const initialFormState = {
   name: "",
@@ -38,6 +39,8 @@ export const SignUp = () => {
   const doubleCheckEmailRef = useRef();
   const doubleCheckNicknameRef = useRef();
   const checkPhoneRef = useRef();
+
+  const navigate = useNavigate();
 
   const checkList = [
     { name: "termsOfUse", children: "이용약관 동의 여부 (필수)" },
@@ -169,7 +172,9 @@ export const SignUp = () => {
       termsOfAge,
     });
 
-    console.log("회원가입 및 users 콜렉션에 user 데이터 생성");
+    // console.log("회원가입 및 users 콜렉션에 user 데이터 생성");
+    alert("회원가입이 완료되었습니다 :)");
+    navigate("/");
   };
 
   const handleChangeInput = (e) => {
