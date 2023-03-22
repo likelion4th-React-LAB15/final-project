@@ -4,6 +4,7 @@ import theme from 'style/theme';
 import { ReactComponent as Cart } from './../../assets/icons/btn-cart.svg';
 import { ReactComponent as User } from './../../assets/icons/btn-user.svg';
 import { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 
 const design = keyframes`
@@ -75,8 +76,8 @@ const HeaderWapper = styled.header`
       width: 100%;
       height: 100%;
       height: 0.125rem;
-      background-color: ${({ type }) =>
-        'active' ? `${theme.blue}` : `${theme.white}`};
+      background-color: ${(props) =>
+        props.type === 'active' ? `${theme.blue}` : `${theme.white}`};
       border-radius: 0.0625rem;
 
       &:nth-of-type(1) {
@@ -136,8 +137,11 @@ const HeaderWapper = styled.header`
 const Header = ({ type, children, style, ...restProps }) => {
   const [menu, menuSetState] = useState(false);
   const headerRef = useRef(null);
+  const imgRef = useRef(null);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    console.log(type, menu);
+  }, [type, menu]);
 
   return (
     <>
@@ -151,27 +155,55 @@ const Header = ({ type, children, style, ...restProps }) => {
           {Array(3)
             .fill()
             .map((el, idx) => (
-              <li key={idx}>{el}</li>
+              <li
+                style={{
+                  backgroundColor:
+                    type !== 'active' && !menu
+                      ? `${theme.blue}`
+                      : `${theme.white}`,
+                }}
+                key={idx}
+              >
+                {el}
+              </li>
             ))}
         </ul>
 
-        <h1 className="logo">
-          {type === 'active' ? (
-            <img
-              src={require('./../../../src/assets/images/logo-on.png')}
-              alt="logoOn"
-            />
-          ) : (
-            <img
-              src={require('./../../../src/assets/images/logo-on.png')}
-              alt="logoOn"
-            />
-          )}
-        </h1>
+        <Link to={'/'}>
+          <h1 className="logo">
+            {type !== 'active' && !menu ? (
+              <img
+                ref={imgRef}
+                src={require('./../../../src/assets/images/logo-off.png')}
+                alt="logoOn"
+              />
+            ) : (
+              <img
+                ref={imgRef}
+                src={require('./../../../src/assets/images/logo-on.png')}
+                alt="logoOn"
+              />
+            )}
+          </h1>
+        </Link>
 
         <div className="infoWrap">
-          <User style={{ width: 28, height: 30, fill: theme.white }} />
-          <Cart style={{ width: 28, height: 30, fill: theme.white }} />
+          <User
+            style={{
+              width: 28,
+              height: 30,
+              fill:
+                type !== 'active' && !menu ? `${theme.blue}` : `${theme.white}`,
+            }}
+          />
+          <Cart
+            style={{
+              width: 28,
+              height: 30,
+              fill:
+                type !== 'active' && !menu ? `${theme.blue}` : `${theme.white}`,
+            }}
+          />
         </div>
       </HeaderWapper>
     </>

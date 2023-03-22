@@ -2,6 +2,7 @@ import React from 'react';
 import theme from 'style/theme';
 import { keyframes } from 'styled-components/macro';
 import styled from 'styled-components/macro';
+import { Link } from 'react-router-dom';
 
 const moveForever = keyframes`
   0% {
@@ -93,19 +94,31 @@ const MenuWrap = styled.ul`
         font: 400 1rem/1 'airal';
         padding: 0.375rem 0;
         cursor: pointer;
+        color: #d0d0d08b;
+        transition: color 0.2s;
+
+        &:hover {
+          color: #fff;
+        }
       }
     }
+  }
+
+  .link {
+    color: #fff;
   }
 `;
 
 const menuList = [
   {
     title: 'RESERVATION',
-    link: ['예약하기', '자주하는 질문', '일반문의', '확정예약문의'],
+    link: '',
+    subTitle: ['예약하기', '자주하는 질문', '일반문의', '확정예약문의'],
   },
   {
     title: 'PIC',
-    link: [
+    link: '',
+    subTitle: [
       'PIC소개',
       'PIC카드',
       '클럽메이트',
@@ -116,7 +129,8 @@ const menuList = [
   },
   {
     title: 'GUAM',
-    link: [
+    link: '',
+    subTitle: [
       'PIC괌',
       '객실',
       '레스토랑&바',
@@ -132,7 +146,8 @@ const menuList = [
   },
   {
     title: 'SAIPAN',
-    link: [
+    link: '',
+    subTitle: [
       'PIC사이판',
       '객실',
       '레스토랑&바',
@@ -145,11 +160,13 @@ const menuList = [
   },
   {
     title: 'NOTICE',
-    link: ['PIC 괌', '자주하는 PIC 사이판'],
+    link: '/notice',
+    subTitle: ['PIC 괌', '자주하는 PIC 사이판'],
   },
   {
     title: 'COMMUNITY',
-    link: ['PIC영상'],
+    link: '/community',
+    subTitle: ['PIC영상'],
   },
 ];
 
@@ -158,11 +175,14 @@ const HeaderWave = ({ menu }) => {
     <HeaderWapper className={!menu ? 'header' : 'header active'}>
       <div className="inner-header flex">
         <MenuWrap>
-          {menuList.map(({ title, link }) => (
+          {menuList.map(({ title, link, subTitle }) => (
             <li key={title}>
-              {title}
+              <Link className="link" to={link}>
+                {title}
+              </Link>
+
               <ul>
-                {link.map((el) => (
+                {subTitle.map((el) => (
                   <li key={el}>{el}</li>
                 ))}
               </ul>
@@ -198,12 +218,7 @@ const HeaderWave = ({ menu }) => {
             y="5"
             fill="rgba(33,44,147,0.3)"
           />
-          <use
-            xlinkHref="#gentle-wave"
-            x="48"
-            y="7"
-            fill="rgba(33,44,147,1)"
-          />
+          <use xlinkHref="#gentle-wave" x="48" y="7" fill="rgba(33,44,147,1)" />
         </g>
       </svg>
     </HeaderWapper>

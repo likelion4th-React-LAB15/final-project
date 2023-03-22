@@ -11,7 +11,7 @@ export const Home = () => {
   return (
     <>
       <SmoothScroll>
-        <Header />
+        <Header type={'active'} />
         <SubHeader />
         <Visual />
         <SectionOne />
