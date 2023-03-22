@@ -33,7 +33,7 @@ const Circle = styled.div`
 const CircleActive = styled.div`
   width: 5.166rem;
   height: 5.166rem;
-  background: url(${require('./../assets/icons/checked.png')}) ${theme.blue}
+  background: url(${require('./../../assets/icons/checked.png')}) ${theme.blue}
     no-repeat center center;
   color: ${theme.white};
   border-radius: 50%;

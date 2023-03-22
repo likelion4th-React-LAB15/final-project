@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import StepNavigation from 'components/StepNavigation.js';
-import GuestSelect from 'components/GuestSelect.js';
+import StepNavigation from 'components/Reservation/StepNavigation.js';
+import GuestSelect from 'components/Reservation/GuestSelect.js';
 import ContinueButton from 'components/ContinueButton.js';
-import ReservationTitle from 'components/ReservationTitle.js';
+import ReservationTitle from 'components/Reservation/ReservationTitle.js';
 import theme from 'style/theme';
 
 const GuestNumber = styled.h3`

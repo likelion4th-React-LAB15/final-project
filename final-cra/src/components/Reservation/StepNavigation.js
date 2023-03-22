@@ -1,4 +1,4 @@
-import Step from 'components/Step.js';
+import Step from 'components/Reservation/Step.js';
 import styled from 'styled-components';
 
 const StepWrapper = styled.div`

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import OptionSelect from 'components/OptionSelect.js'
+import OptionSelect from 'components/Reservation/OptionSelect.js';
 
 const Container = styled.div`
   display: flex;

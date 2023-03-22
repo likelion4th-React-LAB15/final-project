@@ -1,8 +1,8 @@
-import ReservationTitle from 'components/ReservationTitle.js';
-import StepNavigation from 'components/StepNavigation.js';
+import ReservationTitle from 'components/Reservation/ReservationTitle.js';
+import StepNavigation from 'components/Reservation/StepNavigation.js';
 import ContinueButton from 'components/ContinueButton.js';
 import BackButton from 'components/BackButton.js';
-import RoomInfoCard from 'components/RoomInfoCard.js';
+import RoomInfoCard from 'components/Reservation/RoomInfoCard.js';
 import styled from 'styled-components';
 
 const rooms = [

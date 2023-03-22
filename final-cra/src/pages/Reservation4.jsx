@@ -1,4 +1,4 @@
-import ReservationTitle from 'components/ReservationTitle.js';
+import ReservationTitle from 'components/Reservation/ReservationTitle.js';
 import styled from 'styled-components';
 
 export const Reservation4 = () => {
