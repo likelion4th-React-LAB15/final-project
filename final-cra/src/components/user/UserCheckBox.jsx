@@ -1,23 +1,16 @@
-import styled from 'styled-components';
-import React, { useEffect, useId, useState } from 'react';
-import theme from 'style/theme';
-import Checkbox from 'assets/icons/check.svg';
-import Arrow from 'assets/icons/btn-arrow-next.svg';
+import styled from "styled-components";
+import React, { useEffect, useId, useState } from "react";
+import theme from "style/theme";
+import Checkbox from "assets/icons/check.svg";
+import Arrow from "assets/icons/btn-arrow-next.svg";
 
 export const UserCheckBox = ({ children, isChecked, ...rest }) => {
   const UserInputId = useId();
 
   return (
     <StyledDiv>
-      <StyledCheckbox
-        type="checkbox"
-        id={UserInputId}
-        {...rest}
-      ></StyledCheckbox>
-      <StyledCheckLabel
-        className={isChecked}
-        htmlFor={UserInputId}
-      ></StyledCheckLabel>
+      <StyledCheckbox type="checkbox" id={UserInputId} {...rest}></StyledCheckbox>
+      <StyledCheckLabel className={isChecked} htmlFor={UserInputId}></StyledCheckLabel>
       <StyledLabel htmlFor={UserInputId}>{children}</StyledLabel>
     </StyledDiv>
   );
@@ -36,33 +29,28 @@ export const CheckBoxList = ({ checklist, onChange }) => {
   }, [checklist]);
 
   const handleAllCheck = (e) => {
-    setCheckList(e.target.checked ? IdList : []);
+    const isChecked = e.target.checked;
+    setCheckList(isChecked ? IdList : []);
+    IdList.forEach((item) => {
+      onChange({ target: { name: item, value: isChecked } });
+    });
   };
 
   const handleCompareCheck = (e) => {
     if (e.target.checked) {
       setCheckList([...checkList, e.target.name]);
     } else {
-      setCheckList(
-        checkList.filter((checkName) => checkName !== e.target.name)
-      );
+      setCheckList(checkList.filter((checkName) => checkName !== e.target.name));
     }
   };
 
   return (
     <StyledUl>
       <StyledList>
-        <UserCheckBox
-          onChange={handleAllCheck}
-          checked={checkList.length === IdList.length}
-          isChecked={checkList.length === IdList.length ? 'checked' : ''}
-        >
+        <UserCheckBox onChange={onChange} onClick={handleAllCheck} checked={checkList.length === IdList.length} isChecked={checkList.length === IdList.length ? "checked" : ""}>
           전체 동의합니다.
         </UserCheckBox>
-        <StyledText>
-          선택 항목에 동의하지 않는 경우도 회원가입 및 일반적인 서비스를 이용할
-          수 있습니다.
-        </StyledText>
+        <StyledText>선택 항목에 동의하지 않는 경우도 회원가입 및 일반적인 서비스를 이용할 수 있습니다.</StyledText>
       </StyledList>
       {checklist.map((item, index) => {
         return (
@@ -73,8 +61,8 @@ export const CheckBoxList = ({ checklist, onChange }) => {
               onClick={handleCompareCheck}
               onChange={onChange}
               checked={checkList.includes(item.name)}
-              isChecked={checkList.includes(item.name) ? 'checked' : ''}
-            >
+              isChecked={checkList.includes(item.name) ? "checked" : ""}
+              value={checkList.includes(item.name)}>
               {item.children}
             </UserCheckBox>
           </StyledList>
