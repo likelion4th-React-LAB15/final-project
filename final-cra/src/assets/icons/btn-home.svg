@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="19.25" height="21.167" viewBox="0 0 19.25 21.167">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #fff;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <g id="Icon_feather-home" data-name="Icon feather-home" transform="translate(-3.5 -2)">
+    <path id="패스_8316" data-name="패스 8316" class="cls-1" d="M4.5,9.708,13.125,3,21.75,9.708V20.25a1.917,1.917,0,0,1-1.917,1.917H6.417A1.917,1.917,0,0,1,4.5,20.25Z"/>
+    <path id="패스_8317" data-name="패스 8317" class="cls-1" d="M13.5,27.583h3.194V18" transform="translate(-3.25 -5.417)"/>
+  </g>
+</svg>
