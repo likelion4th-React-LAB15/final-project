@@ -1,7 +1,6 @@
 import styled, { keyframes } from 'styled-components/macro';
 import HeaderWave from './HeaderWave';
 import theme from 'style/theme';
-import { Link } from 'react-router-dom';
 import { ReactComponent as Cart } from './../../assets/icons/btn-cart.svg';
 import { ReactComponent as User } from './../../assets/icons/btn-user.svg';
 import { useState, useRef, useEffect } from 'react';
@@ -43,7 +42,7 @@ const HeaderWapper = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 0 2.5rem;
-  position: fixed;
+  position: ${({ type }) => ('active' ? 'absolute' : 'fixed')};
   z-index: 3;
   transition: all 0.18s forwards;
 
@@ -76,7 +75,8 @@ const HeaderWapper = styled.header`
       width: 100%;
       height: 100%;
       height: 0.125rem;
-      background-color: ${theme.white};
+      background-color: ${({ type }) =>
+        'active' ? `${theme.blue}` : `${theme.white}`};
       border-radius: 0.0625rem;
 
       &:nth-of-type(1) {
@@ -132,86 +132,18 @@ const HeaderWapper = styled.header`
     gap: 1.25rem;
   }
 `;
-const SubHeader = styled.div`
-  position: absolute;
-  left: 0;
-  top: 6.25rem;
-  width: 100%;
-  height: 3.875rem;
-  background: transparent;
-  border-top: 0.0625rem solid rgba(255, 255, 255, 0.5);
-  border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.5);
-  transition: all 1s;
-  transform: translateY(0);
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  transition: transform 1.4s;
 
-  &.up {
-    transform: translateY(-200%);
-  }
-
-  ul {
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 69.25rem;
-
-    li {
-      font: 600 1rem/1 'arial';
-      cursor: pointer;
-      position: relative;
-
-      &::after {
-        content: '';
-        display: block;
-        position: absolute;
-        top: 50%;
-        left: -4.375rem;
-        width: 0.5rem;
-        height: 0.5rem;
-        border-radius: 50%;
-        background-color: rgba(255, 255, 255, 0.45);
-        transform: translateY(-50%);
-      }
-
-      &:first-child::after {
-        display: none;
-      }
-
-      a {
-        color: ${theme.white};
-      }
-    }
-  }
-`;
-
-const subHeaderList = [
-  { title: 'RESERVATION', link: '/', key: 0 },
-  { title: 'DIF', link: '/about', key: 1 },
-  { title: 'GUAM', link: '/', key: 2 },
-  { title: 'SAIPAN', link: '/', key: 3 },
-  { title: 'NOTICE', link: '/', key: 4 },
-  { title: 'COMMUNITY', link: '/', key: 5 },
-];
-
-const Header = () => {
+const Header = ({ type, children, style, ...restProps }) => {
   const [menu, menuSetState] = useState(false);
   const headerRef = useRef(null);
-  const subHeaderRef = useRef(null);
 
-
-  useEffect(()=>{
-    
-  },[])
-
+  useEffect(() => {}, []);
 
   return (
     <>
       <HeaderWave menu={menu} />
-      <HeaderWapper ref={headerRef}>
+
+      <HeaderWapper ref={headerRef} type={type}>
         <ul
           className={!menu ? 'menuBtn' : 'menuBtn active'}
           onClick={() => menuSetState(!menu)}
@@ -224,10 +156,17 @@ const Header = () => {
         </ul>
 
         <h1 className="logo">
-          <img
-            src={require('./../../../src/assets/images/logo-on.png')}
-            alt="logoOn"
-          />
+          {type === 'active' ? (
+            <img
+              src={require('./../../../src/assets/images/logo-on.png')}
+              alt="logoOn"
+            />
+          ) : (
+            <img
+              src={require('./../../../src/assets/images/logo-on.png')}
+              alt="logoOn"
+            />
+          )}
         </h1>
 
         <div className="infoWrap">
@@ -235,17 +174,6 @@ const Header = () => {
           <Cart style={{ width: 28, height: 30, fill: theme.white }} />
         </div>
       </HeaderWapper>
-      <SubHeader ref={subHeaderRef}>
-        <ul>
-          {subHeaderList.map(({ title, link, key }) => {
-            return (
-              <li key={key}>
-                <Link to={link}>{title}</Link>
-              </li>
-            );
-          })}
-        </ul>
-      </SubHeader>
     </>
   );
 };

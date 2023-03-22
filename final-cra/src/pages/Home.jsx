@@ -1,4 +1,5 @@
 import Header from 'components/Header/Header';
+import SubHeader from 'components/Header/SubHeader';
 import Visual from 'components/Visual/Visual';
 import SectionOne from 'components/MainSection/SectionOne';
 import FilmList from 'components/FilmList/FilmList';
@@ -11,6 +12,7 @@ export const Home = () => {
     <>
       <SmoothScroll>
         <Header />
+        <SubHeader />
         <Visual />
         <SectionOne />
         <Siheky />

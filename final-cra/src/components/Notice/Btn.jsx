@@ -7,13 +7,23 @@ const StyledBtn = styled.button`
   height: 3.4375rem;
   border: 0;
   cursor: pointer;
-  background-color: ${({ type }) =>
-    type ? `${theme.blue}` : `${theme.white}`};
-  color: ${({ type }) => (type ? `${theme.white}` : `${theme.blue}`)};
+  background-color: ${({ typeState }) =>
+    typeState ? `${theme.blue}` : `${theme.white}`};
+  color: ${({ typeState }) => (typeState ? `${theme.white}` : `${theme.blue}`)};
   border: 2px solid ${theme.blue};
   border-radius: 2.5rem;
+  transition: all 0.6s;
+
+  &:hover {
+    color: #fff;
+    background-color: ${theme.blue};
+  }
 `;
 
-export const Btn = ({ children, type }) => {
-  return <StyledBtn type={type}>{children}</StyledBtn>;
+export const Btn = ({ children, typeState, ...resetProps }) => {
+  return (
+    <StyledBtn typeState={typeState} {...resetProps}>
+      {children}
+    </StyledBtn>
+  );
 };

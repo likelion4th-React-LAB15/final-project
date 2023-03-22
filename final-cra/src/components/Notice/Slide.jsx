@@ -2,9 +2,113 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import { useRef } from 'react';
-import './style/slide.css';
+import styled from 'styled-components';
+import theme from './../../style/theme';
+import Arrow from './../../assets/icons/btn-arrow-next.svg';
 
-const data = [
+const SwiperWrapper = styled.div`
+  .swiper {
+    max-width: 67.5rem;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .swiper-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+
+  .swiper-slide {
+    flex-shrink: 0;
+    height: 100%;
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    border: 2px solid #212c92;
+    border-radius: 30px;
+    transition: all 0.26s;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      border: 2px solid ${theme.pink};
+    }
+  }
+
+  .swiper-slide > h3 {
+    font-size: 20px;
+    line-height: 23px;
+    height: 46px;
+    color: #000551;
+    font-weight: 600;
+    font-family: 'welcome', Sans-serif;
+    display: -webkit-box;
+    overflow: hidden;
+    word-break: break-word;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+  }
+
+  .swiper-slide > p {
+    font-size: 17px;
+    line-height: 25px;
+    height: 48px;
+    font-weight: 400;
+    color: #31356d;
+    display: -webkit-box;
+    overflow: hidden;
+    word-break: break-word;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+  }
+
+  .swiper-slide > span {
+    font-size: 15px;
+    line-height: 23px;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  button[type='button'] {
+    border: 0;
+  }
+
+  #previousButton {
+    width: 40px;
+    height: 40px;
+    background: url(${Arrow}) no-repeat center;
+    position: absolute;
+    left: 300px;
+    top: 400px;
+    transform: translateY(-50%) rotate(180deg);
+    cursor: pointer;
+  }
+  #nextButton {
+    width: 40px;
+    height: 40px;
+    background: url(${Arrow}) no-repeat center;
+    position: absolute;
+    right: 300px;
+    top: 400px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+`;
+
+const noticeData = [
   {
     key: 1,
     title: 'PIC 홈페이지 리뉴얼 기념 이벤트 당첨자 발표',
@@ -42,18 +146,31 @@ const data = [
   },
 ];
 
+const eventData = [
+  {
+    key: 1,
+    title: 'PIC 홈페이지 리뉴얼 이벤트 당첨자 발표',
+    content: '',
+    date: '2023-02-27',
+  },
+];
+
 // Import Swiper styles
-export const Slide = () => {
+export const Slide = ({ typeState }) => {
   const strLen = 40;
   const swiperRef = useRef(null);
 
+  console.log(typeState);
+
   return (
-    <>
-      <div
+    <SwiperWrapper>
+      <button
+        type="button"
         id="previousButton"
         onClick={() => swiperRef.current.swiper.slidePrev()}
       />
-      <div
+      <button
+        type="button"
         id="nextButton"
         onClick={() => swiperRef.current.swiper.slideNext()}
       />
@@ -66,29 +183,52 @@ export const Slide = () => {
         className="mySwiper"
         ref={swiperRef}
       >
-        {data.map(({ title, content, date }, idx) => {
-          return (
-            <SwiperSlide
-              style={{
-                height: '17.5rem',
-                padding: '50px 40px',
-                display: 'flex',
-                flexFlow: 'column nowrap',
-                justifyContent: 'space-between',
-                alignItems: 'flex-start',
-                textAlign: 'left',
-              }}
-            >
-              <h3>{title}</h3>
-              <p>
-                {content.length >= strLen &&
-                  content.substring(0, strLen) + '...'}
-              </p>
-              <span>{date}</span>
-            </SwiperSlide>
-          );
-        })}
+        {typeState
+          ? noticeData.map(({ title, content, date }) => {
+              return (
+                <SwiperSlide
+                  style={{
+                    height: '17.5rem',
+                    padding: '50px 40px',
+                    display: 'flex',
+                    flexFlow: 'column nowrap',
+                    justifyContent: 'space-between',
+                    alignItems: 'flex-start',
+                    textAlign: 'left',
+                  }}
+                >
+                  <h3>{title}</h3>
+                  <p>
+                    {content.length >= strLen &&
+                      content.substring(0, strLen) + '...'}
+                  </p>
+                  <span>{date}</span>
+                </SwiperSlide>
+              );
+            })
+          : eventData.map(({ title, content, date }, idx) => {
+              return (
+                <SwiperSlide
+                  style={{
+                    height: '17.5rem',
+                    padding: '50px 40px',
+                    display: 'flex',
+                    flexFlow: 'column nowrap',
+                    justifyContent: 'space-between',
+                    alignItems: 'flex-start',
+                    textAlign: 'left',
+                  }}
+                >
+                  <h3>{title}</h3>
+                  <p>
+                    {content.length >= strLen &&
+                      content.substring(0, strLen) + '...'}
+                  </p>
+                  <span>{date}</span>
+                </SwiperSlide>
+              );
+            })}
       </Swiper>
-    </>
+    </SwiperWrapper>
   );
 };
