@@ -23,11 +23,12 @@ export const About = () => {
     {
       id: 1,
       title: 'DIF',
+      link: '/about',
       subListTitle: [
         { name: 'RESERVATION', link: '/' },
         { name: 'DIF', link: '/about' },
-        { name: 'GUAM', link: '/' },
-        { name: 'SAIPAN', link: '/' },
+        { name: 'GUAM', link: '/guam' },
+        { name: 'SAIPAN', link: '/saipan' },
         { name: 'NOTICE', link: '/' },
         { name: 'COMMUNITY', link: '/' },
       ],

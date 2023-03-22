@@ -3,3 +3,4 @@ export * from './LogIn';
 export * from './SignUp';
 export * from './About';
 export * from './Guam';
+export * from './Saipan';

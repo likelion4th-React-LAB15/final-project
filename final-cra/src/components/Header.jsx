@@ -191,7 +191,7 @@ const subHeaderList = [
   { title: 'RESERVATION', link: '/', key: 0 },
   { title: 'DIF', link: '/about', key: 1 },
   { title: 'GUAM', link: '/guam', key: 2 },
-  { title: 'SAIPAN', link: '/', key: 3 },
+  { title: 'SAIPAN', link: '/saipan', key: 3 },
   { title: 'NOTICE', link: '/', key: 4 },
   { title: 'COMMUNITY', link: '/', key: 5 },
 ];
