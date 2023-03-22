@@ -702,6 +702,24 @@ export const Guam = () => {
           },
         },
       });
+      gsap.to('.marqueeLeft h2', {
+        x: -700,
+        scrollTrigger: {
+          trigger: '.marqueeLeft',
+          start: '-1200 center',
+          end: '1200 center',
+          scrub: true,
+        },
+      });
+      gsap.to('.marqueeRight h2', {
+        x: 700,
+        scrollTrigger: {
+          trigger: '.marqueeRight',
+          start: '-1200 center',
+          end: '1200 center',
+          scrub: true,
+        },
+      });
     }, 100);
   }, []);
 
