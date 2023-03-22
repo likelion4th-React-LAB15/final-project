@@ -1,12 +1,10 @@
 import theme from "style/theme";
-import styled from 'styled-components/macro';
-import Wave from "components/wave/Wave";
-import FooterGnb from 'components/footer/FooterGnb';
-import FooterAddress from "components/footer/FooterAddress";
-
+import styled from "styled-components/macro";
+import Wave from "components/Wave/Wave";
+import FooterGnb from "components/Footer/FooterGnb";
+import FooterAddress from "components/Footer/FooterAddress";
 
 function Footer() {
-
   return (
     <>
       <Wave />
@@ -15,22 +13,22 @@ function Footer() {
           <FooterGnb />
           <FooterAddress />
         </FooterInner>
-      </FooterContainer >
+      </FooterContainer>
     </>
-  )
+  );
 }
 
 const FooterContainer = styled.footer`
   width: 100%;
   background-color: ${theme.blue};
   position: relative;
-  padding:6.25rem 0 3.125rem 0;
+  padding: 6.25rem 0 3.125rem 0;
   overflow: hidden;
-`
+`;
 
 const FooterInner = styled.div`
   max-width: 81.25rem;
-  margin:0 auto;
-`
+  margin: 0 auto;
+`;
 
-export default Footer
+export default Footer;
