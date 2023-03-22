@@ -21,7 +21,7 @@ const HeaderWapper = styled.div`
   background-color: ${theme.blue};
   color: ${theme.white};
   transition: all 0.8s;
-  z-index: 3;
+  z-index: 100;
 
   .inner-header {
     width: 100%;

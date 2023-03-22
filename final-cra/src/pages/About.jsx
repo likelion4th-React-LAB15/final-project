@@ -5,7 +5,9 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import Title from 'components/Title';
 import { AboutList } from 'components/about';
+import Header from './../components/Header/Header';
 import Footer from 'components/Footer/Footer';
+
 import {
   ClosingContents,
   ClosingDesc,
@@ -234,6 +236,7 @@ export const About = () => {
 
   return (
     <>
+      <Header />
       <SubNav subNavData={subNavData} />
       <SmoothScroll>
         <StyledAbout className="changeBg">

@@ -5,6 +5,7 @@ import { ReactComponent as Cart } from './../../assets/icons/btn-cart.svg';
 import { ReactComponent as User } from './../../assets/icons/btn-user.svg';
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 import gsap from 'gsap';
 
 const design = keyframes`
@@ -44,7 +45,7 @@ const HeaderWapper = styled.header`
   align-items: center;
   padding: 0 2.5rem;
   position: ${({ type }) => ('active' ? 'absolute' : 'fixed')};
-  z-index: 3;
+  z-index: 101;
   transition: all 0.18s forwards;
 
   &.on {
@@ -141,6 +142,9 @@ const Header = ({ type, children, style, ...restProps }) => {
 
   useEffect(() => {
     console.log(type, menu);
+    setTimeout(() => {}, 150);
+
+    setTimeout(() => {}, 10);
   }, [type, menu]);
 
   return (

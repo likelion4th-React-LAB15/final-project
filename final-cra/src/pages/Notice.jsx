@@ -4,6 +4,7 @@ import { Btn, Slide, BulletinBoard, SearchInput } from './../components/Notice';
 import styled from 'styled-components/macro';
 import Footer from './../components/Footer/Footer';
 import Header from './../components/Header/Header';
+import { SubNav } from 'components/subNav/SubNav';
 import SmoothScroll from 'components/smoothScroll/SmoothScroll';
 
 const BtnWrap = styled.div`
@@ -13,13 +14,41 @@ const BtnWrap = styled.div`
   margin-bottom: 2.5rem;
 `;
 
+const subNavData = [
+  {
+    id: 1,
+    title: 'DIF',
+    subListTitle: [
+      { name: 'RESERVATION', link: '/' },
+      { name: 'DIF', link: '/about' },
+      { name: 'GUAM', link: '/' },
+      { name: 'SAIPAN', link: '/' },
+      { name: 'NOTICE', link: '/' },
+      { name: 'COMMUNITY', link: '/' },
+    ],
+  },
+  {
+    id: 2,
+    title: 'DIF 소개',
+    subListTitle: [
+      { name: 'DIF소개', link: '/' },
+      { name: 'DIF카드', link: '/' },
+      { name: '클럽메이트', link: '/' },
+      { name: '마스코트 시헤키', link: '/' },
+      { name: 'Why Choose DIF?', link: '/' },
+      { name: 'DIF Cares', link: '/' },
+    ],
+  },
+];
+
 export const Notice = () => {
   const [typeState, typeSetState] = useState(true);
 
   return (
     <SmoothScroll>
       <Header />
-      <Title style={{ marginTop: '8.75rem' }}>PIC괌</Title>
+      <SubNav subNavData={subNavData} />
+      <Title style={{ marginTop: '14.375rem' }}>PIC괌</Title>
       <BtnWrap>
         <Btn
           typeState={typeState}
