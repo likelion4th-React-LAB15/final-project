@@ -5,8 +5,7 @@ import { ReactComponent as Cart } from './../../assets/icons/btn-cart.svg';
 import { ReactComponent as User } from './../../assets/icons/btn-user.svg';
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import ScrollTrigger from 'gsap/ScrollTrigger';
-import gsap from 'gsap';
+import Scrollbar from 'smooth-scrollbar';
 
 const design = keyframes`
 	0% {transform:translateY(20px) rotate(45deg);}
@@ -46,7 +45,11 @@ const HeaderWapper = styled.header`
   padding: 0 2.5rem;
   position: ${({ type }) => ('active' ? 'absolute' : 'fixed')};
   z-index: 101;
-  transition: all 0.18s forwards;
+  transition: all 0.4s;
+
+  &.active {
+    transform: translateY(-100%);
+  }
 
   &.on {
     animation: ${activeHeader} 1s linear;
@@ -141,17 +144,23 @@ const Header = ({ type, children, style, ...restProps }) => {
   const imgRef = useRef(null);
 
   useEffect(() => {
-    console.log(type, menu);
-    setTimeout(() => {}, 150);
+    setTimeout(() => {
+      const elem = document.querySelector('.scroller');
+      const scrollbar = Scrollbar.init(elem, { speed: 0.7, damping: 0.04 });
 
-    setTimeout(() => {}, 10);
-  }, [type, menu]);
+      scrollbar.addListener(function (status) {
+        status.offset.y >= 100
+          ? headerRef.current.classList.add('active')
+          : headerRef.current.classList.remove('active');
+      });
+    }, 10);
+  }, []);
 
   return (
     <>
       <HeaderWave menu={menu} />
 
-      <HeaderWapper ref={headerRef} type={type}>
+      <HeaderWapper ref={headerRef} {...restProps} type={type}>
         <ul
           className={!menu ? 'menuBtn' : 'menuBtn active'}
           onClick={() => menuSetState(!menu)}

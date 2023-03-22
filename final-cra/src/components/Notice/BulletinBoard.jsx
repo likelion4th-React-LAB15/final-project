@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import theme from '../../style/theme';
 
 const StyledBulletinBoardWrap = styled.ul`
   width: 100%;
@@ -109,28 +108,20 @@ const eventData = [
   },
 ];
 
+const render = (data) => {
+  return data.map(({ num, title, date }) => (
+    <li key={num}>
+      <span>{num}</span>
+      <h4>{title}</h4>
+      <span>{date}</span>
+    </li>
+  ));
+};
+
 export const BulletinBoard = ({ typeState }) => {
   return (
     <StyledBulletinBoardWrap>
-      {typeState
-        ? noticeData.reverse().map(({ num, title, date }) => {
-            return (
-              <li>
-                <span>{num}</span>
-                <h4>{title}</h4>
-                <span>{date}</span>
-              </li>
-            );
-          })
-        : eventData.reverse().map(({ num, title, date }) => {
-            return (
-              <li>
-                <span>{num}</span>
-                <h4>{title}</h4>
-                <span>{date}</span>
-              </li>
-            );
-          })}
+      {typeState ? render(noticeData) : render(eventData)}
     </StyledBulletinBoardWrap>
   );
 };

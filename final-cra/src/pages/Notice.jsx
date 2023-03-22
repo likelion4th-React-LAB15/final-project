@@ -5,6 +5,7 @@ import styled from 'styled-components/macro';
 import Footer from './../components/Footer/Footer';
 import Header from './../components/Header/Header';
 import { SubNav } from 'components/subNav/SubNav';
+import Topbtn from 'components/TopBtn';
 import SmoothScroll from 'components/smoothScroll/SmoothScroll';
 
 const BtnWrap = styled.div`
@@ -66,6 +67,7 @@ export const Notice = () => {
       <Slide typeState={typeState} />
       <BulletinBoard typeState={typeState} />
       <Footer />
+      <Topbtn />
     </SmoothScroll>
   );
 };

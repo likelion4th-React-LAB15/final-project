@@ -6,10 +6,12 @@ import FilmList from 'components/FilmList/FilmList';
 import Siheky from 'components/Siheky/Siheky';
 import SmoothScroll from 'components/smoothScroll/SmoothScroll';
 import Footer from 'components/Footer/Footer';
+import TopBtn from 'components/TopBtn';
 
 export const Home = () => {
   return (
     <>
+      <TopBtn onClick={() => {}} />
       <SmoothScroll>
         <Header type={'active'} />
         <SubHeader />

@@ -2,9 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import { Home, LogIn, SignUp, About, Notice } from 'pages';
 import GlobalStyle from 'components/GlobalStyle';
 
-
 const App = () => {
-
   return (
     <>
       <GlobalStyle />
