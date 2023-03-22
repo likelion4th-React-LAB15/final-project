@@ -77,8 +77,8 @@ const IsCheck = styled.span`
   height: 3.75rem;
   border: 0.125rem solid #d5d5d5;
   border-radius: 0.625rem;
-  background: url(${require('./../assets/icons/checked.png')}) no-repeat center
-    center;
+  background: url(${require('./../assets/icons/checked.png')}) ${theme.blue}
+    no-repeat center center;
 `;
 
 const RoomInfoCard = ({
