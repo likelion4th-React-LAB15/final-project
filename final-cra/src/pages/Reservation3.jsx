@@ -46,38 +46,45 @@ const ButtonWrapper = styled.div`
 `;
 
 export const Reservation3 = () => {
-  // const [imageUrl, setImageUrl] = useState('');
   const [rooms, setRooms] = useState([]);
-  const [roomImageList, setRoomImageList] = useState([]);
 
   useLayoutEffect(() => {
-    const getRooms = (async () => {
+    (async () => {
       const q = query(
         collection(db, 'rooms'),
         where('maxNumberOfPerson', '<=', 5)
       );
 
       const querySnapshot = await getDocs(q);
+
       if (querySnapshot.empty) {
         console.log('다른 날짜를 선택해주세요');
       } else {
         const roomList = [];
         const imageList = [];
+
         querySnapshot.forEach((doc) => {
           const storage = getStorage();
-          const storageRef = ref(storage, doc.data().imageUrl);
-          getDownloadURL(storageRef)
-            .then((url) => {
-              imageList.push(url);
-            })
-            .catch((error) => {
-              console.error(error);
-            });
 
-          roomList.push(doc.data());
+          const data = doc.data();
+          roomList.push(data);
+
+          const storageRef = ref(storage, data.imageUrl);
+          imageList.push(
+            getDownloadURL(storageRef)
+              .then((url) => url)
+              .catch((error) => console.error)
+          );
         });
-        setRooms(roomList);
-        setRoomImageList(imageList);
+
+        Promise.all(imageList)
+          .then((imageUrls) => {
+            imageUrls.forEach((url, index) => {
+              roomList[index].imageUrl = url;
+            });
+            setRooms(roomList);
+          })
+          .catch((error) => console.error);
       }
     })();
   }, []);
@@ -97,7 +104,7 @@ export const Reservation3 = () => {
             notice={room.notice}
             addInfoSite={room.site}
             price={room.price}
-            imageUrl={roomImageList[0]}
+            imageUrl={room.imageUrl}
             isLast={index === rooms.length - 1}
           />
         ))}
