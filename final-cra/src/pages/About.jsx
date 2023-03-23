@@ -269,8 +269,8 @@ export const About = () => {
               </ClosingSubDesc>
             </ClosingContents>
           </StyledBottomPadding>
-          <Footer />
         </StyledAbout>
+        <Footer />
       </SmoothScroll>
     </>
   );

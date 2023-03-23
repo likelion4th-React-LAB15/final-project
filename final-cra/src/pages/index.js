@@ -4,3 +4,7 @@ export * from './SignUp';
 export * from './About';
 export * from './Guam';
 export * from './Saipan';
+export * from './Reservation1';
+export * from './Reservation2';
+export * from './Reservation3';
+export * from './Reservation4';

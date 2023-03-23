@@ -1,5 +1,16 @@
 import { Routes, Route } from 'react-router-dom';
-import { Home, LogIn, SignUp, About, Guam, Saipan } from 'pages';
+import {
+  Home,
+  LogIn,
+  SignUp,
+  About,
+  Guam,
+  Saipan,
+  Reservation1,
+  Reservation2,
+  Reservation3,
+  Reservation4,
+} from 'pages';
 import GlobalStyle from 'components/GlobalStyle';
 
 const App = () => {
@@ -13,6 +24,10 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/guam" element={<Guam />} />
         <Route path="/saipan" element={<Saipan />} />
+        <Route path="/reservation1" element={<Reservation1 />} />
+        <Route path="/reservation2" element={<Reservation2 />} />
+        <Route path="/reservation3" element={<Reservation3 />} />
+        <Route path="/reservation4" element={<Reservation4 />} />
       </Routes>
     </>
   );
