@@ -25,7 +25,7 @@ export const About = () => {
       title: 'DIF',
       link: '/about',
       subListTitle: [
-        { name: 'RESERVATION', link: '/' },
+        { name: 'RESERVATION', link: '/reservation' },
         { name: 'DIF', link: '/about' },
         { name: 'GUAM', link: '/guam' },
         { name: 'SAIPAN', link: '/saipan' },
@@ -281,10 +281,10 @@ const StyledAbout = styled.section`
   margin: 0 auto;
   padding-top: 21.25rem;
 `;
-const StyledAboutInner = styled.section`
+const StyledAboutInner = styled.div`
   max-width: 73.75rem;
   margin: 0 auto;
 `;
-const StyledBottomPadding = styled.section`
+const StyledBottomPadding = styled.div`
   padding: 12.5rem 0;
 `;

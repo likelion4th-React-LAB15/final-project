@@ -38,7 +38,7 @@ export const Saipan = () => {
       title: 'SAIPAN',
       link: '/saipan',
       subListTitle: [
-        { name: 'RESERVATION', link: '/' },
+        { name: 'RESERVATION', link: '/reservation' },
         { name: 'DIF', link: '/about' },
         { name: 'GUAM', link: '/guam' },
         { name: 'SAIPAN', link: '/saipan' },
@@ -666,16 +666,16 @@ export const Saipan = () => {
   );
 };
 
-const StyledGuam = styled.div`
+const StyledGuam = styled.section`
   overflow: hidden;
   margin: 0 auto;
   padding-top: 21.25rem;
 `;
-const StyledGuamInner = styled.section`
+const StyledGuamInner = styled.div`
   max-width: 73.75rem;
   margin: 0 auto;
 `;
-const StyledServiceContainer = styled.section`
+const StyledServiceContainer = styled.div`
   width: 100%;
   margin-top: 10rem;
   padding: 10rem 0 10rem 0;

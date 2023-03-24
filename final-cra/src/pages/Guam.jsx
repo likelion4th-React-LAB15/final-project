@@ -41,7 +41,7 @@ export const Guam = () => {
       title: 'GUAM',
       link: '/guam',
       subListTitle: [
-        { name: 'RESERVATION', link: '/' },
+        { name: 'RESERVATION', link: '/reservation' },
         { name: 'DIF', link: '/about' },
         { name: 'GUAM', link: '/guam' },
         { name: 'SAIPAN', link: '/saipan' },
@@ -883,35 +883,35 @@ export const Guam = () => {
   );
 };
 
-const StyledGuam = styled.div`
+const StyledGuam = styled.section`
   overflow: hidden;
   margin: 0 auto;
   padding-top: 21.25rem;
 `;
-const StyledGuamInner = styled.section`
+const StyledGuamInner = styled.div`
   max-width: 73.75rem;
   margin: 0 auto;
 `;
-const StyledDbbContainer = styled.section`
+const StyledDbbContainer = styled.div`
   max-width: 73.75rem;
   margin: 11.5rem auto 0 auto;
 `;
 const StyledDbbBox = styled.div`
   margin: 5.3125rem auto 0 auto;
 `;
-const StyledNotificationContainer = styled.section`
+const StyledNotificationContainer = styled.div`
   width: 100%;
   max-width: 73.75rem;
   padding: 0 5.3125rem;
   padding-bottom: 15rem;
   margin: 0 auto;
 `;
-const StyledServiceContainer = styled.section`
+const StyledServiceContainer = styled.div`
   width: 100%;
   padding: 10rem 0 10rem 0;
   background-color: rgba(0, 0, 0, 0.05);
 `;
-const StyledCCPContainer = styled.section`
+const StyledCCPContainer = styled.div`
   width: 100%;
   padding: 10rem 0 10rem 0;
 `;

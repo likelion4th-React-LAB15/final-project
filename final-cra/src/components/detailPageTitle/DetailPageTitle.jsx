@@ -1,7 +1,11 @@
 import styled from 'styled-components/macro';
 import theme from 'style/theme';
-export const DetailPageTitle = ({ children }) => {
-  return <StyledDetailPageTitle>{children}</StyledDetailPageTitle>;
+export const DetailPageTitle = ({ description, children }) => {
+  return (
+    <StyledDetailPageTitle className={description ? 'marginZero' : ''}>
+      {children}
+    </StyledDetailPageTitle>
+  );
 };
 
 const StyledDetailPageTitle = styled.h2`
@@ -13,4 +17,11 @@ const StyledDetailPageTitle = styled.h2`
   color: ${theme.blue};
   line-height: 1.4;
   text-align: center;
+
+  &.marginZero {
+    margin-bottom: 0;
+  }
+  &.marginZero + p {
+    margin-top: 1.375rem;
+  }
 `;

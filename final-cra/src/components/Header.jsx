@@ -188,7 +188,7 @@ const SubHeader = styled.div`
 `;
 
 const subHeaderList = [
-  { title: 'RESERVATION', link: '/', key: 0 },
+  { title: 'RESERVATION', link: '/reservation', key: 0 },
   { title: 'DIF', link: '/about', key: 1 },
   { title: 'GUAM', link: '/guam', key: 2 },
   { title: 'SAIPAN', link: '/saipan', key: 3 },

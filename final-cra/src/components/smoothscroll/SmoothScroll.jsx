@@ -1,21 +1,25 @@
 import gsap from 'gsap';
-import { useEffect, useState, useRef } from 'react';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Scrollbar from 'smooth-scrollbar';
+import styled from 'styled-components/macro';
+import { useEffect, useRef, useState } from 'react';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 
-const SmoothScroller = ({ children, style = { height: '100vh' } }) => {
+
+const SmoothScroll = ({ children }) => {
+
   const [scrollBarCreated, setScrollBarCreated] = useState(false);
   const scroller = useRef();
   const bodyScrollBar = useRef();
 
   useEffect(() => {
-    scroller.current = document.querySelector('.scroller');
+    scroller.current = document.querySelector(".scroller");
     bodyScrollBar.current = Scrollbar.init(scroller.current, {
       damping: 0.1,
       continuousScrolling: true,
       alwaysShowTracks: false,
       renderByPixels: !('ontouchstart' in document),
       delegateTo: scroller.current,
+
     });
     setScrollBarCreated(true);
   }, []);
@@ -29,7 +33,7 @@ const SmoothScroller = ({ children, style = { height: '100vh' } }) => {
             bodyScrollBar.current.scrollTop = value;
           }
           return bodyScrollBar.current.scrollTop;
-        },
+        }
       });
       bodyScrollBar.current.addListener(ScrollTrigger.update);
       ScrollTrigger.defaults({ scroller: scroller.current });
@@ -37,10 +41,15 @@ const SmoothScroller = ({ children, style = { height: '100vh' } }) => {
   }, [scrollBarCreated]);
 
   return (
-    <div className="scroller" style={style}>
+    <StyledSmoothScrollbar className='scroller'>
       {children}
-    </div>
-  );
-};
+    </StyledSmoothScrollbar>
+  )
 
-export default SmoothScroller;
+}
+
+const StyledSmoothScrollbar = styled.div`
+  height: 100vh;
+`
+
+export default SmoothScroll;
