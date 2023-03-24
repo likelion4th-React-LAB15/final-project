@@ -11,6 +11,6 @@ const firebaseConfig = {
   appId: cra.REACT_APP_APP_ID,
 };
 
-const app = initializeApp(firebaseConfig)
+const app = initializeApp(firebaseConfig);
 
 export default app;

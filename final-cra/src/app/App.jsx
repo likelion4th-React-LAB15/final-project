@@ -1,10 +1,11 @@
 import { Routes, Route } from 'react-router-dom';
-import { Home, LogIn, SignUp, About } from 'pages';
+import { Home, LogIn, SignUp, About, Notice } from 'pages';
 import GlobalStyle from 'components/GlobalStyle';
 import { Reservation1 } from './../pages/Reservation1';
 import { Reservation2 } from './../pages/Reservation2';
 import { Reservation3 } from './../pages/Reservation3';
 import { Reservation4 } from './../pages/Reservation4';
+import { Community } from 'pages/Community';
 
 const App = () => {
   return (
@@ -19,6 +20,8 @@ const App = () => {
         <Route path="/reservation2" element={<Reservation2 />} />
         <Route path="/reservation3" element={<Reservation3 />} />
         <Route path="/reservation4" element={<Reservation4 />} />
+        <Route path="/notice" element={<Notice />} />
+        <Route path="/community" element={<Community />} />
       </Routes>
     </>
   );
