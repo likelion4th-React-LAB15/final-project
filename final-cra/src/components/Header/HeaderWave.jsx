@@ -112,7 +112,7 @@ const MenuWrap = styled.ul`
 const menuList = [
   {
     title: 'RESERVATION',
-    link: '',
+    link: 'reservation',
     subTitle: ['예약하기', '자주하는 질문', '일반문의', '확정예약문의'],
   },
   {
@@ -129,7 +129,7 @@ const menuList = [
   },
   {
     title: 'GUAM',
-    link: '',
+    link: 'guam',
     subTitle: [
       'PIC괌',
       '객실',
@@ -146,7 +146,7 @@ const menuList = [
   },
   {
     title: 'SAIPAN',
-    link: '',
+    link: '/saipan',
     subTitle: [
       'PIC사이판',
       '객실',

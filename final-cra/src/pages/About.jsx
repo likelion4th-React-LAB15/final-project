@@ -2,9 +2,9 @@ import styled from 'styled-components/macro';
 import theme from 'style/theme';
 import { useEffect } from 'react';
 import gsap from 'gsap';
-import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import Title from 'components/Title';
 import { AboutList } from 'components/about';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import Header from './../components/Header/Header';
 import Footer from 'components/Footer/Footer';
 

@@ -46,28 +46,30 @@ export const Notice = () => {
   const [typeState, typeSetState] = useState(true);
 
   return (
-    <SmoothScroll>
-      <Header />
-      <SubNav subNavData={subNavData} />
-      <Title style={{ marginTop: '14.375rem' }}>PIC괌</Title>
-      <BtnWrap>
-        <Btn
-          typeState={typeState}
-          onClick={() => {
-            typeSetState(true);
-          }}
-        >
-          공지사항
-        </Btn>
-        <Btn typeState={!typeState} onClick={() => typeSetState(false)}>
-          이벤트
-        </Btn>
-      </BtnWrap>
-      <SearchInput />
-      <Slide typeState={typeState} />
-      <BulletinBoard typeState={typeState} />
-      <Footer />
+    <>
       <Topbtn />
-    </SmoothScroll>
+      <SmoothScroll>
+        <Header />
+        <SubNav subNavData={subNavData} />
+        <Title style={{ marginTop: '14.375rem' }}>PIC괌</Title>
+        <BtnWrap>
+          <Btn
+            typeState={typeState}
+            onClick={() => {
+              typeSetState(true);
+            }}
+          >
+            공지사항
+          </Btn>
+          <Btn typeState={!typeState} onClick={() => typeSetState(false)}>
+            이벤트
+          </Btn>
+        </BtnWrap>
+        <SearchInput />
+        <Slide typeState={typeState} />
+        <BulletinBoard typeState={typeState} />
+        <Footer />
+      </SmoothScroll>
+    </>
   );
 };

@@ -184,7 +184,7 @@ const btnActive = () => {
   } else {
     document.querySelector('#previousButton').style.opacity = '1';
   }
-  
+
   if (
     swiper.children[swiper.children.length - 3]?.classList.contains(
       'swiper-slide-active'

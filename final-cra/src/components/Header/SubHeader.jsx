@@ -2,15 +2,15 @@ import React from 'react';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import theme from 'style/theme';
-import styled, { keyframes } from 'styled-components/macro';
+import styled from 'styled-components/macro';
 
 const subHeaderList = [
-  { title: 'RESERVATION', link: '/', key: 0 },
+  { title: 'RESERVATION', link: '/reservation', key: 0 },
   { title: 'DIF', link: '/about', key: 1 },
-  { title: 'GUAM', link: '/', key: 2 },
-  { title: 'SAIPAN', link: '/', key: 3 },
+  { title: 'GUAM', link: '/guam', key: 2 },
+  { title: 'SAIPAN', link: '/saipan', key: 3 },
   { title: 'NOTICE', link: '/notice', key: 4 },
-  { title: 'COMMUNITY', link: '/', key: 5 },
+  { title: 'COMMUNITY', link: '/community', key: 5 },
 ];
 
 const StyledSubHeader = styled.div`

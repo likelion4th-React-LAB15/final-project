@@ -144,16 +144,19 @@ const Header = ({ type, children, style, ...restProps }) => {
   const imgRef = useRef(null);
 
   useEffect(() => {
-    setTimeout(() => {
+    const id = setTimeout(() => {
       const elem = document.querySelector('.scroller');
       const scrollbar = Scrollbar.init(elem, { speed: 0.7, damping: 0.04 });
-
       scrollbar.addListener(function (status) {
         status.offset.y >= 100
           ? headerRef.current.classList.add('active')
           : headerRef.current.classList.remove('active');
       });
     }, 10);
+
+    return () => {
+      clearTimeout(id);
+    };
   }, []);
 
   return (
