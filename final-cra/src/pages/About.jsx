@@ -6,7 +6,8 @@ import Title from 'components/Title';
 import { AboutList } from 'components/about';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import Header from './../components/Header/Header';
-import Footer from 'components/Footer/Footer';
+import Footer from 'components/footer/Footer';
+import Topbtn from './../components/TopBtn';
 
 import {
   ClosingContents,
@@ -237,6 +238,7 @@ export const About = () => {
   return (
     <>
       <Header />
+      <Topbtn />
       <SubNav subNavData={subNavData} />
       <SmoothScroll>
         <StyledAbout className="changeBg">
@@ -272,6 +274,7 @@ export const About = () => {
             </ClosingContents>
           </StyledBottomPadding>
         </StyledAbout>
+        <Footer />
       </SmoothScroll>
     </>
   );
