@@ -1,13 +1,17 @@
-import theme from "style/theme";
+import theme from 'style/theme';
 import styled from 'styled-components/macro';
 
 function FooterAddress() {
-
   return (
     <>
       <StyledFooterAddress>
         <div className="addressInner addressTop">
-          <h2 className="footerLogo"><img src={require('assets/icons/logo-off.png')} alt="Dobby Islands Free" /></h2>
+          <h2 className="footerLogo">
+            <img
+              src={require('assets/icons/logo-off.png')}
+              alt="Dobby Islands Free"
+            />
+          </h2>
           <div>
             <a href="{()=>false}">개인정보 처리방침</a>
             <span className="line" aria-hidden="true"></span>
@@ -17,10 +21,12 @@ function FooterAddress() {
         <div className="addressInner addressMiddle">
           <address>
             <div>
-              <strong>DIF Guam</strong> : 210 Pale San Vitores Road, Tumon Bay, Guam 96913 / Tel : +1 (671) 646-9171
+              <strong>DIF Guam</strong> : 210 Pale San Vitores Road, Tumon Bay,
+              Guam 96913 / Tel : +1 (671) 646-9171
             </div>
             <div>
-              <strong>DIF Saipan</strong> : 779 Chalan Tun Thomas P. Sablan Road, Saipan, MP 96950 CNMI / Tel : +1 (670) 234-7976
+              <strong>DIF Saipan</strong> : 779 Chalan Tun Thomas P. Sablan
+              Road, Saipan, MP 96950 CNMI / Tel : +1 (670) 234-7976
             </div>
           </address>
           <div className="footerEmail">
@@ -34,61 +40,60 @@ function FooterAddress() {
         </div>
       </StyledFooterAddress>
     </>
-  )
+  );
 }
-
 
 const StyledFooterAddress = styled.div`
   padding-top: 3.125rem;
   color: ${theme.white};
-  .addressInner{
+  .addressInner {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
   }
-  .addressTop div{
+  .addressTop div {
     display: flex;
     align-items: center;
   }
-  .addressTop a{
+  .addressTop a {
     font-family: 'Poppins', sans-serif;
     font-size: 1.125rem;
     line-height: 1.875rem;
     color: inherit;
     text-decoration: none;
   }
-  .addressTop .line{
+  .addressTop .line {
     display: inline-block;
     width: 0.0625rem;
     height: 0.875rem;
-    margin:0 0.625rem;
+    margin: 0 0.625rem;
     background-color: #fff;
   }
-  .footerLogo{
+  .footerLogo {
     order: 1;
   }
 
-  .addressMiddle{
+  .addressMiddle {
     margin: 1.25rem 0 1.875rem 0;
   }
-  .addressMiddle address{
+  .addressMiddle address {
     font-family: 'Poppins', sans-serif;
     font-size: ${theme.textBase};
   }
-  .addressMiddle strong{
-    font-weight:700;
+  .addressMiddle strong {
+    font-weight: 700;
   }
-  .addressMiddle .footerEmail{
+  .addressMiddle .footerEmail {
     font-family: 'Poppins', sans-serif;
     font-size: 0.875rem;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255, 255, 255, 0.7);
   }
 
-  .addressBottom address{
+  .addressBottom address {
     font-family: 'Poppins', sans-serif;
     font-size: 0.875rem;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255, 255, 255, 0.7);
   }
-`
+`;
 
-export default FooterAddress
+export default FooterAddress;
