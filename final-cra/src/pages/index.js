@@ -4,6 +4,8 @@ export * from './SignUp';
 export * from './About';
 export * from './Guam';
 export * from './Saipan';
+export * from './Notice';
+export * from './Community';
 export * from './Reservation';
 export * from './Reservation1';
 export * from './Reservation2';

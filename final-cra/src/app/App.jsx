@@ -6,6 +6,8 @@ import {
   About,
   Guam,
   Saipan,
+  Notice,
+  Community,
   Reservation,
   Reservation1,
   Reservation2,
@@ -25,6 +27,8 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/guam" element={<Guam />} />
         <Route path="/saipan" element={<Saipan />} />
+        <Route path="/notice" element={<Notice />} />
+        <Route path="/community" element={<Community />} />
         <Route path="/reservation" element={<Reservation />} />
         <Route path="/reservation1" element={<Reservation1 />} />
         <Route path="/reservation2" element={<Reservation2 />} />
