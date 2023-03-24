@@ -1,16 +1,12 @@
 import styled from 'styled-components/macro';
 import theme from 'style/theme';
+import { Link } from 'react-router-dom';
 
 export const CcpLinkButton = ({ children }) => {
+  return <StyledCcpLinkButton to="/">{children}</StyledCcpLinkButton>;
+};
 
-  return (
-    <StyledCcpLinkButton>
-      {children}
-    </StyledCcpLinkButton>
-  )
-}
-
-const StyledCcpLinkButton = styled.a`
+const StyledCcpLinkButton = styled(Link)`
   display: block;
   width: 18rem;
   height: 3.4375rem;
@@ -23,9 +19,9 @@ const StyledCcpLinkButton = styled.a`
   border-radius: 1.875rem;
   background-color: ${theme.white};
   transition: all 0.3s;
-  margin:5rem auto;
-  &:hover{
+  margin: 5rem auto;
+  &:hover {
     background-color: ${theme.indigo};
     color: ${theme.white};
   }
-`
+`;
