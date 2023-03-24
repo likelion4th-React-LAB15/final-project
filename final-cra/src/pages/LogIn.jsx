@@ -1,14 +1,14 @@
-import { useRef } from 'react';
-import { Link } from 'react-router-dom';
-import { UserInput, UserForm, UserButton } from 'components/user';
-import styled from 'styled-components/macro';
-import Title from 'components/Title';
-import theme from 'style/theme';
-import { useSignIn, useAuthState, useSignOut } from '@service/auth';
+import { useRef } from "react";
+import { Link } from "react-router-dom";
+import { UserLogInInput, UserForm, Button } from "components/user";
+import styled from "styled-components/macro";
+import Title from "components/Title";
+import theme from "style/theme";
+import { useSignIn, useAuthState, useSignOut } from "@service/auth";
 
 const initialFormState = {
-  email: '',
-  password: '',
+  email: "",
+  password: "",
 };
 
 export const LogIn = () => {
@@ -28,7 +28,7 @@ export const LogIn = () => {
   };
 
   const handleSignOut = async () => {
-    console.log('로그아웃');
+    console.log("로그아웃");
     signOut();
   };
 
@@ -47,40 +47,27 @@ export const LogIn = () => {
       <UserForm onSubmit={handleSignIn}>
         <fieldset>
           <legend>로그인 폼</legend>
-          <UserInput
-            labelClass={'a11y-hidden'}
-            name="email"
-            type={'email'}
-            placeholder={'이메일을 입력해주세요'}
-            onChange={handleChangeInput}
-          >
+          <UserLogInInput labelClass={"a11y-hidden"} name="email" type={"email"} placeholder={"이메일을 입력해주세요"} onChange={handleChangeInput}>
             이메일
-          </UserInput>
-          <UserInput
-            labelClass={'a11y-hidden'}
-            name="password"
-            type={'password'}
-            placeholder={'비밀번호를 입력해주세요'}
-            onChange={handleChangeInput}
-          >
+          </UserLogInInput>
+          <UserLogInInput labelClass={"a11y-hidden"} name="password" type={"password"} placeholder={"비밀번호를 입력해주세요"} onChange={handleChangeInput}>
             비밀번호
-          </UserInput>
+          </UserLogInInput>
         </fieldset>
         <StyledUl>
           <li>
-            <a href="/">아이디 찾기</a>
+            <a href="#">아이디 찾기</a>
           </li>
           <StyledList>
-            <a href="/">비밀번호 찾기</a>
+            <a href="#">비밀번호 찾기</a>
           </StyledList>
         </StyledUl>
-        <UserButton type="submit" disabled={isLoadingSignIn}>
+        <Button type="submit" disabled={isLoadingSignIn} visible>
           로그인
-        </UserButton>
+        </Button>
       </UserForm>
       <StyledSpan>
-        아직 가입하지 않으셨나요?
-        <StyledLink to="/signup">회원가입</StyledLink>
+        아직 가입하지 않으셨나요?<StyledLink to="/signup">회원가입</StyledLink>
       </StyledSpan>
     </StyledSection>
   );
@@ -106,7 +93,7 @@ const StyledUl = styled.ul`
 const StyledList = styled.li`
   &::before {
     padding: 0 0.25rem;
-    content: '|';
+    content: "|";
   }
 `;
 

@@ -1,7 +1,7 @@
 import theme from 'style/theme';
 import styled from 'styled-components/macro';
 import SihkeyBgBottom from 'assets/images/fix-siheky-bottom.svg';
-import Wave from 'components/Wave/Wave';
+import Wave from 'components/wave/Wave';
 import SihekyInner from './SihekyInner';
 
 function Siheky() {
