@@ -20,6 +20,7 @@ const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 5.625rem;
+  margin-bottom: 24.063rem;
 `;
 
 export const Reservation1 = () => {
