@@ -22,7 +22,6 @@ export const LogIn = () => {
     e.preventDefault();
 
     const { email, password } = formStateRef.current;
-    // console.log({ email, password });
 
     await signIn(email, password);
   };
@@ -56,10 +55,10 @@ export const LogIn = () => {
         </fieldset>
         <StyledUl>
           <li>
-            <a href="#">아이디 찾기</a>
+            <a href="/">아이디 찾기</a>
           </li>
           <StyledList>
-            <a href="#">비밀번호 찾기</a>
+            <a href="/">비밀번호 찾기</a>
           </StyledList>
         </StyledUl>
         <Button type="submit" disabled={isLoadingSignIn} visible>

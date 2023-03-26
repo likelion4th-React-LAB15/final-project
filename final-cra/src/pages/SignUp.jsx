@@ -32,7 +32,6 @@ export const SignUp = () => {
   const { isLoading, error } = useAuthState();
   const [checkEmail, setCheckEmail] = useState(false);
   const [checkNickname, setCheckNickname] = useState(false);
-  const [checkName, setCheckName] = useState("");
   const [checkPhone, setCheckPhone] = useState(false);
 
   const formStateRef = useRef(initialFormState);
@@ -180,11 +179,6 @@ export const SignUp = () => {
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
     formStateRef.current[name] = value;
-
-    if (name === "name") {
-      const result = e.target.value.replace(/\d/g, "");
-      setCheckName(result);
-    }
   };
 
   if (isLoading) {
@@ -218,7 +212,7 @@ export const SignUp = () => {
       <UserSignUpInput name={"passwordConfirm"} type={"password"} placeholder={"비밀번호를 한번 더 입력해주세요."} onChange={handleChangeInput} required>
         비밀번호 확인
       </UserSignUpInput>
-      <UserSignUpInput name={"name"} placeholder={"이름을 입력해주세요."} onChange={handleChangeInput} value={checkName} required>
+      <UserSignUpInput name={"name"} placeholder={"이름을 입력해주세요."} onChange={handleChangeInput} required string >
         이름
       </UserSignUpInput>
       <UserSignUpInput

@@ -1,7 +1,6 @@
 import { useState, useCallback, useMemo } from 'react';
 import {
   createUserWithEmailAndPassword,
-  updateProfile,
   sendEmailVerification as firebaseSendEmailVerification,
 } from 'firebase/auth';
 import { auth } from './index';
@@ -19,7 +18,9 @@ export function useSignUp(sendEmailVerification = false) {
         const userCredentials = await createUserWithEmailAndPassword(
           auth,
           email,
-          password
+          password,
+          name,
+          phone
         );
 
         const { user } = userCredentials;
