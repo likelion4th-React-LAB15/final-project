@@ -2,6 +2,8 @@ import styled from 'styled-components/macro';
 import theme from 'style/theme';
 import { useEffect } from 'react';
 import gsap from 'gsap';
+import Topbtn from 'components/TopBtn';
+import Header from 'components/Header/Header';
 import Footer from 'components/footer/Footer';
 import SmoothScroll from 'components/smoothScroll/SmoothScroll';
 import { SubNav } from '../components/subNav/SubNav';
@@ -20,8 +22,8 @@ export const Reservation = () => {
         { name: 'DIF', link: '/about' },
         { name: 'GUAM', link: '/guam' },
         { name: 'SAIPAN', link: '/saipan' },
-        { name: 'NOTICE', link: '/' },
-        { name: 'COMMUNITY', link: '/' },
+        { name: 'NOTICE', link: '/notice' },
+        { name: 'COMMUNITY', link: '/community' },
       ],
     },
     {
@@ -72,6 +74,8 @@ export const Reservation = () => {
 
   return (
     <>
+      <Header />
+      <Topbtn />
       <SubNav subNavData={subNavData} />
       <SmoothScroll>
         <StyledReserContainer className="changeBg">

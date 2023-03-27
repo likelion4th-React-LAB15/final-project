@@ -5,7 +5,9 @@ import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import theme from 'style/theme';
 
+import Topbtn from 'components/TopBtn';
 import { AboutList } from 'components/about';
+import Header from 'components/Header/Header';
 import Footer from 'components/footer/Footer';
 import { SubNav } from 'components/subNav/SubNav';
 import { ServiceList } from 'components/service/ServiceList';
@@ -42,8 +44,8 @@ export const Saipan = () => {
         { name: 'DIF', link: '/about' },
         { name: 'GUAM', link: '/guam' },
         { name: 'SAIPAN', link: '/saipan' },
-        { name: 'NOTICE', link: '/' },
-        { name: 'COMMUNITY', link: '/' },
+        { name: 'NOTICE', link: '/notice' },
+        { name: 'COMMUNITY', link: '/community' },
       ],
     },
     {
@@ -535,6 +537,8 @@ export const Saipan = () => {
 
   return (
     <>
+      <Header />
+      <Topbtn />
       <SubNav subNavData={subNavData} />
       <SmoothScroll>
         <StyledGuam className="changeBg">

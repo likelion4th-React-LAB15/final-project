@@ -5,8 +5,10 @@ import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import theme from 'style/theme';
 
+import Topbtn from 'components/TopBtn';
 import { DbbList } from 'components/dbb';
 import { AboutList } from 'components/about';
+import Header from 'components/Header/Header';
 import Footer from 'components/footer/Footer';
 import { CcpLinkButton, CcpSwiper } from 'components/ccp';
 import { SubNav } from 'components/subNav/SubNav';
@@ -45,8 +47,8 @@ export const Guam = () => {
         { name: 'DIF', link: '/about' },
         { name: 'GUAM', link: '/guam' },
         { name: 'SAIPAN', link: '/saipan' },
-        { name: 'NOTICE', link: '/' },
-        { name: 'COMMUNITY', link: '/' },
+        { name: 'NOTICE', link: '/notice' },
+        { name: 'COMMUNITY', link: '/community' },
       ],
     },
     {
@@ -726,6 +728,8 @@ export const Guam = () => {
 
   return (
     <>
+      <Header />
+      <Topbtn />
       <SubNav subNavData={subNavData} />
       <SmoothScroll>
         <StyledGuam className="changeBg">

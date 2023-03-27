@@ -31,8 +31,8 @@ export const About = () => {
         { name: 'DIF', link: '/about' },
         { name: 'GUAM', link: '/guam' },
         { name: 'SAIPAN', link: '/saipan' },
-        { name: 'NOTICE', link: '/' },
-        { name: 'COMMUNITY', link: '/' },
+        { name: 'NOTICE', link: '/notice' },
+        { name: 'COMMUNITY', link: '/community' },
       ],
     },
     {
