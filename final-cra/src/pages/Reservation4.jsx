@@ -2,6 +2,9 @@ import React from 'react';
 import ReservationTitle from 'components/Reservation/ReservationTitle.js';
 import InputUserInfo from 'components/Reservation/InputUserInfo.js';
 import styled from 'styled-components';
+import Header from 'components/Header/Header';
+import Footer from 'components/Footer/Footer';
+import SmoothScroll from 'components/smoothScroll/SmoothScroll';
 import ContinueButton from 'components/ContinueButton.js';
 import Accordion from 'components/Reservation/Accordion.js';
 import { useState, useEffect } from 'react';
@@ -206,43 +209,47 @@ export const Reservation4 = () => {
 
   return (
     <>
-      <ReservationTitle value={'장바구니 및 결제'}></ReservationTitle>
-      <CartWrapper>
-        <RoomWrapper>
-          <Accordion list={state.accordionContents} />
-          <ButtonWrapper>
-            <BackButton value={'+ 객실 추가'} />
-          </ButtonWrapper>
-        </RoomWrapper>
-        <UserInfoWrapper>
-          <PayInfoWrapper>
-            <PayTitle>결제 정보 입력</PayTitle>
-            <InfoTitle>예약자 정보</InfoTitle>
-            <InputUserInfo placeholder="이름" />
-            <InputUserInfo placeholder="전화번호" />
-            <InputUserInfo placeholder="이메일 주소" />
-            <AddRequirement
-              type="text"
-              placeholder={'추가 요구사항'}
-            ></AddRequirement>
-            <Line />
-            <InfoTitle>결제 정보</InfoTitle>
-            <InputUserInfo placeholder="카드 번호" />
-            <InputUserInfo placeholder="만료(MM/YY)" />
-            <InputUserInfo placeholder="카드 소유자 영문명" />
-            <CardImgWrapper>
-              <VisaImg />
-              <MasterCardImg />
-            </CardImgWrapper>
-            <TotalPriceWrapper>
-              <Total>합계</Total>
-              <TotalPrice>${totalPrice}</TotalPrice>
-            </TotalPriceWrapper>
-          </PayInfoWrapper>
-          <ContinueButton value={'결제하기'} />
-          <Policy>{policy[0]}</Policy>
-        </UserInfoWrapper>
-      </CartWrapper>
+      <Header />
+      <SmoothScroll>
+        <ReservationTitle value={'장바구니 및 결제'}></ReservationTitle>
+        <CartWrapper>
+          <RoomWrapper>
+            <Accordion list={state.accordionContents} />
+            <ButtonWrapper>
+              <BackButton value={'+ 객실 추가'} />
+            </ButtonWrapper>
+          </RoomWrapper>
+          <UserInfoWrapper>
+            <PayInfoWrapper>
+              <PayTitle>결제 정보 입력</PayTitle>
+              <InfoTitle>예약자 정보</InfoTitle>
+              <InputUserInfo placeholder="이름" />
+              <InputUserInfo placeholder="전화번호" />
+              <InputUserInfo placeholder="이메일 주소" />
+              <AddRequirement
+                type="text"
+                placeholder={'추가 요구사항'}
+              ></AddRequirement>
+              <Line />
+              <InfoTitle>결제 정보</InfoTitle>
+              <InputUserInfo placeholder="카드 번호" />
+              <InputUserInfo placeholder="만료(MM/YY)" />
+              <InputUserInfo placeholder="카드 소유자 영문명" />
+              <CardImgWrapper>
+                <VisaImg />
+                <MasterCardImg />
+              </CardImgWrapper>
+              <TotalPriceWrapper>
+                <Total>합계</Total>
+                <TotalPrice>${totalPrice}</TotalPrice>
+              </TotalPriceWrapper>
+            </PayInfoWrapper>
+            <ContinueButton value={'결제하기'} />
+            <Policy>{policy[0]}</Policy>
+          </UserInfoWrapper>
+        </CartWrapper>
+        <Footer />
+      </SmoothScroll>
     </>
   );
 };

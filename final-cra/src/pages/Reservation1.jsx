@@ -4,6 +4,9 @@ import GuestSelect from 'components/Reservation/GuestSelect.js';
 import ContinueButton from 'components/ContinueButton.js';
 import ReservationTitle from 'components/Reservation/ReservationTitle.js';
 import theme from 'style/theme';
+import Header from 'components/Header/Header';
+import Footer from 'components/Footer/Footer';
+import SmoothScroll from 'components/smoothScroll/SmoothScroll';
 
 const GuestNumber = styled.h3`
   font-family: 'Inter';
@@ -25,19 +28,25 @@ const ButtonWrapper = styled.div`
 
 export const Reservation1 = () => {
   return (
-    <ReservationTitle value={'투숙객'}>
-      <StepNavigation
-        page={'reservation1'}
-        labelArray={['투숙객 선택', '날짜 선택', '객실 선택']}
-      ></StepNavigation>
-      <GuestNumber>투숙객 및 객실</GuestNumber>
-      <GuestSelect></GuestSelect>
-      <ButtonWrapper>
-        <ContinueButton
-          id={'reservation2'}
-          value={'확인 및 계속'}
-        ></ContinueButton>
-      </ButtonWrapper>
-    </ReservationTitle>
+    <>
+      <Header />
+      <SmoothScroll>
+        <ReservationTitle value={'투숙객'}>
+          <StepNavigation
+            page={'reservation1'}
+            labelArray={['투숙객 선택', '날짜 선택', '객실 선택']}
+          ></StepNavigation>
+          <GuestNumber>투숙객 및 객실</GuestNumber>
+          <GuestSelect></GuestSelect>
+          <ButtonWrapper>
+            <ContinueButton
+              id={'reservation2'}
+              value={'확인 및 계속'}
+            ></ContinueButton>
+          </ButtonWrapper>
+        </ReservationTitle>
+        <Footer />
+      </SmoothScroll>
+    </>
   );
 };
