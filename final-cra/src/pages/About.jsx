@@ -5,7 +5,7 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import { AboutList } from 'components/about';
 import Header from 'components/Header/Header';
-import Footer from 'components/footer/Footer';
+import Footer from 'components/Footer/Footer';
 import Topbtn from 'components/TopBtn';
 import {
   ClosingContents,

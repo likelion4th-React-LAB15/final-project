@@ -6,7 +6,7 @@ import BackButton from 'components/BackButton.js';
 import RoomInfoCard from 'components/Reservation/RoomInfoCard.js';
 import styled from 'styled-components';
 import Header from 'components/Header/Header';
-import Footer from 'components/footer/Footer';
+import Footer from 'components/Footer/Footer';
 import SmoothScroll from 'components/smoothScroll/SmoothScroll';
 import { getStorage, ref, getDownloadURL } from 'firebase/storage';
 import { db } from '@service/auth';

@@ -5,7 +5,7 @@ import ContinueButton from 'components/ContinueButton.js';
 import ReservationTitle from 'components/Reservation/ReservationTitle.js';
 import theme from 'style/theme';
 import Header from 'components/Header/Header';
-import Footer from 'components/footer/Footer';
+import Footer from 'components/Footer/Footer';
 import SmoothScroll from 'components/smoothScroll/SmoothScroll';
 
 const GuestNumber = styled.h3`

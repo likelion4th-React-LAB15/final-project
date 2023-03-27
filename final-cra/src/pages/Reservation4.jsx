@@ -1,7 +1,7 @@
 import ReservationTitle from 'components/Reservation/ReservationTitle.js';
 import styled from 'styled-components';
 import Header from 'components/Header/Header';
-import Footer from 'components/footer/Footer';
+import Footer from 'components/Footer/Footer';
 import SmoothScroll from 'components/smoothScroll/SmoothScroll';
 
 export const Reservation4 = () => {
