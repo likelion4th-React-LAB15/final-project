@@ -51,7 +51,7 @@ export const SubNav = ({ subNavData, children }) => {
           {subNavData.map((subNavItem, idx) => {
             return (
               <li className="subNavTitle" key={idx}>
-                <Link to="/">{subNavItem.title}</Link>
+                <Link to={subNavData.link}>{subNavItem.title}</Link>
                 {subNavItem.subListTitle ? (
                   <SubNavItemList>
                     {subNavItem.subListTitle.map((item, idx) => {

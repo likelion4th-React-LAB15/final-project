@@ -10,27 +10,20 @@ import { SubNav } from '../components/subNav/SubNav';
 const subNavData = [
   {
     id: 1,
-    title: 'DIF',
+    title: 'COMMUNITY',
     subListTitle: [
-      { name: 'RESERVATION', link: '/' },
+      { name: 'RESERVATION', link: '/reservation' },
       { name: 'DIF', link: '/about' },
-      { name: 'GUAM', link: '/' },
-      { name: 'SAIPAN', link: '/' },
-      { name: 'NOTICE', link: '/' },
-      { name: 'COMMUNITY', link: '/' },
+      { name: 'GUAM', link: '/guam' },
+      { name: 'SAIPAN', link: '/saipan' },
+      { name: 'NOTICE', link: '/notice' },
+      { name: 'COMMUNITY', link: '/community' },
     ],
   },
   {
     id: 2,
-    title: 'DIF 소개',
-    subListTitle: [
-      { name: 'DIF소개', link: '/' },
-      { name: 'DIF카드', link: '/' },
-      { name: '클럽메이트', link: '/' },
-      { name: '마스코트 시헤키', link: '/' },
-      { name: 'Why Choose DIF?', link: '/' },
-      { name: 'DIF Cares', link: '/' },
-    ],
+    title: 'DIF영상',
+    subListTitle: [{ name: 'DIF영상', link: '/community' }],
   },
 ];
 
