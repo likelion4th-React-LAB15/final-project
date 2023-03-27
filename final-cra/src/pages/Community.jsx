@@ -56,10 +56,9 @@ export const Community = () => {
         />
       )}
       <TopBtn />
+      <Header />
+      <SubNav subNavData={subNavData} />
       <SmoothScroll>
-        <div></div>
-        <Header />
-        <SubNav subNavData={subNavData} />
         <Title style={{ marginTop: '14.375rem' }}>PIC영상</Title>
         <VideoSlide ref={swiperRef} />
         <VideoList ref={StyledVideoWrapRef} />

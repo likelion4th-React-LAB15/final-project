@@ -34,8 +34,9 @@ const SectionOneStyled = styled.section`
       position: absolute;
       right: 370px;
       top: 420px;
+      z-index: 3;
 
-      h3 {
+      h2 {
         display: block;
         font-size: 5.625rem;
         font-weight: 700;
@@ -68,7 +69,7 @@ const SectionOneStyled = styled.section`
         border: 2px solid ${theme.blue};
       }
 
-      h4 {
+      h3 {
         position: absolute;
         font-size: 90px;
         font-weight: 700;
@@ -87,7 +88,7 @@ const SectionOneStyled = styled.section`
       top: 6.75rem;
       z-index: 3;
 
-      h3 {
+      h2 {
         margin-left: -7.75rem;
         font-size: 90px;
         color: #212c92;
@@ -113,7 +114,7 @@ const SectionOneStyled = styled.section`
         border: 2px solid ${theme.blue};
       }
 
-      h4 {
+      h3 {
         position: absolute;
         right: -470px;
         top: 190px;
@@ -130,8 +131,9 @@ const SectionOneStyled = styled.section`
       position: absolute;
       right: 370px;
       top: 54px;
+      z-index: 3;
 
-      h3 {
+      h2 {
         display: block;
         font-size: 5.625rem;
         font-weight: 700;
@@ -171,7 +173,7 @@ const SectionOneStyled = styled.section`
         border: 2px solid ${theme.blue};
       }
 
-      h4 {
+      h3 {
         position: absolute;
         font-size: 90px;
         font-weight: 700;
@@ -396,11 +398,11 @@ const SectionOne = () => {
           gsap.to(document.body, {
             background: `${theme.blue}`,
           });
-          gsap.to('.textWrap2 > h3, .textWrap3 > h3, .textWrap3 > h4', {
+          gsap.to('.textWrap2 > h2, .textWrap3 > h2, .textWrap3 > h3', {
             color: `${theme.pink}`,
             webkitTextStrokeColor: `${theme.pink}`,
           });
-          gsap.to('.textWrap2 > h4', {
+          gsap.to('.textWrap2 > h3', {
             webkitTextStrokeColor: `${theme.pink}`,
           });
         },
@@ -415,10 +417,10 @@ const SectionOne = () => {
           gsap.to(document.body, {
             background: `${theme.blue}`,
           });
-          gsap.to('.textWrap2 > h3, .textWrap3 > h3', {
+          gsap.to('.textWrap2 > h2, .textWrap3 > h2', {
             color: `${theme.pink}`,
           });
-          gsap.to('.textWrap2 > h4', {
+          gsap.to('.textWrap2 > h3', {
             webkitTextStrokeColor: `${theme.pink}`,
           });
         },
@@ -427,10 +429,10 @@ const SectionOne = () => {
           gsap.to(document.body, {
             background: `${theme.white}`,
           });
-          gsap.to('.textWrap2 > h3, .textWrap3 > h3', {
+          gsap.to('.textWrap2 > h2, .textWrap3 > h2', {
             color: `${theme.blue}`,
           });
-          gsap.to('.textWrap2 > h4', {
+          gsap.to('.textWrap2 > h3', {
             webkitTextStrokeColor: `${theme.blue}`,
           });
         },
@@ -452,7 +454,7 @@ const SectionOne = () => {
             )}
 
             <div className={`textWrap${idx + 1}`}>
-              <h3>
+              <h2>
                 {idx === 0 ? (
                   <>
                     {title.split(' ')[0]}{' '}
@@ -463,11 +465,11 @@ const SectionOne = () => {
                 ) : (
                   title
                 )}
-              </h3>
+              </h2>
 
               <p>{text}</p>
               <button type="button">VIEW MORE</button>
-              <h4>{decoTitle}</h4>
+              <h3>{decoTitle}</h3>
             </div>
 
             <div className={`pic pic${idx}`}>

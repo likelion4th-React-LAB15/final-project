@@ -394,60 +394,72 @@ const Visual = () => {
               )}
 
               {el === 'RESERVATION' && (
-                <>
+                <li>
                   <ul className="countBtnWrap">
-                    <p>{value.current[0]}</p>
+                    <li>{value.current[0]}</li>
                     <li className="customBtnWrap">
-                      <CustomBtn icon="up" onClick={reservationChange(0)} />
-                      <CustomBtn icon="down" onClick={reservationChange(1)} />
+                      <CustomBtn
+                        icon="up"
+                        onClick={reservationChange(0)}
+                        aria-label="증가"
+                      />
+                      <CustomBtn
+                        icon="down"
+                        onClick={reservationChange(1)}
+                        aria-label="감소"
+                      />
                     </li>
                   </ul>
-                </>
+                </li>
               )}
 
               {el === 'CHECK IN / OUT' && (
-                <>
+                <li>
                   <div className="dateBtnWrap">
                     <CustomInput />
                     <CustomInput />
                   </div>
-                </>
+                </li>
               )}
 
               {el === 'ADULT' && (
-                <>
+                <li>
                   <ul className="countBtnWrap">
-                    <p>{value.current[1][0]}</p>
+                    <li>{value.current[1][0]}</li>
                     <li className="customBtnWrap">
                       <CustomBtn
                         icon="up"
                         onClick={countChange('adult', 'up')}
+                        aria-label="증가"
                       />
                       <CustomBtn
                         icon="down"
                         onClick={countChange('adult', 'down')}
+                        aria-label="감소"
                       />
                     </li>
                   </ul>
-                </>
+                </li>
               )}
 
               {el === 'CHILDREN' && (
-                <>
+                <li>
                   <ul className="countBtnWrap">
-                    <p>{value.current[1][1]}</p>
+                    <li>{value.current[1][1]}</li>
                     <li className="customBtnWrap">
                       <CustomBtn
                         icon="up"
                         onClick={countChange('children', 'up')}
+                        aria-label="증가"
                       />
                       <CustomBtn
                         icon="down"
                         onClick={countChange('children', 'down')}
+                        aria-label="감소"
                       />
                     </li>
                   </ul>
-                </>
+                </li>
               )}
               {el === 'PROMOTION' && (
                 <>
@@ -458,7 +470,7 @@ const Visual = () => {
               )}
 
               {el === 'SEARCH' && (
-                <>
+                <li>
                   <button
                     className="searchBtn"
                     onClick={() => {
@@ -467,7 +479,7 @@ const Visual = () => {
                   >
                     SEARCH
                   </button>
-                </>
+                </li>
               )}
             </ul>
           );
