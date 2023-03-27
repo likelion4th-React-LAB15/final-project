@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import theme from 'style/theme';
 
 const TitleWrapper = styled.div`
-  margin-top: 13.938rem;
-`
+  padding-top: 13.938rem;
+`;
 
 const Guest = styled.h2`
   font-family: 'Inter';
@@ -13,17 +13,15 @@ const Guest = styled.h2`
   line-height: 3rem;
   text-align: center;
   color: ${theme.blue};
-`
+`;
 
-function ReservationTitle(props){
-
+function ReservationTitle(props) {
   return (
-  <TitleWrapper>
-    <Guest>{props.value}</Guest>
-    {props.children}
-  </TitleWrapper>
-  )
-
+    <TitleWrapper>
+      <Guest>{props.value}</Guest>
+      {props.children}
+    </TitleWrapper>
+  );
 }
 
 export default ReservationTitle;

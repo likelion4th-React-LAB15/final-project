@@ -2,13 +2,11 @@ import styled from 'styled-components/macro';
 import theme from 'style/theme';
 import { useEffect } from 'react';
 import gsap from 'gsap';
-import Title from 'components/Title';
-import { AboutList } from 'components/about';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-import Header from './../components/Header/Header';
+import { AboutList } from 'components/about';
+import Header from 'components/Header/Header';
 import Footer from 'components/footer/Footer';
-import Topbtn from './../components/TopBtn';
-
+import Topbtn from 'components/TopBtn';
 import {
   ClosingContents,
   ClosingDesc,
@@ -19,20 +17,22 @@ import {
   ClosingTitleLine,
 } from 'components/closingContent';
 import SmoothScroll from 'components/smoothScroll/SmoothScroll';
-import { SubNav } from '../components/subNav/SubNav';
+import { SubNav } from 'components/subNav/SubNav';
+import { DetailPageTitle } from 'components/detailPageTitle/DetailPageTitle';
 
 export const About = () => {
   const subNavData = [
     {
       id: 1,
       title: 'DIF',
+      link: '/about',
       subListTitle: [
-        { name: 'RESERVATION', link: '/' },
+        { name: 'RESERVATION', link: '/reservation' },
         { name: 'DIF', link: '/about' },
-        { name: 'GUAM', link: '/' },
-        { name: 'SAIPAN', link: '/' },
-        { name: 'NOTICE', link: '/' },
-        { name: 'COMMUNITY', link: '/' },
+        { name: 'GUAM', link: '/guam' },
+        { name: 'SAIPAN', link: '/saipan' },
+        { name: 'NOTICE', link: '/notice' },
+        { name: 'COMMUNITY', link: '/community' },
       ],
     },
     {
@@ -51,7 +51,7 @@ export const About = () => {
   const aboutData = [
     {
       id: 1,
-      image: 'assets/images/aboutbg-01.jpg',
+      image: 'aboutbg-01',
       alt: '워터파크 레저 스포츠',
       headingBold: 'ALL INCLUSIVE',
       headingLine: 'RESORT',
@@ -62,7 +62,7 @@ export const About = () => {
     },
     {
       id: 2,
-      image: 'assets/images/aboutbg-02.jpg',
+      image: 'aboutbg-02',
       alt: '워터파크 뷰',
       headingBold: 'ACTIVITY',
       headingLine: 'DIF',
@@ -73,7 +73,7 @@ export const About = () => {
     },
     {
       id: 3,
-      image: 'assets/images/aboutbg-03.jpg',
+      image: 'aboutbg-03',
       alt: '클럽 메이트',
       headingBold: 'CLUB',
       headingLine: 'MATES',
@@ -243,10 +243,10 @@ export const About = () => {
       <SmoothScroll>
         <StyledAbout className="changeBg">
           <StyledAboutInner>
-            <Title>
+            <DetailPageTitle>
               DIF의 모든 순간, <br />
               잊지 못할 특별한 행복의 순간이 됩니다
-            </Title>
+            </DetailPageTitle>
             <AboutList aboutData={aboutData} />
           </StyledAboutInner>
           <StyledBottomPadding>
@@ -282,12 +282,13 @@ export const About = () => {
 
 const StyledAbout = styled.section`
   overflow: hidden;
-  margin: 16.25rem auto 0 auto;
+  margin: 0 auto;
+  padding-top: 21.25rem;
 `;
-const StyledAboutInner = styled.section`
+const StyledAboutInner = styled.div`
   max-width: 73.75rem;
   margin: 0 auto;
 `;
-const StyledBottomPadding = styled.section`
+const StyledBottomPadding = styled.div`
   padding: 12.5rem 0;
 `;
