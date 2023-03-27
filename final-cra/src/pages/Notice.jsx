@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Title from './../components/Title';
-import { Btn, Slide, BulletinBoard, SearchInput } from './../components/Notice';
+import { Btn, Slide, BulletinBoard } from './../components/Notice';
 import styled from 'styled-components/macro';
-import Footer from './../components/footer/Footer';
+import Footer from './../components/Footer/Footer';
 import Header from './../components/Header/Header';
 import { SubNav } from 'components/subNav/SubNav';
 import Topbtn from 'components/TopBtn';
@@ -18,26 +18,22 @@ const BtnWrap = styled.div`
 const subNavData = [
   {
     id: 1,
-    title: 'DIF',
+    title: 'NOTICE',
     subListTitle: [
-      { name: 'RESERVATION', link: '/' },
+      { name: 'RESERVATION', link: '/reservation' },
       { name: 'DIF', link: '/about' },
-      { name: 'GUAM', link: '/' },
-      { name: 'SAIPAN', link: '/' },
-      { name: 'NOTICE', link: '/' },
-      { name: 'COMMUNITY', link: '/' },
+      { name: 'GUAM', link: '/guam' },
+      { name: 'SAIPAN', link: '/saipan' },
+      { name: 'NOTICE', link: '/notice' },
+      { name: 'COMMUNITY', link: '/community' },
     ],
   },
   {
     id: 2,
-    title: 'DIF 소개',
+    title: 'DIF 괌',
     subListTitle: [
-      { name: 'DIF소개', link: '/' },
-      { name: 'DIF카드', link: '/' },
-      { name: '클럽메이트', link: '/' },
-      { name: '마스코트 시헤키', link: '/' },
-      { name: 'Why Choose DIF?', link: '/' },
-      { name: 'DIF Cares', link: '/' },
+      { name: 'DIF 괌', link: '/' },
+      { name: 'DIF 사이판', link: '/' },
     ],
   },
 ];
