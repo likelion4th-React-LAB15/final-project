@@ -21,6 +21,8 @@ import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
 import SmoothScroll from 'components/smoothScroll/SmoothScroll';
 import Loading from 'components/Loading';
+import ModalPortal from 'components/ModalPortal/ModalPortal';
+import Modal from 'components/Modal/Modal';
 
 const initialFormState = {
   name: '',
@@ -45,12 +47,22 @@ export const SignUp = () => {
   const [checkEmail, setCheckEmail] = useState(false);
   const [checkNickname, setCheckNickname] = useState(false);
   const [checkPhone, setCheckPhone] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const formStateRef = useRef(initialFormState);
   const doubleCheckEmailRef = useRef();
   const doubleCheckNicknameRef = useRef();
   const checkPhoneRef = useRef();
 
   const navigate = useNavigate();
+
+  const HandleSignUpCheck = () => {
+    setModalOpen(true);
+  };
+
+  const HandleModalClose = () => {
+    setModalOpen(false);
+    navigate('/');
+  };
 
   const checkList = [
     { name: 'termsOfUse', children: '이용약관 동의 여부 (필수)' },
@@ -200,9 +212,7 @@ export const SignUp = () => {
       termsOfAge,
     });
 
-    // console.log("회원가입 및 users 콜렉션에 user 데이터 생성");
-    alert('회원가입이 완료되었습니다 :)');
-    navigate('/');
+    HandleSignUpCheck();
   };
 
   const handleChangeInput = (e) => {
@@ -338,6 +348,11 @@ export const SignUp = () => {
         </StyledSection>
         <Footer />
       </SmoothScroll>
+      {modalOpen && (
+        <ModalPortal>
+          <Modal onClose={HandleModalClose}>회원가입이 완료되었습니다!</Modal>
+        </ModalPortal>
+      )}
     </>
   );
 };
