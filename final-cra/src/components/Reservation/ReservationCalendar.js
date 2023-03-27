@@ -136,6 +136,13 @@ function ReservationCalendar() {
     }
   }, []);
 
+  useEffect(() => {
+    const firstDay = formatDate(selectedDateRange[0]);
+    const lastDay = formatDate(selectedDateRange[1]);
+    localStorage.setItem('firstDay', firstDay);
+    localStorage.setItem('lastDay', lastDay);
+  }, [selectedDateRange]);
+
   const handleSelectDateRange = (value) => {
     setSelectedDateRange(value);
   };
