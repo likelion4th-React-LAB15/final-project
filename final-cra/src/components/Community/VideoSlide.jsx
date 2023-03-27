@@ -1,16 +1,19 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper';
-import { useEffect, useRef, useState } from 'react';
-import { VideoPopup } from './../../components/Community/VideoPopup';
+import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper';
+import { forwardRef } from 'react';
+import { ReactComponent as PlayBtn } from './../../assets/icons/ico_video.svg';
 import styled from 'styled-components';
 import theme from './../../style/theme';
 import Arrow from './../../assets/icons/btn-arrow-next.svg';
-
+import 'swiper/css/pagination';
 const SwiperWrapper = styled.div`
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
+  margin-bottom: 12.5rem;
+
   .swiper {
-    max-width: 67.5rem;
+    max-width: 90%;
     margin: 0 auto;
-    overflow: hidden;
+
     position: relative;
   }
 
@@ -26,60 +29,65 @@ const SwiperWrapper = styled.div`
     text-align: center;
     font-size: 18px;
     background: #fff;
-    border: 2px solid #212c92;
     border-radius: 30px;
     transition: all 0.26s;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 
     &:hover {
-      border: 2px solid ${theme.pink};
+      .playBtn {
+        opacity: 0;
+      }
+      h3 {
+        -webkit-text-stroke: 3px ${theme.pink};
+      }
+    }
+
+    .playBtn {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      transition: all 0.4s;
+      pointer-events: none;
+      transition: all 0.5s;
     }
   }
 
   .swiper-slide > h3 {
-    font-size: 20px;
-    line-height: 23px;
-    height: 46px;
-    color: #000551;
-    font-weight: 600;
-    font-family: 'welcome', Sans-serif;
-    display: -webkit-box;
+    position: absolute;
+    left: -10%;
+    bottom: -2.125rem;
+    z-index: 10;
+    font-weight: 900;
+    font-size: 12.5rem;
+    color: #fff;
+    -webkit-text-stroke: 3px ${theme.blue};
+    pointer-events: none;
+    font-family: 'Roboto', sans-serif;
+    transition: all 0.4s;
+  }
+
+  .wrap {
     overflow: hidden;
-    word-break: break-word;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
+    width: 100%;
+    height: 100%;
+    border-radius: 1.75rem;
   }
 
-  .swiper-slide > p {
-    font-size: 17px;
-    line-height: 25px;
-    height: 48px;
-    font-weight: 400;
-    color: #31356d;
-    display: -webkit-box;
-    overflow: hidden;
-    word-break: break-word;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
-  }
-
-  .swiper-slide > span {
-    font-size: 15px;
-    line-height: 23px;
-    font-weight: 400;
-    font-family: 'Poppins', sans-serif;
-  }
-
-  .swiper-slide video {
+  .swiper-slide .wrap video {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: all 1.2s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 
   button[type='button'] {
@@ -119,51 +127,57 @@ const videoData = [
     title: 'PIC 홈페이지 리뉴얼 이벤트 당첨자 발표',
     src: 'communityVideo-2.mp4',
   },
+  {
+    id: 3,
+    title: 'PIC 홈페이지 리뉴얼 이벤트 당첨자 발표',
+    src: 'communityVideo-2.mp4',
+  },
+  {
+    id: 4,
+    title: 'PIC 홈페이지 리뉴얼 이벤트 당첨자 발표',
+    src: 'communityVideo-2.mp4',
+  },
+  {
+    id: 5,
+    title: 'PIC 홈페이지 리뉴얼 이벤트 당첨자 발표',
+    src: 'communityVideo-2.mp4',
+  },
+  {
+    id: 6,
+    title: 'PIC 홈페이지 리뉴얼 이벤트 당첨자 발표',
+    src: 'communityVideo-2.mp4',
+  },
 ];
 
-export const VideoSlide = () => {
-  const [srcState, setSrcSate] = useState(['', false]);
-  const swiperRef = useRef(null);
-
-  useEffect(() => {
-    swiperRef.current.addEventListener('click', (e) => {
-      if (e.target.dataset.community) {
-        let srcLink = e.target.getAttribute('src').split('/')[3].split('.')[0];
-        setSrcSate(() => {
-          srcState[0] = srcLink;
-          srcState[1] = true;
-        });
-        console.log(srcState);
-      }
-    });
-  }, []);
-
+export const VideoSlide = forwardRef((_, ref) => {
   return (
     <>
       <SwiperWrapper>
-        <button
+        {/* <button
           type="button"
           id="previousButton"
           onClick={() => {
-            swiperRef.current.swiper.slidePrev();
+            ref.current.swiper.slidePrev();
           }}
         />
         <button
           type="button"
           id="nextButton"
           onClick={() => {
-            swiperRef.current.swiper.slideNext();
+            ref.current.swiper.slideNext();
           }}
-        />
+        /> */}
         <Swiper
-          spaceBetween={10}
-          slidesPerView={3}
+          spaceBetween={50}
+          slidesPerView={5}
           navigation={true}
-          modules={[Navigation]}
+          Pagination={true}
+          modules={[Navigation, Pagination, Mousewheel, Keyboard]}
           scrollbar={{ draggable: true }}
+          keyboard={true}
           // touchRatio={0}
           className="mySwiper"
-          ref={swiperRef}
+          ref={ref}
           speed={1000}
         >
           {videoData.map(({ src, id }, idx) => {
@@ -178,13 +192,17 @@ export const VideoSlide = () => {
                     justifyContent: 'space-between',
                     alignItems: 'flex-start',
                     textAlign: 'left',
-                    overflow: 'hidden',
+                    position: 'relative',
                   }}
                 >
-                  <video
-                    src={require(`./../../assets/video/${src}`)}
-                    data-community
-                  ></video>
+                  <h3>{idx + 1}</h3>
+                  <div className="wrap">
+                    <PlayBtn className="playBtn" />
+                    <video
+                      src={require(`./../../assets/video/${src}`)}
+                      data-community
+                    ></video>
+                  </div>
                 </SwiperSlide>
               </>
             );
@@ -193,4 +211,4 @@ export const VideoSlide = () => {
       </SwiperWrapper>
     </>
   );
-};
+});

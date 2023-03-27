@@ -3,15 +3,15 @@ import SubHeader from 'components/Header/SubHeader';
 import Visual from 'components/Visual/Visual';
 import SectionOne from 'components/MainSection/SectionOne';
 import FilmList from 'components/FilmList/FilmList';
-import Siheky from 'components/Siheky/Siheky';
+import Siheky from 'components/siheky/Siheky';
 import SmoothScroll from 'components/smoothScroll/SmoothScroll';
-import Footer from 'components/Footer/Footer';
+import Footer from 'components/footer/Footer';
 import TopBtn from 'components/TopBtn';
 
 export const Home = () => {
   return (
     <>
-      <TopBtn onClick={() => {}} />
+      <TopBtn />
       <SmoothScroll>
         <Header type={'active'} />
         <SubHeader />
@@ -19,6 +19,7 @@ export const Home = () => {
         <SectionOne />
         <Siheky />
         <FilmList />
+        <Footer />
       </SmoothScroll>
     </>
   );

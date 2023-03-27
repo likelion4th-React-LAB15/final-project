@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useRef, useEffect, forwardRef, useState } from 'react';
 import Title from './../components/Title';
 import { VideoList, VideoPopup, VideoSlide } from './../components/Community';
 import SmoothScroll from 'components/smoothScroll/SmoothScroll';
 import Header from './../components/Header/Header';
-import Footer from 'components/Footer/Footer';
+import Footer from 'components/footer/Footer';
 import TopBtn from 'components/TopBtn';
 import { SubNav } from '../components/subNav/SubNav';
 
@@ -33,16 +33,35 @@ const subNavData = [
     ],
   },
 ];
-
 export const Community = () => {
+  const link = useRef('');
+  const [toggleState, setToggleState] = useState(false);
+  const swiperRef = useRef(null);
+
+  useEffect(() => {
+    swiperRef.current?.addEventListener('click', ({ target }) => {
+      if (target.dataset.community) {
+        link.current = target.getAttribute('src').split('/')[3].split('.')[0];
+        setToggleState(true);
+      }
+    });
+  }, []);
+
   return (
     <>
-      <Header />
-      <TopBtn />
+      {toggleState && (
+        <VideoPopup
+          linkProps={link.current}
+          toggle={[toggleState, setToggleState]}
+        />
+      )}
       <SmoothScroll>
+        <TopBtn />
+        <div></div>
+        <Header />
         <SubNav subNavData={subNavData} />
         <Title style={{ marginTop: '14.375rem' }}>PIC영상</Title>
-        <VideoSlide />
+        <VideoSlide ref={swiperRef} />
         <VideoList />
         <Footer />
       </SmoothScroll>
