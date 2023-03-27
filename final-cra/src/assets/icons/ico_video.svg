@@ -1,0 +1,20 @@
+<svg id="그룹_13822" data-name="그룹 13822" xmlns="http://www.w3.org/2000/svg" width="59.43" height="59.43" viewBox="0 0 59.43 59.43">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #212c92;
+        opacity: 0.85;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #fff;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 3px;
+      }
+    </style>
+  </defs>
+  <circle id="타원_42" data-name="타원 42" class="cls-1" cx="29.715" cy="29.715" r="29.715" transform="translate(0 0)"/>
+  <path id="Icon_feather-play" data-name="Icon feather-play" class="cls-2" d="M7.5,4.5,26.7,16.843,7.5,29.186Z" transform="translate(14.9 13.329)"/>
+</svg>

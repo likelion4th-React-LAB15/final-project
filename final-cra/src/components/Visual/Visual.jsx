@@ -3,7 +3,8 @@ import gsap from 'gsap';
 import theme from 'style/theme';
 import { CustomInput } from './CustomInput';
 import { CustomBtn } from './CustomBtn';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Titles = styled.ul`
   width: 100%;
@@ -324,7 +325,8 @@ const reservationList = [
 const list = ['GUAM', 'SAIPAN'];
 
 const Visual = () => {
-  const [value, setValue] = useState([list[0], [2, 0]]);
+  const value = useRef([list[0], [2, 0]]);
+  const [render, setRender] = useState(false);
 
   useEffect(() => {
     document.body.style.overflowX = 'hidden';
@@ -335,24 +337,25 @@ const Visual = () => {
     }, 100);
   }, []);
 
-  // change function
   const reservationChange = (num) => (_) => {
-    let copy = [...value];
-    copy[0] = list[num];
-    setValue(copy);
+    value.current[0] = list[num];
+    setRender(!render);
   };
 
-  // count function
+  const navigate = useNavigate();
+
   const countChange = (target, type) => () => {
-    let copy = [...value];
     if (target === 'adult') {
-      if (copy[1][0] >= 3) copy[1][0] = 2;
-      type === 'up' ? copy[1][0]++ : copy[1][0]--;
+      type === 'up' ? value.current[1][0]++ : value.current[1][0]--;
+      if (value.current[1][0] > 3) value.current[1][0] = 3;
+      else if (value.current[1][0] < 1) value.current[1][0] = 1;
     }
     if (target === 'children') {
-      type === 'up' ? copy[1][1]++ : copy[1][1]--;
+      type === 'up' ? value.current[1][1]++ : value.current[1][1]--;
+      if (value.current[1][1] > 3) value.current[1][1] = 3;
+      else if (value.current[1][1] < 0) value.current[1][1] = 0;
     }
-    setValue(copy);
+    setRender(!render);
   };
 
   return (
@@ -393,7 +396,7 @@ const Visual = () => {
               {el === 'RESERVATION' && (
                 <li>
                   <ul className="countBtnWrap">
-                    <li>{value[0]}</li>
+                    <li>{value.current[0]}</li>
                     <li className="customBtnWrap">
                       <CustomBtn
                         icon="up"
@@ -422,7 +425,7 @@ const Visual = () => {
               {el === 'ADULT' && (
                 <li>
                   <ul className="countBtnWrap">
-                    <li>{value[1][0]}</li>
+                    <li>{value.current[1][0]}</li>
                     <li className="customBtnWrap">
                       <CustomBtn
                         icon="up"
@@ -442,7 +445,7 @@ const Visual = () => {
               {el === 'CHILDREN' && (
                 <li>
                   <ul className="countBtnWrap">
-                    <li>{value[1][1]}</li>
+                    <li>{value.current[1][1]}</li>
                     <li className="customBtnWrap">
                       <CustomBtn
                         icon="up"
@@ -468,7 +471,14 @@ const Visual = () => {
 
               {el === 'SEARCH' && (
                 <li>
-                  <button className="searchBtn">SEARCH</button>
+                  <button
+                    className="searchBtn"
+                    onClick={() => {
+                      navigate('/reservation3');
+                    }}
+                  >
+                    SEARCH
+                  </button>
                 </li>
               )}
             </ul>

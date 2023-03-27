@@ -4,7 +4,7 @@ import Scrollbar from 'smooth-scrollbar';
 import { useEffect, useRef } from 'react';
 import { ReactComponent as TopBtn } from './../assets/icons/btn-top.svg';
 
-const ScrollTopBtn = ({ ...restProps }) => {
+const ScrollTopBtn = () => {
   const btnRef = useRef(null);
 
   useEffect(() => {
