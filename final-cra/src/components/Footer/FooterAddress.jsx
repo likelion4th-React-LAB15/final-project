@@ -10,6 +10,8 @@ function FooterAddress() {
             <img
               src={require('assets/icons/logo-off.png')}
               alt="Dobby Islands Free"
+              width="290"
+              height="36"
             />
           </h2>
           <div>
