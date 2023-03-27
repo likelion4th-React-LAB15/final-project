@@ -44,9 +44,9 @@ export const Notice = () => {
   return (
     <>
       <Topbtn />
+      <Header />
+      <SubNav subNavData={subNavData} />
       <SmoothScroll>
-        <Header />
-        <SubNav subNavData={subNavData} />
         <Title style={{ marginTop: '14.375rem' }}>PIC괌</Title>
         <BtnWrap>
           <Btn

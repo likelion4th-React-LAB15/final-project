@@ -30,10 +30,10 @@ const subNavData = [
 export const Community = () => {
   return (
     <>
-      <Header />
       <TopBtn />
+      <Header />
+      <SubNav subNavData={subNavData} />
       <SmoothScroll>
-        <SubNav subNavData={subNavData} />
         <Title style={{ marginTop: '14.375rem' }}>PIC영상</Title>
         <VideoSlide />
         <VideoList />
