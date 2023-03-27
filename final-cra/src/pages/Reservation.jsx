@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import gsap from 'gsap';
 import Topbtn from 'components/TopBtn';
 import Header from 'components/Header/Header';
-import Footer from 'components/footer/Footer';
+import Footer from 'components/Footer/Footer';
 import SmoothScroll from 'components/smoothScroll/SmoothScroll';
 import { SubNav } from '../components/subNav/SubNav';
 import { DetailPageTitle } from 'components/detailPageTitle/DetailPageTitle';

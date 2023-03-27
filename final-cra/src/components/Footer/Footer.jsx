@@ -1,8 +1,8 @@
 import theme from 'style/theme';
 import styled from 'styled-components/macro';
-import Wave from 'components/wave/Wave';
-import FooterGnb from 'components/footer/FooterGnb';
-import FooterAddress from 'components/footer/FooterAddress';
+import Wave from 'components/Wave/Wave';
+import FooterGnb from 'components/Footer/FooterGnb';
+import FooterAddress from 'components/Footer/FooterAddress';
 
 function Footer() {
   return (

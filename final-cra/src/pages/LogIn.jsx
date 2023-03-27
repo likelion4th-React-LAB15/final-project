@@ -6,7 +6,7 @@ import Title from 'components/Title';
 import theme from 'style/theme';
 import { useSignIn, useAuthState, useSignOut } from '@service/auth';
 import Header from 'components/Header/Header';
-import Footer from 'components/footer/Footer';
+import Footer from 'components/Footer/Footer';
 import SmoothScroll from 'components/smoothScroll/SmoothScroll';
 
 const initialFormState = {
@@ -25,7 +25,6 @@ export const LogIn = () => {
     e.preventDefault();
 
     const { email, password } = formStateRef.current;
-    // console.log({ email, password });
 
     await signIn(email, password);
   };

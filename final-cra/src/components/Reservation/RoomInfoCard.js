@@ -1,6 +1,30 @@
-import React from 'react';
 import styled from 'styled-components';
 import theme from 'style/theme';
+
+const RoomInfoCard = ({
+  name,
+  description,
+  notice,
+  addInfoSite,
+  price,
+  imageUrl,
+}) => {
+  return (
+    <Card>
+      <Image src={imageUrl} alt={name} />
+      <Body>
+        <Name>{name}</Name>
+        <Description>{description}</Description>
+        <Notice>{notice}</Notice>
+        <AddInfoSite href="">{addInfoSite}</AddInfoSite>
+        <Price>${price}</Price>
+        <CheckBoxActive></CheckBoxActive>
+      </Body>
+    </Card>
+  );
+};
+
+export default RoomInfoCard;
 
 const Card = styled.div`
   width: 59.438rem;
@@ -91,28 +115,3 @@ const CheckBoxActive = styled.span`
   background: url(${require('./../../assets/icons/checked.png')}) ${theme.blue}
     no-repeat center center;
 `;
-
-const RoomInfoCard = ({
-  name,
-  description,
-  notice,
-  addInfoSite,
-  price,
-  imageUrl,
-}) => {
-  return (
-    <Card>
-      <Image src={imageUrl} alt={name} />
-      <Body>
-        <Name>{name}</Name>
-        <Description>{description}</Description>
-        <Notice>{notice}</Notice>
-        <AddInfoSite href="">{addInfoSite}</AddInfoSite>
-        <Price>${price}</Price>
-        <CheckBoxActive></CheckBoxActive>
-      </Body>
-    </Card>
-  );
-};
-
-export default RoomInfoCard;

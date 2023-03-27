@@ -18,8 +18,9 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '@service/auth';
 import { useNavigate } from 'react-router-dom';
 import Header from 'components/Header/Header';
-import Footer from 'components/footer/Footer';
+import Footer from 'components/Footer/Footer';
 import SmoothScroll from 'components/smoothScroll/SmoothScroll';
+import Loading from 'components/Loading';
 
 const initialFormState = {
   name: '',
@@ -43,7 +44,6 @@ export const SignUp = () => {
   const { isLoading, error } = useAuthState();
   const [checkEmail, setCheckEmail] = useState(false);
   const [checkNickname, setCheckNickname] = useState(false);
-  const [checkName, setCheckName] = useState('');
   const [checkPhone, setCheckPhone] = useState(false);
 
   const formStateRef = useRef(initialFormState);
@@ -209,15 +209,10 @@ export const SignUp = () => {
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
     formStateRef.current[name] = value;
-
-    if (name === 'name') {
-      const result = e.target.value.replace(/\d/g, '');
-      setCheckName(result);
-    }
   };
 
   if (isLoading) {
-    return <div role="alert">페이지를 준비 중입니다.</div>;
+    return <div role="alert">< Loading /></div>;
   }
 
   if (error) {
@@ -267,7 +262,6 @@ export const SignUp = () => {
             name={'name'}
             placeholder={'이름을 입력해주세요.'}
             onChange={handleChangeInput}
-            value={checkName}
             required
           >
             이름
