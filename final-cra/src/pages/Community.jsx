@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect, forwardRef, useState } from 'react';
 import Title from './../components/Title';
 import { VideoList, VideoPopup, VideoSlide } from './../components/Community';
 import SmoothScroll from 'components/smoothScroll/SmoothScroll';
@@ -26,17 +26,43 @@ const subNavData = [
     subListTitle: [{ name: 'DIF영상', link: '/community' }],
   },
 ];
-
 export const Community = () => {
+  const link = useRef('');
+  const [toggleState, setToggleState] = useState(false);
+  const swiperRef = useRef(null);
+  const StyledVideoWrapRef = useRef(null);
+
+  useEffect(() => {
+    swiperRef.current?.addEventListener('click', ({ target }) => {
+      if (target.dataset.community) {
+        link.current = target.getAttribute('src').split('/')[3].split('.')[0];
+        setToggleState(true);
+      }
+    });
+    StyledVideoWrapRef.current?.addEventListener('click', ({ target }) => {
+      if (target.dataset.community) {
+        link.current = target.getAttribute('src').split('/')[3].split('.')[0];
+        setToggleState(true);
+      }
+    });
+  }, []);
+
   return (
     <>
-      <Header />
+      {toggleState && (
+        <VideoPopup
+          linkProps={link.current}
+          toggle={[toggleState, setToggleState]}
+        />
+      )}
       <TopBtn />
       <SmoothScroll>
+        <div></div>
+        <Header />
         <SubNav subNavData={subNavData} />
         <Title style={{ marginTop: '14.375rem' }}>PIC영상</Title>
-        <VideoSlide />
-        <VideoList />
+        <VideoSlide ref={swiperRef} />
+        <VideoList ref={StyledVideoWrapRef} />
         <Footer />
       </SmoothScroll>
     </>

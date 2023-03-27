@@ -156,9 +156,11 @@ const Header = ({ type, children, style, ...restProps }) => {
       const elem = document.querySelector('.scroller');
       const scrollbar = Scrollbar.init(elem, { speed: 0.7, damping: 0.04 });
       scrollbar.addListener(function (status) {
-        status.offset.y >= 100
-          ? headerRef.current.classList.add('active')
-          : headerRef.current.classList.remove('active');
+        if (headerRef.current) {
+          status.offset.y >= 1
+            ? headerRef.current.classList.add('active')
+            : headerRef.current.classList.remove('active');
+        }
       });
     }, 10);
 

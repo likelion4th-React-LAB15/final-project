@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Title from './../components/Title';
-import { Btn, Slide, BulletinBoard, SearchInput } from './../components/Notice';
+import { Btn, Slide, BulletinBoard } from './../components/Notice';
 import styled from 'styled-components/macro';
 import Footer from './../components/Footer/Footer';
 import Header from './../components/Header/Header';
@@ -61,7 +61,6 @@ export const Notice = () => {
             이벤트
           </Btn>
         </BtnWrap>
-        <SearchInput />
         <Slide typeState={typeState} />
         <BulletinBoard typeState={typeState} />
         <Footer />
