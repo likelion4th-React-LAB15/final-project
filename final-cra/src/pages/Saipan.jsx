@@ -8,7 +8,7 @@ import theme from 'style/theme';
 import Topbtn from 'components/TopBtn';
 import { AboutList } from 'components/about';
 import Header from 'components/Header/Header';
-import Footer from 'components/footer/Footer';
+import Footer from 'components/Footer/Footer';
 import { SubNav } from 'components/subNav/SubNav';
 import { ServiceList } from 'components/service/ServiceList';
 import { SectionTitle, SectionDesc } from 'components/titlebox';

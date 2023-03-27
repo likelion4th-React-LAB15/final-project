@@ -9,7 +9,7 @@ import Topbtn from 'components/TopBtn';
 import { DbbList } from 'components/dbb';
 import { AboutList } from 'components/about';
 import Header from 'components/Header/Header';
-import Footer from 'components/footer/Footer';
+import Footer from 'components/Footer/Footer';
 import { CcpLinkButton, CcpSwiper } from 'components/ccp';
 import { SubNav } from 'components/subNav/SubNav';
 import { ServiceList } from 'components/service/ServiceList';

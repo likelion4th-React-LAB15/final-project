@@ -28,14 +28,16 @@ export const UserLogInInput = ({
   );
 };
 
-export const UserSignUpInput = forwardRef((props, ref) => {
+export const UserSignUpInput = React.memo(forwardRef((props, ref) => {
   const UserInputId = useId();
   const [isNumber, setIsNumber] = useState('');
 
-  const handleNumber = (e) => {
+  const handleInput = (e) => {
     if (props.number) {
       const result = e.target.value.replace(/\D/g, '');
-
+      setIsNumber(result);
+    }else if(props.string){
+      const result = e.target.value.replace(/\d/g, "");
       setIsNumber(result);
     }
   };
@@ -49,7 +51,7 @@ export const UserSignUpInput = forwardRef((props, ref) => {
       >
         {props.children}
       </StyledLabel>
-      {props.number ? (
+      {props.number || props.string ? (
         <StyledSignUpInput
           ref={ref}
           name={props.name}
@@ -58,7 +60,7 @@ export const UserSignUpInput = forwardRef((props, ref) => {
           id={UserInputId}
           placeholder={props.placeholder}
           value={isNumber}
-          onInput={handleNumber}
+          onInput={handleInput}
           maxLength={props.maxLength}
           onChange={props.onChange}
         ></StyledSignUpInput>
@@ -84,7 +86,7 @@ export const UserSignUpInput = forwardRef((props, ref) => {
       </Button>
     </StyledSection>
   );
-});
+}));
 
 const StyledLogInInput = styled.input`
   width: 21.25rem;
