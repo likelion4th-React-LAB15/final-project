@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import theme from 'style/theme';
+import { useState } from 'react';
 
 const Card = styled.div`
   width: 59.438rem;
@@ -77,19 +78,12 @@ const CheckBox = styled.span`
   height: 3.75rem;
   border: 0.125rem solid #d5d5d5;
   border-radius: 0.625rem;
-  background: url(${require('./../../assets/icons/checked.png')}) no-repeat
-    center center;
-`;
-
-const CheckBoxActive = styled.span`
-  position: absolute;
-  top: 4.125rem;
-  right: 0rem;
-  width: 3.75rem;
-  height: 3.75rem;
-  border-radius: 0.625rem;
-  background: url(${require('./../../assets/icons/checked.png')}) ${theme.blue}
+  background: url(${(props) =>
+      props.checked
+        ? require('./../../assets/icons/checked.png')
+        : require('./../../assets/icons/notChecked.png')})
     no-repeat center center;
+  background-color: ${(props) => (props.checked ? theme.blue : 'transperant')};
 `;
 
 const RoomInfoCard = ({
@@ -100,6 +94,33 @@ const RoomInfoCard = ({
   price,
   imageUrl,
 }) => {
+  const [isChecked, setIsChecked] = useState(false);
+
+  const toggleCheckbox = () => {
+    const newIsChecked = !isChecked;
+    setIsChecked(newIsChecked);
+
+    if (newIsChecked) {
+      const checkedRooms =
+        JSON.parse(localStorage.getItem('checkedRooms')) || [];
+      const newCheckedRoom = {
+        name,
+        description,
+        notice,
+        addInfoSite,
+        price,
+        imageUrl,
+      };
+      checkedRooms.push(newCheckedRoom);
+      localStorage.setItem('checkedRooms', JSON.stringify(checkedRooms));
+    } else {
+      const checkedRooms =
+        JSON.parse(localStorage.getItem('checkedRooms')) || [];
+      const newCheckedRooms = checkedRooms.filter((room) => room.name !== name);
+      localStorage.setItem('checkedRooms', JSON.stringify(newCheckedRooms));
+    }
+  };
+
   return (
     <Card>
       <Image src={imageUrl} alt={name} />
@@ -109,7 +130,11 @@ const RoomInfoCard = ({
         <Notice>{notice}</Notice>
         <AddInfoSite href="">{addInfoSite}</AddInfoSite>
         <Price>${price}</Price>
-        <CheckBoxActive></CheckBoxActive>
+        <CheckBox
+          checked={isChecked}
+          onClick={toggleCheckbox}
+          tabindex="10"
+        ></CheckBox>
       </Body>
     </Card>
   );
