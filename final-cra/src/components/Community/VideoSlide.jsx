@@ -130,43 +130,34 @@ const videoData = [
   {
     id: 3,
     title: 'PIC 홈페이지 리뉴얼 이벤트 당첨자 발표',
-    src: 'communityVideo-2.mp4',
+    src: 'communityVideo-3.mp4',
   },
   {
     id: 4,
     title: 'PIC 홈페이지 리뉴얼 이벤트 당첨자 발표',
-    src: 'communityVideo-2.mp4',
+    src: 'communityVideo-4.mp4',
   },
   {
     id: 5,
     title: 'PIC 홈페이지 리뉴얼 이벤트 당첨자 발표',
-    src: 'communityVideo-2.mp4',
+    src: 'communityVideo-5.mp4',
   },
   {
     id: 6,
     title: 'PIC 홈페이지 리뉴얼 이벤트 당첨자 발표',
-    src: 'communityVideo-2.mp4',
+    src: 'communityVideo-6.mp4',
+  },
+  {
+    id: 6,
+    title: 'PIC 홈페이지 리뉴얼 이벤트 당첨자 발표',
+    src: 'communityVideo-7.mp4',
   },
 ];
-
+console.warn = console.error = () => {};
 export const VideoSlide = forwardRef((_, ref) => {
   return (
     <>
       <SwiperWrapper>
-        {/* <button
-          type="button"
-          id="previousButton"
-          onClick={() => {
-            ref.current.swiper.slidePrev();
-          }}
-        />
-        <button
-          type="button"
-          id="nextButton"
-          onClick={() => {
-            ref.current.swiper.slideNext();
-          }}
-        /> */}
         <Swiper
           spaceBetween={50}
           slidesPerView={5}
@@ -184,7 +175,7 @@ export const VideoSlide = forwardRef((_, ref) => {
             return (
               <>
                 <SwiperSlide
-                  key={id}
+                  key={idx}
                   style={{
                     height: '17.5rem',
                     display: 'flex',

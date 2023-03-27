@@ -472,8 +472,9 @@ const SectionOne = () => {
 
             <div className={`pic pic${idx}`}>
               <img
-                src={require(`../../../src/assets/images/background-0${idx === 2 ? 1 : idx + 2
-                  }.webp`)}
+                src={require(`../../../src/assets/images/background-0${
+                  idx === 2 ? 1 : idx + 2
+                }.webp`)}
                 alt={title}
               />
             </div>

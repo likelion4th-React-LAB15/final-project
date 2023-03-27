@@ -325,7 +325,6 @@ const reservationList = [
 const list = ['GUAM', 'SAIPAN'];
 
 const Visual = () => {
-  // const [value, setValue] = useState([list[0], [2, 0]]);
   const value = useRef([list[0], [2, 0]]);
   const [render, setRender] = useState(false);
 
@@ -338,7 +337,6 @@ const Visual = () => {
     }, 100);
   }, []);
 
-  // change function
   const reservationChange = (num) => (_) => {
     value.current[0] = list[num];
     setRender(!render);
@@ -346,7 +344,6 @@ const Visual = () => {
 
   const navigate = useNavigate();
 
-  // count function
   const countChange = (target, type) => () => {
     if (target === 'adult') {
       type === 'up' ? value.current[1][0]++ : value.current[1][0]--;

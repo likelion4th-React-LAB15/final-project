@@ -1,6 +1,6 @@
 import React from 'react';
-import { useEffect } from 'react';
 import styled from 'styled-components';
+import { ReactComponent as CloseBtn } from './../../assets/icons/btn-close-black-bold.svg';
 
 const StyledVideoPopupWrapper = styled.div`
   width: 100%;
@@ -12,21 +12,40 @@ const StyledVideoPopupWrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  video {
+  > video {
     width: 80%;
     height: 60%;
   }
 
   button[type='button'] {
-    width: 100px;
-    height: 100px;
-    background-color: #fff;
+    width: 80px;
+    height: 80px;
+    background-color: transparent;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+    left: 50%;
+    top: 4%;
+    transform: translateX(-50%);
+
+    > svg {
+      width: 100%;
+      height: 100%;
+      transition: all 0.5s;
+      transform-origin: center center;
+      filter: invert(100%);
+
+      &:hover {
+        transform: rotate(180deg);
+      }
+    }
   }
 `;
 
 export const VideoPopup = ({ linkProps, toggle: [_, setToggleState] }) => {
-  useEffect(() => {}, []);
-
   return (
     <StyledVideoPopupWrapper>
       <video
@@ -40,7 +59,7 @@ export const VideoPopup = ({ linkProps, toggle: [_, setToggleState] }) => {
           setToggleState(!_);
         }}
       >
-        Close
+        <CloseBtn />
       </button>
     </StyledVideoPopupWrapper>
   );
