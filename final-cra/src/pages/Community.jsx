@@ -3,7 +3,7 @@ import Title from './../components/Title';
 import { VideoList, VideoPopup, VideoSlide } from './../components/Community';
 import SmoothScroll from 'components/smoothScroll/SmoothScroll';
 import Header from './../components/Header/Header';
-import Footer from 'components/footer/Footer';
+import Footer from 'components/Footer/Footer';
 import TopBtn from 'components/TopBtn';
 import { SubNav } from '../components/subNav/SubNav';
 

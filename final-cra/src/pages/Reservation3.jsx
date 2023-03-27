@@ -6,32 +6,11 @@ import BackButton from 'components/BackButton.js';
 import RoomInfoCard from 'components/Reservation/RoomInfoCard.js';
 import styled from 'styled-components';
 import Header from 'components/Header/Header';
-import Footer from 'components/footer/Footer';
+import Footer from 'components/Footer/Footer';
 import SmoothScroll from 'components/smoothScroll/SmoothScroll';
+import { getStorage, ref, getDownloadURL } from 'firebase/storage';
+import { db } from '@service/auth';
 import { collection, getDocs, query, where } from 'firebase/firestore';
-import db from '@service/firestore';
-import { getDownloadURL, getStorage, ref } from 'firebase/storage';
-
-// const rooms = [
-//   {
-//     id: 1,
-//     name: '수페리어 (테니스코트 뷰)',
-//     description: 'T-WAY 야간 항공 전용 프로모션(1일 3식)',
-//     notice:
-//       '객실 관련 안내 텍스트 입니다. 객실 관련 안내 텍스트 입니다. 객실 관련 안내 텍스트 입니다. 객실 관련 안내 텍스트 입니다. 객실 관련 안내 텍스트 입니다.',
-//     site: '객실 정보와 추가 사항 보기',
-//     price: 129.99,
-//   },
-//   {
-//     id: 2,
-//     name: '수페리어 (테니스코트 뷰)',
-//     description: 'T-WAY 야간 항공 전용 프로모션(1일 3식)',
-//     notice:
-//       '객실 관련 안내 텍스트 입니다. 객실 관련 안내 텍스트 입니다. 객실 관련 안내 텍스트 입니다. 객실 관련 안내 텍스트 입니다. 객실 관련 안내 텍스트 입니다.',
-//     site: '객실 정보와 추가 사항 보기',
-//     price: 129.99,
-//   },
-// ];
 
 const Container = styled.div`
   margin: 137.89px auto 0px;
@@ -110,7 +89,7 @@ export const Reservation3 = () => {
                 notice={room.notice}
                 addInfoSite={room.site}
                 price={room.price}
-                imageUrl={`/`}
+                imageUrl={room.imageUrl}
                 isLast={index === rooms.length - 1}
               />
             ))}
