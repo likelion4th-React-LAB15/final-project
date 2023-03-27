@@ -20,6 +20,7 @@ import { useNavigate } from 'react-router-dom';
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
 import SmoothScroll from 'components/smoothScroll/SmoothScroll';
+import Loading from 'components/Loading';
 
 const initialFormState = {
   name: '',
@@ -211,7 +212,7 @@ export const SignUp = () => {
   };
 
   if (isLoading) {
-    return <div role="alert">페이지를 준비 중입니다.</div>;
+    return <div role="alert">< Loading /></div>;
   }
 
   if (error) {
