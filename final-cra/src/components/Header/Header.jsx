@@ -249,16 +249,19 @@ const Header = ({ type, children, style, ...restProps }) => {
               />
             </Link>
           )}
-
-          <Cart
-            style={{
-              width: 28,
-              height: 30,
-              cursor: 'pointer',
-              fill:
-                type !== 'active' && !menu ? `${theme.blue}` : `${theme.white}`,
-            }}
-          />
+          <Link to="/reservation4">
+            <Cart
+              style={{
+                width: 28,
+                height: 30,
+                cursor: 'pointer',
+                fill:
+                  type !== 'active' && !menu
+                    ? `${theme.blue}`
+                    : `${theme.white}`,
+              }}
+            />
+          </Link>
         </div>
       </HeaderWapper>
     </>
