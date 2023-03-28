@@ -96,3 +96,9 @@ C:.
 ### 예약 페이지
 ![image](https://user-images.githubusercontent.com/119389695/228306001-c0ef2c10-4cc1-4a4e-b83f-ea98c53df7de.gif)
 ## 8. 시행착오
+### [react-calendar 두 개의 달력 뷰 동시에 표시하기](https://github.com/likelion4th-React-LAB15/final-project/issues/18)
+![image](https://user-images.githubusercontent.com/119389695/228307370-1d0f0f7c-6fcd-4832-9ab1-252df83dbe3a.png)
+
+
+### [체크박스 관련 오류 해결](https://github.com/likelion4th-React-LAB15/final-project/issues/20)
+![image](https://user-images.githubusercontent.com/119389695/228307256-69062d7a-8242-4ec8-a2f1-b3c33cb9b3f9.png)
