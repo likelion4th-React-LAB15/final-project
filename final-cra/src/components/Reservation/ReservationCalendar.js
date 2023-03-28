@@ -175,7 +175,6 @@ function ReservationCalendar() {
 
       const newIndex = currentIndex + direction;
       if (tiles[newIndex]) {
-        console.log('tiles[index]', tiles[newIndex]);
         tiles[newIndex].focus();
       }
     }
