@@ -21,11 +21,13 @@
     "swiper": "^9.1.1",
     "web-vitals": "^2.1.4"
   },
+  "homepage": "https://likelion4th-react-lab15.github.io/final-project/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -47,6 +49,7 @@
   },
   "devDependencies": {
     "babel-plugin-named-exports-order": "^0.0.2",
+    "gh-pages": "^5.0.0",
     "prettier": "^2.8.4",
     "prop-types": "^15.8.1",
     "webpack": "^5.76.1"
