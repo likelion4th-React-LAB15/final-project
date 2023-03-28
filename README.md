@@ -93,8 +93,10 @@ C:.
 
 ## 7. 페이지 기능
 ### 메인 페이지 
+![ㅁㅁ](https://user-images.githubusercontent.com/108564335/228309513-95a36d73-aa3c-47d8-ad09-9e5a1eef6e77.gif)
 
 ### 회원가입 및 로그인 페이
+![signup](https://user-images.githubusercontent.com/108564335/228309585-db23a42d-e2a1-43a3-b408-c962ed9bf74b.gif)
 
 ### 예약 페이지
 ![image](https://user-images.githubusercontent.com/119389695/228306001-c0ef2c10-4cc1-4a4e-b83f-ea98c53df7de.gif)
