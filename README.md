@@ -21,7 +21,62 @@
 - 🙋🏻‍♀️ 이유진 : 부족한 건 열심히 공부하고 내가 맡은 일은 꼭 최선을 다해서 수행해내기 
 - 🙋🏼‍♂️ 장지훈 : 완성이 목표가 아닌 팀프로젝트의 경험과 성장을 목표로 하여, 협업이란 것을 미리 느껴보고 회사에서 적응할 수 있는 경험 쌓기
 ## 2. 개발 환경 및 배포 URL
+https://likelion4th-react-lab15.github.io/final-project
+
+![main](https://user-images.githubusercontent.com/104200167/228277571-3f6bb192-915e-4f4d-91cd-204c1973b0bc.gif)
+
 ## 3. 프로젝트 구조
+```
+C:.
+├─build
+│  ├─static
+│  │  ├─css
+│  │  ├─js
+│  │  └─media
+│  └─style
+├─public
+│  └─style
+└─src
+    ├─@service
+    │  ├─auth
+    │  └─firestore
+    ├─app
+    ├─assets
+    │  ├─icons
+    │  ├─images
+    │  └─video
+    ├─components
+    │  ├─about
+    │  ├─buildingLayout
+    │  ├─ccp
+    │  ├─chooseList
+    │  ├─closingContent
+    │  ├─Community
+    │  ├─dbb
+    │  ├─detailPageTitle
+    │  ├─FilmList
+    │  ├─Footer
+    │  ├─Header
+    │  ├─MainSection
+    │  ├─marqueeText
+    │  ├─Modal
+    │  ├─ModalPortal
+    │  ├─Notice
+    │  ├─notification
+    │  ├─Reservation
+    │  ├─service
+    │  ├─Siheky
+    │  ├─smoothScroll
+    │  ├─subNav
+    │  ├─table
+    │  ├─titlebox
+    │  ├─user
+    │  ├─Visual
+    │  └─Wave
+    ├─contexts
+    ├─pages
+    └─style
+```
 ## 4. 역할 분담
 - 🙋🏻‍♀️ 강보경 : firebase를 이용한 유저관리(회원가입, 예약정보)
 - 🙋🏼‍♂️ 김형진 : 메인페이지 인터랙션
