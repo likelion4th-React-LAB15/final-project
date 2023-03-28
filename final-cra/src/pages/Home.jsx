@@ -1,16 +1,20 @@
-import Header from 'components/Header/Header';
-import SubHeader from 'components/Header/SubHeader';
-import Visual from 'components/Visual/Visual';
-import SectionOne from 'components/MainSection/SectionOne';
-import FilmList from 'components/FilmList/FilmList';
-import Siheky from 'components/Siheky/Siheky';
-import SmoothScroll from 'components/smoothScroll/SmoothScroll';
-import Footer from 'components/Footer/Footer';
-import TopBtn from 'components/TopBtn';
+import { lazy, Suspense } from 'react';
+
+const Header = lazy(() => import('components/Header/Header'));
+const SubHeader = lazy(() => import('components/Header/SubHeader'));
+const Visual = lazy(() => import('components/Visual/Visual'));
+const SectionOne = lazy(() => import('components/MainSection/SectionOne'));
+const FilmList = lazy(() => import('components/FilmList/FilmList'));
+const Siheky = lazy(() => import('components/Siheky/Siheky'));
+const SmoothScroll = lazy(() => import('components/smoothScroll/SmoothScroll'));
+const Footer = lazy(() => import('components/Footer/Footer'));
+const TopBtn = lazy(() => import('components/TopBtn'));
+
+const renderLoader = () => <p>Loading</p>;
 
 export const Home = () => {
   return (
-    <>
+    <Suspense fallback={renderLoader()}>
       <TopBtn />
       <SmoothScroll>
         <Header type={'active'} />
@@ -21,6 +25,6 @@ export const Home = () => {
         <FilmList />
         <Footer />
       </SmoothScroll>
-    </>
+    </Suspense>
   );
 };
