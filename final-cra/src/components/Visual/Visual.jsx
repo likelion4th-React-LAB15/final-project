@@ -5,6 +5,7 @@ import { CustomInput } from './CustomInput';
 import { CustomBtn } from './CustomBtn';
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import videoUrl from 'assets/images/visual-video.mp4';
 
 const Titles = styled.ul`
   width: 100%;
@@ -376,12 +377,7 @@ const Visual = () => {
         ))}
       </Titles>
 
-      <video
-        autoPlay
-        loop
-        muted
-        src={require('assets/images/visual-video.mp4')}
-      ></video>
+      <video autoPlay loop muted src={videoUrl}></video>
 
       <ReservationWrapper>
         {reservationList.map((el, idx) => {
