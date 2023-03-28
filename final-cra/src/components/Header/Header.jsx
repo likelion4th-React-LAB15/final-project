@@ -251,6 +251,7 @@ const Header = ({ type, children, style, ...restProps }) => {
           )}
           <Link to="/reservation4">
             <Cart
+              aria-label=" 버튼"
               style={{
                 width: 28,
                 height: 30,
