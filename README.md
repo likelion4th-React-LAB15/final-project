@@ -92,4 +92,7 @@ C:.
 ![image](https://user-images.githubusercontent.com/104200167/227130867-82fbb99f-b401-410c-ac5a-5967d6b106b6.png)
 
 ## 7. 페이지 기능
+
+### 예약 페이지
+![image](https://user-images.githubusercontent.com/119389695/228306001-c0ef2c10-4cc1-4a4e-b83f-ea98c53df7de.gif)
 ## 8. 시행착오
