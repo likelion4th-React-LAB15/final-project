@@ -1,19 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
+import theme from 'style/theme';
 
 const Input = styled.input`
-  width: 265px;
-  height: 40px;
-  background: #ffffff;
+  width: 16.5625rem;
+  height: 2.5rem;
+  background: ${theme.white};
   border: 1px solid #cccccc;
-  border-radius: 20px;
+  border-radius: ${theme.spacingMd};
   font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
-  font-size: 12px;
-  line-height: 15px;
-  padding-left: 22px;
-  margin: 5px 0px;
+  font-size: ${theme.textSm};
+  line-height: 0.9375rem;
+  padding-left: ${theme.textMd};
+  margin: 0.3125rem 0rem;
 `;
 
 const InputUserInfo = ({ value, placeholder }) => {
