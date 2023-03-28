@@ -4,7 +4,7 @@ import { UserLogInInput, UserForm, Button } from 'components/user';
 import styled from 'styled-components/macro';
 import Title from 'components/Title';
 import theme from 'style/theme';
-import { useSignIn, useAuthState, useSignOut } from '@service/auth';
+import { useSignIn, useAuthState } from '@service/auth';
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
 import SmoothScroll from 'components/smoothScroll/SmoothScroll';
@@ -18,8 +18,7 @@ export const LogIn = () => {
   const formStateRef = useRef(initialFormState);
 
   const { isLoading: isLoadingSignIn, signIn } = useSignIn();
-  const { signOut } = useSignOut();
-  const { isLoading, error, user } = useAuthState();
+  const { error, user } = useAuthState();
 
   const handleSignIn = async (e) => {
     e.preventDefault();
@@ -27,11 +26,6 @@ export const LogIn = () => {
     const { email, password } = formStateRef.current;
 
     await signIn(email, password);
-  };
-
-  const handleSignOut = async () => {
-    console.log('로그아웃');
-    signOut();
   };
 
   const handleChangeInput = (e) => {
@@ -73,10 +67,10 @@ export const LogIn = () => {
             </fieldset>
             <StyledUl>
               <li>
-                <a href="#">아이디 찾기</a>
+                <a href="/">아이디 찾기</a>
               </li>
               <StyledList>
-                <a href="#">비밀번호 찾기</a>
+                <a href="/">비밀번호 찾기</a>
               </StyledList>
             </StyledUl>
             <Button type="submit" disabled={isLoadingSignIn} visible>
