@@ -11,6 +11,8 @@ import Accordion from 'components/Reservation/Accordion.js';
 import { useState, useEffect } from 'react';
 import { Button } from 'components/user/UserButton.jsx';
 import { useNavigate } from 'react-router-dom';
+import ModalPortal from 'components/ModalPortal/ModalPortal';
+import Modal from 'components/Modal/Modal';
 
 const CartWrapper = styled.div`
   width: 74.1875rem;
@@ -221,8 +223,22 @@ export const Reservation4 = ({ checked }) => {
 
   const handleBackButtonClick = () => {
     console.log('click');
-    alert('객실을 추가하시겠습니까?');
+    HandleReserCheck();
     // 모달 버튼에서 확인 버튼에 <Link to='/reservation1'> 연결해주세용
+  };
+
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const HandleReserCheck = () => {
+    setModalOpen(true);
+  };
+
+  const HandleModalClose = () => {
+    setModalOpen(false);
+  };
+  const HandleWindowOpen = () => {
+    setModalOpen(false);
+    navigate('/reservation1');
   };
 
   return (
@@ -273,6 +289,13 @@ export const Reservation4 = ({ checked }) => {
         </CartWrapper>
         <Footer />
       </SmoothScroll>
+      {modalOpen && (
+        <ModalPortal>
+          <Modal hasChoice onClose={HandleModalClose} onOpen={HandleWindowOpen}>
+            새로운 객실을 추가 하시겠습니까?
+          </Modal>
+        </ModalPortal>
+      )}
     </>
   );
 };

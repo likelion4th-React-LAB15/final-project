@@ -93,7 +93,7 @@ const StyledClose = styled.button`
   cursor: pointer;
 `;
 
-const Modal = ({ onClose, hasChoice, children }) => {
+const Modal = ({ onOpen, onClose, hasChoice, children }) => {
   if (hasChoice) {
     return (
       <StyledModalWrapper>
@@ -101,7 +101,7 @@ const Modal = ({ onClose, hasChoice, children }) => {
           <StyledClose onClick={onClose} />
           <h2>{children}</h2>
           <StyledCloseBtn onClick={onClose}>취소</StyledCloseBtn>
-          <StyledCompleteBtn onClick={onClose}>확인</StyledCompleteBtn>
+          <StyledCompleteBtn onClick={onOpen}>확인</StyledCompleteBtn>
         </StyledModal>
       </StyledModalWrapper>
     );
