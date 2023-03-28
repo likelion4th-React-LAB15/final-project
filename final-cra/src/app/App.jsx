@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
 import GlobalStyle from 'components/GlobalStyle';
 import {
   Home,
@@ -18,7 +18,7 @@ import {
 
 const App = () => {
   return (
-    <>
+    <Router>
       <GlobalStyle />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -35,7 +35,7 @@ const App = () => {
         <Route path="/reservation3" element={<Reservation3 />} />
         <Route path="/reservation4" element={<Reservation4 />} />
       </Routes>
-    </>
+    </Router>
   );
 };
 
