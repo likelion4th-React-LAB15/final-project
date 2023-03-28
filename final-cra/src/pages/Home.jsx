@@ -1,3 +1,4 @@
+import Loading from 'components/Loading';
 import { lazy, Suspense } from 'react';
 
 const Header = lazy(() => import('components/Header/Header'));
@@ -10,11 +11,9 @@ const SmoothScroll = lazy(() => import('components/smoothScroll/SmoothScroll'));
 const Footer = lazy(() => import('components/Footer/Footer'));
 const TopBtn = lazy(() => import('components/TopBtn'));
 
-const renderLoader = () => <p>Loading</p>;
-
 export const Home = () => {
   return (
-    <Suspense fallback={renderLoader()}>
+    <Suspense fallback={<Loading />}>
       <TopBtn />
       <SmoothScroll>
         <Header type={'active'} />
