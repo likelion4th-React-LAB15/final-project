@@ -1,30 +1,6 @@
 import styled from 'styled-components';
 import theme from 'style/theme';
-
-const RoomInfoCard = ({
-  name,
-  description,
-  notice,
-  addInfoSite,
-  price,
-  imageUrl,
-}) => {
-  return (
-    <Card>
-      <Image src={imageUrl} alt={name} />
-      <Body>
-        <Name>{name}</Name>
-        <Description>{description}</Description>
-        <Notice>{notice}</Notice>
-        <AddInfoSite href="">{addInfoSite}</AddInfoSite>
-        <Price>${price}</Price>
-        <CheckBoxActive></CheckBoxActive>
-      </Body>
-    </Card>
-  );
-};
-
-export default RoomInfoCard;
+import { useState, useCallback } from 'react';
 
 const Card = styled.div`
   width: 59.438rem;
@@ -101,17 +77,71 @@ const CheckBox = styled.span`
   height: 3.75rem;
   border: 0.125rem solid #d5d5d5;
   border-radius: 0.625rem;
-  background: url(${require('./../../assets/icons/checked.png')}) no-repeat
-    center center;
+  background: url(${(props) =>
+      props.checked
+        ? require('./../../assets/icons/checked.png')
+        : require('./../../assets/icons/notChecked.png')})
+    no-repeat center center;
+  background-color: ${(props) => (props.checked ? theme.blue : 'transperant')};
 `;
 
-const CheckBoxActive = styled.span`
-  position: absolute;
-  top: 4.125rem;
-  right: 0rem;
-  width: 3.75rem;
-  height: 3.75rem;
-  border-radius: 0.625rem;
-  background: url(${require('./../../assets/icons/checked.png')}) ${theme.blue}
-    no-repeat center center;
-`;
+const RoomInfoCard = ({
+  name,
+  description,
+  notice,
+  addInfoSite,
+  price,
+  imageUrl,
+}) => {
+  const [isChecked, setIsChecked] = useState(false);
+
+  const toggleCheckbox = useCallback(() => {
+    setIsChecked((isChecked) => {
+      const newIsChecked = !isChecked;
+
+      if (newIsChecked) {
+        const checkedRooms =
+          JSON.parse(localStorage.getItem('checkedRooms')) || [];
+        const newCheckedRoom = {
+          name,
+          description,
+          notice,
+          addInfoSite,
+          price,
+          imageUrl,
+        };
+        checkedRooms.push(newCheckedRoom);
+        localStorage.setItem('checkedRooms', JSON.stringify(checkedRooms));
+      } else {
+        const checkedRooms =
+          JSON.parse(localStorage.getItem('checkedRooms')) || [];
+        const newCheckedRooms = checkedRooms.filter(
+          (room) => room.name !== name
+        );
+        localStorage.setItem('checkedRooms', JSON.stringify(newCheckedRooms));
+      }
+
+      return newIsChecked;
+    });
+  }, [setIsChecked, name, description, notice, addInfoSite, price, imageUrl]);
+
+  return (
+    <Card>
+      <Image src={imageUrl} alt={name} />
+      <Body>
+        <Name>{name}</Name>
+        <Description>{description}</Description>
+        <Notice>{notice}</Notice>
+        <AddInfoSite href="">{addInfoSite}</AddInfoSite>
+        <Price>${price}</Price>
+        <CheckBox
+          checked={isChecked}
+          onClick={toggleCheckbox}
+          tabindex="10"
+        ></CheckBox>
+      </Body>
+    </Card>
+  );
+};
+
+export default RoomInfoCard;

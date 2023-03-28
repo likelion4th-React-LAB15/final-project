@@ -7,10 +7,10 @@ const OptionContainer = styled.div`
   align-items: center;
   width: 17.25rem;
   height: 4.625rem;
-  border: 1px solid #A6A6A6;
+  border: 0.0625rem solid #a6a6a6;
   border-radius: 3.125rem;
   justify-content: space-between;
-  padding:0px ${theme.spacingMd};
+  padding: 0rem ${theme.spacingMd};
 `;
 
 const Label = styled.span`
@@ -31,15 +31,23 @@ const Select = styled.select`
 `;
 
 const OptionSelect = () => {
-  const [adults, setAdults] = useState(parseInt(localStorage.getItem('adults')) || 0);
-  const [children, setChildren] = useState(parseInt(localStorage.getItem('children')) || 0);
-  const [infants, setInfants] = useState(parseInt(localStorage.getItem('infants')) || 0);
+  const [adults, setAdults] = useState(
+    parseInt(localStorage.getItem('adults')) || 0
+  );
+  const [children, setChildren] = useState(
+    parseInt(localStorage.getItem('children')) || 0
+  );
+  const [infants, setInfants] = useState(
+    parseInt(localStorage.getItem('infants')) || 0
+  );
 
   useEffect(() => {
-    localStorage.setItem('adults', adults);
-    localStorage.setItem('children', children);
-    localStorage.setItem('infants', infants);
-  }, [adults, children, infants]);
+    return () => {
+      localStorage.setItem('adults', adults);
+      localStorage.setItem('children', children);
+      localStorage.setItem('infants', infants);
+    };
+  }, []);
 
   const handleAdultsChange = (event) => {
     setAdults(parseInt(event.target.value));
@@ -53,7 +61,7 @@ const OptionSelect = () => {
     setInfants(parseInt(event.target.value));
   };
 
-  const GuestTypeArray = ["성인", "아동(만 2~11세)", "유아(만 2세 미만)"]; 
+  const GuestTypeArray = ['성인', '아동(만 2~11세)', '유아(만 2세 미만)'];
 
   return (
     <>
@@ -61,11 +69,25 @@ const OptionSelect = () => {
         <OptionContainer key={index}>
           <Label>{option}</Label>
           <Select
-            value={option === "성인" ? adults : option === "아동(만 2~11세)" ? children : infants}
-            onChange={option === "성인" ? handleAdultsChange : option === "아동(만 2~11세)" ? handleChildrenChange : handleInfantsChange}
+            value={
+              option === '성인'
+                ? adults
+                : option === '아동(만 2~11세)'
+                ? children
+                : infants
+            }
+            onChange={
+              option === '성인'
+                ? handleAdultsChange
+                : option === '아동(만 2~11세)'
+                ? handleChildrenChange
+                : handleInfantsChange
+            }
           >
             {[...Array(4)].map((_, index) => (
-              <option key={index} value={index}>{index}</option>
+              <option key={index} value={index}>
+                {index}
+              </option>
             ))}
           </Select>
         </OptionContainer>
