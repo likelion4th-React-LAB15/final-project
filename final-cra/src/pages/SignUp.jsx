@@ -48,7 +48,6 @@ export const SignUp = () => {
   const [checkNickname, setCheckNickname] = useState(false);
   const [checkPhone, setCheckPhone] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
-
   const formStateRef = useRef(initialFormState);
   const doubleCheckEmailRef = useRef();
   const doubleCheckNicknameRef = useRef();

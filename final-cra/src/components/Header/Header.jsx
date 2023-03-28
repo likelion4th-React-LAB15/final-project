@@ -236,6 +236,7 @@ const Header = ({ type, children, style, ...restProps }) => {
           ) : (
             <Link to="/login">
               <User
+                aria-label="로그인 버튼"
                 style={{
                   width: 28,
                   height: 30,
