@@ -61,7 +61,9 @@ const CheckBox = styled.input`
 `;
 
 const CheckBoxLabel = styled.label`
-  display: inline-block;
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
 `;
 
 const AccordionHandle = ({
@@ -97,7 +99,9 @@ const AccordionHandle = ({
           onClick={onCheck}
           isChecked={isChecked}
         ></CheckBox>
-        <CheckBoxLabel htmlFor={`${controlId}-checkbox`}></CheckBoxLabel>
+        <CheckBoxLabel htmlFor={`${controlId}-checkbox`}>
+          체크박스
+        </CheckBoxLabel>
         {children}
         <PriceWrapper>${price}</PriceWrapper>
 
