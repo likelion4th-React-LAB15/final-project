@@ -1,6 +1,26 @@
 import styled from 'styled-components';
 import theme from 'style/theme';
 
+function Step({ index, label, isActive = false }) {
+  return (
+    <StepBlock>
+      <CircleWrapper>
+        {isActive ? (
+          <CircleActive></CircleActive>
+        ) : (
+          <Circle>{index + 1}</Circle>
+        )}
+
+        <CircleShadow></CircleShadow>
+        <Bar></Bar>
+
+        {isActive ? <ProgressBar progress={100} /> : null}
+      </CircleWrapper>
+      <span>{label}</span>
+    </StepBlock>
+  );
+}
+
 const StepBlock = styled.div`
   font-family: 'Inter';
   font-style: normal;
@@ -77,24 +97,5 @@ const ProgressBar = styled.div`
   z-index: -10;
   transition: width 0.3s ease-in-out;
 `;
-function Step({ index, label, isActive = false }) {
-  return (
-    <StepBlock>
-      <CircleWrapper>
-        {isActive ? (
-          <CircleActive></CircleActive>
-        ) : (
-          <Circle>{index + 1}</Circle>
-        )}
-
-        <CircleShadow></CircleShadow>
-        <Bar></Bar>
-
-        {isActive ? <ProgressBar progress={100} /> : null}
-      </CircleWrapper>
-      <span>{label}</span>
-    </StepBlock>
-  );
-}
 
 export default Step;

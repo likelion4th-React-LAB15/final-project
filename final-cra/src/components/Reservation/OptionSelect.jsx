@@ -2,34 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import theme from 'style/theme';
 
-const OptionContainer = styled.div`
-  display: flex;
-  align-items: center;
-  width: 17.25rem;
-  height: 4.625rem;
-  border: 0.0625rem solid #a6a6a6;
-  border-radius: 3.125rem;
-  justify-content: space-between;
-  padding: 0rem ${theme.spacingMd};
-`;
-
-const Label = styled.span`
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 1.125rem;
-  line-height: ${theme.textMd};
-  color: #000000;
-`;
-
-const Select = styled.select`
-  width: 4.5rem;
-  height: 2rem;
-  font-size: 1.125rem;
-  color: #000000;
-  border: none;
-`;
-
 const OptionSelect = () => {
   const [adults, setAdults] = useState(
     parseInt(localStorage.getItem('adults')) || 0
@@ -86,5 +58,33 @@ const OptionSelect = () => {
     </>
   );
 };
+
+const OptionContainer = styled.div`
+  display: flex;
+  align-items: center;
+  width: 17.25rem;
+  height: 4.625rem;
+  border: 0.0625rem solid #a6a6a6;
+  border-radius: 3.125rem;
+  justify-content: space-between;
+  padding: 0rem ${theme.spacingMd};
+`;
+
+const Label = styled.span`
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: ${theme.textMd};
+  color: #000000;
+`;
+
+const Select = styled.select`
+  width: 4.5rem;
+  height: 2rem;
+  font-size: 1.125rem;
+  color: #000000;
+  border: none;
+`;
 
 export default OptionSelect;

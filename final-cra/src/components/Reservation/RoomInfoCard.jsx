@@ -2,6 +2,65 @@ import styled from 'styled-components';
 import theme from 'style/theme';
 import { useState, useCallback } from 'react';
 
+const RoomInfoCard = ({
+  name,
+  description,
+  notice,
+  addInfoSite,
+  price,
+  imageUrl,
+}) => {
+  const [isChecked, setIsChecked] = useState(false);
+
+  const toggleCheckbox = useCallback(() => {
+    setIsChecked((isChecked) => {
+      const newIsChecked = !isChecked;
+
+      if (newIsChecked) {
+        const checkedRooms =
+          JSON.parse(localStorage.getItem('checkedRooms')) || [];
+        const newCheckedRoom = {
+          name,
+          description,
+          notice,
+          addInfoSite,
+          price,
+          imageUrl,
+        };
+        checkedRooms.push(newCheckedRoom);
+        localStorage.setItem('checkedRooms', JSON.stringify(checkedRooms));
+      } else {
+        const checkedRooms =
+          JSON.parse(localStorage.getItem('checkedRooms')) || [];
+        const newCheckedRooms = checkedRooms.filter(
+          (room) => room.name !== name
+        );
+        localStorage.setItem('checkedRooms', JSON.stringify(newCheckedRooms));
+      }
+
+      return newIsChecked;
+    });
+  }, [setIsChecked, name, description, notice, addInfoSite, price, imageUrl]);
+
+  return (
+    <Card>
+      <Image src={imageUrl} alt={name} />
+      <Body>
+        <Name>{name}</Name>
+        <Description>{description}</Description>
+        <Notice>{notice}</Notice>
+        <AddInfoSite href="">{addInfoSite}</AddInfoSite>
+        <Price>${price}</Price>
+        <CheckBox
+          checked={isChecked}
+          onClick={toggleCheckbox}
+          tabindex="10"
+        ></CheckBox>
+      </Body>
+    </Card>
+  );
+};
+
 const Card = styled.div`
   width: 59.438rem;
   display: flex;
@@ -82,64 +141,5 @@ const CheckBox = styled.span`
     no-repeat center center;
   background-color: ${(props) => (props.checked ? theme.blue : 'transperant')};
 `;
-
-const RoomInfoCard = ({
-  name,
-  description,
-  notice,
-  addInfoSite,
-  price,
-  imageUrl,
-}) => {
-  const [isChecked, setIsChecked] = useState(false);
-
-  const toggleCheckbox = useCallback(() => {
-    setIsChecked((isChecked) => {
-      const newIsChecked = !isChecked;
-
-      if (newIsChecked) {
-        const checkedRooms =
-          JSON.parse(localStorage.getItem('checkedRooms')) || [];
-        const newCheckedRoom = {
-          name,
-          description,
-          notice,
-          addInfoSite,
-          price,
-          imageUrl,
-        };
-        checkedRooms.push(newCheckedRoom);
-        localStorage.setItem('checkedRooms', JSON.stringify(checkedRooms));
-      } else {
-        const checkedRooms =
-          JSON.parse(localStorage.getItem('checkedRooms')) || [];
-        const newCheckedRooms = checkedRooms.filter(
-          (room) => room.name !== name
-        );
-        localStorage.setItem('checkedRooms', JSON.stringify(newCheckedRooms));
-      }
-
-      return newIsChecked;
-    });
-  }, [setIsChecked, name, description, notice, addInfoSite, price, imageUrl]);
-
-  return (
-    <Card>
-      <Image src={imageUrl} alt={name} />
-      <Body>
-        <Name>{name}</Name>
-        <Description>{description}</Description>
-        <Notice>{notice}</Notice>
-        <AddInfoSite href="">{addInfoSite}</AddInfoSite>
-        <Price>${price}</Price>
-        <CheckBox
-          checked={isChecked}
-          onClick={toggleCheckbox}
-          tabindex="10"
-        ></CheckBox>
-      </Body>
-    </Card>
-  );
-};
 
 export default RoomInfoCard;

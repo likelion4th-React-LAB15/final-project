@@ -4,6 +4,102 @@ import 'react-calendar/dist/Calendar.css';
 import styled from 'styled-components';
 import theme from 'style/theme';
 
+function ReservationCalendar() {
+  const [selectedDateRange, setSelectedDateRange] = useState([
+    new Date(),
+    new Date(),
+  ]);
+
+  useEffect(() => {
+    const handleFocus = () => {
+      const nowTile = document.querySelector('.react-calendar__tile--now');
+      if (nowTile) {
+        nowTile.focus();
+      }
+    };
+    window.addEventListener('load', handleFocus);
+    return () => {
+      window.removeEventListener('load', handleFocus);
+    };
+  }, []);
+
+  const formatDate = useCallback((date) => {
+    return date.toLocaleDateString('ko-KR', {
+      year: 'numeric',
+      month: 'long',
+      day: '2-digit',
+    });
+  }, []);
+
+  useEffect(() => {
+    const firstDay = formatDate(selectedDateRange[0]);
+    const lastDay = formatDate(selectedDateRange[1]);
+    localStorage.setItem('firstDay', firstDay);
+    localStorage.setItem('lastDay', lastDay);
+  }, [formatDate, selectedDateRange]);
+
+  const handleSelectDateRange = useCallback((value) => {
+    setSelectedDateRange(value);
+  }, []);
+
+  const handleKeyDown = useCallback((e) => {
+    if (e.key.includes('Arrow')) {
+      const activeElement = document.activeElement;
+      const monthViewDays = activeElement
+        ?.closest('.react-calendar__month-view')
+        ?.querySelector('.react-calendar__month-view__days');
+      if (monthViewDays) {
+        const tiles = monthViewDays.querySelectorAll('.react-calendar__tile');
+        const currentIndex = Array.prototype.indexOf.call(tiles, activeElement);
+
+        let direction = 0;
+        if (e.key === 'ArrowUp') {
+          direction = -7;
+        } else if (e.key === 'ArrowDown') {
+          direction = 7;
+        } else if (e.key === 'ArrowLeft') {
+          direction = -1;
+        } else if (e.key === 'ArrowRight') {
+          direction = 1;
+        }
+
+        const newIndex = currentIndex + direction;
+        if (tiles[newIndex]) {
+          tiles[newIndex].focus();
+        }
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [handleKeyDown]);
+
+  return (
+    <Container>
+      <SelectedDays>
+        {formatDate(selectedDateRange[0])} - {formatDate(selectedDateRange[1])}
+      </SelectedDays>
+      <StyledCalendar
+        value={selectedDateRange}
+        onChange={handleSelectDateRange}
+        selectRange={true}
+        showNavigation={true}
+        minDate={new Date()}
+        calendarType="US"
+        locale="ko-KR"
+        showDoubleView={true}
+        showFixedNumberOfWeeks={false}
+        showNeighboringMonth={false}
+        formatDay={(_, date) => date.toLocaleString('en', { day: '2-digit' })}
+      />
+    </Container>
+  );
+}
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -122,101 +218,5 @@ const StyledCalendar = styled(Calendar)`
     display: none;
   }
 `;
-
-function ReservationCalendar() {
-  const [selectedDateRange, setSelectedDateRange] = useState([
-    new Date(),
-    new Date(),
-  ]);
-
-  useEffect(() => {
-    const handleFocus = () => {
-      const nowTile = document.querySelector('.react-calendar__tile--now');
-      if (nowTile) {
-        nowTile.focus();
-      }
-    };
-    window.addEventListener('load', handleFocus);
-    return () => {
-      window.removeEventListener('load', handleFocus);
-    };
-  }, []);
-
-  const formatDate = useCallback((date) => {
-    return date.toLocaleDateString('ko-KR', {
-      year: 'numeric',
-      month: 'long',
-      day: '2-digit',
-    });
-  }, []);
-
-  useEffect(() => {
-    const firstDay = formatDate(selectedDateRange[0]);
-    const lastDay = formatDate(selectedDateRange[1]);
-    localStorage.setItem('firstDay', firstDay);
-    localStorage.setItem('lastDay', lastDay);
-  }, [formatDate, selectedDateRange]);
-
-  const handleSelectDateRange = useCallback((value) => {
-    setSelectedDateRange(value);
-  }, []);
-
-  const handleKeyDown = useCallback((e) => {
-    if (e.key.includes('Arrow')) {
-      const activeElement = document.activeElement;
-      const monthViewDays = activeElement
-        ?.closest('.react-calendar__month-view')
-        ?.querySelector('.react-calendar__month-view__days');
-      if (monthViewDays) {
-        const tiles = monthViewDays.querySelectorAll('.react-calendar__tile');
-        const currentIndex = Array.prototype.indexOf.call(tiles, activeElement);
-
-        let direction = 0;
-        if (e.key === 'ArrowUp') {
-          direction = -7;
-        } else if (e.key === 'ArrowDown') {
-          direction = 7;
-        } else if (e.key === 'ArrowLeft') {
-          direction = -1;
-        } else if (e.key === 'ArrowRight') {
-          direction = 1;
-        }
-
-        const newIndex = currentIndex + direction;
-        if (tiles[newIndex]) {
-          tiles[newIndex].focus();
-        }
-      }
-    }
-  }, []);
-
-  useEffect(() => {
-    document.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [handleKeyDown]);
-
-  return (
-    <Container>
-      <SelectedDays>
-        {formatDate(selectedDateRange[0])} - {formatDate(selectedDateRange[1])}
-      </SelectedDays>
-      <StyledCalendar
-        value={selectedDateRange}
-        onChange={handleSelectDateRange}
-        selectRange={true}
-        showNavigation={true}
-        minDate={new Date()}
-        calendarType="US"
-        locale="ko-KR"
-        showDoubleView={true}
-        showFixedNumberOfWeeks={false}
-        showNeighboringMonth={false}
-        formatDay={(_, date) => date.toLocaleString('en', { day: '2-digit' })}
-      />
-    </Container>
-  );
-}
 
 export default ReservationCalendar;

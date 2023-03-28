@@ -1,13 +1,6 @@
 import Step from 'components/Reservation/Step.js';
 import styled from 'styled-components';
 
-const StepWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 3.25rem;
-  position: relative;
-`;
-
 function StepNavigation(props) {
   return (
     <StepWrapper>
@@ -27,5 +20,12 @@ function StepNavigation(props) {
     </StepWrapper>
   );
 }
+
+const StepWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 3.25rem;
+  position: relative;
+`;
 
 export default StepNavigation;

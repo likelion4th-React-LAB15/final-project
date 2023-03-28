@@ -1,6 +1,15 @@
 import styled from 'styled-components';
 import theme from 'style/theme';
 
+function ReservationTitle(props) {
+  return (
+    <TitleWrapper>
+      <Guest>{props.value}</Guest>
+      {props.children}
+    </TitleWrapper>
+  );
+}
+
 const TitleWrapper = styled.div`
   padding-top: 13.938rem;
 `;
@@ -14,14 +23,5 @@ const Guest = styled.h2`
   text-align: center;
   color: ${theme.blue};
 `;
-
-function ReservationTitle(props) {
-  return (
-    <TitleWrapper>
-      <Guest>{props.value}</Guest>
-      {props.children}
-    </TitleWrapper>
-  );
-}
 
 export default ReservationTitle;

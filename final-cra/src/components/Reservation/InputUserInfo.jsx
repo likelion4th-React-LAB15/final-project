@@ -2,6 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import theme from 'style/theme';
 
+const InputUserInfo = ({ value, placeholder }) => {
+  return <Input type="text" value={value} placeholder={placeholder} />;
+};
+
 const Input = styled.input`
   width: 16.5625rem;
   height: 2.5rem;
@@ -16,9 +20,5 @@ const Input = styled.input`
   padding-left: ${theme.textMd};
   margin: 0.3125rem 0rem;
 `;
-
-const InputUserInfo = ({ value, placeholder }) => {
-  return <Input type="text" value={value} placeholder={placeholder} />;
-};
 
 export default InputUserInfo;
