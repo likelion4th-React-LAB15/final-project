@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import AccordionPanel from 'components/Reservation/AccordionPanel.js';
 import AccordionHandle from 'components/Reservation/AccordionHandle.js';
 import theme from 'style/theme';
@@ -65,13 +65,16 @@ const AccordionItem = styled.article`
 const Accordion = (props) => {
   const [activeIndex, setActiveIndex] = useState(props.activeIndex ?? -1);
 
-  const handleChangeActiveIndex = (index) => {
-    if (activeIndex === index) {
-      setActiveIndex(-1);
-    } else {
-      setActiveIndex(index);
-    }
-  };
+  const handleChangeActiveIndex = useCallback(
+    (index) => {
+      if (activeIndex === index) {
+        setActiveIndex(-1);
+      } else {
+        setActiveIndex(index);
+      }
+    },
+    [activeIndex]
+  );
 
   return (
     <AccordionWrapper>
