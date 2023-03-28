@@ -1,7 +1,7 @@
-import { useState, useCallback, useMemo } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "./index";
-import { useNavigate } from "react-router-dom";
+import { useState, useCallback, useMemo } from 'react';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from './index';
+import { useNavigate } from 'react-router-dom';
 
 export const useSignIn = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -13,12 +13,17 @@ export const useSignIn = () => {
   const signIn = useCallback(async (email, password) => {
     setIsLoading(true);
     try {
-      const userCredentials = await signInWithEmailAndPassword(auth, email, password);
+      const userCredentials = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
 
       setUser(userCredentials);
-      navigate("/");
+      navigate('/');
     } catch (error) {
       setError(error);
+      alert('이메일 또는 비밀번호를 다시 확인해주세요.');
     } finally {
       setIsLoading(false);
     }

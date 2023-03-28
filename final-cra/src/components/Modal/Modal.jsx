@@ -48,6 +48,38 @@ const StyledBtn = styled.button`
   cursor: pointer;
 `;
 
+const StyledCompleteBtn = styled.button`
+  position: absolute;
+  bottom: 3.75rem;
+  left: 70%;
+  transform: translateX(-50%);
+  width: 11rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 2.5rem;
+  background-color: ${theme.blue};
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.25rem;
+  color: ${theme.white};
+  cursor: pointer;
+`;
+
+const StyledCloseBtn = styled.button`
+  position: absolute;
+  bottom: 3.75rem;
+  left: 30%;
+  transform: translateX(-50%);
+  width: 11rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 2.5rem;
+  background-color: #d9d9d9;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.25rem;
+  color: ${theme.black};
+  cursor: pointer;
+`;
+
 const StyledClose = styled.button`
   width: 2.125rem;
   height: 2.125rem;
@@ -61,16 +93,29 @@ const StyledClose = styled.button`
   cursor: pointer;
 `;
 
-const Modal = ({ onClose, children }) => {
-  return (
-    <StyledModalWrapper>
-      <StyledModal>
-        <StyledClose onClick={onClose} />
-        <h2>{children}</h2>
-        <StyledBtn onClick={onClose}>확인</StyledBtn>
-      </StyledModal>
-    </StyledModalWrapper>
-  );
+const Modal = ({ onOpen, onClose, hasChoice, children }) => {
+  if (hasChoice) {
+    return (
+      <StyledModalWrapper>
+        <StyledModal>
+          <StyledClose onClick={onClose} />
+          <h2>{children}</h2>
+          <StyledCloseBtn onClick={onClose}>취소</StyledCloseBtn>
+          <StyledCompleteBtn onClick={onOpen}>확인</StyledCompleteBtn>
+        </StyledModal>
+      </StyledModalWrapper>
+    );
+  } else {
+    return (
+      <StyledModalWrapper>
+        <StyledModal>
+          <StyledClose onClick={onClose} />
+          <h2>{children}</h2>
+          <StyledBtn onClick={onClose}>확인</StyledBtn>
+        </StyledModal>
+      </StyledModalWrapper>
+    );
+  }
 };
 
 export default Modal;
