@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import theme from 'style/theme';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 const Card = styled.div`
   width: 59.438rem;
@@ -95,30 +95,35 @@ const RoomInfoCard = ({
 }) => {
   const [isChecked, setIsChecked] = useState(false);
 
-  const toggleCheckbox = () => {
-    const newIsChecked = !isChecked;
-    setIsChecked(newIsChecked);
+  const toggleCheckbox = useCallback(() => {
+    setIsChecked((isChecked) => {
+      const newIsChecked = !isChecked;
 
-    if (newIsChecked) {
-      const checkedRooms =
-        JSON.parse(localStorage.getItem('checkedRooms')) || [];
-      const newCheckedRoom = {
-        name,
-        description,
-        notice,
-        addInfoSite,
-        price,
-        imageUrl,
-      };
-      checkedRooms.push(newCheckedRoom);
-      localStorage.setItem('checkedRooms', JSON.stringify(checkedRooms));
-    } else {
-      const checkedRooms =
-        JSON.parse(localStorage.getItem('checkedRooms')) || [];
-      const newCheckedRooms = checkedRooms.filter((room) => room.name !== name);
-      localStorage.setItem('checkedRooms', JSON.stringify(newCheckedRooms));
-    }
-  };
+      if (newIsChecked) {
+        const checkedRooms =
+          JSON.parse(localStorage.getItem('checkedRooms')) || [];
+        const newCheckedRoom = {
+          name,
+          description,
+          notice,
+          addInfoSite,
+          price,
+          imageUrl,
+        };
+        checkedRooms.push(newCheckedRoom);
+        localStorage.setItem('checkedRooms', JSON.stringify(checkedRooms));
+      } else {
+        const checkedRooms =
+          JSON.parse(localStorage.getItem('checkedRooms')) || [];
+        const newCheckedRooms = checkedRooms.filter(
+          (room) => room.name !== name
+        );
+        localStorage.setItem('checkedRooms', JSON.stringify(newCheckedRooms));
+      }
+
+      return newIsChecked;
+    });
+  }, [setIsChecked, name, description, notice, addInfoSite, price, imageUrl]);
 
   return (
     <Card>
