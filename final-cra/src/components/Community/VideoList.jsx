@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useState, forwardRef } from 'react';
-import { ReactComponent as MoreBtn } from './../../assets/icons/btn-more.svg';
-import { ReactComponent as PlayBtn } from './../../assets/icons/ico_video.svg';
+import { ReactComponent as MoreBtn } from 'assets/icons/btn-more.svg';
 
 const StyledVideoWrap = styled.ul`
   width: 67.5rem;
@@ -111,7 +110,7 @@ export const VideoList = forwardRef((_, ref) => {
                 <video
                   style={{ cursor: 'pointer' }}
                   data-community
-                  src={require(`./../../assets/video/${src}`)}
+                  src={require(`assets/video/${src}`)}
                   alt={title}
                 />
               </li>
