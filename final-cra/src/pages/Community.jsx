@@ -1,11 +1,11 @@
-import React, { useRef, useEffect, forwardRef, useState } from 'react';
-import Title from './../components/Title';
-import { VideoList, VideoPopup, VideoSlide } from './../components/Community';
+import React, { useRef, useEffect, useState } from 'react';
+import Title from 'components/Title';
+import { VideoList, VideoPopup, VideoSlide } from 'components/Community';
 import SmoothScroll from 'components/smoothScroll/SmoothScroll';
-import Header from './../components/Header/Header';
+import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
 import TopBtn from 'components/TopBtn';
-import { SubNav } from '../components/subNav/SubNav';
+import { SubNav } from 'components/subNav/SubNav';
 
 const subNavData = [
   {
@@ -35,13 +35,13 @@ export const Community = () => {
   useEffect(() => {
     swiperRef.current?.addEventListener('click', ({ target }) => {
       if (target.dataset.community) {
-        link.current = target.getAttribute('src').split('/')[3].split('.')[0];
+        link.current = target.getAttribute('src').split('/')[4].split('.')[0];
         setToggleState(true);
       }
     });
     StyledVideoWrapRef.current?.addEventListener('click', ({ target }) => {
       if (target.dataset.community) {
-        link.current = target.getAttribute('src').split('/')[3].split('.')[0];
+        link.current = target.getAttribute('src').split('/')[4].split('.')[0];
         setToggleState(true);
       }
     });
