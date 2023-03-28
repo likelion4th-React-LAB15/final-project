@@ -13,7 +13,7 @@ const Card = styled.div`
 const Image = styled.img`
   width: 20rem;
   height: 20rem;
-  background: #d9d9d9;
+  background-color: #d9d9d9;
   border-radius: ${theme.spacingMd};
 `;
 
@@ -58,12 +58,10 @@ const AddInfoSite = styled.a`
 `;
 
 const Price = styled.span`
-  font-size: ${theme.spacingMd};
   font-weight: 700;
   position: absolute;
   bottom: 4.125rem;
   right: 0rem;
-  font-weight: 700;
   font-size: 2.5rem;
   line-height: 3rem;
   color: #444444;
