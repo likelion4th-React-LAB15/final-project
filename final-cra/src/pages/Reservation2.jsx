@@ -8,14 +8,6 @@ import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
 import SmoothScroll from 'components/smoothScroll/SmoothScroll';
 
-const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2.313rem;
-  margin: 5.625rem 0 15.168rem;
-`;
-
 export const Reservation2 = () => {
   return (
     <>
@@ -37,3 +29,11 @@ export const Reservation2 = () => {
     </>
   );
 };
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.313rem;
+  margin: 5.625rem 0 15.168rem;
+`;

@@ -1,6 +1,17 @@
 import styled from 'styled-components';
 import theme from 'style/theme';
 
+const AccordionPanel = ({ controlId, isActive, contents }) => {
+  return (
+    <AccordionPanelStyle
+      role="region"
+      aria-labelledby={`${controlId}-handle`}
+      className={isActive ? 'active' : ''}
+      dangerouslySetInnerHTML={contents}
+    />
+  );
+};
+
 const AccordionPanelStyle = styled.div`
   overflow: hidden;
   height: 0;
@@ -15,16 +26,5 @@ const AccordionPanelStyle = styled.div`
     height: auto;
   }
 `;
-
-const AccordionPanel = ({ controlId, isActive, contents }) => {
-  return (
-    <AccordionPanelStyle
-      role="region"
-      aria-labelledby={`${controlId}-handle`}
-      className={isActive ? 'active' : ''}
-      dangerouslySetInnerHTML={contents}
-    />
-  );
-};
 
 export default AccordionPanel;

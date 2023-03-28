@@ -1,6 +1,16 @@
 import styled from 'styled-components';
 import React from 'react';
-import { ReactComponent as SeachIcon } from './../../assets/icons/btn-search-bold.svg';
+import { ReactComponent as SeachIcon } from 'assets/icons/btn-search-bold.svg';
+
+export const SearchInput = ({ placeholder = '검색어를 입력해주세요' }) => {
+  return (
+    <InputWrap>
+      <label htmlFor=""></label>
+      <input type="search" placeholder={placeholder} name="" id="" />
+      <SeachIcon className="seachIcon" />
+    </InputWrap>
+  );
+};
 
 const InputWrap = styled.div`
   display: flex;
@@ -44,13 +54,3 @@ const InputWrap = styled.div`
     transform: translateY(-50%);
   }
 `;
-
-export const SearchInput = ({ placeholder = '검색어를 입력해주세요' }) => {
-  return (
-    <InputWrap>
-      <label htmlFor=""></label>
-      <input type="search" placeholder={placeholder} name="" id="" />
-      <SeachIcon className="seachIcon" />
-    </InputWrap>
-  );
-};

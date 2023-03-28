@@ -2,6 +2,57 @@ import styled from 'styled-components';
 import theme from 'style/theme';
 import { useState } from 'react';
 
+const AccordionHandle = ({
+  controlId,
+  isActive,
+  onActive,
+  children,
+  price,
+  onChange,
+}) => {
+  let iconPath = isActive
+    ? 'M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z'
+    : 'M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z';
+
+  const [isChecked, setIsChecked] = useState(false);
+  const onCheck = () => {
+    setIsChecked(!isChecked);
+  };
+  return (
+    <div>
+      <AccordionHandleButtonStyle
+        id={`${controlId}-handle`}
+        aria-expanded={isActive}
+        aria-controls={controlId}
+        onClick={onActive}
+      >
+        <CheckBox
+          id={`${controlId}-checkbox`}
+          tabindex="10"
+          onChange={onChange}
+          value={price}
+          type="checkbox"
+          onClick={onCheck}
+          isChecked={isChecked}
+        ></CheckBox>
+        <CheckBoxLabel htmlFor={`${controlId}-checkbox`}>
+          체크박스
+        </CheckBoxLabel>
+        {children}
+        <PriceWrapper>${price}</PriceWrapper>
+
+        <AccordionHandleSvgStyle
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          aria-hidden="true"
+        >
+          <path clipRule="evenodd" fillRule="evenodd" d={iconPath} />
+        </AccordionHandleSvgStyle>
+      </AccordionHandleButtonStyle>
+    </div>
+  );
+};
+
 const AccordionHandleButtonStyle = styled.button`
   align-items: center;
   cursor: pointer;
@@ -65,56 +116,5 @@ const CheckBoxLabel = styled.label`
   left: -9999px;
   opacity: 0;
 `;
-
-const AccordionHandle = ({
-  controlId,
-  isActive,
-  onActive,
-  children,
-  price,
-  onChange,
-}) => {
-  let iconPath = isActive
-    ? 'M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z'
-    : 'M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z';
-
-  const [isChecked, setIsChecked] = useState(false);
-  const onCheck = () => {
-    setIsChecked(!isChecked);
-  };
-  return (
-    <div>
-      <AccordionHandleButtonStyle
-        id={`${controlId}-handle`}
-        aria-expanded={isActive}
-        aria-controls={controlId}
-        onClick={onActive}
-      >
-        <CheckBox
-          id={`${controlId}-checkbox`}
-          tabindex="10"
-          onChange={onChange}
-          value={price}
-          type="checkbox"
-          onClick={onCheck}
-          isChecked={isChecked}
-        ></CheckBox>
-        <CheckBoxLabel htmlFor={`${controlId}-checkbox`}>
-          체크박스
-        </CheckBoxLabel>
-        {children}
-        <PriceWrapper>${price}</PriceWrapper>
-
-        <AccordionHandleSvgStyle
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          aria-hidden="true"
-        >
-          <path clipRule="evenodd" fillRule="evenodd" d={iconPath} />
-        </AccordionHandleSvgStyle>
-      </AccordionHandleButtonStyle>
-    </div>
-  );
-};
 
 export default AccordionHandle;

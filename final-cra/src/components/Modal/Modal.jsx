@@ -3,6 +3,31 @@ import styled from 'styled-components';
 import theme from 'style/theme';
 import BtnClose from 'assets/icons/btn-close-modal.svg';
 
+const Modal = ({ onOpen, onClose, hasChoice, children }) => {
+  if (hasChoice) {
+    return (
+      <StyledModalWrapper>
+        <StyledModal>
+          <StyledClose onClick={onClose} />
+          <h2>{children}</h2>
+          <StyledCloseBtn onClick={onClose}>취소</StyledCloseBtn>
+          <StyledCompleteBtn onClick={onOpen}>확인</StyledCompleteBtn>
+        </StyledModal>
+      </StyledModalWrapper>
+    );
+  } else {
+    return (
+      <StyledModalWrapper>
+        <StyledModal>
+          <StyledClose onClick={onClose} />
+          <h2>{children}</h2>
+          <StyledBtn onClick={onClose}>확인</StyledBtn>
+        </StyledModal>
+      </StyledModalWrapper>
+    );
+  }
+};
+
 const StyledModalWrapper = styled.div`
   width: 100%;
   height: 100%;
@@ -92,30 +117,5 @@ const StyledClose = styled.button`
   background-image: url(${BtnClose});
   cursor: pointer;
 `;
-
-const Modal = ({ onOpen, onClose, hasChoice, children }) => {
-  if (hasChoice) {
-    return (
-      <StyledModalWrapper>
-        <StyledModal>
-          <StyledClose onClick={onClose} />
-          <h2>{children}</h2>
-          <StyledCloseBtn onClick={onClose}>취소</StyledCloseBtn>
-          <StyledCompleteBtn onClick={onOpen}>확인</StyledCompleteBtn>
-        </StyledModal>
-      </StyledModalWrapper>
-    );
-  } else {
-    return (
-      <StyledModalWrapper>
-        <StyledModal>
-          <StyledClose onClick={onClose} />
-          <h2>{children}</h2>
-          <StyledBtn onClick={onClose}>확인</StyledBtn>
-        </StyledModal>
-      </StyledModalWrapper>
-    );
-  }
-};
 
 export default Modal;

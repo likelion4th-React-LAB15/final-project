@@ -1,6 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import theme from './../../style/theme';
+import theme from 'style/theme';
+
+export const Btn = ({ children, typeState, ...resetProps }) => {
+  return (
+    <StyledBtn typeState={typeState} {...resetProps}>
+      {children}
+    </StyledBtn>
+  );
+};
 
 const StyledBtn = styled.button`
   width: 18rem;
@@ -19,11 +27,3 @@ const StyledBtn = styled.button`
     background-color: ${theme.blue};
   }
 `;
-
-export const Btn = ({ children, typeState, ...resetProps }) => {
-  return (
-    <StyledBtn typeState={typeState} {...resetProps}>
-      {children}
-    </StyledBtn>
-  );
-};

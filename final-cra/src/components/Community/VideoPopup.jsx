@@ -1,6 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ReactComponent as CloseBtn } from './../../assets/icons/btn-close-black-bold.svg';
+import { ReactComponent as CloseBtn } from 'assets/icons/btn-close-black-bold.svg';
+
+export const VideoPopup = ({ linkProps, toggle: [_, setToggleState] }) => {
+  return (
+    <StyledVideoPopupWrapper>
+      <video
+        autoPlay
+        muted
+        src={require(`assets/video/${linkProps}.mp4`)}
+      ></video>
+      <button
+        type="button"
+        onClick={() => {
+          setToggleState(!_);
+        }}
+      >
+        <CloseBtn />
+      </button>
+    </StyledVideoPopupWrapper>
+  );
+};
 
 const StyledVideoPopupWrapper = styled.div`
   width: 100%;
@@ -44,23 +64,3 @@ const StyledVideoPopupWrapper = styled.div`
     }
   }
 `;
-
-export const VideoPopup = ({ linkProps, toggle: [_, setToggleState] }) => {
-  return (
-    <StyledVideoPopupWrapper>
-      <video
-        autoPlay
-        muted
-        src={require(`./../../assets/video/${linkProps}.mp4`)}
-      ></video>
-      <button
-        type="button"
-        onClick={() => {
-          setToggleState(!_);
-        }}
-      >
-        <CloseBtn />
-      </button>
-    </StyledVideoPopupWrapper>
-  );
-};

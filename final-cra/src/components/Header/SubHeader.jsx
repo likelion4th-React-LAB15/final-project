@@ -13,6 +13,24 @@ const subHeaderList = [
   { title: 'COMMUNITY', link: '/community', key: 5 },
 ];
 
+const SubHeader = () => {
+  const subHeaderRef = useRef(null);
+
+  return (
+    <StyledSubHeader ref={subHeaderRef}>
+      <ul>
+        {subHeaderList.map(({ title, link, key }) => {
+          return (
+            <li key={key}>
+              <Link to={link}>{title}</Link>
+            </li>
+          );
+        })}
+      </ul>
+    </StyledSubHeader>
+  );
+};
+
 const StyledSubHeader = styled.div`
   position: absolute;
   left: 0;
@@ -68,23 +86,5 @@ const StyledSubHeader = styled.div`
     }
   }
 `;
-
-const SubHeader = () => {
-  const subHeaderRef = useRef(null);
-
-  return (
-    <StyledSubHeader ref={subHeaderRef}>
-      <ul>
-        {subHeaderList.map(({ title, link, key }) => {
-          return (
-            <li key={key}>
-              <Link to={link}>{title}</Link>
-            </li>
-          );
-        })}
-      </ul>
-    </StyledSubHeader>
-  );
-};
 
 export default SubHeader;

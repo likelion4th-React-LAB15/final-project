@@ -3,11 +3,11 @@ import theme from 'style/theme';
 import { useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { SubNavSearchIcon } from './SubNavSearchIcon';
-import { SubNavLnb } from './SubNavLnb';
+import { SubNavSearchIcon } from 'components/subNav/SubNavSearchIcon';
+import { SubNavItemList } from 'components/subNav/SubNavItemList';
+import { SubNavLnb } from 'components/subNav/SubNavLnb';
 import { Link } from 'react-router-dom';
 import homeIcon from 'assets/icons/btn-home.svg';
-import { SubNavItemList } from './SubNavItemList';
 
 export const SubNav = ({ subNavData, children }) => {
   useEffect(() => {

@@ -2,7 +2,7 @@ import React from 'react';
 import gsap from 'gsap';
 import Scrollbar from 'smooth-scrollbar';
 import { useEffect, useRef } from 'react';
-import { ReactComponent as TopBtn } from './../assets/icons/btn-top.svg';
+import { ReactComponent as TopBtn } from 'assets/icons/btn-top.svg';
 
 const ScrollTopBtn = () => {
   const btnRef = useRef(null);

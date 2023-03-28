@@ -2,6 +2,16 @@ import styled from 'styled-components';
 import theme from 'style/theme';
 import { Link } from 'react-router-dom';
 
+
+function BackButton(props) {
+  return (
+    <Link to={`/${props.id}`}>
+      <Back>{props.value}</Back>
+    </Link>
+  );
+}
+
+
 const Back = styled.button`
   width: 21.25rem;
   height: 3.5rem;
@@ -15,13 +25,5 @@ const Back = styled.button`
   line-height: 1.188rem;
   color: ${theme.blue};
 `;
-
-function BackButton(props) {
-  return (
-    <Link to={`/${props.id}`}>
-      <Back>{props.value}</Back>
-    </Link>
-  );
-}
 
 export default BackButton;

@@ -4,111 +4,6 @@ import { keyframes } from 'styled-components/macro';
 import styled from 'styled-components/macro';
 import { Link } from 'react-router-dom';
 
-const moveForever = keyframes`
-  0% {
-   transform: translate3d(-90px,0,0);
-  }
-  100% { 
-    transform: translate3d(85px,0,0);
-  }
-`;
-
-const HeaderWapper = styled.div`
-  position: fixed;
-  left: 0;
-  top: -140%;
-  width: 100%;
-  background-color: ${theme.blue};
-  color: ${theme.white};
-  transition: all 0.8s;
-  z-index: 100;
-
-  .inner-header {
-    width: 100%;
-    height: 60vh;
-  }
-
-  .flex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-  }
-
-  .waves {
-    position: absolute;
-    left: 0;
-    bottom: -22%;
-    width: 100%;
-    height: 15vh;
-    margin-bottom: -0.4375rem; /*Fix for safari gap*/
-    min-height: 6.25rem;
-    max-height: 9.375rem;
-    transform: rotate(180deg);
-  }
-
-  .content {
-    position: relative;
-    height: 20vh;
-    text-align: center;
-    background-color: ${theme.white};
-  }
-  .parallax > use {
-    animation: ${moveForever} 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
-  }
-  .parallax > use:nth-child(1) {
-    animation-delay: -2s;
-    animation-duration: 7s;
-  }
-  .parallax > use:nth-child(2) {
-    animation-delay: -3s;
-    animation-duration: 10s;
-  }
-  .parallax > use:nth-child(3) {
-    animation-delay: -4s;
-    animation-duration: 13s;
-  }
-  .parallax > use:nth-child(4) {
-    animation-delay: -5s;
-    animation-duration: 20s;
-  }
-
-  &.active {
-    top: 0%;
-  }
-`;
-
-const MenuWrap = styled.ul`
-  width: 67.5rem;
-  display: flex;
-  justify-content: space-between;
-
-  li {
-    font: 500 1.5rem/1 'airal';
-    cursor: pointer;
-
-    ul {
-      margin: 0.625rem 0 0 0;
-
-      > li {
-        font: 400 1rem/1 'airal';
-        padding: 0.375rem 0;
-        cursor: pointer;
-        color: #d0d0d08b;
-        transition: color 0.2s;
-
-        &:hover {
-          color: #fff;
-        }
-      }
-    }
-  }
-
-  .link {
-    color: #fff;
-  }
-`;
-
 const menuList = [
   {
     title: 'RESERVATION',
@@ -224,5 +119,110 @@ const HeaderWave = ({ menu }) => {
     </HeaderWapper>
   );
 };
+
+const moveForever = keyframes`
+  0% {
+   transform: translate3d(-90px,0,0);
+  }
+  100% { 
+    transform: translate3d(85px,0,0);
+  }
+`;
+
+const HeaderWapper = styled.div`
+  position: fixed;
+  left: 0;
+  top: -140%;
+  width: 100%;
+  background-color: ${theme.blue};
+  color: ${theme.white};
+  transition: all 0.8s;
+  z-index: 100;
+
+  .inner-header {
+    width: 100%;
+    height: 60vh;
+  }
+
+  .flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .waves {
+    position: absolute;
+    left: 0;
+    bottom: -22%;
+    width: 100%;
+    height: 15vh;
+    margin-bottom: -0.4375rem; /*Fix for safari gap*/
+    min-height: 6.25rem;
+    max-height: 9.375rem;
+    transform: rotate(180deg);
+  }
+
+  .content {
+    position: relative;
+    height: 20vh;
+    text-align: center;
+    background-color: ${theme.white};
+  }
+  .parallax > use {
+    animation: ${moveForever} 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+  }
+  .parallax > use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+  }
+  .parallax > use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+  }
+  .parallax > use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+  }
+  .parallax > use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s;
+  }
+
+  &.active {
+    top: 0%;
+  }
+`;
+
+const MenuWrap = styled.ul`
+  width: 67.5rem;
+  display: flex;
+  justify-content: space-between;
+
+  li {
+    font: 500 1.5rem/1 'airal';
+    cursor: pointer;
+
+    ul {
+      margin: 0.625rem 0 0 0;
+
+      > li {
+        font: 400 1rem/1 'airal';
+        padding: 0.375rem 0;
+        cursor: pointer;
+        color: #d0d0d08b;
+        transition: color 0.2s;
+
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .link {
+    color: #fff;
+  }
+`;
 
 export default HeaderWave;

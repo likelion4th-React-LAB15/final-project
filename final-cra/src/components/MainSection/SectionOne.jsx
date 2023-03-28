@@ -3,9 +3,252 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import theme from 'style/theme';
 import React, { useEffect } from 'react';
-import { ReactComponent as Pattern1 } from '../../assets/images/itr-pattern-01.svg';
-import { ReactComponent as Cloud } from '../../assets/images/fix-cloud.svg';
-import { ReactComponent as Pattern2 } from '../../assets/images/itr-pattern-02.svg';
+import { ReactComponent as Pattern1 } from 'assets/images/itr-pattern-01.svg';
+import { ReactComponent as Cloud } from 'assets/images/fix-cloud.svg';
+import { ReactComponent as Pattern2 } from 'assets/images/itr-pattern-02.svg';
+
+const data = [
+  {
+    title: 'CHOOSE PIC',
+    text: '즐거움이 계속되는 곳',
+    decoTitle: 'WHY?',
+    bigTitle: 'DOBBY IS FREE',
+  },
+  {
+    title: 'WATERPARK',
+    text: '워터파크와 신나는 액티비티를 모두 무료로 즐겨보세요!',
+    decoTitle: 'ACTIVITIES',
+    bigTitle: 'IS LANDS',
+  },
+  {
+    title: 'CLUBMATE',
+    text: '액티비티 강습부터 키즈클럽 지도자까지 클럽메이트와 함께 PIC 200% 정복!',
+    decoTitle: 'KIDS CLUB',
+    bigTitle: 'CLUB',
+  },
+];
+
+const SectionOne = () => {
+  useEffect(() => {
+    gsap.config({ nullTargetWarn: false });
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    setTimeout(() => {
+      gsap.to('.pic0', {
+        y: -200,
+        scrollTrigger: {
+          trigger: '.trigger0',
+          start: 'top top',
+          end: 'bottom end',
+          ease: 'Power3.easeOut',
+          opacity: 1,
+          scrub: true,
+        },
+      });
+
+      gsap.to('.pic1', {
+        y: -200,
+        scrollTrigger: {
+          trigger: '.trigger1',
+          start: '-500 top',
+          end: 'bottom end',
+          ease: 'Power3.easeOut',
+          opacity: 1,
+          scrub: true,
+        },
+      });
+
+      gsap.to('.pic2', {
+        y: -200,
+        scrollTrigger: {
+          trigger: '.trigger2',
+          start: '-500 top',
+          end: 'bottom end',
+          ease: 'Power3.easeOut',
+          opacity: 1,
+          scrub: true,
+        },
+      });
+
+      gsap.from('.pic0 > img', {
+        scale: 1.5,
+        scrollTrigger: {
+          trigger: '.trigger0',
+          start: 'top top',
+          end: 'bottom end',
+          ease: 'Power3.easeOut',
+          opacity: 1,
+          scrub: true,
+        },
+      });
+
+      gsap.from('.pic1 > img', {
+        scale: 1.5,
+        scrollTrigger: {
+          trigger: '.trigger1',
+          start: '-500 top',
+          end: 'bottom end',
+          ease: 'Power3.easeOut',
+          opacity: 1,
+          scrub: true,
+        },
+      });
+
+      gsap.from('.pic2 > img', {
+        scale: 1.5,
+        scrollTrigger: {
+          trigger: '.trigger2',
+          start: '-500 top',
+          end: 'bottom end',
+          ease: 'Power3.easeOut',
+          opacity: 1,
+          scrub: true,
+        },
+      });
+
+      gsap.to('.bigTitle1', {
+        x: -800,
+        scrollTrigger: {
+          trigger: '.trigger0',
+          start: '400 center',
+          end: '200% center',
+          ease: 'Power3.easeOut',
+          scrub: true,
+        },
+      });
+
+      gsap.to('.bigTitle2', {
+        x: 1000,
+        scrollTrigger: {
+          trigger: '.trigger1',
+          start: 'top center',
+          end: '200% center',
+          ease: 'Power3.easeOut',
+          scrub: true,
+        },
+      });
+
+      gsap.to('.bigTitle3', {
+        x: -500,
+        scrollTrigger: {
+          trigger: '.trigger2',
+          start: 'top center',
+          end: '200% center',
+          ease: 'Power3.easeOut',
+          scrub: true,
+        },
+      });
+
+      ScrollTrigger.create({
+        trigger: '.trigger1',
+        start: '-600 top',
+        // end: 'bottom bottom',
+        // markers: true,
+        scrub: true,
+        // 위에서 아래로 처음 트리거에 접근할때 실행
+        onEnter: () => {
+          gsap.to(document.body, {
+            background: `${theme.blue}`,
+          });
+          gsap.to('.textWrap2 > h2, .textWrap3 > h2, .textWrap3 > h3', {
+            color: `${theme.pink}`,
+            webkitTextStrokeColor: `${theme.pink}`,
+          });
+          gsap.to('.textWrap2 > h3', {
+            webkitTextStrokeColor: `${theme.pink}`,
+          });
+        },
+        // 위에서 아래로 처음 트리거에 접근하고 떠나갈때 실행
+        onLeave: () => {
+          gsap.to(document.body, {
+            background: `${theme.white}`,
+          });
+        },
+        // 아래에서 위로(반대방향으로) 접근할때 실행
+        onEnterBack: () => {
+          gsap.to(document.body, {
+            background: `${theme.blue}`,
+          });
+          gsap.to('.textWrap2 > h2, .textWrap3 > h2', {
+            color: `${theme.pink}`,
+          });
+          gsap.to('.textWrap2 > h3', {
+            webkitTextStrokeColor: `${theme.pink}`,
+          });
+        },
+        // 아래에서 위로(반대방향으로) 접근하고 떠나갈때 실행
+        onLeaveBack: () => {
+          gsap.to(document.body, {
+            background: `${theme.white}`,
+          });
+          gsap.to('.textWrap2 > h2, .textWrap3 > h2', {
+            color: `${theme.blue}`,
+          });
+          gsap.to('.textWrap2 > h3', {
+            webkitTextStrokeColor: `${theme.blue}`,
+          });
+        },
+      });
+    }, 100);
+  }, []);
+
+  return (
+    <SectionOneStyled>
+      {data.map(({ title, text, decoTitle, bigTitle }, idx) => {
+        return (
+          <section key={title} className={`trigger${idx}`}>
+            {idx === 0 && (
+              <>
+                <Pattern1
+                  style={{ position: 'absolute', left: '14%', top: '134%' }}
+                />
+              </>
+            )}
+
+            <div className={`textWrap${idx + 1}`}>
+              <h2>
+                {idx === 0 ? (
+                  <>
+                    {title.split(' ')[0]}{' '}
+                    <div>
+                      <span>{title.split(' ')[1]}</span>
+                    </div>
+                  </>
+                ) : (
+                  title
+                )}
+              </h2>
+
+              <p>{text}</p>
+              <button type="button">VIEW MORE</button>
+              <h3>{decoTitle}</h3>
+            </div>
+
+            <div className={`pic pic${idx}`}>
+              <img
+                src={require(`assets/images/background-0${
+                  idx === 2 ? 1 : idx + 2
+                }.webp`)}
+                alt={title}
+              />
+            </div>
+            <h2 className={`bigTitle${idx + 1}`}>{bigTitle}</h2>
+          </section>
+        );
+      })}
+
+      <Pattern2
+        style={{
+          position: 'absolute',
+          right: '10%',
+          bottom: '8%',
+        }}
+      />
+      <Cloud />
+    </SectionOneStyled>
+  );
+};
 
 const SectionOneStyled = styled.section`
   width: 100%;
@@ -253,248 +496,5 @@ const SectionOneStyled = styled.section`
     }
   }
 `;
-
-const data = [
-  {
-    title: 'CHOOSE PIC',
-    text: '즐거움이 계속되는 곳',
-    decoTitle: 'WHY?',
-    bigTitle: 'DOBBY IS FREE',
-  },
-  {
-    title: 'WATERPARK',
-    text: '워터파크와 신나는 액티비티를 모두 무료로 즐겨보세요!',
-    decoTitle: 'ACTIVITIES',
-    bigTitle: 'IS LANDS',
-  },
-  {
-    title: 'CLUBMATE',
-    text: '액티비티 강습부터 키즈클럽 지도자까지 클럽메이트와 함께 PIC 200% 정복!',
-    decoTitle: 'KIDS CLUB',
-    bigTitle: 'CLUB',
-  },
-];
-
-const SectionOne = () => {
-  useEffect(() => {
-    gsap.config({ nullTargetWarn: false });
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    setTimeout(() => {
-      gsap.to('.pic0', {
-        y: -200,
-        scrollTrigger: {
-          trigger: '.trigger0',
-          start: 'top top',
-          end: 'bottom end',
-          ease: 'Power3.easeOut',
-          opacity: 1,
-          scrub: true,
-        },
-      });
-
-      gsap.to('.pic1', {
-        y: -200,
-        scrollTrigger: {
-          trigger: '.trigger1',
-          start: '-500 top',
-          end: 'bottom end',
-          ease: 'Power3.easeOut',
-          opacity: 1,
-          scrub: true,
-        },
-      });
-
-      gsap.to('.pic2', {
-        y: -200,
-        scrollTrigger: {
-          trigger: '.trigger2',
-          start: '-500 top',
-          end: 'bottom end',
-          ease: 'Power3.easeOut',
-          opacity: 1,
-          scrub: true,
-        },
-      });
-
-      gsap.from('.pic0 > img', {
-        scale: 1.5,
-        scrollTrigger: {
-          trigger: '.trigger0',
-          start: 'top top',
-          end: 'bottom end',
-          ease: 'Power3.easeOut',
-          opacity: 1,
-          scrub: true,
-        },
-      });
-
-      gsap.from('.pic1 > img', {
-        scale: 1.5,
-        scrollTrigger: {
-          trigger: '.trigger1',
-          start: '-500 top',
-          end: 'bottom end',
-          ease: 'Power3.easeOut',
-          opacity: 1,
-          scrub: true,
-        },
-      });
-
-      gsap.from('.pic2 > img', {
-        scale: 1.5,
-        scrollTrigger: {
-          trigger: '.trigger2',
-          start: '-500 top',
-          end: 'bottom end',
-          ease: 'Power3.easeOut',
-          opacity: 1,
-          scrub: true,
-        },
-      });
-
-      gsap.to('.bigTitle1', {
-        x: -800,
-        scrollTrigger: {
-          trigger: '.trigger0',
-          start: '400 center',
-          end: '200% center',
-          ease: 'Power3.easeOut',
-          scrub: true,
-        },
-      });
-
-      gsap.to('.bigTitle2', {
-        x: 1000,
-        scrollTrigger: {
-          trigger: '.trigger1',
-          start: 'top center',
-          end: '200% center',
-          ease: 'Power3.easeOut',
-          scrub: true,
-        },
-      });
-
-      gsap.to('.bigTitle3', {
-        x: -500,
-        scrollTrigger: {
-          trigger: '.trigger2',
-          start: 'top center',
-          end: '200% center',
-          ease: 'Power3.easeOut',
-          scrub: true,
-        },
-      });
-
-      ScrollTrigger.create({
-        trigger: '.trigger1',
-        start: '-600 top',
-        // end: 'bottom bottom',
-        // markers: true,
-        scrub: true,
-        // 위에서 아래로 처음 트리거에 접근할때 실행
-        onEnter: () => {
-          gsap.to(document.body, {
-            background: `${theme.blue}`,
-          });
-          gsap.to('.textWrap2 > h2, .textWrap3 > h2, .textWrap3 > h3', {
-            color: `${theme.pink}`,
-            webkitTextStrokeColor: `${theme.pink}`,
-          });
-          gsap.to('.textWrap2 > h3', {
-            webkitTextStrokeColor: `${theme.pink}`,
-          });
-        },
-        // 위에서 아래로 처음 트리거에 접근하고 떠나갈때 실행
-        onLeave: () => {
-          gsap.to(document.body, {
-            background: `${theme.white}`,
-          });
-        },
-        // 아래에서 위로(반대방향으로) 접근할때 실행
-        onEnterBack: () => {
-          gsap.to(document.body, {
-            background: `${theme.blue}`,
-          });
-          gsap.to('.textWrap2 > h2, .textWrap3 > h2', {
-            color: `${theme.pink}`,
-          });
-          gsap.to('.textWrap2 > h3', {
-            webkitTextStrokeColor: `${theme.pink}`,
-          });
-        },
-        // 아래에서 위로(반대방향으로) 접근하고 떠나갈때 실행
-        onLeaveBack: () => {
-          gsap.to(document.body, {
-            background: `${theme.white}`,
-          });
-          gsap.to('.textWrap2 > h2, .textWrap3 > h2', {
-            color: `${theme.blue}`,
-          });
-          gsap.to('.textWrap2 > h3', {
-            webkitTextStrokeColor: `${theme.blue}`,
-          });
-        },
-      });
-    }, 100);
-  }, []);
-
-  return (
-    <SectionOneStyled>
-      {data.map(({ title, text, decoTitle, bigTitle }, idx) => {
-        return (
-          <section key={title} className={`trigger${idx}`}>
-            {idx === 0 && (
-              <>
-                <Pattern1
-                  style={{ position: 'absolute', left: '14%', top: '134%' }}
-                />
-              </>
-            )}
-
-            <div className={`textWrap${idx + 1}`}>
-              <h2>
-                {idx === 0 ? (
-                  <>
-                    {title.split(' ')[0]}{' '}
-                    <div>
-                      <span>{title.split(' ')[1]}</span>
-                    </div>
-                  </>
-                ) : (
-                  title
-                )}
-              </h2>
-
-              <p>{text}</p>
-              <button type="button">VIEW MORE</button>
-              <h3>{decoTitle}</h3>
-            </div>
-
-            <div className={`pic pic${idx}`}>
-              <img
-                src={require(`../../../src/assets/images/background-0${
-                  idx === 2 ? 1 : idx + 2
-                }.webp`)}
-                alt={title}
-              />
-            </div>
-            <h2 className={`bigTitle${idx + 1}`}>{bigTitle}</h2>
-          </section>
-        );
-      })}
-
-      <Pattern2
-        style={{
-          position: 'absolute',
-          right: '10%',
-          bottom: '8%',
-        }}
-      />
-      <Cloud />
-    </SectionOneStyled>
-  );
-};
 
 export default SectionOne;

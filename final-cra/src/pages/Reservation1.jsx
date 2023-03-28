@@ -8,24 +8,6 @@ import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
 import SmoothScroll from 'components/smoothScroll/SmoothScroll';
 
-const GuestNumber = styled.h3`
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 900;
-  font-size: 2rem;
-  line-height: 2.375rem;
-  text-align: center;
-  color: ${theme.blue};
-  margin-top: 5.688rem;
-`;
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 5.625rem;
-  margin-bottom: 24.063rem;
-`;
-
 export const Reservation1 = () => {
   return (
     <>
@@ -50,3 +32,21 @@ export const Reservation1 = () => {
     </>
   );
 };
+
+const GuestNumber = styled.h3`
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 2rem;
+  line-height: 2.375rem;
+  text-align: center;
+  color: ${theme.blue};
+  margin-top: 5.688rem;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 5.625rem;
+  margin-bottom: 24.063rem;
+`;

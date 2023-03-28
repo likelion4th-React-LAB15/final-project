@@ -1,61 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledBulletinBoardWrap = styled.ul`
-  width: 100%;
-  max-width: 67.5rem;
-  margin: 0 auto;
-  padding-top: 6.25rem;
-  margin-bottom: 6.25rem;
-
-  > li {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    height: 5rem;
-    border-bottom: 1px solid #999;
-    padding: 0 1.25rem;
-    transition: all 0.4s;
-
-    &:nth-of-type(1) {
-      border-top: 2px solid #999;
-    }
-
-    > span:nth-of-type(1) {
-      width: 4%;
-      transition: all 0.4s;
-    }
-
-    > h4 {
-      margin-right: auto;
-      font-size: 20px;
-      line-height: 30px;
-      color: #000551;
-      font-weight: 600;
-      transition: all 0.6s;
-    }
-
-    > span:nth-of-type(2) {
-      transition: all 0.4s;
-    }
-
-    &:hover {
-      background-color: #ff009913;
-
-      > span {
-        color: #ff0099;
-      }
-
-      > h4 {
-        color: #ff0099;
-      }
-      > span:nth-of-type(2) {
-        color: #ff0099;
-      }
-    }
-  }
-`;
-
 const noticeData = [
   {
     num: 1,
@@ -125,3 +70,58 @@ export const BulletinBoard = ({ typeState }) => {
     </StyledBulletinBoardWrap>
   );
 };
+
+const StyledBulletinBoardWrap = styled.ul`
+  width: 100%;
+  max-width: 67.5rem;
+  margin: 0 auto;
+  padding-top: 6.25rem;
+  margin-bottom: 6.25rem;
+
+  > li {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    border-bottom: 1px solid #999;
+    padding: 0 1.25rem;
+    transition: all 0.4s;
+
+    &:nth-of-type(1) {
+      border-top: 2px solid #999;
+    }
+
+    > span:nth-of-type(1) {
+      width: 4%;
+      transition: all 0.4s;
+    }
+
+    > h4 {
+      margin-right: auto;
+      font-size: 20px;
+      line-height: 30px;
+      color: #000551;
+      font-weight: 600;
+      transition: all 0.6s;
+    }
+
+    > span:nth-of-type(2) {
+      transition: all 0.4s;
+    }
+
+    &:hover {
+      background-color: #ff009913;
+
+      > span {
+        color: #ff0099;
+      }
+
+      > h4 {
+        color: #ff0099;
+      }
+      > span:nth-of-type(2) {
+        color: #ff0099;
+      }
+    }
+  }
+`;

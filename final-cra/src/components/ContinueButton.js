@@ -2,6 +2,14 @@ import styled from 'styled-components';
 import theme from 'style/theme';
 import { Link } from 'react-router-dom';
 
+function ContinueButton(props) {
+  return (
+    <Link to={`/${props.id}`}>
+      <Continue>{props.value}</Continue>
+    </Link>
+  );
+}
+
 const Continue = styled.button`
   width: 21.25rem;
   height: 3.5rem;
@@ -15,13 +23,5 @@ const Continue = styled.button`
   line-height: 1.188rem;
   color: #ffffff;
 `;
-
-function ContinueButton(props) {
-  return (
-    <Link to={`/${props.id}`}>
-      <Continue>{props.value}</Continue>
-    </Link>
-  );
-}
 
 export default ContinueButton;

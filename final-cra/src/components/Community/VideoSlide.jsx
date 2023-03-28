@@ -1,11 +1,100 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper';
 import { forwardRef } from 'react';
-import { ReactComponent as PlayBtn } from './../../assets/icons/ico_video.svg';
+import { ReactComponent as PlayBtn } from 'assets/icons/ico_video.svg';
 import styled from 'styled-components';
-import theme from './../../style/theme';
-import Arrow from './../../assets/icons/btn-arrow-next.svg';
+import theme from 'style/theme';
+import Arrow from 'assets/icons/btn-arrow-next.svg';
 import 'swiper/css/pagination';
+
+const videoData = [
+  {
+    id: 1,
+    title: 'PIC 홈페이지 리뉴얼 이벤트 당첨자 발표',
+    src: 'communityVideo-1.mp4',
+  },
+  {
+    id: 2,
+    title: 'PIC 홈페이지 리뉴얼 이벤트 당첨자 발표',
+    src: 'communityVideo-2.mp4',
+  },
+  {
+    id: 3,
+    title: 'PIC 홈페이지 리뉴얼 이벤트 당첨자 발표',
+    src: 'communityVideo-3.mp4',
+  },
+  {
+    id: 4,
+    title: 'PIC 홈페이지 리뉴얼 이벤트 당첨자 발표',
+    src: 'communityVideo-4.mp4',
+  },
+  {
+    id: 5,
+    title: 'PIC 홈페이지 리뉴얼 이벤트 당첨자 발표',
+    src: 'communityVideo-5.mp4',
+  },
+  {
+    id: 6,
+    title: 'PIC 홈페이지 리뉴얼 이벤트 당첨자 발표',
+    src: 'communityVideo-6.mp4',
+  },
+  {
+    id: 6,
+    title: 'PIC 홈페이지 리뉴얼 이벤트 당첨자 발표',
+    src: 'communityVideo-7.mp4',
+  },
+];
+console.warn = console.error = () => {};
+export const VideoSlide = forwardRef((_, ref) => {
+  return (
+    <>
+      <SwiperWrapper>
+        <Swiper
+          spaceBetween={50}
+          slidesPerView={5}
+          navigation={true}
+          Pagination={true}
+          modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+          scrollbar={{ draggable: true }}
+          keyboard={true}
+          // touchRatio={0}
+          className="mySwiper"
+          ref={ref}
+          speed={1000}
+        >
+          {videoData.map(({ src, id }, idx) => {
+            return (
+              <>
+                <SwiperSlide
+                  key={idx}
+                  style={{
+                    height: '17.5rem',
+                    display: 'flex',
+                    flexFlow: 'column nowrap',
+                    justifyContent: 'space-between',
+                    alignItems: 'flex-start',
+                    textAlign: 'left',
+                    position: 'relative',
+                  }}
+                >
+                  <h3>{idx + 1}</h3>
+                  <div className="wrap">
+                    <PlayBtn className="playBtn" />
+                    <video
+                      src={require(`assets/video/${src}`)}
+                      data-community
+                    ></video>
+                  </div>
+                </SwiperSlide>
+              </>
+            );
+          })}
+        </Swiper>
+      </SwiperWrapper>
+    </>
+  );
+});
+
 const SwiperWrapper = styled.div`
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
   margin-bottom: 12.5rem;
@@ -115,91 +204,3 @@ const SwiperWrapper = styled.div`
     cursor: pointer;
   }
 `;
-
-const videoData = [
-  {
-    id: 1,
-    title: 'PIC 홈페이지 리뉴얼 이벤트 당첨자 발표',
-    src: 'communityVideo-1.mp4',
-  },
-  {
-    id: 2,
-    title: 'PIC 홈페이지 리뉴얼 이벤트 당첨자 발표',
-    src: 'communityVideo-2.mp4',
-  },
-  {
-    id: 3,
-    title: 'PIC 홈페이지 리뉴얼 이벤트 당첨자 발표',
-    src: 'communityVideo-3.mp4',
-  },
-  {
-    id: 4,
-    title: 'PIC 홈페이지 리뉴얼 이벤트 당첨자 발표',
-    src: 'communityVideo-4.mp4',
-  },
-  {
-    id: 5,
-    title: 'PIC 홈페이지 리뉴얼 이벤트 당첨자 발표',
-    src: 'communityVideo-5.mp4',
-  },
-  {
-    id: 6,
-    title: 'PIC 홈페이지 리뉴얼 이벤트 당첨자 발표',
-    src: 'communityVideo-6.mp4',
-  },
-  {
-    id: 6,
-    title: 'PIC 홈페이지 리뉴얼 이벤트 당첨자 발표',
-    src: 'communityVideo-7.mp4',
-  },
-];
-console.warn = console.error = () => {};
-export const VideoSlide = forwardRef((_, ref) => {
-  return (
-    <>
-      <SwiperWrapper>
-        <Swiper
-          spaceBetween={50}
-          slidesPerView={5}
-          navigation={true}
-          Pagination={true}
-          modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-          scrollbar={{ draggable: true }}
-          keyboard={true}
-          // touchRatio={0}
-          className="mySwiper"
-          ref={ref}
-          speed={1000}
-        >
-          {videoData.map(({ src, id }, idx) => {
-            return (
-              <>
-                <SwiperSlide
-                  key={idx}
-                  style={{
-                    height: '17.5rem',
-                    display: 'flex',
-                    flexFlow: 'column nowrap',
-                    justifyContent: 'space-between',
-                    alignItems: 'flex-start',
-                    textAlign: 'left',
-                    position: 'relative',
-                  }}
-                >
-                  <h3>{idx + 1}</h3>
-                  <div className="wrap">
-                    <PlayBtn className="playBtn" />
-                    <video
-                      src={require(`./../../assets/video/${src}`)}
-                      data-community
-                    ></video>
-                  </div>
-                </SwiperSlide>
-              </>
-            );
-          })}
-        </Swiper>
-      </SwiperWrapper>
-    </>
-  );
-});

@@ -5,6 +5,48 @@ import theme from 'style/theme';
 import styled from 'styled-components';
 import { useState } from 'react';
 
+const Accordion = (props) => {
+  const [activeIndex, setActiveIndex] = useState(props.activeIndex ?? -1);
+
+  const handleChangeActiveIndex = useCallback(
+    (index) => {
+      if (activeIndex === index) {
+        setActiveIndex(-1);
+      } else {
+        setActiveIndex(index);
+      }
+    },
+    [activeIndex]
+  );
+
+  return (
+    <AccordionWrapper>
+      {props.list.map(({ id, handle, panel, price }, index) => {
+        let isActive = activeIndex === index;
+        const parsePanelHTML = { __html: panel };
+        return (
+          <AccordionItem key={id} aria-labelledby={id}>
+            <AccordionHandle
+              controlId={id}
+              isActive={isActive}
+              onActive={() => handleChangeActiveIndex(index)}
+              price={price}
+              onChange={props.onChange}
+            >
+              {handle}
+            </AccordionHandle>
+            <AccordionPanel
+              controlId={id}
+              isActive={isActive}
+              contents={parsePanelHTML}
+            />
+          </AccordionItem>
+        );
+      })}
+    </AccordionWrapper>
+  );
+};
+
 const AccordionWrapper = styled.section`
   border-bottom: 0.125rem solid #c5c6df;
 `;
@@ -61,47 +103,5 @@ const AccordionItem = styled.article`
     }
   }
 `;
-
-const Accordion = (props) => {
-  const [activeIndex, setActiveIndex] = useState(props.activeIndex ?? -1);
-
-  const handleChangeActiveIndex = useCallback(
-    (index) => {
-      if (activeIndex === index) {
-        setActiveIndex(-1);
-      } else {
-        setActiveIndex(index);
-      }
-    },
-    [activeIndex]
-  );
-
-  return (
-    <AccordionWrapper>
-      {props.list.map(({ id, handle, panel, price }, index) => {
-        let isActive = activeIndex === index;
-        const parsePanelHTML = { __html: panel };
-        return (
-          <AccordionItem key={id} aria-labelledby={id}>
-            <AccordionHandle
-              controlId={id}
-              isActive={isActive}
-              onActive={() => handleChangeActiveIndex(index)}
-              price={price}
-              onChange={props.onChange}
-            >
-              {handle}
-            </AccordionHandle>
-            <AccordionPanel
-              controlId={id}
-              isActive={isActive}
-              contents={parsePanelHTML}
-            />
-          </AccordionItem>
-        );
-      })}
-    </AccordionWrapper>
-  );
-};
 
 export default Accordion;

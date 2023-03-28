@@ -1,6 +1,10 @@
 import styled from 'styled-components/macro';
 import theme from 'style/theme';
 
+const Title = ({ style, children, ...rest }) => {
+  return <StyledTitle style={style}>{children}</StyledTitle>;
+};
+
 const StyledTitle = styled.h2`
   width: inherit;
   font-size: 2.125rem;
@@ -9,9 +13,5 @@ const StyledTitle = styled.h2`
   margin-bottom: 2.5rem;
   text-align: center;
 `;
-
-const Title = ({ style, children, ...rest }) => {
-  return <StyledTitle style={style}>{children}</StyledTitle>;
-};
 
 export default Title;

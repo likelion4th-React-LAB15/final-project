@@ -1,8 +1,8 @@
 import theme from 'style/theme';
 import styled from 'styled-components/macro';
-import SihkeyBgBottom from 'assets/images/fix-siheky-bottom.svg';
+import SihekyInner from 'components/Siheky/SihekyInner';
 import Wave from 'components/Wave/Wave';
-import SihekyInner from './SihekyInner';
+import SihkeyBgBottom from 'assets/images/fix-siheky-bottom.svg';
 
 function Siheky() {
   return (

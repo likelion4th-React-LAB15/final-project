@@ -19,7 +19,7 @@ function FilmList() {
             <VideoItem>
               <a href="/">
                 <img
-                  src={require('../../assets/images/background-04.webp')}
+                  src={require('assets/images/background-04.webp')}
                   width="352"
                   height="243"
                   alt="괌 영상4"
@@ -29,7 +29,7 @@ function FilmList() {
             <VideoItem>
               <a href="/">
                 <img
-                  src={require('../../assets/images/background-05.webp')}
+                  src={require('assets/images/background-05.webp')}
                   width="352"
                   height="243"
                   alt="괌 영상5"
@@ -39,7 +39,7 @@ function FilmList() {
             <VideoItem>
               <a href="/">
                 <img
-                  src={require('../../assets/images/background-06.webp')}
+                  src={require('assets/images/background-06.webp')}
                   width="352"
                   height="243"
                   alt="괌 영상6"
@@ -49,7 +49,7 @@ function FilmList() {
             <VideoItem>
               <a href="/">
                 <img
-                  src={require('../../assets/images/background-07.webp')}
+                  src={require('assets/images/background-07.webp')}
                   width="352"
                   height="243"
                   alt="괌 영상7"
@@ -59,7 +59,7 @@ function FilmList() {
             <VideoItem>
               <a href="/">
                 <img
-                  src={require('../../assets/images/background-04.webp')}
+                  src={require('assets/images/background-04.webp')}
                   width="352"
                   height="243"
                   alt="괌 영상4"
@@ -69,7 +69,7 @@ function FilmList() {
             <VideoItem>
               <a href="/">
                 <img
-                  src={require('../../assets/images/background-05.webp')}
+                  src={require('assets/images/background-05.webp')}
                   width="352"
                   height="243"
                   alt="괌 영상5"
@@ -79,7 +79,7 @@ function FilmList() {
             <VideoItem>
               <a href="/">
                 <img
-                  src={require('../../assets/images/background-06.webp')}
+                  src={require('assets/images/background-06.webp')}
                   width="352"
                   height="243"
                   alt="괌 영상6"
@@ -89,7 +89,7 @@ function FilmList() {
             <VideoItem>
               <a href="/">
                 <img
-                  src={require('../../assets/images/background-07.webp')}
+                  src={require('assets/images/background-07.webp')}
                   width="352"
                   height="243"
                   alt="괌 영상7"
@@ -99,7 +99,7 @@ function FilmList() {
             <VideoItem>
               <a href="/">
                 <img
-                  src={require('../../assets/images/background-04.webp')}
+                  src={require('assets/images/background-04.webp')}
                   width="352"
                   height="243"
                   alt="괌 영상4"
@@ -109,7 +109,7 @@ function FilmList() {
             <VideoItem>
               <a href="/">
                 <img
-                  src={require('../../assets/images/background-05.webp')}
+                  src={require('assets/images/background-05.webp')}
                   width="352"
                   height="243"
                   alt="괌 영상5"
@@ -131,7 +131,7 @@ function FilmList() {
             <VideoItem>
               <a href="/">
                 <img
-                  src={require('../../assets/images/background-08.webp')}
+                  src={require('assets/images/background-08.webp')}
                   width="352"
                   height="243"
                   alt="사이판 영상8"
@@ -141,7 +141,7 @@ function FilmList() {
             <VideoItem>
               <a href="/">
                 <img
-                  src={require('../../assets/images/background-09.webp')}
+                  src={require('assets/images/background-09.webp')}
                   width="352"
                   height="243"
                   alt="사이판 영상9"
@@ -151,7 +151,7 @@ function FilmList() {
             <VideoItem>
               <a href="/">
                 <img
-                  src={require('../../assets/images/background-10.webp')}
+                  src={require('assets/images/background-10.webp')}
                   width="352"
                   height="243"
                   alt="사이판 영상10"
@@ -161,7 +161,7 @@ function FilmList() {
             <VideoItem>
               <a href="/">
                 <img
-                  src={require('../../assets/images/background-11.webp')}
+                  src={require('assets/images/background-11.webp')}
                   width="352"
                   height="243"
                   alt="사이판 영상11"
@@ -171,7 +171,7 @@ function FilmList() {
             <VideoItem>
               <a href="/">
                 <img
-                  src={require('../../assets/images/background-12.webp')}
+                  src={require('assets/images/background-12.webp')}
                   width="352"
                   height="243"
                   alt="사이판 영상12"
@@ -181,7 +181,7 @@ function FilmList() {
             <VideoItem>
               <a href="/">
                 <img
-                  src={require('../../assets/images/background-14.webp')}
+                  src={require('assets/images/background-14.webp')}
                   width="352"
                   height="243"
                   alt="사이판 영상14"
@@ -191,7 +191,7 @@ function FilmList() {
             <VideoItem>
               <a href="/">
                 <img
-                  src={require('../../assets/images/background-15.webp')}
+                  src={require('assets/images/background-15.webp')}
                   width="352"
                   height="243"
                   alt="사이판 영상15"
@@ -201,7 +201,7 @@ function FilmList() {
             <VideoItem>
               <a href="/">
                 <img
-                  src={require('../../assets/images/background-16.webp')}
+                  src={require('assets/images/background-16.webp')}
                   width="352"
                   height="243"
                   alt="사이판 영상16"
@@ -211,7 +211,7 @@ function FilmList() {
             <VideoItem>
               <a href="/">
                 <img
-                  src={require('../../assets/images/background-08.webp')}
+                  src={require('assets/images/background-08.webp')}
                   width="352"
                   height="243"
                   alt="사이판 영상8"
@@ -221,7 +221,7 @@ function FilmList() {
             <VideoItem>
               <a href="/">
                 <img
-                  src={require('../../assets/images/background-09.webp')}
+                  src={require('assets/images/background-09.webp')}
                   width="352"
                   height="243"
                   alt="사이판 영상9"
@@ -231,7 +231,7 @@ function FilmList() {
             <VideoItem>
               <a href="/">
                 <img
-                  src={require('../../assets/images/background-10.webp')}
+                  src={require('assets/images/background-10.webp')}
                   width="352"
                   height="243"
                   alt="사이판 영상10"

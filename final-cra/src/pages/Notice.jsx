@@ -8,13 +8,6 @@ import { SubNav } from 'components/subNav/SubNav';
 import Topbtn from 'components/TopBtn';
 import SmoothScroll from 'components/smoothScroll/SmoothScroll';
 
-const BtnWrap = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 1.25rem;
-  margin-bottom: 2.5rem;
-`;
-
 const subNavData = [
   {
     id: 1,
@@ -68,3 +61,10 @@ export const Notice = () => {
     </>
   );
 };
+
+const BtnWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+`;

@@ -12,21 +12,6 @@ import { getStorage, ref, getDownloadURL } from 'firebase/storage';
 import { db } from '@service/auth';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 
-const Container = styled.div`
-  margin: 8.6181rem auto 0rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2.313rem;
-  margin: 5.625rem 0 15.168rem;
-`;
-
 export const Reservation3 = () => {
   const [rooms, setRooms] = useState([]);
 
@@ -104,5 +89,20 @@ export const Reservation3 = () => {
     </>
   );
 };
+
+const Container = styled.div`
+  margin: 8.6181rem auto 0rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.313rem;
+  margin: 5.625rem 0 15.168rem;
+`;
 
 export default Reservation3;

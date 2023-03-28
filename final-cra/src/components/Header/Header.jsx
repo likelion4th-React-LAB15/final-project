@@ -1,14 +1,142 @@
 import styled, { keyframes } from 'styled-components/macro';
 import HeaderWave from './HeaderWave';
 import theme from 'style/theme';
-import { ReactComponent as Cart } from './../../assets/icons/btn-cart.svg';
-import { ReactComponent as User } from './../../assets/icons/btn-user.svg';
+import { ReactComponent as Cart } from 'assets/icons/btn-cart.svg';
+import { ReactComponent as User } from 'assets/icons/btn-user.svg';
 import { ReactComponent as Signout } from 'assets/icons/signout.svg';
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Scrollbar from 'smooth-scrollbar';
 import { useAuthState, useSignOut } from '@service/auth';
 import { useNavigate } from 'react-router-dom';
+
+const Header = ({ type, children, style, ...restProps }) => {
+  const [menu, menuSetState] = useState(false);
+
+  const { user } = useAuthState();
+  const { signOut } = useSignOut();
+  const navigate = useNavigate();
+
+  const headerRef = useRef();
+  const imgRef = useRef(null);
+
+  useEffect(() => {
+    const id = setTimeout(() => {
+      const elem = document.querySelector('.scroller');
+      const scrollbar = Scrollbar.init(elem, { speed: 0.7, damping: 0.04 });
+      scrollbar.addListener(function (status) {
+        if (headerRef.current) {
+          status.offset.y >= 1
+            ? headerRef.current.classList.add('active')
+            : headerRef.current.classList.remove('active');
+        }
+      });
+    }, 10);
+
+    return () => {
+      clearTimeout(id);
+    };
+  }, []);
+
+  const handleSignOut = async () => {
+    signOut();
+    alert('로그아웃했습니다.');
+    navigate('/');
+  };
+  return (
+    <>
+      <HeaderWave menu={menu} />
+
+      <HeaderWapper ref={headerRef} {...restProps} type={type}>
+        <ul
+          className={!menu ? 'menuBtn' : 'menuBtn active'}
+          onClick={() => menuSetState(!menu)}
+        >
+          {Array(3)
+            .fill()
+            .map((el, idx) => (
+              <li
+                style={{
+                  backgroundColor:
+                    type !== 'active' && !menu
+                      ? `${theme.blue}`
+                      : `${theme.white}`,
+                }}
+                key={idx}
+              >
+                {el}
+              </li>
+            ))}
+        </ul>
+
+        <Link to={'/'}>
+          <h1 className="logo">
+            {type !== 'active' && !menu ? (
+              <img
+                ref={imgRef}
+                src={require('assets/images/logo-off.png')}
+                alt="logoOn"
+              />
+            ) : (
+              <img
+                ref={imgRef}
+                src={require('assets/images/logo-on.png')}
+                alt="logoOn"
+              />
+            )}
+          </h1>
+        </Link>
+
+        <div className="infoWrap">
+          {user ? (
+            <Signout
+              aria-label="로그아웃 버튼"
+              onClick={handleSignOut}
+              style={{
+                width: 30,
+                height: 30,
+                cursor: 'pointer',
+                fill:
+                  type !== 'active' && !menu
+                    ? `${theme.blue}`
+                    : `${theme.white}`,
+              }}
+            />
+          ) : (
+            <Link to="/login">
+              <User
+                aria-label="로그인 버튼"
+                style={{
+                  width: 28,
+                  height: 30,
+                  cursor: 'pointer',
+                  fill:
+                    type !== 'active' && !menu
+                      ? `${theme.blue}`
+                      : `${theme.white}`,
+                }}
+              />
+            </Link>
+          )}
+          <Link to="/reservation4">
+            <Cart
+              aria-label=" 버튼"
+              style={{
+                width: 28,
+                height: 30,
+                cursor: 'pointer',
+                fill:
+                  type !== 'active' && !menu
+                    ? `${theme.blue}`
+                    : `${theme.white}`,
+              }}
+            />
+          </Link>
+        </div>
+      </HeaderWapper>
+    </>
+  );
+};
 
 const design = keyframes`
 	0% {transform:translateY(20px) rotate(45deg);}
@@ -140,133 +268,5 @@ const HeaderWapper = styled.header`
     gap: 1.25rem;
   }
 `;
-
-const Header = ({ type, children, style, ...restProps }) => {
-  const [menu, menuSetState] = useState(false);
-
-  const { user } = useAuthState();
-  const { signOut } = useSignOut();
-  const navigate = useNavigate();
-
-  const headerRef = useRef();
-  const imgRef = useRef(null);
-
-  useEffect(() => {
-    const id = setTimeout(() => {
-      const elem = document.querySelector('.scroller');
-      const scrollbar = Scrollbar.init(elem, { speed: 0.7, damping: 0.04 });
-      scrollbar.addListener(function (status) {
-        if (headerRef.current) {
-          status.offset.y >= 1
-            ? headerRef.current.classList.add('active')
-            : headerRef.current.classList.remove('active');
-        }
-      });
-    }, 10);
-
-    return () => {
-      clearTimeout(id);
-    };
-  }, []);
-
-  const handleSignOut = async () => {
-    signOut();
-    alert('로그아웃했습니다.');
-    navigate('/');
-  };
-  return (
-    <>
-      <HeaderWave menu={menu} />
-
-      <HeaderWapper ref={headerRef} {...restProps} type={type}>
-        <ul
-          className={!menu ? 'menuBtn' : 'menuBtn active'}
-          onClick={() => menuSetState(!menu)}
-        >
-          {Array(3)
-            .fill()
-            .map((el, idx) => (
-              <li
-                style={{
-                  backgroundColor:
-                    type !== 'active' && !menu
-                      ? `${theme.blue}`
-                      : `${theme.white}`,
-                }}
-                key={idx}
-              >
-                {el}
-              </li>
-            ))}
-        </ul>
-
-        <Link to={'/'}>
-          <h1 className="logo">
-            {type !== 'active' && !menu ? (
-              <img
-                ref={imgRef}
-                src={require('./../../../src/assets/images/logo-off.png')}
-                alt="logoOn"
-              />
-            ) : (
-              <img
-                ref={imgRef}
-                src={require('./../../../src/assets/images/logo-on.png')}
-                alt="logoOn"
-              />
-            )}
-          </h1>
-        </Link>
-
-        <div className="infoWrap">
-          {user ? (
-            <Signout
-              aria-label="로그아웃 버튼"
-              onClick={handleSignOut}
-              style={{
-                width: 30,
-                height: 30,
-                cursor: 'pointer',
-                fill:
-                  type !== 'active' && !menu
-                    ? `${theme.blue}`
-                    : `${theme.white}`,
-              }}
-            />
-          ) : (
-            <Link to="/login">
-              <User
-                aria-label="로그인 버튼"
-                style={{
-                  width: 28,
-                  height: 30,
-                  cursor: 'pointer',
-                  fill:
-                    type !== 'active' && !menu
-                      ? `${theme.blue}`
-                      : `${theme.white}`,
-                }}
-              />
-            </Link>
-          )}
-          <Link to="/reservation4">
-            <Cart
-              aria-label=" 버튼"
-              style={{
-                width: 28,
-                height: 30,
-                cursor: 'pointer',
-                fill:
-                  type !== 'active' && !menu
-                    ? `${theme.blue}`
-                    : `${theme.white}`,
-              }}
-            />
-          </Link>
-        </div>
-      </HeaderWapper>
-    </>
-  );
-};
 
 export default Header;

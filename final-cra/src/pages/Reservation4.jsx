@@ -14,6 +14,148 @@ import { useNavigate } from 'react-router-dom';
 import ModalPortal from 'components/ModalPortal/ModalPortal';
 import Modal from 'components/Modal/Modal';
 
+export const Reservation4 = ({ checked }) => {
+  const policy = {
+    0: `보증 정책 \nDIF 괌은 체크인시 현장 결제로 진행됩니다. 반드시 이용 가능한 신용카드를 지참해 주시기 바랍니다. 일부 프로모션 요금의 경우 예약 시 전액 사전 결제가 요구될 수 있습니다. 
+    \n취소 정책 \n예약 취소는 체크인 시간 기준 72시간 전에 진행되지 않으면 취소 수수료인 1박의 수수료가 부과됩니다.`,
+  };
+
+  const [checkedRooms, setCheckedRooms] = useState([]);
+  const [state, setState] = useState({
+    accordionContents: [],
+  });
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkedRoomsStr = localStorage.getItem('checkedRooms');
+
+    if (checkedRoomsStr) {
+      setCheckedRooms(JSON.parse(checkedRoomsStr));
+    }
+  }, []);
+
+  useEffect(() => {
+    const adults = localStorage.getItem('adults');
+    const children = localStorage.getItem('children');
+    const infants = localStorage.getItem('infants');
+    const firstDay = localStorage.getItem('firstDay');
+    const lastDay = localStorage.getItem('lastDay');
+
+    const accordionContents = checkedRooms.map(({ name, imageUrl, price }) => ({
+      id: name,
+      price: price,
+      handle: name,
+      panel: `
+        <section class="box">
+          <img src=${imageUrl} alt=${name}>
+        <div class="textContainer">
+          <div class="textWrap">
+            <p class="textTitle">투숙 인원</p>
+            <p>성인 <span class="item">${adults}명</span></p>
+            <p>아동(만 2세~11세) <span class="item">${children}명</span></p>
+            <p>유아(만 2세 미만) <span class="item">${infants}명</span></p>
+          </div>            
+          <div class="textWrap">
+            <p class="textTitle">투숙일</p>
+            <p>체크인 <span class="item">${firstDay}&nbsp;&nbsp;&nbsp; ~ </span></p>
+            <p>체크아웃 <span class="item">${lastDay}</span></p>            
+          </div> 
+        </div>
+        </section>
+      `,
+    }));
+
+    setState((prevState) => ({ ...prevState, accordionContents }));
+  }, [checkedRooms]);
+
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  const toggleCheckbox = (e) => {
+    if (e.target.checked) {
+      setTotalPrice(totalPrice + Number(e.target.value));
+    } else {
+      setTotalPrice(totalPrice - Number(e.target.value));
+    }
+  };
+
+  const handleBackButtonClick = () => {
+    HandleReserCheck();
+  };
+
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const HandleReserCheck = () => {
+    setModalOpen(true);
+  };
+
+  const HandleModalClose = () => {
+    setModalOpen(false);
+  };
+  const HandleWindowOpen = () => {
+    setModalOpen(false);
+    navigate('/reservation1');
+  };
+
+  return (
+    <>
+      <Header />
+      <SmoothScroll>
+        <ReservationTitle value={'장바구니 및 결제'}></ReservationTitle>
+        <CartWrapper>
+          <RoomWrapper>
+            <Accordion
+              list={state.accordionContents}
+              onChange={toggleCheckbox}
+            />
+            <ButtonWrapper>
+              <Button onClick={handleBackButtonClick} secondary visible>
+                + 객실 추가
+              </Button>
+            </ButtonWrapper>
+          </RoomWrapper>
+          <UserInfoWrapper>
+            <PayInfoWrapper>
+              <PayTitle>결제 정보 입력</PayTitle>
+              <InfoTitle>예약자 정보</InfoTitle>
+              <InputUserInfo placeholder="이름" />
+              <InputUserInfo placeholder="전화번호" />
+              <InputUserInfo placeholder="이메일 주소" />
+              <AddRequirement
+                type="text"
+                placeholder={'추가 요구사항'}
+              ></AddRequirement>
+              <Line />
+              <InfoTitle>결제 정보</InfoTitle>
+              <InputUserInfo placeholder="카드 번호" />
+              <InputUserInfo placeholder="만료(MM/YY)" />
+              <InputUserInfo placeholder="카드 소유자 영문명" />
+              <CardImgWrapper>
+                <VisaImg />
+                <MasterCardImg />
+              </CardImgWrapper>
+              <TotalPriceWrapper>
+                <Total>합계</Total>
+                <TotalPrice>${totalPrice}</TotalPrice>
+              </TotalPriceWrapper>
+            </PayInfoWrapper>
+            <ContinueButton value={'결제하기'} />
+            <Policy>{policy[0]}</Policy>
+          </UserInfoWrapper>
+        </CartWrapper>
+        <Footer />
+      </SmoothScroll>
+      {modalOpen && (
+        <ModalPortal>
+          <Modal hasChoice onClose={HandleModalClose} onOpen={HandleWindowOpen}>
+            새로운 객실을 추가 하시겠습니까?
+          </Modal>
+        </ModalPortal>
+      )}
+    </>
+  );
+};
+
 const CartWrapper = styled.div`
   width: 74.1875rem;
   display: flex;
@@ -155,149 +297,5 @@ const ButtonWrapper = styled.div`
   margin-top: 2rem;
   padding-left: 20.9375rem;
 `;
-
-export const Reservation4 = ({ checked }) => {
-  const policy = {
-    0: `보증 정책 \nDIF 괌은 체크인시 현장 결제로 진행됩니다. 반드시 이용 가능한 신용카드를 지참해 주시기 바랍니다. 일부 프로모션 요금의 경우 예약 시 전액 사전 결제가 요구될 수 있습니다. 
-    \n취소 정책 \n예약 취소는 체크인 시간 기준 72시간 전에 진행되지 않으면 취소 수수료인 1박의 수수료가 부과됩니다.`,
-  };
-
-  const [checkedRooms, setCheckedRooms] = useState([]);
-  const [state, setState] = useState({
-    accordionContents: [],
-  });
-
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const checkedRoomsStr = localStorage.getItem('checkedRooms');
-
-    if (checkedRoomsStr) {
-      setCheckedRooms(JSON.parse(checkedRoomsStr));
-    }
-  }, []);
-
-  useEffect(() => {
-    const adults = localStorage.getItem('adults');
-    const children = localStorage.getItem('children');
-    const infants = localStorage.getItem('infants');
-    const firstDay = localStorage.getItem('firstDay');
-    const lastDay = localStorage.getItem('lastDay');
-
-    const accordionContents = checkedRooms.map(({ name, imageUrl, price }) => ({
-      id: name,
-      price: price,
-      handle: name,
-      panel: `
-        <section class="box">
-          <img src=${imageUrl} alt=${name}>
-        <div class="textContainer">
-          <div class="textWrap">
-            <p class="textTitle">투숙 인원</p>
-            <p>성인 <span class="item">${adults}명</span></p>
-            <p>아동(만 2세~11세) <span class="item">${children}명</span></p>
-            <p>유아(만 2세 미만) <span class="item">${infants}명</span></p>
-          </div>            
-          <div class="textWrap">
-            <p class="textTitle">투숙일</p>
-            <p>체크인 <span class="item">${firstDay}&nbsp;&nbsp;&nbsp; ~ </span></p>
-            <p>체크아웃 <span class="item">${lastDay}</span></p>            
-          </div> 
-        </div>
-        </section>
-      `,
-    }));
-
-    setState((prevState) => ({ ...prevState, accordionContents }));
-  }, [checkedRooms]);
-
-  const [totalPrice, setTotalPrice] = useState(0);
-
-  const toggleCheckbox = (e) => {
-    if (e.target.checked) {
-      setTotalPrice(totalPrice + Number(e.target.value));
-    } else {
-      setTotalPrice(totalPrice - Number(e.target.value));
-    }
-  };
-
-  const handleBackButtonClick = () => {
-    console.log('click');
-    HandleReserCheck();
-    // 모달 버튼에서 확인 버튼에 <Link to='/reservation1'> 연결해주세용
-  };
-
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const HandleReserCheck = () => {
-    setModalOpen(true);
-  };
-
-  const HandleModalClose = () => {
-    setModalOpen(false);
-  };
-  const HandleWindowOpen = () => {
-    setModalOpen(false);
-    navigate('/reservation1');
-  };
-
-  return (
-    <>
-      <Header />
-      <SmoothScroll>
-        <ReservationTitle value={'장바구니 및 결제'}></ReservationTitle>
-        <CartWrapper>
-          <RoomWrapper>
-            <Accordion
-              list={state.accordionContents}
-              onChange={toggleCheckbox}
-            />
-            <ButtonWrapper>
-              <Button onClick={handleBackButtonClick} secondary visible>
-                + 객실 추가
-              </Button>
-            </ButtonWrapper>
-          </RoomWrapper>
-          <UserInfoWrapper>
-            <PayInfoWrapper>
-              <PayTitle>결제 정보 입력</PayTitle>
-              <InfoTitle>예약자 정보</InfoTitle>
-              <InputUserInfo placeholder="이름" />
-              <InputUserInfo placeholder="전화번호" />
-              <InputUserInfo placeholder="이메일 주소" />
-              <AddRequirement
-                type="text"
-                placeholder={'추가 요구사항'}
-              ></AddRequirement>
-              <Line />
-              <InfoTitle>결제 정보</InfoTitle>
-              <InputUserInfo placeholder="카드 번호" />
-              <InputUserInfo placeholder="만료(MM/YY)" />
-              <InputUserInfo placeholder="카드 소유자 영문명" />
-              <CardImgWrapper>
-                <VisaImg />
-                <MasterCardImg />
-              </CardImgWrapper>
-              <TotalPriceWrapper>
-                <Total>합계</Total>
-                <TotalPrice>${totalPrice}</TotalPrice>
-              </TotalPriceWrapper>
-            </PayInfoWrapper>
-            <ContinueButton value={'결제하기'} />
-            <Policy>{policy[0]}</Policy>
-          </UserInfoWrapper>
-        </CartWrapper>
-        <Footer />
-      </SmoothScroll>
-      {modalOpen && (
-        <ModalPortal>
-          <Modal hasChoice onClose={HandleModalClose} onOpen={HandleWindowOpen}>
-            새로운 객실을 추가 하시겠습니까?
-          </Modal>
-        </ModalPortal>
-      )}
-    </>
-  );
-};
 
 export default Reservation4;

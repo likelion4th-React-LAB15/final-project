@@ -2,20 +2,6 @@ import { useId } from 'react';
 import theme from 'style/theme';
 import styled from 'styled-components/macro';
 
-const InputStyled = styled.input`
-  border: 0;
-  background: transparent;
-  color: ${theme.white};
-  font: 200 1rem/1 'arial';
-  outline: none;
-
-  &::placeholder {
-    color: ${theme.white};
-    opacity: 0.5;
-    font-size: 1.2rem;
-  }
-`;
-
 export const CustomInput = ({
   type = 'date',
   placeholer = 'Insert Code',
@@ -42,3 +28,17 @@ export const CustomInput = ({
     </>
   );
 };
+
+const InputStyled = styled.input`
+  border: 0;
+  background: transparent;
+  color: ${theme.white};
+  font: 200 1rem/1 'arial';
+  outline: none;
+
+  &::placeholder {
+    color: ${theme.white};
+    opacity: 0.5;
+    font-size: 1.2rem;
+  }
+`;
