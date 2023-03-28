@@ -195,7 +195,7 @@ function ReservationCalendar() {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [handleKeyDown]);
 
   return (
     <Container>
