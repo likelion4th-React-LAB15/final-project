@@ -13,7 +13,7 @@ import { db } from '@service/auth';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 
 const Container = styled.div`
-  margin: 137.89px auto 0px;
+  margin: 8.6181rem auto 0rem;
   display: flex;
   flex-direction: column;
   align-items: center;
