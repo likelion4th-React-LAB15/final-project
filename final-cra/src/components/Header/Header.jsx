@@ -3,9 +3,12 @@ import HeaderWave from './HeaderWave';
 import theme from 'style/theme';
 import { ReactComponent as Cart } from './../../assets/icons/btn-cart.svg';
 import { ReactComponent as User } from './../../assets/icons/btn-user.svg';
+import { ReactComponent as Signout } from 'assets/icons/signout.svg';
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Scrollbar from 'smooth-scrollbar';
+import { useAuthState, useSignOut } from '@service/auth';
+import { useNavigate } from 'react-router-dom';
 
 const design = keyframes`
 	0% {transform:translateY(20px) rotate(45deg);}
@@ -140,7 +143,12 @@ const HeaderWapper = styled.header`
 
 const Header = ({ type, children, style, ...restProps }) => {
   const [menu, menuSetState] = useState(false);
-  const headerRef = useRef(null);
+
+  const { user } = useAuthState();
+  const { signOut } = useSignOut();
+  const navigate = useNavigate();
+
+  const headerRef = useRef();
   const imgRef = useRef(null);
 
   useEffect(() => {
@@ -148,9 +156,11 @@ const Header = ({ type, children, style, ...restProps }) => {
       const elem = document.querySelector('.scroller');
       const scrollbar = Scrollbar.init(elem, { speed: 0.7, damping: 0.04 });
       scrollbar.addListener(function (status) {
-        status.offset.y >= 100
-          ? headerRef.current.classList.add('active')
-          : headerRef.current.classList.remove('active');
+        if (headerRef.current) {
+          status.offset.y >= 1
+            ? headerRef.current.classList.add('active')
+            : headerRef.current.classList.remove('active');
+        }
       });
     }, 10);
 
@@ -159,6 +169,11 @@ const Header = ({ type, children, style, ...restProps }) => {
     };
   }, []);
 
+  const handleSignOut = async () => {
+    signOut();
+    alert('로그아웃했습니다.');
+    navigate('/');
+  };
   return (
     <>
       <HeaderWave menu={menu} />
@@ -204,18 +219,41 @@ const Header = ({ type, children, style, ...restProps }) => {
         </Link>
 
         <div className="infoWrap">
-          <User
-            style={{
-              width: 28,
-              height: 30,
-              fill:
-                type !== 'active' && !menu ? `${theme.blue}` : `${theme.white}`,
-            }}
-          />
+          {user ? (
+            <Signout
+              aria-label="로그아웃 버튼"
+              onClick={handleSignOut}
+              style={{
+                width: 30,
+                height: 30,
+                cursor: 'pointer',
+                fill:
+                  type !== 'active' && !menu
+                    ? `${theme.blue}`
+                    : `${theme.white}`,
+              }}
+            />
+          ) : (
+            <Link to="/login">
+              <User
+                style={{
+                  width: 28,
+                  height: 30,
+                  cursor: 'pointer',
+                  fill:
+                    type !== 'active' && !menu
+                      ? `${theme.blue}`
+                      : `${theme.white}`,
+                }}
+              />
+            </Link>
+          )}
+
           <Cart
             style={{
               width: 28,
               height: 30,
+              cursor: 'pointer',
               fill:
                 type !== 'active' && !menu ? `${theme.blue}` : `${theme.white}`,
             }}
