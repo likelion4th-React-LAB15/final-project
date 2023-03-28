@@ -42,12 +42,10 @@ const OptionSelect = () => {
   );
 
   useEffect(() => {
-    return () => {
-      localStorage.setItem('adults', adults);
-      localStorage.setItem('children', children);
-      localStorage.setItem('infants', infants);
-    };
-  }, []);
+    localStorage.setItem('adults', adults);
+    localStorage.setItem('children', children);
+    localStorage.setItem('infants', infants);
+  }, [adults, children, infants]);
 
   const handleAdultsChange = (event) => {
     setAdults(parseInt(event.target.value));
@@ -69,13 +67,6 @@ const OptionSelect = () => {
         <OptionContainer key={index}>
           <Label>{option}</Label>
           <Select
-            value={
-              option === '성인'
-                ? adults
-                : option === '아동(만 2~11세)'
-                ? children
-                : infants
-            }
             onChange={
               option === '성인'
                 ? handleAdultsChange
