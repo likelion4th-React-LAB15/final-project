@@ -40,20 +40,20 @@ const AccordionItem = styled.article`
 
         .textTitle {
           font-weight: 700;
-          font-size: 16px;
-          margin-right: 1.25rem;
+          font-size: ${theme.textBase};
+          margin-right: ${theme.spacingMd};
         }
 
         > p {
           margin: 0 0.25rem 0 0.75rem;
           font-weight: 500;
-          font-size: 16px;
+          font-size: ${theme.textBase};
           color: #444;
 
           .item {
-            color: #212c92;
+            color: ${theme.blue};
             font-weight: 700;
-            font-size: 16px;
+            font-size: ${theme.textBase};
             margin-left: 0.625rem;
           }
         }
@@ -78,7 +78,6 @@ const Accordion = (props) => {
       {props.list.map(({ id, handle, panel, price }, index) => {
         let isActive = activeIndex === index;
         const parsePanelHTML = { __html: panel };
-
         return (
           <AccordionItem key={id} aria-labelledby={id}>
             <AccordionHandle
@@ -86,6 +85,7 @@ const Accordion = (props) => {
               isActive={isActive}
               onActive={() => handleChangeActiveIndex(index)}
               price={price}
+              onChange={props.onChange}
             >
               {handle}
             </AccordionHandle>

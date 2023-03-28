@@ -2,124 +2,126 @@ import React from 'react';
 import ReservationTitle from 'components/Reservation/ReservationTitle.js';
 import InputUserInfo from 'components/Reservation/InputUserInfo.js';
 import styled from 'styled-components';
+import theme from 'style/theme';
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
 import SmoothScroll from 'components/smoothScroll/SmoothScroll';
 import ContinueButton from 'components/ContinueButton.js';
 import Accordion from 'components/Reservation/Accordion.js';
 import { useState, useEffect } from 'react';
-import BackButton from 'components/BackButton.js';
+import { Button } from 'components/user/UserButton.jsx';
+import { useNavigate } from 'react-router-dom';
 
 const CartWrapper = styled.div`
-  width: 1187px;
+  width: 74.1875rem;
   display: flex;
   justify-content: space-between;
-  margin: 110px auto 0px;
+  margin: 6.875rem auto 0rem;
 `;
 
 const RoomWrapper = styled.section`
-  width: 815px;
+  width: 50.9375rem;
   height: auto;
 `;
 
 const UserInfoWrapper = styled.section``;
 
 const PayInfoWrapper = styled.div`
-  width: 332px;
-  height: 665px;
-  background: #ffffff;
-  border: 1px solid #eeeeee;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.15);
-  border-radius: 20px;
-  padding: 27px 33px 24px;
+  width: 20.75rem;
+  height: 41.5625rem;
+  background: ${theme.white};
+  border: 0.0625rem solid #eeeeee;
+  box-shadow: 0.125rem 0.125rem 0.625rem rgba(0, 0, 0, 0.15);
+  border-radius: ${theme.spacingMd};
+  padding: 1.6875rem 2.0625rem 1.5rem;
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 1.875rem;
 `;
 
 const PayTitle = styled.h3`
   font-family: 'Inter';
   font-style: normal;
   font-weight: 900;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: ${theme.spacingMd};
+  line-height: 1.5rem;
   text-align: center;
-  color: #212c92;
+  color: ${theme.blue};
 `;
 
 const InfoTitle = styled.h4`
   font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
-  font-size: 12px;
-  line-height: 15px;
+  font-size: ${theme.textSm};
+  line-height: 0.9375rem;
   color: #444444;
-  margin-top: 14px;
+  margin-top: 0.875rem;
 `;
 
 const AddRequirement = styled.textarea`
-  width: 265px;
-  height: 105px;
-  background: #ffffff;
-  border: 1px solid #cccccc;
-  border-radius: 20px;
+  width: 16.5625rem;
+  height: 6.5625rem;
+  background: ${theme.white};
+  border: 0.0625rem solid #cccccc;
+  border-radius: ${theme.spacingMd};
   font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
-  font-size: 12px;
-  line-height: 15px;
-  padding: 15px 22px;
-  margin: 5px 0px;
+  font-size: ${theme.textSm};
+  line-height: 0.9375rem;
+  padding: 0.9375rem ${theme.textMd};
+  margin: 0.3125rem 0rem;
   position: relative;
   resize: none;
 
   &::placeholder {
     position: absolute;
-    top: 15px;
+    top: 0.9375rem;
   }
 `;
 
 const Line = styled.div`
-  width: 265px;
-  height: 1px;
+  width: 16.5625rem;
+  height: 0.0625rem;
   background-color: #aaaaaa;
-  margin: 10px 0px 0px;
+  margin: 0.625rem 0rem 0rem;
 `;
 
 const CardImgWrapper = styled.div`
   display: flex;
-  margin: 15px 0px 0px 161px;
-  gap: 6.5px;
+  margin: 0.9375rem 0rem 0rem 10.0625rem;
+  gap: 0.4063rem;
 `;
 
 const VisaImg = styled.span`
-  width: 48.5px;
-  height: 30px;
+  width: 3.0313rem;
+  height: 1.875rem;
   background: url(${require('./../assets/icons/Visa.png')}) no-repeat center
     center;
 `;
 
 const MasterCardImg = styled.span`
-  width: 48.5px;
-  height: 30px;
+  width: 3.0313rem;
+  height: 1.875rem;
   background: url(${require('./../assets/icons/MasterCard.png')}) no-repeat
     center center;
 `;
 
 const TotalPriceWrapper = styled.div`
-  width: 159px;
+  width: 9.9375rem;
   display: flex;
   justify-content: space-between;
   position: absolute;
-  bottom: 24px;
-  right: 33px;
+  bottom: 1.5rem;
+  right: 2.0625rem;
 `;
 
 const Total = styled.div`
   font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
-  font-size: 24px;
-  line-height: 29px;
+  font-size: 1.5rem;
+  line-height: 1.8125rem;
   text-transform: capitalize;
   color: #444444;
 `;
@@ -128,8 +130,8 @@ const TotalPrice = styled.div`
   font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
-  font-size: 24px;
-  line-height: 29px;
+  font-size: 1.5rem;
+  line-height: 1.8125rem;
   text-transform: capitalize;
   color: #444444;
 `;
@@ -138,21 +140,21 @@ const Policy = styled.pre`
   font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
-  font-size: 12px;
-  line-height: 15px;
+  font-size: ${theme.textSm};
+  line-height: 0.9375rem;
   text-transform: capitalize;
   color: #aaaaaa;
-  width: 332px;
-  margin: 29px 0px 125px;
+  width: 20.75rem;
+  margin: 1.8125rem 0rem 7.8125rem;
   white-space: pre-wrap;
 `;
 
 const ButtonWrapper = styled.div`
   margin-top: 2rem;
-  padding-left: 14.8125rem;
+  padding-left: 20.9375rem;
 `;
 
-export const Reservation4 = () => {
+export const Reservation4 = ({ checked }) => {
   const policy = {
     0: `보증 정책 \nDIF 괌은 체크인시 현장 결제로 진행됩니다. 반드시 이용 가능한 신용카드를 지참해 주시기 바랍니다. 일부 프로모션 요금의 경우 예약 시 전액 사전 결제가 요구될 수 있습니다. 
     \n취소 정책 \n예약 취소는 체크인 시간 기준 72시간 전에 진행되지 않으면 취소 수수료인 1박의 수수료가 부과됩니다.`,
@@ -162,6 +164,8 @@ export const Reservation4 = () => {
   const [state, setState] = useState({
     accordionContents: [],
   });
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const checkedRoomsStr = localStorage.getItem('checkedRooms');
@@ -205,7 +209,21 @@ export const Reservation4 = () => {
     setState((prevState) => ({ ...prevState, accordionContents }));
   }, [checkedRooms]);
 
-  const totalPrice = checkedRooms.reduce((acc, room) => acc + room.price, 0);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  const toggleCheckbox = (e) => {
+    if (e.target.checked) {
+      setTotalPrice(totalPrice + Number(e.target.value));
+    } else {
+      setTotalPrice(totalPrice - Number(e.target.value));
+    }
+  };
+
+  const handleBackButtonClick = () => {
+    console.log('click');
+    alert('객실을 추가하시겠습니까?');
+    // 모달 버튼에서 확인 버튼에 <Link to='/reservation1'> 연결해주세용
+  };
 
   return (
     <>
@@ -214,9 +232,14 @@ export const Reservation4 = () => {
         <ReservationTitle value={'장바구니 및 결제'}></ReservationTitle>
         <CartWrapper>
           <RoomWrapper>
-            <Accordion list={state.accordionContents} />
+            <Accordion
+              list={state.accordionContents}
+              onChange={toggleCheckbox}
+            />
             <ButtonWrapper>
-              <BackButton value={'+ 객실 추가'} />
+              <Button onClick={handleBackButtonClick} secondary visible>
+                + 객실 추가
+              </Button>
             </ButtonWrapper>
           </RoomWrapper>
           <UserInfoWrapper>

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import theme from 'style/theme';
 
 const AccordionPanelStyle = styled.div`
   overflow: hidden;
@@ -6,8 +7,8 @@ const AccordionPanelStyle = styled.div`
   font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: ${theme.textBase};
+  line-height: 1.1875rem;
   background-color: #f3f4f7;
 
   &.active {
