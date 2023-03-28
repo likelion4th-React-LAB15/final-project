@@ -1,13 +1,13 @@
 import React from 'react';
-import ReservationTitle from 'components/Reservation/ReservationTitle.js';
-import InputUserInfo from 'components/Reservation/InputUserInfo.js';
+import ReservationTitle from 'components/Reservation/ReservationTitle';
+import InputUserInfo from 'components/Reservation/InputUserInfo';
 import styled from 'styled-components';
 import theme from 'style/theme';
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
 import SmoothScroll from 'components/smoothScroll/SmoothScroll';
 import ContinueButton from 'components/ContinueButton.js';
-import Accordion from 'components/Reservation/Accordion.js';
+import Accordion from 'components/Reservation/Accordion';
 import { useState, useEffect } from 'react';
 import { Button } from 'components/user/UserButton.jsx';
 import { useNavigate } from 'react-router-dom';

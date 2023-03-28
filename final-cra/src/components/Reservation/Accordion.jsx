@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
-import AccordionPanel from 'components/Reservation/AccordionPanel.js';
-import AccordionHandle from 'components/Reservation/AccordionHandle.js';
+import AccordionPanel from 'components/Reservation/AccordionPanel';
+import AccordionHandle from 'components/Reservation/AccordionHandle';
 import theme from 'style/theme';
 import styled from 'styled-components';
 import { useState } from 'react';

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import OptionSelect from 'components/Reservation/OptionSelect.js';
+import OptionSelect from 'components/Reservation/OptionSelect';
 
 const GuestSelect = () => {
   return (

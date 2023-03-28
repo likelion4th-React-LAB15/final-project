@@ -1,4 +1,4 @@
-import Step from 'components/Reservation/Step.js';
+import Step from 'components/Reservation/Step';
 import styled from 'styled-components';
 
 function StepNavigation(props) {

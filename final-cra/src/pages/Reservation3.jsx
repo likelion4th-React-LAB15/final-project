@@ -1,9 +1,9 @@
 import React, { useState, useLayoutEffect } from 'react';
-import ReservationTitle from 'components/Reservation/ReservationTitle.js';
-import StepNavigation from 'components/Reservation/StepNavigation.js';
+import ReservationTitle from 'components/Reservation/ReservationTitle';
+import StepNavigation from 'components/Reservation/StepNavigation';
 import ContinueButton from 'components/ContinueButton.js';
 import BackButton from 'components/BackButton.js';
-import RoomInfoCard from 'components/Reservation/RoomInfoCard.js';
+import RoomInfoCard from 'components/Reservation/RoomInfoCard';
 import styled from 'styled-components';
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
