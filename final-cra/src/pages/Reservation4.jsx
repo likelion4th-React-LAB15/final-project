@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useId } from 'react';
 import ReservationTitle from 'components/Reservation/ReservationTitle';
 import InputUserInfo from 'components/Reservation/InputUserInfo';
 import styled from 'styled-components';
@@ -13,6 +13,7 @@ import { Button } from 'components/user/UserButton.jsx';
 import { useNavigate } from 'react-router-dom';
 import ModalPortal from 'components/ModalPortal/ModalPortal';
 import Modal from 'components/Modal/Modal';
+import { Label } from 'components/Label/Label';
 
 export const Reservation4 = ({ checked }) => {
   const policy = {
@@ -97,6 +98,14 @@ export const Reservation4 = ({ checked }) => {
     navigate('/reservation1');
   };
 
+  const nameId = useId();
+  const phoneId = useId();
+  const emailId = useId();
+  const etcId = useId();
+  const cardNumId = useId();
+  const durationId = useId();
+  const ownerId = useId();
+
   return (
     <>
       <Header />
@@ -118,18 +127,26 @@ export const Reservation4 = ({ checked }) => {
             <PayInfoWrapper>
               <PayTitle>결제 정보 입력</PayTitle>
               <InfoTitle>예약자 정보</InfoTitle>
-              <InputUserInfo placeholder="이름" />
-              <InputUserInfo placeholder="전화번호" />
-              <InputUserInfo placeholder="이메일 주소" />
+              <Label invisibleLabel htmlFor={nameId}>이름</Label>
+              <InputUserInfo placeholder="이름" id={nameId}/>
+              <Label invisibleLabel htmlFor={phoneId}>전화번호</Label>
+              <InputUserInfo placeholder="전화번호" id={phoneId}/>
+              <Label invisibleLabel htmlFor={emailId}>이메일 주소</Label>
+              <InputUserInfo placeholder="이메일 주소" id={emailId}/>
+              <Label invisibleLabel htmlFor={etcId}>추가 요구사항</Label>
               <AddRequirement
                 type="text"
                 placeholder={'추가 요구사항'}
+                id={etcId}
               ></AddRequirement>
               <Line />
               <InfoTitle>결제 정보</InfoTitle>
-              <InputUserInfo placeholder="카드 번호" />
-              <InputUserInfo placeholder="만료(MM/YY)" />
-              <InputUserInfo placeholder="카드 소유자 영문명" />
+              <Label invisibleLabel htmlFor={cardNumId}>카드 번호</Label>
+              <InputUserInfo placeholder="카드 번호" id={cardNumId}/>
+              <Label invisibleLabel htmlFor={durationId}>만료 날짜</Label>
+              <InputUserInfo placeholder="만료(MM/YY)" id={durationId}/>
+              <Label invisibleLabel htmlFor={ownerId}>카드 소유자 영문명</Label>
+              <InputUserInfo placeholder="카드 소유자 영문명" id={ownerId}/>
               <CardImgWrapper>
                 <VisaImg />
                 <MasterCardImg />
