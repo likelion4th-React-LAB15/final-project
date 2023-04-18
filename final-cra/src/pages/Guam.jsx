@@ -740,7 +740,7 @@ export const Guam = () => {
           <BuildingLayout>
             <img
               src={require('assets/images/map-guam.png')}
-              alt="괌 리조트 지도"
+              alt="괌 오세아니아 타워 건물 배치도"
             />
           </BuildingLayout>
           <MarqueeText>
@@ -758,7 +758,7 @@ export const Guam = () => {
                 {guamTableData01.map((tableItem) => {
                   return (
                     <tr key={tableItem.id}>
-                      <th>{tableItem.title}</th>
+                      <th scope="row">{tableItem.title}</th>
                       <td>{tableItem.description}</td>
                     </tr>
                   );
@@ -771,7 +771,7 @@ export const Guam = () => {
                 {guamTableData02.map((tableItem) => {
                   return (
                     <tr key={tableItem.id}>
-                      <th>{tableItem.title}</th>
+                      <th scope="row">{tableItem.title}</th>
                       <td>
                         {tableItem.description}
                         <Link to="/">

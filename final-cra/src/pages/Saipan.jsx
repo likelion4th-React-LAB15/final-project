@@ -552,7 +552,7 @@ export const Saipan = () => {
           <BuildingLayout>
             <img
               src={require('assets/images/map-saipan.png')}
-              alt="괌 리조트 지도"
+              alt="사이판 리조트 로비, 레스토랑, 쇼핑 및 건물 베치도"
             />
           </BuildingLayout>
           <MarqueeText>
@@ -570,7 +570,7 @@ export const Saipan = () => {
                 {saipanTableData01.map((tableItem) => {
                   return (
                     <tr key={tableItem.id}>
-                      <th>{tableItem.title}</th>
+                      <th scope="row">{tableItem.title}</th>
                       <td>{tableItem.description}</td>
                     </tr>
                   );
@@ -583,7 +583,7 @@ export const Saipan = () => {
                 {saipanTableData02.map((tableItem) => {
                   return (
                     <tr key={tableItem.id}>
-                      <th>{tableItem.title}</th>
+                      <th scope="row">{tableItem.title}</th>
                       <td>
                         {tableItem.description}
                         <Link to="/">
@@ -601,7 +601,7 @@ export const Saipan = () => {
                 {saipanTableData03.map((tableItem) => {
                   return (
                     <tr key={tableItem.id}>
-                      <th>{tableItem.title}</th>
+                      <th scope="row">{tableItem.title}</th>
                       <td>
                         {tableItem.description}
                         <Link to="/">
@@ -619,7 +619,7 @@ export const Saipan = () => {
                 {saipanTableData04.map((tableItem) => {
                   return (
                     <tr key={tableItem.id}>
-                      <th>{tableItem.title}</th>
+                      <th scope="row">{tableItem.title}</th>
                       <td>
                         {tableItem.description}
                         <Link to="/">
