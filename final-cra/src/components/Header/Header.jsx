@@ -48,17 +48,14 @@ const Header = ({ type, children, style, ...restProps }) => {
       <HeaderWave menu={menu} />
 
       <HeaderWapper ref={headerRef} {...restProps} type={type}>
-        <button 
-          type="button"
-          tabIndex="0"
-          aria-label="메뉴 버튼"
+        <ul
           className={!menu ? 'menuBtn' : 'menuBtn active'}
           onClick={() => menuSetState(!menu)}
         >
           {Array(3)
             .fill()
             .map((el, idx) => (
-              <span
+              <li
                 style={{
                   backgroundColor:
                     type !== 'active' && !menu
@@ -68,9 +65,9 @@ const Header = ({ type, children, style, ...restProps }) => {
                 key={idx}
               >
                 {el}
-              </span>
+              </li>
             ))}
-        </button>
+        </ul>
 
         <Link to={'/'}>
           <h1 className="logo">
@@ -78,13 +75,13 @@ const Header = ({ type, children, style, ...restProps }) => {
               <img
                 ref={imgRef}
                 src={require('assets/images/logo-off.png')}
-                alt="Dobby islands free logo"
+                alt="logoOn"
               />
             ) : (
               <img
                 ref={imgRef}
                 src={require('assets/images/logo-on.png')}
-                alt="Dobby islands free logo"
+                alt="logoOn"
               />
             )}
           </h1>
@@ -123,7 +120,7 @@ const Header = ({ type, children, style, ...restProps }) => {
           )}
           <Link to="/reservation4">
             <Cart
-              aria-label="장바구니 버튼"
+              aria-label=" 버튼"
               style={{
                 width: 28,
                 height: 30,
@@ -190,7 +187,7 @@ const HeaderWapper = styled.header`
     background-color: #fff;
 
     .menuBtn {
-      span {
+      li {
         background-color: ${theme.blue};
       }
     }
@@ -202,15 +199,13 @@ const HeaderWapper = styled.header`
     }
   }
 
-  button.menuBtn {
+  ul.menuBtn {
     width: 2.1875rem;
     height: 1rem;
     position: relative;
     cursor: pointer;
-    border:none;
-    background-color:transparent;
 
-    > span {
+    > li {
       position: absolute;
       left: 0;
       width: 100%;
@@ -239,7 +234,7 @@ const HeaderWapper = styled.header`
   }
 
   .menuBtn.active {
-    span {
+    li {
       &:nth-of-type(1) {
         top: -0.75rem;
         animation: ${activeDesign} 0.75s forwards;
