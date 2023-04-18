@@ -6,6 +6,10 @@ import { CustomBtn } from 'components/Visual/CustomBtn';
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import videoUrl from 'assets/images/visual-video.mp4';
+import { VideoButton } from 'components/Button/Video/VideoButton';
+import PlayIcon from 'assets/icons/play.svg';
+import PauseIcon from 'assets/icons/pause.svg';
+import { Video } from 'components/Video/Video';
 
 const splitTextAni = () => {
   gsap
@@ -139,8 +143,23 @@ const Visual = () => {
     setRender(!render);
   };
 
+  const [isPauseVideo, setIsPauseVideo] = useState(false);
+  const handleKeyDownVideo = (key) => {
+    if (key === 'Enter') {
+      setIsPauseVideo(!isPauseVideo);
+    }
+  }
+
+  const getIsPauseVideo = () => {
+    if (isPauseVideo) return PauseIcon;
+    return PlayIcon;
+  }
+
   return (
     <VisualWapper>
+      <VideoButton onKeyDown={handleKeyDownVideo}>
+        <PlayButton src={getIsPauseVideo()} alt={getIsPauseVideo() + ''}/>
+      </VideoButton>
       <Titles>
         {titles.map(({ title, subTitle }, idx) => (
           <li className={`title${idx + 1}`} key={subTitle.toString()}>
@@ -157,7 +176,7 @@ const Visual = () => {
         ))}
       </Titles>
 
-      <video autoPlay loop muted src={videoUrl}></video>
+      <Video autoPlay loop muted src={videoUrl} isPauseVideo={isPauseVideo}></Video>
 
       <ReservationWrapper>
         {reservationList.map((el, idx) => {
@@ -496,5 +515,11 @@ const MenuBottom = styled.div`
     }
   }
 `;
+
+const PlayButton = styled.img`
+  width: 150px;
+  height: 150px;
+`
+
 
 export default Visual;
