@@ -6,6 +6,8 @@ import React, { useEffect } from 'react';
 import { ReactComponent as Pattern1 } from 'assets/images/itr-pattern-01.svg';
 import { ReactComponent as Cloud } from 'assets/images/fix-cloud.svg';
 import { ReactComponent as Pattern2 } from 'assets/images/itr-pattern-02.svg';
+import PlayButton from 'components/MainSection/PlayButton';
+import { useState } from 'react';
 
 const data = [
   {
@@ -193,8 +195,205 @@ const SectionOne = () => {
     }, 100);
   }, []);
 
+  const [isKilled, setIsKilled] = useState(false);
+  const toggleAnimation = (e) => {
+    const allTriggers = ScrollTrigger.getAll();
+    if (!isKilled) {
+      allTriggers.forEach((trigger) => trigger.kill());
+      setIsKilled(!isKilled);
+    } else {
+      setTimeout(() => {
+        gsap.to('.pic0', {
+          y: -200,
+          scrollTrigger: {
+            trigger: '.trigger0',
+            start: 'top top',
+            end: 'bottom end',
+            ease: 'Power3.easeOut',
+            opacity: 1,
+            scrub: true,
+          },
+        });
+
+        gsap.to('.pic1', {
+          y: -200,
+          scrollTrigger: {
+            trigger: '.trigger1',
+            start: '-500 top',
+            end: 'bottom end',
+            ease: 'Power3.easeOut',
+            opacity: 1,
+            scrub: true,
+          },
+        });
+
+        gsap.to('.pic2', {
+          y: -200,
+          scrollTrigger: {
+            trigger: '.trigger2',
+            start: '-500 top',
+            end: 'bottom end',
+            ease: 'Power3.easeOut',
+            opacity: 1,
+            scrub: true,
+          },
+        });
+
+        gsap.from('.pic0 > img', {
+          scale: 1.5,
+          scrollTrigger: {
+            trigger: '.trigger0',
+            start: 'top top',
+            end: 'bottom end',
+            ease: 'Power3.easeOut',
+            opacity: 1,
+            scrub: true,
+          },
+        });
+
+        gsap.from('.pic1 > img', {
+          scale: 1.5,
+          scrollTrigger: {
+            trigger: '.trigger1',
+            start: '-500 top',
+            end: 'bottom end',
+            ease: 'Power3.easeOut',
+            opacity: 1,
+            scrub: true,
+          },
+        });
+
+        gsap.from('.pic2 > img', {
+          scale: 1.5,
+          scrollTrigger: {
+            trigger: '.trigger2',
+            start: '-500 top',
+            end: 'bottom end',
+            ease: 'Power3.easeOut',
+            opacity: 1,
+            scrub: true,
+          },
+        });
+
+        gsap.to('.bigTitle1', {
+          x: -800,
+          scrollTrigger: {
+            trigger: '.trigger0',
+            start: '400 center',
+            end: '200% center',
+            ease: 'Power3.easeOut',
+            scrub: true,
+          },
+        });
+
+        gsap.to('.bigTitle2', {
+          x: 1000,
+          scrollTrigger: {
+            trigger: '.trigger1',
+            start: 'top center',
+            end: '200% center',
+            ease: 'Power3.easeOut',
+            scrub: true,
+          },
+        });
+
+        gsap.to('.bigTitle3', {
+          x: -500,
+          scrollTrigger: {
+            trigger: '.trigger2',
+            start: 'top center',
+            end: '200% center',
+            ease: 'Power3.easeOut',
+            scrub: true,
+          },
+        });
+
+        gsap.to('.textBox', {
+          y: -200,
+          scrollTrigger: {
+            trigger: '.textBox',
+            start: '-700 center',
+            end: '700 center',
+            scrub: true,
+          },
+        });
+        gsap.to('.moveBird', {
+          y: -500,
+          scrollTrigger: {
+            trigger: '.moveBird',
+            start: '-800 center',
+            end: '700 center',
+            scrub: true,
+          },
+        });
+        gsap.to('.rightTextBox', {
+          y: -100,
+          scrollTrigger: {
+            trigger: '.rightTextBox',
+            start: '-700 center',
+            end: '700 center',
+            scrub: true,
+          },
+        });
+
+        ScrollTrigger.create({
+          trigger: '.trigger1',
+          start: '-600 top',
+          // end: 'bottom bottom',
+          // markers: true,
+          scrub: true,
+          // 위에서 아래로 처음 트리거에 접근할때 실행
+          onEnter: () => {
+            gsap.to(document.body, {
+              background: `${theme.blue}`,
+            });
+            gsap.to('.textWrap2 > h2, .textWrap3 > h2, .textWrap3 > h3', {
+              color: `${theme.pink}`,
+              webkitTextStrokeColor: `${theme.pink}`,
+            });
+            gsap.to('.textWrap2 > h3', {
+              webkitTextStrokeColor: `${theme.pink}`,
+            });
+          },
+          // 위에서 아래로 처음 트리거에 접근하고 떠나갈때 실행
+          onLeave: () => {
+            gsap.to(document.body, {
+              background: `${theme.white}`,
+            });
+          },
+          // 아래에서 위로(반대방향으로) 접근할때 실행
+          onEnterBack: () => {
+            gsap.to(document.body, {
+              background: `${theme.blue}`,
+            });
+            gsap.to('.textWrap2 > h2, .textWrap3 > h2', {
+              color: `${theme.pink}`,
+            });
+            gsap.to('.textWrap2 > h3', {
+              webkitTextStrokeColor: `${theme.pink}`,
+            });
+          },
+          // 아래에서 위로(반대방향으로) 접근하고 떠나갈때 실행
+          onLeaveBack: () => {
+            gsap.to(document.body, {
+              background: `${theme.white}`,
+            });
+            gsap.to('.textWrap2 > h2, .textWrap3 > h2', {
+              color: `${theme.blue}`,
+            });
+            gsap.to('.textWrap2 > h3', {
+              webkitTextStrokeColor: `${theme.blue}`,
+            });
+          },
+        });
+      }, 100);
+      setIsKilled(!isKilled);
+    }
+  };
+
   return (
     <SectionOneStyled>
+      <PlayButton onClick={toggleAnimation} isKilled={isKilled} />
       {data.map(({ title, text, decoTitle, bigTitle }, idx) => {
         return (
           <section key={title} className={`trigger${idx}`}>
@@ -256,6 +455,7 @@ const SectionOneStyled = styled.section`
   overflow: hidden;
   height: 200rem;
   margin: 0 auto;
+  position: relative;
 
   section {
     position: relative;
