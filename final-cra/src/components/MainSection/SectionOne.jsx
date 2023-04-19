@@ -6,6 +6,8 @@ import React, { useEffect } from 'react';
 import { ReactComponent as Pattern1 } from 'assets/images/itr-pattern-01.svg';
 import { ReactComponent as Cloud } from 'assets/images/fix-cloud.svg';
 import { ReactComponent as Pattern2 } from 'assets/images/itr-pattern-02.svg';
+import PlayButton from 'components/MainSection/PlayButton';
+import { useState } from 'react';
 
 const data = [
   {
@@ -193,11 +195,12 @@ const SectionOne = () => {
     }, 100);
   }, []);
 
+  const [isKilled, setIsKilled] = useState(false);
   const toggleAnimation = (e) => {
     const allTriggers = ScrollTrigger.getAll();
-    if (e.target.value === 'stop') {
+    if (!isKilled) {
       allTriggers.forEach((trigger) => trigger.kill());
-      e.target.value = 'refresh';
+      setIsKilled(!isKilled);
     } else {
       setTimeout(() => {
         gsap.to('.pic0', {
@@ -305,6 +308,34 @@ const SectionOne = () => {
           },
         });
 
+        gsap.to('.textBox', {
+          y: -200,
+          scrollTrigger: {
+            trigger: '.textBox',
+            start: '-700 center',
+            end: '700 center',
+            scrub: true,
+          },
+        });
+        gsap.to('.moveBird', {
+          y: -500,
+          scrollTrigger: {
+            trigger: '.moveBird',
+            start: '-800 center',
+            end: '700 center',
+            scrub: true,
+          },
+        });
+        gsap.to('.rightTextBox', {
+          y: -100,
+          scrollTrigger: {
+            trigger: '.rightTextBox',
+            start: '-700 center',
+            end: '700 center',
+            scrub: true,
+          },
+        });
+
         ScrollTrigger.create({
           trigger: '.trigger1',
           start: '-600 top',
@@ -356,15 +387,13 @@ const SectionOne = () => {
           },
         });
       }, 100);
-      e.target.value = 'stop';
+      setIsKilled(!isKilled);
     }
   };
 
   return (
     <SectionOneStyled>
-      <button type="button" onClick={toggleAnimation} value="stop">
-        멈춤
-      </button>
+      <PlayButton onClick={toggleAnimation} isKilled={isKilled} />
       {data.map(({ title, text, decoTitle, bigTitle }, idx) => {
         return (
           <section key={title} className={`trigger${idx}`}>
@@ -426,6 +455,7 @@ const SectionOneStyled = styled.section`
   overflow: hidden;
   height: 200rem;
   margin: 0 auto;
+  position: relative;
 
   section {
     position: relative;
