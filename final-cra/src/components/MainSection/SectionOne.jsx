@@ -157,6 +157,16 @@ const SectionOne = () => {
             color: `${theme.pink}`,
             webkitTextStrokeColor: `${theme.pink}`,
           });
+          gsap.to('.textWrap1 > p,.textWrap2 > p, .textWrap3 > p', {
+            color: `${theme.white}`,
+          });
+          gsap.to(
+            '.textWrap1 > button, .textWrap2 > button, .textWrap3 > button',
+            {
+              color: `${theme.white}`,
+              borderColor: `${theme.white}`,
+            }
+          );
           gsap.to('.textWrap2 > h3', {
             webkitTextStrokeColor: `${theme.pink}`,
           });
@@ -166,6 +176,16 @@ const SectionOne = () => {
           gsap.to(document.body, {
             background: `${theme.white}`,
           });
+          gsap.to('.textWrap1 > p,.textWrap2 > p, .textWrap3 > p', {
+            color: `${theme.black}`,
+          });
+          gsap.to(
+            '.textWrap1 > button,.textWrap2 > button, .textWrap3 > button',
+            {
+              color: `${theme.blue}`,
+              borderColor: `${theme.blue}`,
+            }
+          );
         },
         // 아래에서 위로(반대방향으로) 접근할때 실행
         onEnterBack: () => {
@@ -178,6 +198,16 @@ const SectionOne = () => {
           gsap.to('.textWrap2 > h3', {
             webkitTextStrokeColor: `${theme.pink}`,
           });
+          gsap.to('.textWrap1 > p, .textWrap2 > p, .textWrap3 > p', {
+            color: `${theme.white}`,
+          });
+          gsap.to(
+            '.textWrap1 > button, .textWrap2 > button, .textWrap3 > button',
+            {
+              color: `${theme.white}`,
+              borderColor: `${theme.white}`,
+            }
+          );
         },
         // 아래에서 위로(반대방향으로) 접근하고 떠나갈때 실행
         onLeaveBack: () => {
@@ -190,6 +220,16 @@ const SectionOne = () => {
           gsap.to('.textWrap2 > h3', {
             webkitTextStrokeColor: `${theme.blue}`,
           });
+          gsap.to('.textWrap1 > p, .textWrap2 > p, .textWrap3 > p', {
+            color: `${theme.black}`,
+          });
+          gsap.to(
+            '.textWrap1 > button, .textWrap2 > button, .textWrap3 > button',
+            {
+              color: `${theme.blue}`,
+              borderColor: `${theme.blue}`,
+            }
+          );
         },
       });
     }, 100);

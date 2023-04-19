@@ -5,7 +5,7 @@ function FilmList() {
   return (
     <>
       <FilmListContainer className="filmScrollWrap">
-        <h2 className="a11y-hidden">영상 썸네일 리스트 A11y 적용해야함</h2>
+        <h2 className="a11y-hidden">영상 썸네일 리스트</h2>
         <FilmListInner className="scrollLeftMove" marqueeLeft>
           <h3 className="posLeft">
             <BorderFilmText primaryColor>POPULAR CONTENTS</BorderFilmText>
