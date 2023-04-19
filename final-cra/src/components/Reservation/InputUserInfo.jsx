@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import theme from 'style/theme';
 
-const InputUserInfo = ({ value, placeholder }) => {
-  return <Input type="text" value={value} placeholder={placeholder} />;
+const InputUserInfo = ({ value, placeholder, ...restProps}) => {
+  return <Input type="text" value={value} placeholder={placeholder} {...restProps}/>;
 };
 
 const Input = styled.input`
